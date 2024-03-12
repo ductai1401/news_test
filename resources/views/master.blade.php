@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">
+<meta name="theme-color" content="#ec0000">
+<meta name="description" content="News Magazine HTML Template">
+<meta name="keywords" content="Article, Blog, Business, Fashion, Magazine, Music, News, News Magazine, Newspaper, Politics, Travel">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>:: Altroz - News Magazine HTML Template ::</title>
+
+<!--Favicon-->
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+<!-- CSS -->
+<link rel="stylesheet" href="{{ asset('default/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{ asset('default/css/style.css')}}">
+<link rel="stylesheet" href="{{ asset('default/css/responsive.css')}}">
+<link rel="stylesheet" href="{{ asset('default/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{ asset('default/css/owl.carousel.min.css')}}">
+<link rel="stylesheet" href="{{ asset('default/css/owl.theme.default.min.css')}}">
+<link rel="stylesheet" href="{{ asset('default/css/colorbox.css')}}">
+
+<!-- Google Fonts -->
+{{-- <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,500,600,700,800&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,800&display=swap" rel="stylesheet">  --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    @yield('content')
+
+
+    <script src="{{ asset('default/js/jquery-3.2.1.min.js ')}}"></script> 
+    <script src="{{ asset('default/js/popper.min.js ')}}"></script> 
+    <script src="{{ asset('default/js/bootstrap.min.js ')}}"></script> 
+    <script src="{{ asset('default/js/owl.carousel.min.js ')}}"></script> 
+    <script src="{{ asset('default/js/jquery.colorbox.js ')}}"></script>
+    <script src="{{ asset('default/js/smoothscroll.js ')}}"></script> 
+    <script src="{{ asset('default/js/custom_script.js ')}}"></script> 
+    </body>
+    </html>    
