@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('latest_news', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->string('image'); 
-            $table->string('name_author');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->unsignedBigInteger('id_news');
+            $table->foreign('id_news')->references('id')->on('news');
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('latest_news');
+        Schema::dropIfExists('comments');
     }
 };
