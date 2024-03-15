@@ -5,7 +5,7 @@
 <meta name="description" content="News Magazine HTML Template">
 <meta name="keywords" content="Article, Blog, Business, Fashion, Magazine, Music, News, News Magazine, Newspaper, Politics, Travel">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>:: Altroz - News Magazine HTML Template ::</title>
+<title>@yield('title')</title>
 
 <!--Favicon-->
 <link rel="icon" href="images/favicon.png" type="image/x-icon">

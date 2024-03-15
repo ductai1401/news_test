@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('olympic_games', function (Blueprint $table) {
+        Schema::create('athletes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('image');
+            $table->date('brith_day');
             $table->unsignedBigInteger('id_country');
             $table->foreign('id_country')->references('id')->on('countrys');
-            $table->integer('athletes');
-            $table->integer('teams');
-            $table->integer('events');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->unsignedBigInteger('id_spost');
+            $table->foreign('id_spost')->references('id')->on('sports');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('olympic_games');
+        Schema::dropIfExists('athletes');
     }
 };

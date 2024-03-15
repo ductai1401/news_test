@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('olympic_sports', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->unsignedBigInteger('id_news');
-            $table->foreign('id_news')->references('id')->on('news');
-            $table->text('content')->nullable();
+            $table->unsignedBigInteger('id_olympic');
+            $table->foreign('id_olympic')->references('id')->on('olympics');
+            $table->unsignedBigInteger('id_sport');
+            $table->foreign('id_sport')->references('id')->on('sports');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('olympic_sports');
     }
 };

@@ -18,7 +18,10 @@ return new class extends Migration
             $table->text('content');
             $table->string('image'); 
             $table->string('name_author');
-            $table->tinyInteger('status')->default(1)->comment('1: hien - 2: an');
+            $table->tinyInteger('status')->default(1)->comment('1: show - 2: hidden');
+            $table->unsignedBigInteger('id_category');
+            $table->foreign('id_category')->references('id')->on('categories');
+            $table->string('key_word');
             $table->timestamps();
         });
     }

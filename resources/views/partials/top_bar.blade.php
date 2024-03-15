@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8">
                 <ul class="unstyled top-nav">
-                    <li><a href="login-signup.html">Login & Signup</a></li>
+                    <li><a href="{{ route('auth.login')}}">Login & Signup</a></li>
                 </ul>
             </div>
             <div class="col-md-4 top-social text-lg-right text-md-center">
