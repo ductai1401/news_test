@@ -62,7 +62,7 @@
         <div class="col-sm-12">
           <ul class="breadcrumb">
             <li><a href="#">Home</a></li>
-            <li>Login</li>
+            <li>@yield('titlePage')</li>
           </ul>
         </div>
       </div>
