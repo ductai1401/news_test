@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_news');
             $table->foreign('id_news')->references('id')->on('news');
             $table->text('content');
+            $table->tinyInteger('status')->default(1)->comment('1: show - 2: hidden');
             $table->timestamps();
         });
     }
