@@ -12,7 +12,7 @@ class OlympicController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.modules.olympic.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class OlympicController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.modules.olympic.create');
     }
 
     /**

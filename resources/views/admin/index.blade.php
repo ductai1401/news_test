@@ -1,8 +1,8 @@
-@extends('admin/master');
-
-@section('title','dashboard')
-
+@extends('admin.master')
+@section('title', 'Dashboard')
 @section('content')
+
+
 <div class="container-fluid">
     <div class="row bg-color">
         <div class="col-lg-4">
@@ -347,4 +347,5 @@
         </div>
     </div>
 </div>
+
 @endsection

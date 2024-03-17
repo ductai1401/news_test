@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.modules.user.index');
     }
 
     /**
@@ -20,9 +20,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.modules.user.create');
     }
-
     /**
      * Store a newly created resource in storage.
      */

@@ -12,7 +12,7 @@ class SportController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.modules.sport.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class SportController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.modules.sport.create');
     }
 
     /**

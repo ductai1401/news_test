@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('partials.head');
+    @include('partials.head')
 </head>
 
 <body>
@@ -48,7 +48,7 @@
 
     <div class="body-inner">
         <!-- Topbar Start -->
-        @include('partials.top_bar');
+        @include('partials.top_bar')
         <!-- Topbar End -->
 
         <!-- Header start -->
@@ -70,15 +70,15 @@
         <!-- Header End -->
 
         <!-- Main Nav Start -->
-            @include('partials.main_nav');
+            @include('partials.main_nav')
         <!-- Main Nav End -->
 
         <!-- Featured Post Area Start -->
-            @include('partials.feature_post');
+            @include('partials.feature_post')
         <!-- Featured Post Area End -->
 
         <!-- Latest News Area Start -->
-            @include('partials.latest_news');
+            @include('partials.latest_news')
         <!-- Latest News Area End -->
 
         <!-- Ad Content Area Start -->
@@ -93,7 +93,7 @@
         <!-- Ad Content Area End -->
 
         <!-- Block Wrapper Start -->
-            @include('partials.block_wrapper');
+            @include('partials.block_wrapper')
         <!-- Block Wrapper end -->
 
         <!-- Ad Content Area Start -->
@@ -108,7 +108,7 @@
         <!-- Ad Content Area End -->
 
         <!-- Footer Start -->
-        @include('partials.footer');
+        @include('partials.footer')
         <!-- Footer End -->
 
         <!-- Copyright Start -->
@@ -128,7 +128,7 @@
     </div>
 
     <!-- Javascript Files -->
-    @include('partials.foot');
+    @include('partials.foot')
 
 </body>
 

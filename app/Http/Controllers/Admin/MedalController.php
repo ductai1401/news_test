@@ -12,7 +12,7 @@ class MedalController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.modules.medal.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class MedalController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.modules.medal.create');
     }
 
     /**

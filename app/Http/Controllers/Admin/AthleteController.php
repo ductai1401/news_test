@@ -12,7 +12,7 @@ class AthleteController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.modules.athlete.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class AthleteController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.modules.athlete.create');
     }
 
     /**

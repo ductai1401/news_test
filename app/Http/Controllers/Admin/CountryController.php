@@ -12,7 +12,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.modules.country.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.modules.country.create');
     }
 
     /**

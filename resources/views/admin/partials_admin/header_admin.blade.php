@@ -2,7 +2,7 @@
     <nav class="navbar navbar-static-top">
         <a class='logo' href='/fitness/'>
             <!-- Add the class icon to your logo image or logo icon to add the margining -->
-            <img src="img/logo.png" alt="image not found">
+            <img src="https://cdn.pixabay.com/photo/2023/09/11/16/44/roses-8247285_1280.jpg" width="91px" height="43px" alt="image not found">
         </a>
         <!-- Header Navbar: style can be found in header-->
         <!-- Sidebar toggle button-->
@@ -225,7 +225,7 @@
                 <!-- User Account: style can be found in dropdown-->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle padding-user" data-toggle="dropdown">
-                        <img src="img/authors/avatar1.jpg" width="35" class="img-circle img-responsive pull-left" height="35" alt="User Image">
+                        <img src="https://img.meta.com.vn/Data/image/2021/09/21/anh-meo-ngau-12.jpg" width="35px" height="35" class="img-circle img-responsive pull-left"  alt="User Image">
                         <div class="riot">
                             <div>
                                 Natali
@@ -238,8 +238,8 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="img/authors/avatar1.jpg" class="img-circle" alt="User Image">
-                            <p>Nataliapery</p>
+                            <img src="https://img.meta.com.vn/Data/image/2021/09/21/anh-meo-ngau-12.jpg" class="img-circle" alt="User Image">
+                            <p>Jett</p>
                         </li>
                         <!-- Menu Body -->
                         <li class="pad-3">

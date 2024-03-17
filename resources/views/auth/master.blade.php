@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    @include('partials.head');
+    @include('partials.head')
 <body>
 
 <!-- Start Pre Loader -->
@@ -44,7 +44,7 @@
 
 <div class="body-inner"> 
   <!-- Topbar Start --> 
-        @include('partials.top_bar');
+        @include('partials.top_bar')
   <!-- Topbar End --> 
   
   <!-- Header start -->
@@ -52,7 +52,7 @@
   <!-- Header End -->
   
   <!-- Main Nav Start -->  
-        @include('partials.main_nav');
+        @include('partials.main_nav')
   <!-- Menu wrapper end -->
   
   <!-- Page Title Start -->
@@ -75,7 +75,7 @@
   <!-- 1rd Block Wrapper End -->
   
 <!-- Footer Start -->  
-    @include('partials.footer');
+    @include('partials.footer')
 <!-- Footer End -->
   
 <!-- Copyright Start -->   
@@ -95,6 +95,6 @@
 </div>
   
 <!-- Javascript Files --> 
-    @include('partials.foot');
+    @include('partials.foot')
 </body>
 </html>

@@ -1,4 +1,6 @@
 <!-- global js -->
+
+
 <script src="{{ asset('admin/js/jquery.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/js/custom_js/app.js') }}" type="text/javascript"></script>
@@ -9,6 +11,9 @@
 <script src="{{ asset('admin/vendors/progressbar/bootstrap-progressbar.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/vendors/countUp/countUp.js" type="text/javascrip') }}t"></script>    
 <script src="{{ asset('admin/vendors/moment/min/moment.min.js') }}" type="text/javascript"></script>
+
+
+
 <!-- date picker -->
 <script src="{{ asset('admin/vendors/air-datepicker-master/dist/js/datepicker.min.js') }}"></script>
 <script src="{{ asset('admin/vendors/air-datepicker-master/dist/js/datepicker.en.js') }}"></script>
@@ -24,3 +29,5 @@
 <script src="{{ asset('admin/js/custom_js/admin_index.js')}}" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!-- end of page level js -->
+@stack('js')
+@stack('hanldejs')
