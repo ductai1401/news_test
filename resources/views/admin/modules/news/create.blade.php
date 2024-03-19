@@ -1,15 +1,13 @@
 @extends('admin/master')
 
-@section('title','Create')
+@section('title','Create News')
 
 @section('content')
-
 
 <div class="container-fluid">
     <!--main content-->
     <div class="row">
         <div class="col-lg-12">
-            <!-- Basic charts strats here-->
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -23,8 +21,10 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form id="add_news_form" method="post" class="form-horizontal">
+                            <form id="add_news_form" action="{{ route('admin.news.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-body">
+
                                     <div class="form-group">
                                         <label for="title" class="col-md-3 control-label">
                                             Title
@@ -35,36 +35,70 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="title" type="text" name="title" class="form-control fill_it" placeholder="Enter Title">
+                                                <input id="title" type="text" name="title" class="form-control fill_it" placeholder="Enter Title" value="{{ old('title')}}">
                                             </div>
                                         </div>
+                                        @error('email')
+                                            <span class="alert alert-danger">
+                                            <strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="intro" class="col-md-3 control-label">
+                                            Intro
+                                            <span class='require'>*</span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-fw fa-file-text-o"></i>
+                                                </span>
+                                                <input id="intro" type="text" name="intro" class="form-control fill_it" placeholder="Enter intro" value="{{ old('intro')}}">
+                                            </div>
+                                        </div>
+                                        @error('email')
+                                            <span class="alert alert-danger">
+                                            <strong>{{ $message }}</strong></span>
+                                        @enderror
+                                    </div>
+
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="categry">
                                             Category
                                             <span class='require'>*</span>
                                         </label>
                                         <div class="col-md-7">
-                                            <select class="form-control" name="category" id="categry">
-                                                <option value>Select Category</option>
-                                                <option value="yoga">Yoga</option>
-                                                <option value="fitness">Fitness</option>
-                                                <option value="body_building">Body Building</option>
-                                                <option value="aerodics">Aerobics</option>
-                                                <option value="flexibility">Flexibility</option>
+                                            <select class="form-control" name="id_category" id="category">
+                                                <option value="0" {{ old('id_category')==0 ? 'selected' : '' }}>Select Category</option>
+                                                @foreach( $categories as $category )
+                                                    <option value="{{ $category->id }}"  {{ old('id_category')==$category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
+                                        @error('email')
+                                            <span class="alert alert-danger">
+                                            <strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
+
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">
-                                            Tags
+                                        <label class="col-md-3 control-label" for="status">
+                                            Status
                                             <span class='require'>*</span>
                                         </label>
                                         <div class="col-md-7">
-                                            <select class="tags_options fill_it form-control" id="activate" multiple="multiple" name="tags">
+                                            <select name="status" id="" class="form-control">
+                                                <option value="1" {{ old('status')==1 ? 'selected' : '' }}>Show</option>
+                                                <option value="2" {{ old('status')==2 ? 'selected' : '' }}>Hide</option>
                                             </select>
                                         </div>
-                                    </div>
+                                        @error('email')
+                                            <span class="alert alert-danger">
+                                            <strong>{{ $message }}</strong></span>
+                                        @enderror   
+                                    </div><br>
+
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Image</label>
                                         <div class="col-md-7 text-center">
@@ -78,56 +112,56 @@
                                                         <span class="btn btn-primary btn-file">
                                                             <span class="fileinput-new">Select image</span>
                                                         <span class="fileinput-exists">Change</span>
-                                                        <input type="file" name="...">
+                                                        <input type="file" name="image" value="{{ old('image')}}">
                                                         </span>
                                                         <a href="#" class="btn btn-primary   fileinput-exists" data-dismiss="fileinput">Remove</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        @error('email')
+                                            <span class="alert alert-danger">
+                                            <strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="date">
-                                            Date
-                                            <span class='require'>*</span>
-                                        </label>
-                                        <div class="col-md-7">
-                                            <div class='input-group date datetimepicker4'>
-                                                <input type='text' class="form-control" name="time_from" id="date" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-time"></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">
-                                            Description
+                                            Content
                                             <span class='require'>*</span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
-                                                <textarea id="textarea" class="summernote edi-css form-control fill_it" name="content"></textarea>
+                                                <textarea id="textarea" class="summernote edi-css form-control fill_it" name="content">{{ old('cotent')}}</textarea>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-actions">
+                                    @error('email')
+                                        <span class="alert alert-danger">
+                                        <strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div> 
+
+
+
+                                <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <input type="submit" class="mahesh btn btn-primary" value="Add"> &nbsp;
-                                            <input type="button" class="btn btn-danger" value="Cancel"> &nbsp;
-                                            <input type="reset" id="add-news-reset-editable" class="btn btn-default" value="Reset">
+                                           <button type="submit" class="btn btn-success">Add</button>
+                        
                                         </div>
                                     </div>
                                 </div>
+                                
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
+
+
     <!-- col-md-6 -->
     <!--row -->
     <!--row ends-->
