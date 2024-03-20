@@ -84,12 +84,12 @@
                 </a>
                 <ul id="demo4" class="sub-menu collapse">
                     <li>
-                        <a href='{{ route('admin.category.create')}}'>
+                        <a href='{{ route('admin.athlete.create')}}'>
                             <i class="text-primary fa fa-fw fa-cloud-upload"></i> Add Athlete
                         </a>
                     </li>
                     <li>
-                        <a href='{{ route('admin.category.index')}}'>
+                        <a href='{{ route('admin.athlete.index')}}'>
                             <i class="text-success fa fa-fw fa-file-image-o"></i> Athlete List 
                         </a>
                     </li>
@@ -171,8 +171,27 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-dropdown">
+                <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo9" aria-expanded="false">
+                    <i class="text-success menu-icon fa fa-fw fa-picture-o"></i>
+                    <span class="mm-text">Comment</span>
+                    <span class="fa fa-angle-down pull-right"></span>
+                </a>
+                <ul id="demo9" class="sub-menu collapse">
+                    <li>
+                        <a href='{{ route('admin.comment.create')}}'>
+                            <i class="text-primary fa fa-fw fa-cloud-upload"></i> Add Comment
+                        </a>
+                    </li>
+                    <li>
+                        <a href='{{ route('admin.comment.index')}}'>
+                            <i class="text-success fa fa-fw fa-file-image-o"></i> Comment list
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li>
-                <a href='/fitness/404'>
+                <a href='{{route('admin.404')}}'>
                     <i class="text-warning menu-icon fa fa-anchor"></i>
                     <span class="mm-text">404</span>
                 </a>

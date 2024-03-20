@@ -44,7 +44,7 @@ class OlympicController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.modules.olympic.edit');
     }
 
     /**

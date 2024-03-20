@@ -1,6 +1,8 @@
 @extends('admin/master')
 
-@section('title','News')
+@section('action','Comment List')
+@section('module', 'Comment')
+
 
 @push('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -44,6 +46,25 @@
 
 
 @section('content')
+
+<section class="content-header">
+    <!--section starts-->
+    <h2>@yield('action')</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a href='{{route('admin.dashboard')}}'>
+                <i class="fa fa-fw fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href='{{ route('admin.comment.index') }}'>@yield('module')</a>
+        </li>
+        <li>
+            <a href='{{ route('admin.comment.index') }}'>@yield('action')</a>
+        </li>
+    </ol>
+</section>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
@@ -63,74 +84,37 @@
                     <table class="table table-bordered text-center" id="comments">
                         <thead>
                             <tr>
-                                <th class="text-center">Date</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">Title</th>
+                                <th class="text-center">Id</th>
+                                <th class="text-center">Id User</th>
+                                <th class="text-center">Id News</th>
+                                <th class="text-center">Content</th>
+                                <th class="text-center">Id News</th>
+                                <th class="text-center">Created At</th>
                                 <th class="text-center">Edit/Save</th>
                                 <th class="text-center">Delete/Cancel</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @for($i = 1 ; $i <= 3; $i++) 
                             <tr>
-                                <td>24-09-2016</td>
+                                <td>{{ $i }}</td>
                                 <td>Body Building</td>
                                 <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                                <td>24-09-2016</td>
+                                <td>Body Building</td>
+                                <td>24-09-2016</td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>21-09-2016</td>
-                                <td>Aerobics</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
+                                    <a class="edit btn btn-primary" href="{{ route('admin.comment.edit', ['id' => 1]) }}">
+                                         <i class="fa fa-fw fa-edit"></i> Edit
+                                     </a>
+                                 </td>
+                                 <td>
+                                     <a class="delete btn btn-danger" href="{{ route('admin.comment.destroy', ['id' => 1]) }}">
+                                         <i class="fa fa-trash-o"></i> Delete
+                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Yoga</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Flexibility</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
+                            @endfor
                         </tbody>
                     </table>
                 </div>

@@ -27,10 +27,20 @@ use App\Http\Controllers\AuthController;
 
 
 Route::get('/', function () {
-    return view('master');
+    return view('index');
 })->name('index');
 
+Route::get('/Olympic', function() {
+    return view('olympic');
+})->name('Olympic');
 
+Route::get('/Olympic/2022', function() {
+    return view('olympic_seasion');
+})->name('olympic_seasion');
+
+Route::get('/Olympic/single_news', function() {
+    return view('single_news');
+})->name('single_news');
 
 Route::prefix('auth')->name('auth.')->controller(AuthController::class)->group(function () {
     Route::get('/login', 'viewLogin')->name('viewLogin');
@@ -48,6 +58,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.index');
     })->name('dashboard');
+
+    Route::get('/404', function () {
+        return view('admin.404');
+    })->name('404');
+
+
 
     Route::prefix('category')->name('category.')->controller(CategoryController::class)->group(function () {
         Route::get('index', 'index')->name('index');
@@ -78,6 +94,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
+
+        Route::get('show/{id}', 'show')->name('show');
 
         Route::get('edit/{id}', 'edit')->name('edit');
         Route::post('update/{id}', 'update')->name('update');
@@ -147,6 +165,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::prefix('comment')->name('comment.')->controller(CommentController::class)->group(function () {
         Route::get('index', 'index')->name('index');
+
+        Route::get('create/', 'create')->name('create');
+        Route::post('store/', 'store')->name('store');
 
         Route::get('edit/{id}', 'edit')->name('edit');
         Route::post('update/{id}', 'update')->name('update');
