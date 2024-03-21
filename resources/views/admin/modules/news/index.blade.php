@@ -63,74 +63,51 @@
                     <table class="table table-bordered text-center" id="news">
                         <thead>
                             <tr>
-                                <th class="text-center">Date</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">Title</th>
-                                <th class="text-center">Edit/Save</th>
-                                <th class="text-center">Delete/Cancel</th>
-                            </tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Intro</th>
+                                <th scope="col">Content</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col">Updated At</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
                         </thead>
                         <tbody>
+                            @foreach ($news as $n)
                             <tr>
-                                <td>24-09-2016</td>
-                                <td>Body Building</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $n->title }}</td>
+                                <td>{{ $n->intro }}</td>
+                                <td>{{ $n->content }}</td>
+                                <td><img src="{{ asset('uploads/'. $n->image) }}" alt="" width="100px" height="100px"></td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
+                                    @if($n->status==1)
+                                        <span class="badge badge-success">Show</span>
+                                    @else
+                                        <span class="badge badge-danger">Hide</span>
+                                    @endif                    
+                                </td>
+                                <td></td>
+                                {{-- <td>{{ $n->categories->name }}</td> --}}
+                                <td>{{ date('d/m/Y - H:i:s', strtotime( $n->created_at)) }}</td>
+                                <td>{{ date('d/m/Y - H:i:s', strtotime( $n->updated_at)) }}</td>
+                
+                                <td>
+                                    <a class="edit btn btn-primary" href="{{ route('admin.news.edit', ['id'=> $n->id]) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
+                                    <a class="delete btn btn-danger" href="{{ route('admin.news.destroy', ['id'=> $n->id]) }}">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>21-09-2016</td>
-                                <td>Aerobics</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Yoga</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Flexibility</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>

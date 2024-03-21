@@ -1,6 +1,6 @@
 @extends('admin/master')
 
-@section('title','News')
+@section('title','Category')
 
 @push('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -63,74 +63,41 @@
                     <table class="table table-bordered text-center" id="categories">
                         <thead>
                             <tr>
-                                <th class="text-center">Date</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">Title</th>
-                                <th class="text-center">Edit/Save</th>
-                                <th class="text-center">Delete/Cancel</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col">Updated At</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($categories as $category)
                             <tr>
-                                <td>24-09-2016</td>
-                                <td>Body Building</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $category->name }}</td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
+                                    @if($category->status==1)
+                                        <span class="right badge badge-success">Show</span>
+                                    @else
+                                        <span class="right badge badge-danger">Hiden</span>
+                                    @endif                    
+                                </td>
+                                <td>{{ date('d/m/Y - H:i:s', strtotime( $category->created_at)) }}</td>
+                                <td>{{ date('d/m/Y - H:i:s', strtotime( $category->updated_at)) }}</td>
+                                <td>
+                                    <a class="edit btn btn-primary" href="{{ route('admin.category.edit', ['id'=> $category->id]) }}:;">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
+                                    <a class="delete btn btn-danger" href="{{ route('admin.category.destroy', ['id'=> $category->id]) }}">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>21-09-2016</td>
-                                <td>Aerobics</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Yoga</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Flexibility</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

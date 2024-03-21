@@ -6,23 +6,30 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
+
     public function rules(): array
     {
         return [
-            //
+            'title'=>'required',
+            'intro'=>'required',
+            'content'=>'required',
+            'image'=>'required|mimes:jpg,bmp,png,jpeg',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'title.required'=>'Plese enter news title',
+            'intro.required'=>'Plese enter news intro',
+            'content.required'=>'Plese enter news content',
+            'image.required'=>'Plese enter news image',
+            'image.mimes' => 'Image must jpg, bmp, png, jpeg',
         ];
     }
 }

@@ -11,18 +11,24 @@ class UpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
+
     public function rules(): array
     {
         return [
-            //
+            'name'=>'required|unique:categories,name,'.$this->id
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required'=>'Plese enter news category name',
+            'name.unique'=>'News category name is exists! Plese enter the other news category name!'
+
         ];
     }
 }
+
