@@ -1,8 +1,7 @@
 @extends('admin/master')
 
-@section('title','Country')
-@section('name', 'Country List')
-
+@section('action','Country List')
+@section('module', 'Country')
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -35,16 +34,35 @@
 
 <script>
     $(function () {
-      $("#countrys").DataTable({
+      $("#country").DataTable({
         "responsive": true, "lengthChange": false, "autoWidth": false,
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-      }).buttons().container().appendTo('#countrys_wrapper .col-md-6:eq(0)');
+      }).buttons().container().appendTo('#country_wrapper .col-md-6:eq(0)');
     });
   </script>
 @endpush
 
 
 @section('content')
+
+<section class="content-header">
+    <!--section starts-->
+    <h2>@yield('action')</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a href='{{route('admin.dashboard')}}'>
+                <i class="fa fa-fw fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href='{{ route('admin.country.index') }}'>@yield('module')</a>
+        </li>
+        <li>
+            <a href='{{ route('admin.country.index') }}'>@yield('action')</a>
+        </li>
+    </ol>
+</section>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
@@ -52,7 +70,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                    <i class="fa fa-newspaper-o" aria-hidden="true"></i> Countrys
+                    <i class="fa fa-newspaper-o" aria-hidden="true"></i> Country
                 </h4>
                     <span class="pull-right">
                         <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
@@ -61,77 +79,36 @@
                 </div>
                 <div class="panel-body table-responsive">
                     
-                    <table class="table table-bordered text-center" id="countrys">
+                    <table class="table table-bordered text-center" id="country">
                         <thead>
                             <tr>
-                                <th class="text-center">Date</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">Title</th>
+                                <th class="text-center">Id</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">flag</th>
                                 <th class="text-center">Edit/Save</th>
                                 <th class="text-center">Delete/Cancel</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @for($i = 1 ; $i <= 3; $i++) 
                             <tr>
-                                <td>24-09-2016</td>
+                                <td>{{ $i }}</td>
                                 <td>Body Building</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                                <td><img src="" alt="country flag"></td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
+                                   <a class="edit btn btn-primary" href="{{ route('admin.country.edit', ['id' => 1]) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
+                                    <a class="delete btn btn-danger" href="{{ route('admin.country.destroy', ['id' => 1]) }}">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
-                                </td>
+                               </td>
+
                             </tr>
-                            <tr>
-                                <td>21-09-2016</td>
-                                <td>Aerobics</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Yoga</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Flexibility</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
+                            
+                            @endfor
                         </tbody>
                     </table>
                 </div>

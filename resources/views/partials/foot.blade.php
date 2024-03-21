@@ -6,3 +6,5 @@
 <script src="{{ asset('default/js/jquery.colorbox.js ') }}"></script>
 <script src="{{ asset('default/js/smoothscroll.js ') }}"></script>
 <script src="{{ asset('default/js/custom_script.js ') }}"></script>
+
+@stack('hanldejs')

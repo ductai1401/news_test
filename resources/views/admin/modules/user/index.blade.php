@@ -1,6 +1,8 @@
 @extends('admin/master')
 
-@section('title','News')
+@section('action', 'User List')
+@section('module', 'User')
+
 
 @push('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -45,7 +47,7 @@
 @section('content')
 <section class="content-header">
     <!--section starts-->
-    <h2>@yield('title')</h2>
+    <h2>@yield('action')</h2>
     <ol class="breadcrumb">
         <li>
             <a href='{{route('admin.dashboard')}}'>
@@ -53,10 +55,10 @@
             </a>
         </li>
         <li>
-            <a href='#'>@yield('title')</a>
+            <a href='{{ route('admin.user.index') }}'>@yield('module')</a>
         </li>
         <li>
-            <a href='#'>@yield('name')</a>
+            <a href='{{ route('admin.user.index') }}'>@yield('action')</a>
         </li>
     </ol>
 </section>
@@ -80,47 +82,47 @@
                     <table class="table table-bordered" id="users">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Contact Number</th>
                                 <th>Status</th>
-                                <th>Edit/Save</th>
-                                <th>Delete/Cancel</th>
+                                <th>level</th>
+                                <th>Created At</th>
+                                <th>Updated At</th>
+                                <th>Details</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @for($i = 1 ; $i <= 3; $i++)
                             <tr>
+                                <td>{{$i}}</td>
                                 <td>Bella</td>
                                 <td>gankunding@hotmail.com</td>
                                 <td>(999) 999-9999</td>
                                 <td>Approved</td>
+                                <td>Approved</td>
+                                <td>Approved</td>
+                                <td>Approved</td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
+                                    <a class="edit btn btn-primary" href="{{ route('admin.user.show', ['id' => 1]) }}">
+                                         <i class="fa fa-fw fa-edit"></i> Details
+                                     </a>
+                                 </td>
                                 <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Timothy</td>
-                                <td>Timothy@test.com</td>
-                                <td>+1-222-222-222</td>
-                                <td>Suspended</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
+                                    <a class="edit btn btn-primary" href="{{ route('admin.user.edit', ['id' => 1]) }}">
+                                         <i class="fa fa-fw fa-edit"></i> Edit
+                                     </a>
+                                 </td>
+                                 <td>
+                                     <a class="delete btn btn-danger" href="{{ route('admin.user.destroy', ['id' => 1]) }}">
+                                         <i class="fa fa-trash-o"></i> Delete
+                                     </a>
                                 </td>
                             </tr>
+                            @endfor
                         </tbody>
                     </table>
                 </div>

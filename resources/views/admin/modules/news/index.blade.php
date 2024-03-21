@@ -1,6 +1,8 @@
 @extends('admin/master')
 
-@section('title','News')
+@section('action','News List')
+@section('module','News')
+
 
 @push('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -44,6 +46,25 @@
 
 
 @section('content')
+
+<section class="content-header">
+    <!--section starts-->
+    <h2>@yield('action')</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a href='{{route('admin.dashboard')}}'>
+                <i class="fa fa-fw fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href='{{ route('admin.news.index') }}'>@yield('module')</a>
+        </li>
+        <li>
+            <a href='{{ route('admin.news.index') }}'>@yield('action')</a>
+        </li>
+    </ol>
+</section>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">

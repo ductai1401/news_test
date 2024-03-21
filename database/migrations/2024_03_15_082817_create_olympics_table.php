@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('logo');
             $table->year('year');
             $table->string('mascot');
-            $table->string('torch');
             $table->timestamps();
         });
     }

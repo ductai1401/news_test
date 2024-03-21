@@ -44,7 +44,7 @@ class CommentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.modules.comment.edit');
     }
 
     /**
