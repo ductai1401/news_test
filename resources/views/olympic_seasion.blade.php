@@ -82,7 +82,7 @@
             <div class="git-sports">
                 @for($i = 1; $i < 25; $i++)
                 <div>
-                    <a href=""><img src="" alt=""></a>sport {{$i}}
+                    <a href="#"><img src="" alt=""></a>sport {{$i}}
                 </div>
                 @endfor
             </div>

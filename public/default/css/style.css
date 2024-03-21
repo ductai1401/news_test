@@ -671,6 +671,13 @@ span.post-comment span {
 	bottom: 0;
 	padding: 20px;
 }
+
+.utf_post_overaly_style .utf_post_content_n {
+	position: absolute;
+	top: 0;
+	padding: 20px;
+}
+
 .utf_post_overaly_style .utf_post_title a {
 	color: #fff;
 }
@@ -3257,4 +3264,15 @@ to {
     gap: 0rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(8, 1fr);
+}
+
+.font_z {
+	font-size: 90px;
+	line-height: 80px;
+}
+
+.font_s {
+	font-size: 90px;
+	line-height: 80px;
+	color: rgb(219, 219, 219);
 }

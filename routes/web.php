@@ -42,6 +42,23 @@ Route::get('/Olympic/single_news', function() {
     return view('single_news');
 })->name('single_news');
 
+Route::get('/Olympic/country', function() {
+    return view('country');
+})->name('country');
+
+Route::get('/Olympic/results', function() {
+    return view('ranking_results');
+})->name('results');
+
+Route::get('/Olympic/sport', function() {
+    return view('sport');
+})->name('sport');
+
+Route::get('/Olympic/athlete', function() {
+    return view('athlete');
+})->name('athlete');
+
+
 Route::prefix('auth')->name('auth.')->controller(AuthController::class)->group(function () {
     Route::get('/login', 'viewLogin')->name('viewLogin');
 
@@ -51,7 +68,9 @@ Route::prefix('auth')->name('auth.')->controller(AuthController::class)->group(f
 
     Route::get('/logout', 'logout')->name('logout');
 
-    Route::post('/register', 'register')->name('register');    
+    Route::post('/register', 'register')->name('register');
+    
+    Route::post('/profile/{id}', 'show')->name('profile');
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
