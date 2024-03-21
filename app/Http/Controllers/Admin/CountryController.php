@@ -44,7 +44,7 @@ class CountryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.modules.country.edit');
     }
 
     /**

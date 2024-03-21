@@ -1,8 +1,28 @@
-@extends('admin/master');
+@extends('admin/master')
 
-@section('title','Add user')
+@section('action','Add User')
+@section('module','User')
 
 @section('content')
+
+@section('content')
+<section class="content-header">
+    <!--section starts-->
+    <h2>@yield('action')</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a href='{{route('admin.dashboard')}}'>
+                <i class="fa fa-fw fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href='{{ route('admin.user.index') }}'>@yield('module')</a>
+        </li>
+        <li>
+            <a href='{{ route('admin.user.create') }}'>@yield('action')</a>
+        </li>
+    </ol>
+</section>
 
 <div class="container-fluid">
     <!--main content-->
@@ -22,40 +42,19 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form id="add_users_form" action="#" class="form-horizontal">
+                            <form id="add_users_form" action="{{ route('admin.user.store') }}" class="form-horizontal">
                                 <div class="form-body">
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">Image</label>
-                                        <div class="col-md-7 text-center">
-                                            <div class="input-group">
-                                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                        <img data-src="holder.js/200x150" src="#" alt="profile">
-                                                    </div>
-                                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-                                                    <div class="select_align">
-                                                        <span class="btn btn-primary btn-file">
-                                                            <span class="fileinput-new">Select image</span>
-                                                        <span class="fileinput-exists">Change</span>
-                                                        <input type="file" name="...">
-                                                        </span>
-                                                        <a href="#" class="btn btn-primary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="usr_name">
-                                            User Name
-                                            <span class='require'>*</span>
+                                        <label class="col-md-3 control-label" for="fullname">
+                                            FullName
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-user-md text-primary"></i>
                                                 </span>
-                                                <input type="text" class="form-control" id="usr_name" placeholder="Username" name="username">
+                                                <input type="text" class="form-control" id="fullname" placeholder="Username" name="fullname">
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +73,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label" for="contact">
+                                        <label class="col-md-3 control-label" for="phone">
                                             Contact Number
                                             <span class='require'>*</span>
                                         </label>
@@ -83,47 +82,27 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-phone text-primary"></i>
                                                 </span>
-                                                <input type="text" placeholder="Phone Number" id="contact" class="form-control" name="phone_number" />
+                                                <input type="text" placeholder="Phone Number" id="phone" class="form-control" name="phone" />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 text-right">
-                                            Gender
-                                            <span class='require'>*</span>
-                                        </label>
-                                        <div class="col-md-7">
-                                            <div class="input-group">
-                                                <label>
-                                                    <input class="radio_val" type="radio" name="gender" value="male" /> Male
-                                                </label>
-                                                <label class="pad-left">
-                                                    <input class="radio_val" type="radio" name="gender" value="female" /> Female
-                                                </label>
-                                                <label class="pad-left">
-                                                    <input class="radio_val" type="radio" name="gender" value="others" /> Other
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="addr">
-                                            Address
-                                            <span class='require'>*</span>
+                                        <label class="col-md-3 control-label" for="password">
+                                            Password
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-plus text-primary"></i>
-
                                                 </span>
-                                                <input type="text" class="form-control" id="addr" placeholder="Address" name="address">
+                                                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label" for="city">
-                                            City
+                                        <label class="col-md-3 control-label" for="password_confirmatoin">
+                                            Confirm password 
                                             <span class='require'>*</span>
                                         </label>
                                         <div class="col-md-7">
@@ -131,42 +110,25 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-plus text-primary"></i>
                                                 </span>
-                                                <input type="text" class="form-control" id="city" placeholder="City" name="city">
+                                                <input type="password" class="form-control" id="password_confirmatoin" placeholder="Re-enter the password to confirm" name="password_confirmatoin">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label" for="pin">
-                                            Pin Code
-                                            <span class='require'>*</span>
-                                        </label>
+                                        <label class="control-label  col-md-3" for="select23">Status</label>
                                         <div class="col-md-7">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                     <i class="fa fa-plus text-primary"></i>
-                                                </span>
-                                                <input type="text" class="form-control" placeholder="Pin Code" id="pin" name="pincode">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label  col-md-3" for="select23">Country</label>
-                                        <div class="col-md-7">
-                                            <select id="select23" class="form-control js-states select2">
-                                                <optgroup label="Alaskan/Hawaiian Time Zone">
-                                                    <option value>Select a country</option>
-                                                    <option value="AK">Alaska</option>
-                                                    <option value="HI">Hawaii</option>
+                                            <select id="select23" class="form-control js-states select2" name="status">
+                                                <option value="1">show</option>
+                                                <option value="0">hidden</option>
+                                                    
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <input type="submit" class="btn btn-primary" value="Add"> &nbsp;
-                                            <input type="button" class="btn btn-danger" value="Cancel"> &nbsp;
-                                            <input type="reset" class="btn btn-default " value="Reset">
+                                        <div class="col-md-offset-3 col-md-9"> 
+                                            <button type="submit"  class="btn btn-primary" >Add</button>                                        
                                         </div>
                                     </div>
                                 </div>

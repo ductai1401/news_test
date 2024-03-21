@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('admin.modules.user.show');
     }
 
     /**
@@ -43,7 +43,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.modules.user.edit');
     }
 
     /**
