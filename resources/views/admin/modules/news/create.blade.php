@@ -1,12 +1,9 @@
 @extends('admin/master')
 
-<<<<<<< HEAD
 @section('title','Create News')
 
-@section('content')
-
-=======
 @section('action','Add News')
+
 @section('module','News')
 
 @section('content')
@@ -29,7 +26,7 @@
     </ol>
 </section>
 
->>>>>>> origin/FE_Template_Athelete
+
 <div class="container-fluid">
     <!--main content-->
     <div class="row">

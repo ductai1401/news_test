@@ -671,6 +671,13 @@ span.post-comment span {
 	bottom: 0;
 	padding: 20px;
 }
+
+.utf_post_overaly_style .utf_post_content_n {
+	position: absolute;
+	top: 0;
+	padding: 20px;
+}
+
 .utf_post_overaly_style .utf_post_title a {
 	color: #fff;
 }
@@ -3257,4 +3264,52 @@ to {
     gap: 0rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(8, 1fr);
+}
+
+.font_z {
+	font-size: 90px;
+	line-height: 80px;
+}
+
+.font_s {
+	font-size: 90px;
+	line-height: 80px;
+	color: rgb(219, 219, 219);
+}
+
+.sport-select{
+    display: flex;
+    justify-content: end;
+	margin: 10px;
+}
+
+.sport-select select{
+	width: 20%;
+	height: 45px;
+	margin: 10px;
+}
+
+.season-section1{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	width: 100%;
+	height: 100%;
+}
+
+.utf_post_content_n{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.athlete-ensign, .athlete-bio{
+	display: flex;
+}
+
+.athlete-table tr{
+	height: 60px;
 }

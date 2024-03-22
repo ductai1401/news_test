@@ -42,9 +42,9 @@ Route::get('/olympic/single_news', function() {
     return view('single_news');
 })->name('single_news');
 
-Route::get('/olympic/single_news', function() {
-    return view('single_news');
-})->name('single_news');
+Route::get('/olympic/country', function() {
+    return view('country');
+})->name('country');
 
 Route::get('/olympic/results', function() {
     return view('ranking_results');
@@ -67,7 +67,9 @@ Route::prefix('auth')->name('auth.')->controller(AuthController::class)->group(f
 
     Route::get('/logout', 'logout')->name('logout');
 
-    Route::post('/register', 'register')->name('register');    
+    Route::post('/register', 'register')->name('register');
+    
+    Route::post('/profile/{id}', 'show')->name('profile');
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
