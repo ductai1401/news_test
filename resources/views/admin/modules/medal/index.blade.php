@@ -1,6 +1,7 @@
 @extends('admin/master')
 
-@section('title','Medal')
+@section('action','Medal List')
+@section('module', 'Medal')
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -43,6 +44,25 @@
 
 
 @section('content')
+
+<section class="content-header">
+    <!--section starts-->
+    <h2>@yield('action')</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a href='{{route('admin.dashboard')}}'>
+                <i class="fa fa-fw fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href='{{ route('admin.medal.index') }}'>@yield('module')</a>
+        </li>
+        <li>
+            <a href='{{ route('admin.medal.index') }}'>@yield('action')</a>
+        </li>
+    </ol>
+</section>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
@@ -62,74 +82,39 @@
                     <table class="table table-bordered text-center" id="medals">
                         <thead>
                             <tr>
-                                <th class="text-center">Date</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">Title</th>
+                                <th class="text-center">Id</th>
+                                <th class="text-center">Olympic</th>
+                                <th class="text-center">Sport</th>
+                                <th class="text-center">Athlete</th>
+                                <th class="text-center">Posision</th>
+                                <th class="text-center">Created At</th>
                                 <th class="text-center">Edit/Save</th>
                                 <th class="text-center">Delete/Cancel</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @for($i = 1 ; $i <= 3; $i++) 
                             <tr>
-                                <td>24-09-2016</td>
+                                <td>{{ $i }}</td>
                                 <td>Body Building</td>
                                 <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                                <td>Body Building</td>
+                                <td>Body Building</td>
+                                <td>24-09-2016</td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
+                                   <a class="edit btn btn-primary" href="{{ route('admin.medal.edit', ['id' => 1]) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
+                                    <a class="delete btn btn-danger" href="{{ route('admin.medal.destroy', ['id' => 1]) }}">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
-                                </td>
+                               </td>
+
                             </tr>
-                            <tr>
-                                <td>21-09-2016</td>
-                                <td>Aerobics</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Yoga</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Flexibility</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
+                            
+                            @endfor
                         </tbody>
                     </table>
                 </div>

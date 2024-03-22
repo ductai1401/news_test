@@ -1,9 +1,35 @@
 @extends('admin/master')
 
+<<<<<<< HEAD
 @section('title','Create News')
 
 @section('content')
 
+=======
+@section('action','Add News')
+@section('module','News')
+
+@section('content')
+
+<section class="content-header">
+    <!--section starts-->
+    <h2>@yield('action')</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a href='{{route('admin.dashboard')}}'>
+                <i class="fa fa-fw fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href='{{ route('admin.news.index') }}'>@yield('module')</a>
+        </li>
+        <li>
+            <a href='{{ route('admin.news.create') }}'>@yield('action')</a>
+        </li>
+    </ol>
+</section>
+
+>>>>>>> origin/FE_Template_Athelete
 <div class="container-fluid">
     <!--main content-->
     <div class="row">

@@ -68,6 +68,11 @@ h5 {
 .alert .icon {
 	margin-right: 15px;
 }
+.h21 {
+	font-size: 28px;
+	line-height: 36px;
+	font-weight: 900;
+}
 /* Global styles
 ================================================== */
 
@@ -533,11 +538,27 @@ a[href^=tel] {
 	margin-top: 10px;
 	margin-bottom: 15px;
 }
+.utf_post_title.title-extra-large1 {
+	font-size: 35px;
+	line-height: 48px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	font-weight: 800;
+	color: #eeeeee;
+}
 .utf_post_title.title-large {
 	font-size: 20px;
 	line-height: 26px;
 	margin-top: 10px;
 	margin-bottom: 15px;
+}
+.utf_post_title.title-large1 {
+	font-size: 35px;
+	line-height: 26px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	font-weight: 800;
+	color: #eeeeee;
 }
 .utf_post_title.title-medium {
 	font-size: 16px;
@@ -1683,6 +1704,15 @@ ul.nav li.dropdown .utf_dropdown_menu li.utf_dropdown_submenu:hover .utf_dropdow
 	bottom:0;
 	display:block;
 }
+#utf_featured_slider .utf_featured_post .utf_post_content1 {
+	padding: 30px;
+	z-index: 1;
+	position: absolute;
+	bottom:0;
+	right: 0;
+	display:block;
+}
+
 .utf_post_content {
 	padding: 30px;
 	z-index: 1;
@@ -3211,4 +3241,20 @@ to {
 .ctn-preloader .animation-preloader .txt-loading {
 	font-size: 2em;
 }
+}
+
+.border_1{
+	border: 1px solid ;
+}
+
+.border-l{
+	border-left: 0.1rem solid rgb(229, 229, 229);;
+}
+
+.git-sports{
+	display: grid;
+    grid-auto-flow: column;
+    gap: 0rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 1fr);
 }

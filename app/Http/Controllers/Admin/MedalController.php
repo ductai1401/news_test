@@ -44,7 +44,7 @@ class MedalController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.modules.medal.edit');
     }
 
     /**

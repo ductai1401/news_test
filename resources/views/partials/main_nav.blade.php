@@ -126,6 +126,7 @@
 
                                                 <div class="tab-pane animated fadeIn" id="tab-two">
                                                     <div class="row">
+                                                        @for($i = 1; $i <= 3; $i++)
                                                         <div class="col-md-3">
                                                             <div class="utf_post_block_style clearfix">
                                                                 <div class="utf_post_thumb"> <a
@@ -142,58 +143,12 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/travel2.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Travel</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">Can't shed those
-                                                                            Gym? The problem might be in
-                                                                            your…</a> </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/travel3.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Travel</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">Deleting fears from
-                                                                            the brain means you might neve…</a>
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/travel4.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Travel</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">Smart packs parking
-                                                                            sensor tech and beeps when col…</a>
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        @endfor
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane animated fadeIn" id="tab-three">
                                                     <div class="row">
+                                                        @for($i = 1; $i <= 3; $i++)
                                                         <div class="col-md-3">
                                                             <div class="utf_post_block_style clearfix">
                                                                 <div class="utf_post_thumb"> <a
@@ -210,54 +165,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/food2.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Food</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">Can't shed those
-                                                                            Gym? The problem might be in
-                                                                            your…</a> </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/food3.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Food</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">Deleting fears from
-                                                                            the brain means you might neve…</a>
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/food4.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Food</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">Smart packs parking
-                                                                            sensor tech and beeps when col…</a>
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        @endfor
                                                     </div>
                                                 </div>
                                             </div>
@@ -279,7 +187,7 @@
                                                             alt="" /> <a class="popup"
                                                             href="https://www.youtube.com/embed/jssO8-5qmag">
                                                             <div class="video-icon"> <i
-                                                                    class="fa fa-play"></i> </div>
+                                                                class="fa fa-play"></i> </div>
                                                         </a>
                                                     </div>
                                                     <div class="utf_post_content">
@@ -346,7 +254,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li> <a href="about.html">Sports</a> </li>
+                            <li> <a href="">Sports</a> </li>
                             <li class="dropdown"> <a href="#" class="dropdown-toggle"
                                     data-toggle="dropdown">Features <i class="fa fa-angle-down"></i></a>
                                 <ul class="utf_dropdown_menu" role="menu">
