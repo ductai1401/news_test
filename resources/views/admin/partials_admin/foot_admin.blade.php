@@ -6,6 +6,8 @@
 <script src="{{ asset('admin/js/custom_js/app.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/js/custom_js/metisMenu.js') }}" type="text/javascript"></script>    
 <script src="{{ asset('admin/js/custom_js/backstretch.js') }}"></script>
+
+
 <!-- end of global level js -->
 <script src="{{ asset('admin/vendors/jquery-circliful/js/jquery.circliful.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/vendors/progressbar/bootstrap-progressbar.min.js') }}" type="text/javascript"></script>
@@ -29,5 +31,6 @@
 <script src="{{ asset('admin/js/custom_js/admin_index.js')}}" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!-- end of page level js -->
+
 @stack('js')
 @stack('hanldejs')

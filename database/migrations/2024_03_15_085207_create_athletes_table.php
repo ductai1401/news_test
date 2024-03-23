@@ -18,8 +18,8 @@ return new class extends Migration
             $table->date('brith_day');
             $table->unsignedBigInteger('id_country');
             $table->foreign('id_country')->references('id')->on('countrys');
-            $table->unsignedBigInteger('id_spost');
-            $table->foreign('id_spost')->references('id')->on('sports');
+            $table->unsignedBigInteger('id_sport');
+            $table->foreign('id_sport')->references('id')->on('sports');
             $table->timestamps();
         });
     }

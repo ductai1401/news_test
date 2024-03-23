@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('sports', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->year('year');
             $table->string('image');
             $table->text('details');
             $table->timestamps();

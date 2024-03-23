@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Athlete;
+use App\Models\Sport;
+use App\Models\Country;
+use App\Http\Requests\Athlete\StoreRequest;
+use App\Http\Requests\Athlete\UpdateRequest;
 use Illuminate\Http\Request;
 
 class AthleteController extends Controller
@@ -12,7 +17,12 @@ class AthleteController extends Controller
      */
     public function index()
     {
-        return view('admin.modules.athlete.index');
+
+        $country = Country::get(); 
+
+        $athlete = Athlete::find(1);
+        dd($athlete ->country);
+        return view('admin.modules.athlete.index', ['athletes' => $athlete]);
     }
 
     /**
@@ -20,21 +30,43 @@ class AthleteController extends Controller
      */
     public function create()
     {
-        return view('admin.modules.athlete.create');
+        $country = Country::get();
+        $sport = Sport::get();
+
+        return view('admin.modules.athlete.create',[
+            'countrys' => $country,
+            'sports' => $sport,
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $athlete = new Athlete();
+
+        $file = $request -> image;
+        $fileName = time(). '-'.  $file->getClientOriginalName();
+
+
+        $athlete->image = $fileName;
+        $athlete->name = $request -> name;
+        $athlete->id_country = $request -> id_country;
+        $athlete->id_sport = $request -> id_sport;
+        $athlete->brith_day = $request -> brith_day;
+
+
+        $athlete->save();
+
+        $file -> move(public_path('uploads/athletes'), $fileName);
+        return redirect()->route('admin.athlete.create')->with('success', 'Create athlete successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $id)
     {
         //
     }
@@ -42,24 +74,94 @@ class AthleteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
-        return view('admin.modules.athlete.edit');
+
+        $sport = Sport::get();
+        $country = Country::get();
+
+        $athlete = athlete::find($id);
+        if($athlete == null) {
+            return redirect()->route('admin.404');
+        } 
+
+        return view('admin.modules.athlete.edit', [
+            'id' => $id,
+            'athlete' => $athlete,
+            'countrys' => $country,
+            'sports' => $sport,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, int $id)
     {
-        //
+        $athlete = athlete::find($id);
+
+
+        if($athlete == null) {
+            return redirect()->route('admin.404');
+        } 
+
+        
+        $file = $request ->image;
+        if(!empty($file)){
+            
+            $validated = $request->validate([
+                'image' => 'mimes:jbg,jpeg,bmp,png',
+                
+            ],[
+                'image.mimes' => 'Image must jbg,jpeg,bmp,png', 
+            ]);
+
+            $old_image_path = public_path('uploads/athletes/'. $athlete->image);
+            if(file_exists($old_image_path)){
+                unlink($old_image_path);
+                
+            }
+
+            $fileName = time(). '-'.  $file->getClientOriginalName(); 
+
+            $athlete->image = $fileName;
+            $file -> move(public_path('uploads/athletes'), $fileName );
+            
+        }
+
+        $athlete->name = $request -> name;
+        $athlete->id_country = $request -> id_country;
+        $athlete->id_sport = $request -> id_sport;
+        $athlete->brith_day = $request -> brith_day;
+        
+
+        $athlete->save();
+
+        return redirect()->route('admin.athlete.index')->with('success', 'Update athlete successfully');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $athlete = athlete::find($id);
+
+        if($athlete == null) {
+            return redirect()->route('admin.404');
+        } 
+
+        $old_image_path = public_path('uploads/athletes/'. $athlete->image);
+            if(file_exists($old_image_path)){
+                unlink($old_image_path);
+            }
+
+
+        $athlete->delete();
+
+        return redirect()->route('admin.athlete.index')->with('success', 'Delete athlete success');
     }
+
 }
+

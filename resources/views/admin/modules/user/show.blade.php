@@ -19,7 +19,7 @@
             <a href='{{ route('admin.user.index') }}'>@yield('module')</a>
         </li>
         <li>
-            <a href='{{ route('admin.user.show', ['id' => 1]) }}'>@yield('action')</a>
+            <a href='{{ route('admin.user.show', ['id' => $user ->id]) }}'>@yield('action')</a>
         </li>
     </ol>
 </section>
@@ -33,9 +33,17 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-sm-4">
+                        @php 
+                            $image_url = public_path("uploads/users") . '/' . $user ->image;
+                                if(!file_exists($image_url)) {
+                                    $image_url = asset('images/error.jpg');
+                                } else {
+                                    $image_url = asset("uploads/users") .'/' . $user ->image;
+                                }
+                        @endphp
                         <div class="form-group">
                             <div class="text-center">
-                                <img src="img/authors/avatar1.jpg" alt="img" width="200" height="200" class="img-bor" />
+                                <img src="{{ $image_url }}" alt="img" width="200" height="200" class="img-bor" />
                             </div>
                         </div>
                     </div>
@@ -49,22 +57,23 @@
                                         <th>Details</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                     <tr>
                                         <td class="text-primary">FullName</td>
-                                        <td>Nataliapery</td>
+                                        <td>{{ $user ->fullname }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-primary">Email</td>
-                                        <td>Johnpery@example.com</td>
+                                        <td> {{ $user ->email }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-primary">Contact Number</td>
-                                        <td>(999) 999-9999</td>
+                                        <td>{{ $user ->phone }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-primary">Address</td>
-                                        <td>Sydney, Australia</td>
+                                        <td>{{ $user ->address }}</td>
                                     </tr>
                                 </tbody>
                             </table>

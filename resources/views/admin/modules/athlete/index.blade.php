@@ -88,32 +88,44 @@
                                 <th class="text-center">Image</th>
                                 <th class="text-center">Country</th>
                                 <th class="text-center">Sport</th>
+                                <th class="text-center">Brith_day</th>
                                 <th class="text-center">Created At</th>
-                                <th class="text-center">Edit/Save</th>
-                                <th class="text-center">Delete/Cancel</th>
+                                <th class="text-center">Edit</th>
+                                <th class="text-center">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @for($i = 1 ; $i <= 3; $i++) 
+                            @foreach($athletes as $athlete) 
+                            @php 
+                                $image_url = public_path("uploads/athletes") . '/' . $athlete ->image;
+                                if(!file_exists($image_url)) {
+                                    $image_url = asset('images/error.jpg');
+                                } else {
+                                    $image_url = asset("uploads/athletes") .'/' . $athlete ->image;
+                                }
+                            @endphp
                             <tr>
-                                <td>ID</td>
-                                <td>Body Building</td>
-                                <td><img src="" alt="athlete_image"></td>
-                                <td>Body Building</td>
-                                <td>Body Building</td>
-                                <td>Body Building</td>
+                                <td>{{ $loop ->iteration }}</td>
+                                <td>{{  $athlete ->name}}</td>
+                                <td><img style="height: 60px; width: 70px;" src="{{ $image_url }}" alt="athlete_image"></td>
+                                <td>{{  $athlete ->country ->name }}</td>
+                                <td>{{  $athlete ->sport ->name }}</td>
+                                <td>{{  $athlete ->brith_day }}</td>
+                                <td>{{ date("d/m/Y - H:i:s" , strtotime($sport ->created_at) ) }}</td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="{{ route('admin.athlete.edit', ['id' => 1]) }}">
+                                   <a class="edit btn btn-primary" href="{{ route('admin.athlete.edit', ['id' => $athlete ->id]) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="delete btn btn-danger" href="{{ route('admin.athlete.destroy', ['id' => 1]) }}">
+                                    <a onclick="return confirmDelete()" class="delete btn btn-danger" href="{{ route('admin.athlete.destroy', ['id' => $athlete ->id]) }}">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
-                                </td>
-                            </tr>  
-                            @endfor            
+                               </td>
+
+                            </tr>
+                            
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

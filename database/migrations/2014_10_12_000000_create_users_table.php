@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone')->nullable();
+            $table->tinyInteger('status')->default('1')->comment('1: show - 0: hidden');
             $table->tinyInteger('level')->default('1')->comment('1: admin - 2: member');
             $table->string('image')->nullable();
             $table->string('address')->nullable();

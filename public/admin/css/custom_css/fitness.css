@@ -688,6 +688,14 @@ a.text-primary:hover {
     margin-top: 25px;
 }
 
+.margin-top-3 {
+    margin-top: 9px;
+}
+
+.margin-top-4 {
+    margin-top: 20px;
+}
+
 .progress-xs {
     height: 5px;
 }
@@ -2422,4 +2430,11 @@ table.dataTable thead .sorting_asc:after {
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
+}
+
+.alert-1{
+    padding: 7px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }

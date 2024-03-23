@@ -18,7 +18,7 @@
             <a href='{{ route('admin.country.index') }}'>@yield('module')</a>
         </li>
         <li>
-            <a href='{{ route('admin.country.edit', ['id' => 1]) }}'>@yield('action')</a>
+            <a href='{{ route('admin.country.edit', ['id' => $country->id]) }}'>@yield('action')</a>
         </li>
     </ol>
 </section>
@@ -41,7 +41,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form id="add_news_form" action="{{ route('admin.sport.update', ['id' => 1]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                            <form id="add_news_form" action="{{ route('admin.country.update', ['id' => $id]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">
                                     <div class="form-group">
@@ -54,7 +54,38 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Enter the country name">
+                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Enter the country name" value="{{ old('name', $country ->name )}}">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('name')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @php 
+                                            $image_url = public_path("uploads/countrys") . '/' . $country ->flag;
+                                            if(!file_exists($image_url)) {
+                                                $image_url = asset('images/error.jpg');
+                                            } else {
+                                                $image_url = asset("uploads/countrys") .'/' . $country ->flag;
+                                            }
+                                        @endphp
+                                    <div class="form-group">
+                                        <label for="old_flag" class="col-md-3 control-label">
+                                            Old flag
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-fw fa-file-text-o"></i>
+                                                </span>
+                                                <img style="height: 150px; width: 130px;" src="{{ $image_url }}" alt="image_flag">
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +101,17 @@
                                                 </span>
                                                 <input id="flag" type="file" name="flag" class="form-control fill_it" >
                                             </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('flag')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
 

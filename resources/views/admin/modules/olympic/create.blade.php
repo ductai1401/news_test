@@ -1,6 +1,7 @@
-@extends('admin/master');
+@extends('admin/master')
 
-@section('title','News')
+@section('module','Olympics')
+@section('action', 'Add Olympics')
 
 @push('hanldejs')
 
@@ -14,6 +15,24 @@
 
 @section('content')
 
+<section class="content-header">
+    <!--section starts-->
+    <h2>@yield('action')</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a href='{{route('admin.dashboard')}}'>
+                <i class="fa fa-fw fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href='{{ route('admin.olympic.index') }}'>@yield('module')</a>
+        </li>
+        <li>
+            <a href='{{ route('admin.olympic.create') }}'>@yield('action')</a>
+        </li>
+    </ol>
+</section>
+
 <div class="container-fluid">
     <!--main content-->
     <div class="row">
@@ -24,111 +43,150 @@
                     <h4 class="panel-title">
                         <i class="fa fa-fw fa-file-text-o"></i> Add Olympic
                     </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
+                    
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form id="add_news_form" action="{{ route('admin.olympic.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                            <form id="add_news_form" action="{{ route('admin.olympic.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data"  >
                                 @csrf
                                 <div class="form-body">
                                     <div class="form-group">
-                                        <label for="hot_city" class="col-md-3 control-label">
-                                            Hot city
-                                            <span class='require'>*</span>
+                                        <label for="country" class="col-md-3 control-label">
+                                            Country
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="hot_city" type="text" name="hot_city" class="form-control fill_it" placeholder="Enter Title">
+                                                <input id="country" type="text" name="country" class="form-control fill_it" placeholder="Enter Title" value="{{ old('country')}}">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('country')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>  
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="categry">
                                             Name
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Please enter the host country name">
+                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Please enter the host country name" value="{{ old('name')}}">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('name')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>  
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="year">
                                             Year
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="year" type="text" name="year" class="form-control fill_it" placeholder="Please enter the year of organization">
+                                                <input id="year" type="text" name="year" class="form-control fill_it" placeholder="Please enter the year of organization" value="{{ old('year')}}">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('year')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>  
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">logo</label>
-                                        <div class="col-md-7 text-center">
+                                        <label class="col-md-3 control-label" for="logo">
+                                            Logo
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
                                             <div class="input-group">
-                                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                    <div class="select_align">                         
-                                                        <input type="file" name="logo">
-                                                    </div>
-                                                </div>
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-fw fa-file-text-o"></i>
+                                                </span>
+                                                <input id="logo" type="file" name="logo" class="form-control fill_it">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('logo')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>  
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">Mascot</label>
-                                        <div class="col-md-7 text-center">
+                                        <label class="col-md-3 control-label" for="mascot">
+                                            Mascot
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
                                             <div class="input-group">
-                                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                    <div class="select_align">                         
-                                                        <input type="file" name="mascot">
-                                                    </div>
-                                                </div>
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-fw fa-file-text-o"></i>
+                                                </span>
+                                                <input id="mascot" type="file" name="mascot" class="form-control fill_it">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('mascot')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>  
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">torch</label>
-                                        <div class="col-md-7 text-center">
+                                    <div class="form-group" >
+                                        <label class="col-md-3 control-label" for="details">
+                                            Details
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
                                             <div class="input-group">
-                                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                    <div class="select_align">                         
-                                                        <input type="file" name="torch">
-                                                    </div>
-                                                </div>
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-fw fa-file-text-o"></i>
+                                                </span>
+                                                <textarea name="details" id="content" cols="30" rows="10" class="form-control fill_it">{{ old('details')}}</textarea>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('details')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>  
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
-                                <div class="form-group" >
-                                    <label class="col-md-3 control-label" for="year">
-                                        content
-                                        <span class='require'>*</span>
-                                    </label>
-                                    <div class="col-md-7">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-fw fa-file-text-o"></i>
-                                            </span>
-                                            <textarea name="year" id="content" cols="30" rows="10" class="form-control fill_it"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">

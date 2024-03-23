@@ -27,7 +27,7 @@ class RegisterRequest extends FormRequest
             'email' => 'required|unique:users,email',
             'password' => 'required|confirmed',
             'fullname' => 'required',
-            'phone' => 'required|numeric',
+            'phone' => 'required|numeric|unique:users,phone',
         ];
     }
     public function messages(): array
@@ -38,6 +38,7 @@ class RegisterRequest extends FormRequest
             'email.required' => 'please enter email',
             'phone.required' => 'Please enter the phone number',
             'phone.numeric' => 'Phone number must be alphanumeric',
+            'phone.unique' => 'This phone already exists, please re-enter',
             'password.required' => 'please enter password',
             'password.confirmed' => 'Confirmation password does not match, please re-enter'
         ];

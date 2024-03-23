@@ -81,6 +81,7 @@
                 <div class="panel-body table-responsive">
                     <table class="table table-bordered" id="users">
                         <thead>
+                            
                             <tr>
                                 <th>Id</th>
                                 <th>Username</th>
@@ -96,33 +97,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for($i = 1 ; $i <= 3; $i++)
+                            @foreach($users as $user) 
                             <tr>
-                                <td>{{$i}}</td>
-                                <td>Bella</td>
-                                <td>gankunding@hotmail.com</td>
-                                <td>(999) 999-9999</td>
-                                <td>Approved</td>
-                                <td>Approved</td>
-                                <td>Approved</td>
-                                <td>Approved</td>
+                                <td>{{ $loop ->iteration }}</td>
+                                <td>{{ $user ->fullname}}</td>
+                                <td>{{ $user ->email}}</td>
+                                <td>{{ $user ->phone}}</td>
+                                <td>{{ $user ->status == 1 ? 'Show' : 'Hidden'}}</td>
+                                <td>{{ $user ->level  == 1 ? 'Admin' : 'Member'}}</td>
+                                <td>{{ date('d/m/Y - H:i:s', strtotime( $user->created_at)) }}</td>
+                                <td>{{ date('d/m/Y - H:i:s', strtotime( $user->updated_at)) }}</td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="{{ route('admin.user.show', ['id' => 1]) }}">
+                                    <a class="edit btn btn-primary" href="{{ route('admin.user.show', ['id' => $user ->id]) }}">
                                          <i class="fa fa-fw fa-edit"></i> Details
                                      </a>
                                  </td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="{{ route('admin.user.edit', ['id' => 1]) }}">
+                                    <a class="edit btn btn-primary" href="{{ route('admin.user.edit', ['id' => $user ->id]) }}">
                                          <i class="fa fa-fw fa-edit"></i> Edit
                                      </a>
                                  </td>
                                  <td>
-                                     <a class="delete btn btn-danger" href="{{ route('admin.user.destroy', ['id' => 1]) }}">
+                                     <a class="delete btn btn-danger" href="{{ route('admin.user.destroy', ['id' => $user ->id]) }}">
                                          <i class="fa fa-trash-o"></i> Delete
                                      </a>
                                 </td>
                             </tr>
-                            @endfor
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
