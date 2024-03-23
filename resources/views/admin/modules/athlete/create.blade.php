@@ -41,12 +41,8 @@
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <i class="fa fa-fw fa-file-text-o"></i> Edit Athlete
+                        <i class="fa fa-fw fa-file-text-o"></i> Add Athlete
                     </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -57,21 +53,30 @@
                                     <div class="form-group">
                                         <label for="name" class="col-md-3 control-label">
                                             Name
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Enter Name">
+                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Enter Name" value="{{ old('name')}}">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('name')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="image">
                                             Image
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
@@ -85,16 +90,26 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="brith_day">
                                             brith Day
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="brith_day" type="text" name="brith_day" class="form-control fill_it" placeholder="Please enter the brith day">
+                                                <input id="brith_day" type="date" name="brith_day" class="form-control fill_it" placeholder="Please enter the brith day" value="{{ old('brith_day')}}">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('brith_day')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Counntry</label>
@@ -104,9 +119,9 @@
                                                     <div class="select_align">                         
                                                         <select class="form-control fill_it" name="id_country">
                                                             <option value="0">-------Country-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                            @foreach($countrys as $country)
+                                                                <option value="{{ $country->id}}"  {{ old('id_country') == $country->id ? 'selected' : ' '}}>{{$country->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -119,11 +134,11 @@
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div  class="select_align">                                                   
-                                                        <select  name="id_spost" class="form-control fill_it">
-                                                            <option value="0">-------Sport-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                        <select  name="id_sport" class="form-control fill_it">
+                                                            <option value="">-------Sport-------</option>
+                                                            @foreach($sports as $sport)
+                                                                <option value="{{ $sport->id}}"  {{ old('id_sport') == $sport->id ? 'selected' : ' '}}>{{$sport->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>

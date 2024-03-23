@@ -18,7 +18,7 @@
             <a href='{{ route('admin.athlete.index') }}'>@yield('module')</a>
         </li>
         <li>
-            <a href='{{ route('admin.athlete.edit',['id' => 1]) }}'>@yield('action')</a>
+            <a href='{{ route('admin.athlete.edit',['id' => $id]) }}'>@yield('action')</a>
         </li>
     </ol>
 </section>
@@ -41,7 +41,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form id="add_news_form" action="{{ route('admin.athlete.update', ['id' => 1]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                            <form id="add_news_form" action="{{ route('admin.athlete.update', ['id' => $id]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">
                                     <div class="form-group">
@@ -54,10 +54,41 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Enter Name">
+                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Enter Name" value="{{ old('name', $athlete->name)}}">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('name')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
+                                    @php 
+                                            $image_url = public_path("uploads/athletes") . '/' . $athlete ->image;
+                                            if(!file_exists($image_url)) {
+                                                $image_url = asset('images/error.jpg');
+                                            } else {
+                                                $image_url = asset("uploads/athletes") .'/' . $athlete ->image;
+                                            }
+                                        @endphp
+                                        <div class="form-group">
+                                            <label for="old_image" class="col-md-3 control-label">
+                                                Old Image
+                                                <span class='require'></span>
+                                            </label>
+                                            <div class="col-md-7">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-fw fa-file-text-o"></i>
+                                                    </span>
+                                                    <img style="height: 150px; width: 130px;" src="{{ $image_url }}" alt="image_athlete">
+                                                </div>
+                                            </div>
+                                        </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="image">
                                             Image
@@ -82,7 +113,16 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="brith_day" type="text" name="brith_day" class="form-control fill_it" placeholder="Please enter the brith day">
+                                                <input id="brith_day" type="text" name="brith_day" class="form-control fill_it" placeholder="Please enter the brith day" value="{{ old('brith_day', $athlete->brith_day)}}">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('brith_day')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -93,10 +133,10 @@
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                         
                                                         <select class="form-control fill_it" name="id_country">
-                                                            <option value="0">-------Country-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                            <option value="0" {{old('id_country',  $athlete->id_country) ==  0 ? 'selected' : ''}}>-------Country-------</option>
+                                                            @foreach ($countrys as $country)
+                                                                <option value="{{  $country ->id }}" {{old('id_country', $country ->id) ==  $country ->id ? 'selected' : ''}}>{{$country ->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -109,11 +149,11 @@
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
-                                                        <select class="form-control fill_it" name="id_spost">
-                                                            <option value="0">-------Sport-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                        <select class="form-control fill_it" name="id_sport">
+                                                            <option value="0" {{old('id_sport',  $athlete->id_sport) ==  0 ? 'selected' : ''}}>-------Sport-------</option>
+                                                            @foreach ($sports as $sport)
+                                                                <option value="{{  $sport ->id }}" {{old('id_sport', $sport ->id) ==  $sport ->id ? 'selected' : ''}}>{{$sport ->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>

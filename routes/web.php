@@ -30,31 +30,27 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/Olympic', function() {
+Route::get('/olympic', function() {
     return view('olympic');
-})->name('Olympic');
+})->name('olympic');
 
-Route::get('/Olympic/2022', function() {
+Route::get('/olympic/2022', function() {
     return view('olympic_seasion');
 })->name('olympic_seasion');
 
-Route::get('/Olympic/single_news', function() {
+Route::get('/olympic/single_news', function() {
     return view('single_news');
 })->name('single_news');
 
-Route::get('/Olympic/country', function() {
-    return view('country');
-})->name('country');
-
-Route::get('/Olympic/results', function() {
+Route::get('/olympic/results', function() {
     return view('ranking_results');
 })->name('results');
 
-Route::get('/Olympic/sport', function() {
+Route::get('/olympic/sport', function() {
     return view('sport');
 })->name('sport');
 
-Route::get('/Olympic/athlete', function() {
+Route::get('/olympic/athlete', function() {
     return view('athlete');
 })->name('athlete');
 

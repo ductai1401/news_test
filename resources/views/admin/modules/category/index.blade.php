@@ -1,6 +1,7 @@
 @extends('admin/master')
 
-@section('title','Category')
+@section('action','Category List')
+@section('module', 'Category')
 
 @push('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -44,6 +45,25 @@
 
 
 @section('content')
+
+<section class="content-header">
+    <!--section starts-->
+    <h2>@yield('action')</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a href='{{route('admin.dashboard')}}'>
+                <i class="fa fa-fw fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href='{{ route('admin.category.index') }}'>@yield('module')</a>
+        </li>
+        <li>
+            <a href='{{ route('admin.category.index') }}'>@yield('action')</a>
+        </li>
+    </ol>
+</section>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
@@ -63,11 +83,10 @@
                     <table class="table table-bordered text-center" id="categories">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">Id</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Created At</th>
-                                <th scope="col">Updated At</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
@@ -85,9 +104,8 @@
                                     @endif                    
                                 </td>
                                 <td>{{ date('d/m/Y - H:i:s', strtotime( $category->created_at)) }}</td>
-                                <td>{{ date('d/m/Y - H:i:s', strtotime( $category->updated_at)) }}</td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="{{ route('admin.category.edit', ['id'=> $category->id]) }}:;">
+                                    <a class="edit btn btn-primary" href="{{ route('admin.category.edit', ['id'=> $category->id]) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
                                 </td>

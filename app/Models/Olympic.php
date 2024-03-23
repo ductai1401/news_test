@@ -14,7 +14,7 @@ class Olympic extends Model
      *
      * @var string
      */
-    protected $table = 'olympic';
+    protected $table = 'olympics';
 
     /**
      * The attributes that aren't mass assignable.

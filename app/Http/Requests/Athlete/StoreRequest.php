@@ -11,7 +11,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,23 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|unique:athletes,name',
+            'brith_day' => 'required',
+            'image' => 'required|mimes:jbg,jpeg,bmp,png',
+            
+
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The athlete name cannot be left blank !!!',
+            'name.unique' => 'The athlete name already exists, please re-enter',
+            'brith_day.required' =>'The brith day cannott be left blank !!!',
+            'image.required' => 'image photos cannot be blank !!!',
+
+            'image.mimes' => 'Documents must be jbg,jpeg,bmp,pngb',
+        ];
+    } 
 }

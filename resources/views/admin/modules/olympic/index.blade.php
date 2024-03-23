@@ -1,7 +1,7 @@
 @extends('admin/master')
 
-@section('title','Olympics')
-@section('name', 'Olympics List')
+@section('module','Olympics')
+@section('action', 'Olympics List')
 
 
 @push('css')
@@ -45,6 +45,24 @@
 
 
 @section('content')
+<section class="content-header">
+    <!--section starts-->
+    <h2>@yield('action')</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a href='{{route('admin.dashboard')}}'>
+                <i class="fa fa-fw fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href='{{ route('admin.olympic.index') }}'>@yield('module')</a>
+        </li>
+        <li>
+            <a href='{{ route('admin.olympic.index') }}'>@yield('action')</a>
+        </li>
+    </ol>
+</section>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
@@ -54,84 +72,58 @@
                     <h4 class="panel-title">
                     <i class="fa fa-newspaper-o" aria-hidden="true"></i> Olympic
                 </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
                 </div>
                 <div class="panel-body table-responsive">
                     
                     <table class="table table-bordered text-center" id="olympic">
                         <thead>
                             <tr>
-                                <th class="text-center">Date</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">Title</th>
-                                <th class="text-center">Edit/Save</th>
-                                <th class="text-center">Delete/Cancel</th>
+                                <th class="text-center">Id</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Country</th>
+                                <th class="text-center">Year</th>
+                                <th class="text-center">Logo</th>
+                                <th class="text-center">Mascot</th>
+                                <th class="text-center">Edit</th>
+                                <th class="text-center">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($olympics as $olympic) 
+                            @php 
+                                $image_url_logo = public_path("uploads/olympics/logos") . '/' . $olympic ->logo;
+                                if(!file_exists($image_url_logo)) {
+                                    $image_url_logo = asset('images/error.jpg');
+                                } else {
+                                    $image_url_logo = asset("uploads/olympics/logos") .'/' . $olympic ->logo;
+                                }
+
+                                $image_url_mascot = public_path("uploads/olympics/mascots") . '/' . $olympic ->mascot;
+                                if(!file_exists($image_url_mascot)) {
+                                    $image_url_mascot = asset('images/error.jpg');
+                                } else {
+                                    $image_url_mascot = asset("uploads/olympics/mascots") .'/' . $olympic ->mascot;
+                                }
+                            @endphp
                             <tr>
-                                <td>24-09-2016</td>
-                                <td>Body Building</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                                <td>{{ $loop->iteration}}</td>
+                                <td>{{ $olympic ->name }}</td>
+                                <td>{{ $olympic ->country}}</td>
+                                <td>{{ $olympic ->year}}</td>
+                                <td><img style="height: 60px; width: 70px;" src="{{ $image_url_logo }}" alt="Sport_image"></td>
+                                <td><img style="height: 60px; width: 70px;" src="{{ $image_url_mascot }}" alt="Sport_image"></td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
+                                    <a class="edit btn btn-primary" href="{{ route('admin.olympic.edit', ['id' => $olympic ->id]) }}">
+                                         <i class="fa fa-fw fa-edit"></i> Edit
+                                     </a>
+                                 </td>
+                                 <td>
+                                     <a onclick="return confirmDelete()" class="delete btn btn-danger" href="{{ route('admin.olympic.destroy', ['id' => $olympic ->id]) }}">
+                                         <i class="fa fa-trash-o"></i> Delete
+                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>21-09-2016</td>
-                                <td>Aerobics</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Yoga</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12-10-2016</td>
-                                <td>Flexibility</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>
-                                    <a class="edit btn btn-primary" href="javascript:;">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="delete btn btn-danger" href="javascript:;">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

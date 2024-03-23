@@ -1,6 +1,6 @@
 @extends('admin/master')
 
-@section('action','Update Sports')
+@section('action','Add Sports')
 @section('module','Sport')
 
 @push('hanldejs')
@@ -28,7 +28,7 @@
             <a href='{{ route('admin.sport.index') }}'>@yield('module')</a>
         </li>
         <li>
-            <a href='{{ route('admin.sport.edit') }}'>@yield('action')</a>
+            <a href='{{ route('admin.sport.create') }}'>@yield('action')</a>
         </li>
     </ol>
 </section>
@@ -57,21 +57,31 @@
                                     <div class="form-group">
                                         <label for="name" class="col-md-3 control-label">
                                             Name
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Enter name sport">
+                                                <input id="name" type="text" name="name" class="form-control fill_it" value="{{ old('name')}}" placeholder="Enter name sport">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('name')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="image">
                                             Image
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
@@ -80,7 +90,17 @@
                                                 </span>
                                                 <input id="image" type="file" name="image" class="form-control fill_it" >
                                             </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('image')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="details">
@@ -88,13 +108,27 @@
                                             <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
-                                            <div class="input-group">
+                                            <div class="input-group mb-3">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="details" type="text" name="details" class="form-control fill_it">
+                                                <textarea id="details" name="details"  class="form-control fill_it">{{ old('details')}}</textarea>
+
+                                                
                                             </div>
+
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('details')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
+                                            
                                         </div>
+                                        
                                     </div>
                                 </div>
 

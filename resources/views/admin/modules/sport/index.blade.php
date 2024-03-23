@@ -40,6 +40,11 @@
       }).buttons().container().appendTo('#sports_wrapper .col-md-6:eq(0)');
     });
   </script>
+  <script>
+    function confirmDelete() {
+        return window.confirm('Are you sure you want to delete');
+    }
+    </script>
 @endpush
 
 
@@ -72,10 +77,7 @@
                     <h4 class="panel-title">
                     <i class="fa fa-newspaper-o" aria-hidden="true"></i> Sports
                 </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
+                    
                 </div>
                 <div class="panel-body table-responsive">
                     
@@ -91,26 +93,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for($i = 1 ; $i <= 3; $i++) 
+                            @foreach($sports as $sport) 
+                            @php 
+                                $image_url = public_path("uploads/sports") . '/' . $sport ->image;
+                                if(!file_exists($image_url)) {
+                                    $image_url = asset('images/error.jpg');
+                                } else {
+                                    $image_url = asset("uploads/sports") .'/' . $sport ->image;
+                                }
+                            @endphp
                             <tr>
-                                <td>{{ $i }}</td>
-                                <td>Body Building</td>
-                                <td><img src="" alt="Sport_image"></td>
-                                <td>24-09-2016</td>
+                                <td>{{ $loop ->iteration }}</td>
+                                <td>{{  $sport ->name}}</td>
+                                
+                                <td><img style="height: 60px; width: 70px;" src="{{ $image_url }}" alt="Sport_image"></td>
+                                <td>{{ date("d/m/Y - H:i:s" , strtotime($sport ->created_at) ) }}</td>
                                 <td>
-                                   <a class="edit btn btn-primary" href="{{ route('admin.sport.edit', ['id' => 1]) }}">
+                                   <a class="edit btn btn-primary" href="{{ route('admin.sport.edit', ['id' => $sport ->id]) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="delete btn btn-danger" href="{{ route('admin.sport.destroy', ['id' => 1]) }}">
+                                    <a onclick="return confirmDelete()" class="delete btn btn-danger" href="{{ route('admin.sport.destroy', ['id' => $sport ->id]) }}">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
                                </td>
 
                             </tr>
                             
-                            @endfor
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

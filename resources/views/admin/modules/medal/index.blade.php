@@ -87,15 +87,14 @@
                                 <th class="text-center">Sport</th>
                                 <th class="text-center">Athlete</th>
                                 <th class="text-center">Posision</th>
-                                <th class="text-center">Created At</th>
-                                <th class="text-center">Edit/Save</th>
-                                <th class="text-center">Delete/Cancel</th>
+                                <th class="text-center">Edit</th>
+                                <th class="text-center">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @for($i = 1 ; $i <= 3; $i++) 
+                            @foreach($medals as $medal)
                             <tr>
-                                <td>{{ $i }}</td>
+                                <td>{{ $loop ->iteration }}</td>
                                 <td>Body Building</td>
                                 <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
                                 <td>Body Building</td>

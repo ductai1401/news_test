@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('olympics', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('host_city');
+            $table->string('country');
             $table->string('logo');
-            $table->year('year');
+            $table->integer('year');
+            $table->text('details');
             $table->string('mascot');
             $table->timestamps();
         });

@@ -46,16 +46,19 @@
                                 @csrf
                                 <div class="form-body">
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">Olympic</label>
+                                        <label class="col-md-3 control-label">Olympic_Sport</label>
                                         <div class="col-md-7 ">
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                         
                                                         <select class="form-control fill_it" name="id_olympic_sport">
-                                                            <option value="0">-------Olympic-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                            <option value="0">-------Olympic_Sport-------</option>
+                                                            @foreach($sport_olympics as $sport_olympic)
+                                                                @foreach($sport_olympics as $sport_olympic)
+                                                                <option value="{{ $sport_olympic->id}}"  {{ old('id_olympic_sport') == $sport_olympic ->id ? 'selected' : ' '}}>{{$sport_olympic->sport->name}}</option>
+                                                                @endforeach
+                                                                
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -63,16 +66,16 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">Sport</label>
+                                        <label class="col-md-3 control-label">Country</label>
                                         <div class="col-md-7 ">
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
-                                                        <select class="form-control fill_it" name="id_spost">
-                                                            <option value="0">-------Sport-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                        <select class="form-control fill_it" name="id_country">
+                                                            <option value="0">-------country-------</option>
+                                                            @foreach($countrys as $country)
+                                                                <option value="{{ $country->id}}"  {{ old('id_country') == $country->id ? 'selected' : ' '}}>{{$country->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -87,9 +90,9 @@
                                                     <div class="select_align">                                                   
                                                         <select class="form-control fill_it" name="id_athlete">
                                                             <option value="0">-------Athlete-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                            @foreach($athletes as $athlete)
+                                                                <option value="{{ $athlete->id}}"  {{ old('id_athlete') == $athlete->id ? 'selected' : ' '}}>{{$athlete->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('medals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_sport');
-            $table->foreign('id_sport')->references('id')->on('sports');
+            $table->unsignedBigInteger('id_country');
+            $table->foreign('id_country')->references('id')->on('countrys');
             $table->unsignedBigInteger('id_olympic_sport');
             $table->foreign('id_olympic_sport')->references('id')->on('olympic_sports');
             $table->unsignedBigInteger('id_athlete');

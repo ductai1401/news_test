@@ -11,7 +11,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,21 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => 'required|unique:users,email,'.$this->id,
+            'fullname' => 'required',
+            'phone' => 'required|numeric|unique:users,phone,'.$this->id,
+
+        ];
+    }
+
+    public function messages() {
+        return [
+            'fullname.required' => 'Please enter your full name',
+            'email.unique' => 'This email already exists, please re-enter',
+            'email.required' => 'please enter email',
+            'phone.unique' => 'This phone already exists, please re-enter',
+            'phone.required' => 'Please enter the phone number',
+            'phone.numeric' => 'Phone number must be alphanumeric',
         ];
     }
 }

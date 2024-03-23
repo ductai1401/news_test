@@ -11,7 +11,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|unique:categories,name'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The category name cannot be left blank !!!',
+            'name.unique' => 'The category name already exists, please re-enter',
+        ];
+    } 
 }

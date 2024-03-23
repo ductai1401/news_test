@@ -11,7 +11,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,19 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|unique:athletes,name,'.$this->id,
+            'brith_day' => 'required',
+    
+
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The athlete name cannot be left blank !!!',
+            'name.unique' => 'The athlete name already exists, please re-enter',
+            'brith_day.required' =>'The brith day cannot be left blank !!!',
+        ];
+    } 
 }

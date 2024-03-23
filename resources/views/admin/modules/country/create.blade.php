@@ -33,10 +33,6 @@
                     <h4 class="panel-title">
                         <i class="fa fa-fw fa-file-text-o"></i> Add Country
                     </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -54,9 +50,20 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Enter the country name">
+                                                <input id="name" type="text" name="name" class="form-control fill_it" placeholder="Enter the country name" value="{{ old('name')}}">
+                                            </div>
+
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('name')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="flag">
@@ -70,7 +77,17 @@
                                                 </span>
                                                 <input id="flag" type="file" name="flag" class="form-control fill_it" >
                                             </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('flag')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
 
@@ -78,7 +95,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="mahesh btn btn-primary" >Update</button>
+                                            <button type="submit" class="mahesh btn btn-primary" >Add</button>
                                         </div>
                                     </div>
                                 </div>
