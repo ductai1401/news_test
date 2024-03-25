@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('intro');
             $table->text('content');
             $table->string('image'); 
-            $table->tinyInteger('status')->default(1)->comment('1: show - 2: hidden');
+            $table->tinyInteger('status')->default(1)->comment('1: show - 0: hidden');
             $table->unsignedBigInteger('id_category');
             $table->foreign('id_category')->references('id')->on('categories');
             $table->string('key_word');

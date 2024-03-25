@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('year');
             $table->text('details');
             $table->string('mascot');
+            $table->tinyInteger('status')->default('1')->comment('1: show - 0: hidden');
             $table->timestamps();
         });
     }
