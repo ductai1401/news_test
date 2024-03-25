@@ -4,82 +4,6 @@
 
 @section('content')
     <div class="container ">
-        <div class="row">
-            <div class="col-lg-8 ">
-                <div class="container-lg pt-5">
-                    <div class="row p-3 border-0">
-                        <div class="col-3">
-                            <img src="{{asset('images/vandongvien1.jpg')}}" width="140px" height="150px" alt="athlate">
-                        </div>
-                        <div>
-                            <h2>Name</h2>
-                            <div>
-                                <div>
-                                    <div>
-                                        <img src="{{asset('images/Quoc_Ky_Ha_Lan.jpg')}}"  width="20px" height="30px" alt="flag">
-                                    </div>
-                                    <div>
-                                        <span>Team</span>
-                                        <span>Ha Lan</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <img src="" alt="sport">
-                                    </div>
-                                    <div>
-                                        <span>Name sport</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 ">
-                <div class="container-lg pt-5">
-                    <div>
-                        <span>
-                            <span>Olympic Medals</span>
-                            <span>
-                                <div>
-                                    <span>Gold</span>
-                                    <span>1</span>
-                                </div>
-                                <div>
-                                    <span>Silver</span>
-                                    <span>3</span>
-                                </div>
-                                <div>
-                                    <span>Bronze</span>
-                                    <span>5</span>
-                                </div>
-
-                            </span>
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            <span>Games Participations</span>
-                            <span>7</span>
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            <span>First Olympic Games</span>
-                            <span>Beijing 2022</span>
-                        </span>
-                    </div>
-                    <div> 
-                        <span>
-                            <span>Year of Birth</span>
-                            <span>1985</span>
-                        </span>
-                    </div>
-                </div>
-    <div class="container ">
         <div class="row m-5">
             <div class="col-lg-8 ">
                 <div class="container-lg pt-5">
@@ -124,8 +48,7 @@
                 Hanyu’s technique is outstanding, but he combines his ability with an astonishing creativity and artistry. He makes difficult moves like the Beillmann spin and the doughnut spin look simple.<br>
                 
                 Battling through multiple injuries, the Japanese star has changed the landscape of the sport since his first Olympic title at Sochi 2014. A huge presence in Japan, he is a star of TV and film as well as one of the country’s most famous athletes.<br>
-                
-                Aged just 19, Hanyu became the first Asian man to win an Olympic gold medal when he triumphed in Sochi, becoming the youngest men's champion since 1948. He followed up by defending his Olympic title in PyeongChang 2018, becoming the first man to go back-to-back for Olympic gold since 1952 (Richard Button).<br>
+Aged just 19, Hanyu became the first Asian man to win an Olympic gold medal when he triumphed in Sochi, becoming the youngest men's champion since 1948. He followed up by defending his Olympic title in PyeongChang 2018, becoming the first man to go back-to-back for Olympic gold since 1952 (Richard Button).<br>
                 
                 During his career, Hanyu has also won two world titles and four Grand Prix Finals – cementing himself as perhaps one of Japan's finest ice athletes, and also his place as one of the greatest figure skaters in history. Hanyu was also the first skater to successfully land a quadruple loop jump in ISU competition, doing so in 2016.</h5>
         </div>

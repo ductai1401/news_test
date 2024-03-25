@@ -37,7 +37,7 @@
                     </picture>
                     
                     <div class="text-center mt-4 p-1" >
-                        <a class="text-dark d-flex justify-content-between p-2" href="#">
+                        <a class="text-dark d-flex justify-content-between p-2" href="{{ route('olympic_seasion')}}">
                             Beijing 2022
                             <span>
                                  <i class="fa fa-arrow-right " aria-hidden="true"></i>

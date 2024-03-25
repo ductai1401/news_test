@@ -39,6 +39,7 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="utf_list_post_block">
                                         <ul class="utf_list_post">
+                                            @for($i =1; $i < 3; $i++)
                                             <li class="clearfix">
                                                 <div class="utf_post_block_style post-float clearfix">
                                                     <div class="utf_post_thumb"> <a href="#"> <img
@@ -59,69 +60,8 @@
                                                     </div>
                                                 </div>
                                             </li>
-
-                                            <li class="clearfix">
-                                                <div class="utf_post_block_style post-float clearfix">
-                                                    <div class="utf_post_thumb"> <a href="#"> <img
-                                                                class="img-fluid"
-                                                                src="images/news/tech/gadget3.jpg"
-                                                                alt="" /> </a> </div>
-                                                    <div class="utf_post_content">
-                                                        <h2 class="utf_post_title title-small"> <a
-                                                                href="#">Zhang social media pop also
-                                                                known when smart innocent...</a> </h2>
-                                                        <div class="utf_post_meta"> <span
-                                                                class="utf_post_author"><i
-                                                                    class="fa fa-user"></i> <a
-                                                                    href="#">John Wick</a></span> <span
-                                                                class="utf_post_date"><i
-                                                                    class="fa fa-clock-o"></i> 25 Jan,
-                                                                2022</span> </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li class="clearfix">
-                                                <div class="utf_post_block_style post-float clearfix">
-                                                    <div class="utf_post_thumb"> <a href="#"> <img
-                                                                class="img-fluid"
-                                                                src="images/news/tech/gadget4.jpg"
-                                                                alt="" /> </a> </div>
-                                                    <div class="utf_post_content">
-                                                        <h2 class="utf_post_title title-small"> <a
-                                                                href="#">Zhang social media pop also
-                                                                known when smart innocent...</a> </h2>
-                                                        <div class="utf_post_meta"> <span
-                                                                class="utf_post_author"><i
-                                                                    class="fa fa-user"></i> <a
-                                                                    href="#">John Wick</a></span> <span
-                                                                class="utf_post_date"><i
-                                                                    class="fa fa-clock-o"></i> 25 Jan,
-                                                                2022</span> </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li class="clearfix">
-                                                <div class="utf_post_block_style post-float clearfix">
-                                                    <div class="utf_post_thumb"> <a href="#"> <img
-                                                                class="img-fluid"
-                                                                src="images/news/tech/gadget5.jpg"
-                                                                alt="" /> </a> </div>
-                                                    <div class="utf_post_content">
-                                                        <h2 class="utf_post_title title-small"> <a
-                                                                href="#">Zhang social media pop also
-                                                                known when smart innocent...</a> </h2>
-                                                        <div class="utf_post_meta"> <span
-                                                                class="utf_post_author"><i
-                                                                    class="fa fa-user"></i> <a
-                                                                    href="#">John Wick</a></span> <span
-                                                                class="utf_post_date"><i
-                                                                    class="fa fa-clock-o"></i> 25 Jan,
-                                                                2022</span> </div>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            @endfor
+                                           
                                         </ul>
                                     </div>
                                 </div>

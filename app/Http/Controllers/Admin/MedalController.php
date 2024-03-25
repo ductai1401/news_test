@@ -18,13 +18,12 @@ class MedalController extends Controller
      */
     
     public function index()
-    {
-
-        $country = Country::get(); 
+    { 
 
         
 
-        $medal = Medal::find(1);
+        $medal = Medal::with('athlete')->get();
+        dd($medal);
        
         return view('admin.modules.medal.index', ['medals' => $medal]);
     }
@@ -36,6 +35,7 @@ class MedalController extends Controller
     {
         $country = Country::get();
         $athlete = Athlete::get();
+
         $sport_olympic = Olympic_sport::with('sport')->get();
         
         

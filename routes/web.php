@@ -38,13 +38,13 @@ Route::get('/olympic/2022', function() {
     return view('olympic_seasion');
 })->name('olympic_seasion');
 
+Route::get('/olympic/sport_details', function() {
+    return view('sport_details');
+})->name('sport_details');
+
 Route::get('/olympic/single_news', function() {
     return view('single_news');
 })->name('single_news');
-
-Route::get('/olympic/country', function() {
-    return view('country');
-})->name('country');
 
 Route::get('/olympic/results', function() {
     return view('ranking_results');

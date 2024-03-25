@@ -95,7 +95,7 @@
                             @foreach($medals as $medal)
                             <tr>
                                 <td>{{ $loop ->iteration }}</td>
-                                <td>Body Building</td>
+                                <td>{{ $medal -> }}</td>
                                 <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
                                 <td>Body Building</td>
                                 <td>Body Building</td>
@@ -113,7 +113,7 @@
 
                             </tr>
                             
-                            @endfor
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -20,8 +20,8 @@ class AthleteController extends Controller
 
         $country = Country::get(); 
 
-        $athlete = Athlete::find(1);
-        dd($athlete ->country);
+        $athlete = Athlete::with('sports','country')->get();
+        
         return view('admin.modules.athlete.index', ['athletes' => $athlete]);
     }
 

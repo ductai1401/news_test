@@ -18,6 +18,7 @@ class StoreRequest extends FormRequest
             'title'=>'required',
             'intro'=>'required',
             'content'=>'required',
+            'key_word'=>'required',
             'image'=>'required|mimes:jpg,bmp,png,jpeg',
         ];
     }
@@ -25,10 +26,11 @@ class StoreRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required'=>'Plese enter news title',
-            'intro.required'=>'Plese enter news intro',
-            'content.required'=>'Plese enter news content',
-            'image.required'=>'Plese enter news image',
+            'title.required'=>'Please enter news title',
+            'intro.required'=>'Please enter news intro',
+            'content.required'=>'Please enter news content',
+            'key_word.required' => 'please enter the key word',
+            'image.required'=>'Please enter news image',
             'image.mimes' => 'Image must jpg, bmp, png, jpeg',
         ];
     }

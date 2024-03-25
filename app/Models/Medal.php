@@ -29,7 +29,7 @@ class Medal extends Model
 
     public function athlete(): BelongsTo
     {
-        return $this->belongsTo(Athlete::class);
+        return $this->belongsTo(Athlete::class,'id_athlete');
     }
 
     public function olympic(): HasMany
@@ -39,6 +39,6 @@ class Medal extends Model
 
     public function sport(): BelongsTo
     {
-        return $this->belongsTo(Sport::class);
+        return $this->belongsTo(Sport::class,'id_sport');
     }
 }

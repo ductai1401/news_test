@@ -30,16 +30,12 @@ class Athlete extends Model
 
     public function sports(): BelongsTo
     {
-        return $this->belongsTo(Sport::class);
+        return $this->belongsTo(Sport::class,'id_sport');
     }
     
     public function country(): BelongsTo
     {
-        return $this->belongsTo(Country::class);
-    }
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Country::class,'id_country');
     }
 
 }

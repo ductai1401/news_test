@@ -18,6 +18,8 @@ class UpdateRequest extends FormRequest
             'title'=>'required|unique:news,title,'.$this->id,
             'intro'=>'required',
             'content'=>'required',
+            'key_word'=>'required',
+
         ];
     }
 
@@ -28,6 +30,8 @@ class UpdateRequest extends FormRequest
             'title.unique'=>'Title is not duplicates',
             'intro.required'=>'Plese enter news intro',
             'content.required'=>'Plese enter news content',
+            'key_word.required'=>'Plese enter news key word',
+
         ];
     }
 }

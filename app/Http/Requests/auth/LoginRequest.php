@@ -29,8 +29,8 @@ class LoginRequest extends FormRequest
 
     public function messages() {
         return [
-            'email.required' => 'Vui lòng nhập email',
-            'password.required' => 'vui lòng nhập password'
+            'email.required' => 'Enter email',
+            'password.required' => 'Enter password'
         ];
     }
 }

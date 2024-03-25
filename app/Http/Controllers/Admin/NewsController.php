@@ -16,9 +16,10 @@ class NewsController extends Controller
     public function index()
     {
         $categories = Category::get();
+        
 
         $news = News::with('category')->orderBy('created_at','DESC')->get();
-
+     
         return view('admin.modules.news.index',[
             'news' => $news
         ]);
@@ -52,12 +53,13 @@ class NewsController extends Controller
         $news->image = $fileName;
         $news->status = $request->status;
         $news->id_category = $request->id_category;
+        $news ->key_word = $request ->key_word;
 
         $news->save();
 
-        $file->move(public_path('uploads/'), $fileName);
+        $file->move(public_path('uploads/news'), $fileName);
 
-        return redirect()->route('admin.news.index')->with('success', ['Create news successful']);
+        return redirect()->route('admin.news.create')->with('success','Create news successful');
     }
 
     /**
@@ -98,38 +100,42 @@ class NewsController extends Controller
         }
 
         // dd($request);
+        
 
         $file = $request->image;        
 
         if(!empty($file)){
-            $old_image_path = public_path('uploads/'. $news->image);
+            $old_image_path = public_path('uploads/news/'. $news->image);
             if (file_exists($old_image_path)){
                 unlink($old_image_path);
             }
 
             $request -> validated([
-                'title'=> 'required|mimes:jpg,bmp,png,jpeg'
+                'image'=> 'mimes:jpg,bmp,png,jpeg'
             ],[
-                'image.required'=>'Plese enter news image',
                 'image.mimes' => 'Image must jpg, bmp, png, jpeg'
             ]);
 
             $fileName = time() . '_' . $file->getClientOriginalName();
             $news->image = $fileName;
 
-            $file->move(public_path('uploads/'), $fileName);
+            $file->move(public_path('uploads/news'), $fileName);
         }
 
         $news->title = $request->title;
         $news->intro = $request->intro;
         $news->content = $request->content;
         $news->status = $request->status;
+        $news->key_word = $request->key_word;
+        $news->id_category = $request->id_category;
+
+        
         
         $news->save();
 
-        dd($news);
+        
 
-        return redirect()->route('admin.news.index')->with('success', ['Update news successful']);
+        return redirect()->route('admin.news.index')->with('success','Update news successful');
 
     }
 
@@ -143,6 +149,12 @@ class NewsController extends Controller
         if ($news == null){
             abort(404);
         }
+
+        $old_image_path = public_path('uploads/news/'. $news->image);
+        
+            if(file_exists($old_image_path)){
+                unlink($old_image_path);
+            }
 
         $news -> delete();
 

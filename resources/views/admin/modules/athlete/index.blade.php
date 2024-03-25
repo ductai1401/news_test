@@ -109,9 +109,9 @@
                                 <td>{{  $athlete ->name}}</td>
                                 <td><img style="height: 60px; width: 70px;" src="{{ $image_url }}" alt="athlete_image"></td>
                                 <td>{{  $athlete ->country ->name }}</td>
-                                <td>{{  $athlete ->sport ->name }}</td>
+                                <td>{{  $athlete ->sports ->name }}</td>
                                 <td>{{  $athlete ->brith_day }}</td>
-                                <td>{{ date("d/m/Y - H:i:s" , strtotime($sport ->created_at) ) }}</td>
+                                <td>{{ date("d/m/Y - H:i:s" , strtotime($athlete ->created_at) ) }}</td>
                                 <td>
                                    <a class="edit btn btn-primary" href="{{ route('admin.athlete.edit', ['id' => $athlete ->id]) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit

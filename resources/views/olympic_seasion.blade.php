@@ -74,16 +74,35 @@
                     <span>Beijing 2022 - Sports </span>
                 </div>
             </div>
+            
         </div><br>
 
         <div class="container">
-            <div class="git-sports">
-                @for($i = 1; $i < 15; $i++)
-                <div>
-                    <a href="#"><img src="" alt=""></a>sport {{$i}}
-                </div>
-                @endfor
-            </div>
+        <table class="table table-bordered table-striped text-center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Sport</th>
+                                <th class="text-center">Image</th>
+                                <th class="text-center">More Details</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            @for($i = 1 ; $i <= 3; $i++) 
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>Sport</td>
+                                <td><img src="" alt="Sport_image" width="100px" height="100px"></td>
+                                <td>
+                                    <a href="#">Detail</a>
+                                </td>
+
+                            </tr>
+                            
+                            @endfor
+                        </tbody>
+                    </table>
         </div>
     </section>
 </section>
