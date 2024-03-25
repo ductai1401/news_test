@@ -43,28 +43,24 @@
                     <h4 class="panel-title">
                         <i class="fa fa-fw fa-file-text-o"></i> add Comment
                     </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form id="add_news_form" action="{{ route('admin.comment.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                            <form id="add_user_form" action="{{ route('admin.comment.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">FullName</label>
+                                        <label class="col-md-3 control-label">User</label>
                                         <div class="col-md-7 ">
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                         
                                                         <select class="form-control fill_it" name="id_user">
-                                                            <option value="0">-------FullName-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                            <option value="0">-------User-------</option>
+                                                            @foreach($users as $user)
+                                                                <option value="{{$user ->id}}" {{ old('id_user') == $user ->id ? 'selected' : ''}} >{{$user ->fullname}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -72,16 +68,16 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">Title</label>
+                                        <label class="col-md-3 control-label">News</label>
                                         <div class="col-md-7 ">
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
                                                         <select class="form-control fill_it" name="id_news">
-                                                            <option value="0">-------title-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                            <option value="0">-------News-------</option>
+                                                            @foreach($news as $n)
+                                                                <option value="{{$n ->id}}" {{ old('id_news') == $n ->id ? 'selected' : ''}} >{{$n ->title}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -98,7 +94,15 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <textarea name="content" id="content" cols="30" rows="10" class="form-control fill_it"></textarea>
+                                                <textarea name="content" id="content" cols="30" rows="10" class="form-control fill_it">{{ old('content')}}</textarea>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('content')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>  
                                             </div>
                                         </div>
                                     </div>

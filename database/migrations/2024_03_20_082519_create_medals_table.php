@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_olympic_sport');
             $table->foreign('id_olympic_sport')->references('id')->on('olympic_sports');
             $table->unsignedBigInteger('id_athlete');
+            $table->tinyInteger('status')->default('1')->comment('1: show - 0: hidden');
             $table->foreign('id_athlete')->references('id')->on('athletes');
             $table->string('position');
             $table->string('video');
