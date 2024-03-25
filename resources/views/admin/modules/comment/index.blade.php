@@ -85,36 +85,36 @@
                         <thead>
                             <tr>
                                 <th class="text-center">Id</th>
-                                <th class="text-center">Id User</th>
-                                <th class="text-center">Id News</th>
+                                <th class="text-center">User</th>
+                                <th class="text-center">News</th>
+                                <th class="text-center">Status</th>
                                 <th class="text-center">Content</th>
-                                <th class="text-center">Id News</th>
                                 <th class="text-center">Created At</th>
-                                <th class="text-center">Edit/Save</th>
-                                <th class="text-center">Delete/Cancel</th>
+                                <th class="text-center">Edit</th>
+                                <th class="text-center">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @for($i = 1 ; $i <= 3; $i++) 
+                            @foreach($comments as $comment) 
                             <tr>
-                                <td>{{ $i }}</td>
-                                <td>Body Building</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>24-09-2016</td>
-                                <td>Body Building</td>
-                                <td>24-09-2016</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $comment ->user ->fullname}}</td>
+                                <td>{{ $comment ->news ->title}}</td>
+                                <td>{{ $comment ->status == 1 ? 'show' : 'hidden '}}</td>
+                                <td>{{ Str::limit($comment ->content, 30)}}</td>
+                                <td>{{ date('d/m/Y - H:i:s', strtotime( $comment->created_at)) }}</td>
                                 <td>
-                                    <a class="edit btn btn-primary" href="{{ route('admin.comment.edit', ['id' => 1]) }}">
+                                    <a class="edit btn btn-primary" href="{{ route('admin.comment.edit', ['id' => $comment ->id]) }}">
                                          <i class="fa fa-fw fa-edit"></i> Edit
                                      </a>
                                  </td>
                                  <td>
-                                     <a class="delete btn btn-danger" href="{{ route('admin.comment.destroy', ['id' => 1]) }}">
+                                     <a onclick="return confirmDelete()" class="delete btn btn-danger" href="{{ route('admin.comment.destroy', ['id' => $comment ->id]) }}">
                                          <i class="fa fa-trash-o"></i> Delete
                                      </a>
                                 </td>
                             </tr>
-                            @endfor
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

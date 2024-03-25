@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('flag');
+            $table->tinyInteger('status')->default('1')->comment('1: show - 0: hidden');
             $table->timestamps();
         });
     }

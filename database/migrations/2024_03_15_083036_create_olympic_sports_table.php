@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('id_olympic')->references('id')->on('olympics');
             $table->unsignedBigInteger('id_sport');
             $table->foreign('id_sport')->references('id')->on('sports');
+            $table->tinyInteger('status')->default('1')->comment('1: show - 0: hidden');
             $table->timestamps();
         });
     }
