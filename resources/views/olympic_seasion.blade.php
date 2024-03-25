@@ -4,41 +4,41 @@
 
 @section('content')
 <section class="pt-0">
-    <section class="utf_block_wrapper pt-0">
-        <div class="container mb-4 ">
-            <div class="row d-flex justify-content-around" >
-                <div class="col-lg-8 d-flex justify-content-center align-items-center">
-                    <div>
-                        <img class="img-thumbnail bg-white border-0" src="{{ asset('images/logo_2022.jpg')}}" alt="logo">
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex flex-md-column justify-content-end " >
-                    <h1>Beijing 2022</h1>
-                    <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom">
-                        <span>Country</span>
-                        10
-                    </div>
-                    <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom">
-                        <span>Athlete</span>
-                        500
-                        
-                    </div>
-                    <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom" >
-                        <span>Teams</span>
-                        40
-                    </div>
-                    <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom">
-                        <span>Events</span>
-                        20
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="container" >
-            <div class="row">
-                <div class="col-md-12 p-0 "> <img class="img-fluid p-0" src="{{ asset('images/olympic_2022.jpg')}}"
-                    alt="olympic_2022" /> </div>
+        <div class="container">
+            <div class="utf_post_overaly_style contentTop">
+                <div class="utf_post_thumb"> <img class="img-fluid" style="height: 800px" src="{{ asset('images/olympic_2022.jpg') }}"
+                        alt="" />
+                    </div>
+                <div class="utf_post_content_n">
+                    <div class="season-section1">
+                        <div>
+                            <div>
+                                <img class="img-thumbnail bg-white border-0" src="{{ asset('images/logo_2022.jpg')}}" alt="logo">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 d-flex flex-md-column justify-content-end "  style="background-color: #b6a6a680; border-radius:5px; padding: 50px">
+                            <h1>Beijing 2022</h1>
+                            <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom">
+                                <span>Country</span>
+                                10
+                            </div>
+                            <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom">
+                                <span>Athlete</span>
+                                500
+                                
+                            </div>
+                            <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom" >
+                                <span>Teams</span>
+                                40
+                            </div>
+                            <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom">
+                                <span>Events</span>
+                                20
+                            </div>   
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -50,9 +50,10 @@
     <section class="utf_block_wrapper p-bottom-0">
         <div class="container d-flex justify-content-around">
             <div class="row">
-                <h2 class="h2 col-lg 4 font-weight-lighter">
-                    About the Games
-                </h2>
+                <div class="col-4 h21" >
+                    <span>About the games</span>
+                </div>
+            
                 <section class=" col-lg-8">
                     <p>Having won the bid for the 2022 Olympic Winter Games on 31 July 2015, Beijing became the first city in the world to have hosted both the summer and winter editions of the Olympic Games.</p>
                     <p>With a vision of “Joyful Rendezvous upon Pure Ice and Snow,” Beijing 2022 built on the legacies of the landmark Beijing 2008 Olympic Games and encouraged 300 million people across China to embrace winter sports.</p>
@@ -70,17 +71,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-4 h21" >
-                    <span>beijing 2022</span>
-                </div>
-                <div class="col-6 h21">
-                    Sports
+                    <span>Beijing 2022 - Sports </span>
                 </div>
             </div>
-        </div>
+        </div><br>
 
         <div class="container">
             <div class="git-sports">
-                @for($i = 1; $i < 25; $i++)
+                @for($i = 1; $i < 15; $i++)
                 <div>
                     <a href="#"><img src="" alt=""></a>sport {{$i}}
                 </div>

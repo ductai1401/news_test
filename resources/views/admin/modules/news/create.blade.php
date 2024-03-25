@@ -1,6 +1,9 @@
 @extends('admin/master')
 
+@section('title','Create News')
+
 @section('action','Add News')
+
 @section('module','News')
 
 @section('content')
@@ -22,6 +25,7 @@
         </li>
     </ol>
 </section>
+
 
 <div class="container-fluid">
     <!--main content-->

@@ -8,6 +8,9 @@ use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Category\UpdateRequest;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -31,6 +34,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    public function store(StoreRequest $request)
     public function store(StoreRequest $request)
     {
         $category = new category();
@@ -87,6 +91,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    public function destroy(int $id)
     public function destroy(int $id)
     {
         $category = category::find($id);

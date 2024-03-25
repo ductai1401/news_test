@@ -42,6 +42,10 @@ Route::get('/olympic/single_news', function() {
     return view('single_news');
 })->name('single_news');
 
+Route::get('/olympic/country', function() {
+    return view('country');
+})->name('country');
+
 Route::get('/olympic/results', function() {
     return view('ranking_results');
 })->name('results');
@@ -53,7 +57,6 @@ Route::get('/olympic/sport', function() {
 Route::get('/olympic/athlete', function() {
     return view('athlete');
 })->name('athlete');
-
 
 Route::prefix('auth')->name('auth.')->controller(AuthController::class)->group(function () {
     Route::get('/login', 'viewLogin')->name('viewLogin');

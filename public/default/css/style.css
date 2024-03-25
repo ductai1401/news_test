@@ -3276,3 +3276,40 @@ to {
 	line-height: 80px;
 	color: rgb(219, 219, 219);
 }
+
+.sport-select{
+    display: flex;
+    justify-content: end;
+	margin: 10px;
+}
+
+.sport-select select{
+	width: 20%;
+	height: 45px;
+	margin: 10px;
+}
+
+.season-section1{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	width: 100%;
+	height: 100%;
+}
+
+.utf_post_content_n{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.athlete-ensign, .athlete-bio{
+	display: flex;
+}
+
+.athlete-table tr{
+	height: 60px;
+}
