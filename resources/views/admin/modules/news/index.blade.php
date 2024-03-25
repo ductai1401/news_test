@@ -86,8 +86,6 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Intro</th>
-                                <th scope="col">Content</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Category</th>
@@ -98,12 +96,18 @@
                         </thead>
                         <tbody>
                             @foreach ($news as $n)
+                            @php 
+                                $image_url = public_path("uploads/news") . '/' . $n ->image;
+                                if(!file_exists($image_url)) {
+                                    $image_url = asset('images/error.jpg');
+                                } else {
+                                    $image_url = asset("uploads/news") .'/' . $n ->image;
+                                }
+                            @endphp
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $n->title }}</td>
-                                <td>{{ $n->intro }}</td>
-                                <td>{{ $n->content }}</td>
-                                <td><img src="{{ asset('uploads/'. $n->image) }}" alt="" width="100px" height="100px"></td>
+                                <td><img src="{{ $image_url }}" alt="" width="100px" height="100px"></td>
                                 <td>
                                     @if($n->status==1)
                                         <span class="badge badge-success">Show</span>
@@ -111,7 +115,7 @@
                                         <span class="badge badge-danger">Hide</span>
                                     @endif                    
                                 </td>
-                                <td></td>
+                                <td>{{ $n ->category ->name}}</td>
                                 {{-- <td>{{ $n->categories->name }}</td> --}}
                                 <td>{{ date('d/m/Y - H:i:s', strtotime( $n->created_at)) }}</td>
                                 <td>{{ date('d/m/Y - H:i:s', strtotime( $n->updated_at)) }}</td>

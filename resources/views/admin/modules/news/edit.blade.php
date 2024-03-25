@@ -4,6 +4,17 @@
 @section('module','News')
 
 
+@push('hanldejs')
+
+
+<script src="{{ asset('admin/vendors/summernote/summernote-bs4.min.js')}}"></script>
+
+    <script>
+        $('#content').summernote();
+        $('#intro').summernote();
+    </script>
+@endpush
+
 @section('content')
 
 <section class="content-header">
@@ -49,7 +60,7 @@
                                     <div class="form-group">
                                         <label for="title" class="col-md-3 control-label">
                                             Title
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
@@ -58,28 +69,48 @@
                                                 </span>
                                                 <input id="title" type="text" name="title" class="form-control fill_it" placeholder="Enter Title" value="{{ old('title', $news->title)}}">
                                             </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('title')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
+                                        
                                     </div>
 
                                     <div class="form-group">
                                         <label for="intro" class="col-md-3 control-label">
                                             Intro
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="intro" type="text" name="intro" class="form-control fill_it" placeholder="Enter intro" value="{{ old('intro', $news->intro)}}">
+                                                <textarea id="intro" name="intro" class="form-control fill_it" placeholder="Enter intro" >{{ old('intro',  $news->intro)}}</textarea>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('intro')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
+                                        
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="categry">
                                             Category
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <select class="form-control" name="id_category" id="category">
@@ -94,7 +125,7 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="status">
                                             Status
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <select name="status" id="" class="form-control">
@@ -103,48 +134,109 @@
                                             </select>
                                         </div>
                                     </div><br>
-
+                                    @php 
+                                        $image_url = public_path("uploads/news") . '/' . $news ->image;
+                                        if(!file_exists($image_url)) {
+                                            $image_url = asset('images/error.jpg');
+                                        } else {
+                                            $image_url = asset("uploads/news") .'/' . $news ->image;
+                                        }
+                                    @endphp
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Image Curent</label>
                                         <div class="col-md-7 text-center">
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                        <img src="{{ asset('uploads/'. $news->image) }}" alt="profile">
+                                                        <img src="{{  $image_url }}" alt="profile">
                                                     </div>
                                                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                                                     <div class="select_align">
-                                                        <span class="btn btn-primary btn-file">
-                                                            <span class="fileinput-new">Select image</span>
-                                                        <span class="fileinput-exists">Change</span>
-                                                        <input type="file" name="...">
-                                                        </span>
-                                                        <a href="#" class="btn btn-primary   fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                                    
+                                                   
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="image">
+                                            Image
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-fw fa-file-text-o"></i>
+                                                </span>
+                                                <input id="image" type="file" name="image" class="form-control fill_it" >
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('image')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="key_word" class="col-md-3 control-label">
+                                            Key Word
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-fw fa-file-text-o"></i>
+                                                </span>
+                                                <input id="key_word" type="text" name="key_word" class="form-control fill_it" placeholder="Enter kay_word" value="{{ old('key_word',$news->key_word)}}">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('key_word')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">
                                             Content
-                                            <span class='require'>*</span>
+                                            <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
-                                                <textarea id="textarea" class="summernote edi-css form-control fill_it" name="content">{{ old('content', $news->content)}}</textarea>
+                                                <textarea id="content" class="summernote edi-css form-control fill_it" name="content">{{ old('content',  $news->content)}}</textarea>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('content')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
 
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <input type="submit" class="mahesh btn btn-primary" value="Add"> &nbsp;
-                                            <input type="button" class="btn btn-danger" value="Cancel"> &nbsp;
-                                            <input type="reset" id="add-news-reset-editable" class="btn btn-default" value="Reset">
+                                            <button type="submit" class="mahesh btn btn-success" >Update</button>
                                         </div>
                                     </div>
                                 </div>
