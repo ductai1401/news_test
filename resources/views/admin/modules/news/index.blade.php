@@ -42,6 +42,11 @@
       }).buttons().container().appendTo('#news_wrapper .col-md-6:eq(0)');
     });
   </script>
+  <script>
+    function confirmDelete() {
+         return window.confirm('Are you sure you want to delete');
+     }
+   </script>
 @endpush
 
 
@@ -126,7 +131,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="delete btn btn-danger" href="{{ route('admin.news.destroy', ['id'=> $n->id]) }}">
+                                    <a onclick="return confirmDelete()" class="delete btn btn-danger" href="{{ route('admin.news.destroy', ['id'=> $n->id]) }}">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
                                 </td>

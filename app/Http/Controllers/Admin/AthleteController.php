@@ -8,6 +8,7 @@ use App\Models\Sport;
 use App\Models\Country;
 use App\Http\Requests\Athlete\StoreRequest;
 use App\Http\Requests\Athlete\UpdateRequest;
+use App\Models\Medal;
 use Illuminate\Http\Request;
 
 class AthleteController extends Controller
@@ -20,7 +21,7 @@ class AthleteController extends Controller
 
         $country = Country::get(); 
 
-        $athlete = Athlete::with('sports','country')->get();
+        $athlete = Athlete::with('sports','country')->where('status', '!=', 6)->orderBy('created_at','desc')->get();
         
         return view('admin.modules.athlete.index', ['athletes' => $athlete]);
     }
@@ -55,6 +56,7 @@ class AthleteController extends Controller
         $athlete->id_country = $request -> id_country;
         $athlete->id_sport = $request -> id_sport;
         $athlete->brith_day = $request -> brith_day;
+        $athlete->status = $request -> status; 
 
 
         $athlete->save();
@@ -133,6 +135,7 @@ class AthleteController extends Controller
         $athlete->id_country = $request -> id_country;
         $athlete->id_sport = $request -> id_sport;
         $athlete->brith_day = $request -> brith_day;
+        $athlete->status = $request -> status; 
         
 
         $athlete->save();
@@ -146,19 +149,22 @@ class AthleteController extends Controller
      */
     public function destroy(int $id)
     {
-        $athlete = athlete::find($id);
+        $athlete = Athlete::find($id);
+        $medal = Medal::where('id_athlete',$id)->get();
 
         if($athlete == null) {
             return redirect()->route('admin.404');
         } 
 
-        $old_image_path = public_path('uploads/athletes/'. $athlete->image);
-            if(file_exists($old_image_path)){
-                unlink($old_image_path);
-            }
+    
+        foreach($medal as $m){
+            $m ->status = 6;
+            $m ->save();
+        }
 
-
-        $athlete->delete();
+        $athlete ->status = 6;
+        $athlete ->save();
+        // $athlete->delete();
 
         return redirect()->route('admin.athlete.index')->with('success', 'Delete athlete success');
     }

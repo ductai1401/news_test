@@ -28,10 +28,10 @@
     <div class="row">
         <div class="col-lg-12">
             <!-- Basic charts strats here-->
-            <div class="panel panel-success">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <i class="fa fa-fw fa-file-text-o"></i> Add Category
+                        <i class="fa-solid fa-file-circle-plus"></i> Add Category
                     </h4>
                 </div>
                 <div class="panel-body">
@@ -70,16 +70,12 @@
                                             <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-fw fa-file-text-o"></i>
-                                                </span>
-                                                <select name="status" id="" class="form-control fill_it">
-                                                    <option value="1" checked>Show</option>
-                                                    <option value="2">Hide</option>
-                                                </select>
-                                            </div>
+                                            <select name="status" id="" class="form-control">
+                                                <option value="1" {{ old('status')==1 ? 'selected' : '' }}>Show</option>
+                                                <option value="0" {{ old('status')==0 ? 'selected' : '' }}>Hidden</option>
+                                            </select>
                                         </div>
+                                         
                                     </div>
                                 </div>
 

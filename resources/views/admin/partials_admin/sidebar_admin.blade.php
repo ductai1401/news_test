@@ -40,7 +40,7 @@
             </li>
             <li class="menu-dropdown">
                 <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo2" aria-expanded="false">
-                    <i class="text-default menu-icon fa fa-fw fa-users"></i>
+                    <i class="text-primary menu-icon fa fa-fw fa-users"></i>
                     <span class="mm-text">Users</span>
                     <span class="fa fa-angle-down pull-right"></span>
                 </a>
@@ -59,7 +59,7 @@
             </li>
             <li class="menu-dropdown">
                 <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo3" aria-expanded="false">
-                    <i class="text-success menu-icon fa fa-fw fa-picture-o"></i>
+                    <i class="text-primary menu-icon fa-solid fa-list"></i>
                     <span class="mm-text">Category</span>
                     <span class="fa fa-angle-down pull-right"></span>
                 </a>
@@ -71,14 +71,14 @@
                     </li>
                     <li>
                         <a href='{{ route('admin.category.index')}}'>
-                            <i class="text-success fa fa-fw fa-file-image-o"></i> Category List
+                            <i class="text-success fa-solid fa-table-list"> </i> Category List
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="menu-dropdown">
                 <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo4" aria-expanded="false">
-                    <i class="text-success menu-icon fa fa-fw fa-picture-o"></i>
+                    <i class="text-primary menu-icon fa-solid fa-person-swimming"></i>
                     <span class="mm-text">Athlete</span>
                     <span class="fa fa-angle-down pull-right"></span>
                 </a>
@@ -90,14 +90,14 @@
                     </li>
                     <li>
                         <a href='{{ route('admin.athlete.index')}}'>
-                            <i class="text-success fa fa-fw fa-file-image-o"></i> Athlete List 
+                            <i class="text-success fa-solid fa-table-list"></i> Athlete List 
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="menu-dropdown">
                 <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo5" aria-expanded="false">
-                    <i class="text-success menu-icon fa fa-fw fa-picture-o"></i>
+                    <i class="text-primary menu-icon fa-solid fa-medal"></i>
                     <span class="mm-text">Medal</span>
                     <span class="fa fa-angle-down pull-right"></span>
                 </a>
@@ -109,14 +109,14 @@
                     </li>
                     <li>
                         <a href='{{ route('admin.medal.index')}}'>
-                            <i class="text-success fa fa-fw fa-file-image-o"></i> Medal List
+                            <i class="text-success fa-solid fa-table-list"></i> Medal List
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="menu-dropdown">
                 <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo6" aria-expanded="false">
-                    <i class="text-success menu-icon fa fa-fw fa-picture-o"></i>
+                    <i class="text-primary menu-icon fa fa-fw fa-picture-o"></i>
                     <span class="mm-text">Olympic</span>
                     <span class="fa fa-angle-down pull-right"></span>
                 </a>
@@ -128,14 +128,14 @@
                     </li>
                     <li>
                         <a href='{{ route('admin.olympic.index')}}'>
-                            <i class="text-success fa fa-fw fa-file-image-o"></i> Olympic List
+                            <i class="text-success fa-solid fa-table-list"></i> Olympic List
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="menu-dropdown">
                 <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo7" aria-expanded="false">
-                    <i class="text-success menu-icon fa fa-fw fa-picture-o"></i>
+                    <i class="text-primary menu-icon fa-regular fa-futbol"></i>
                     <span class="mm-text">Sport</span>
                     <span class="fa fa-angle-down pull-right"></span>
                 </a>
@@ -147,14 +147,14 @@
                     </li>
                     <li>
                         <a href='{{ route('admin.sport.index')}}'>
-                            <i class="text-success fa fa-fw fa-file-image-o"></i> Sport List
+                            <i class="text-success fa-solid fa-table-list"></i> Sport List
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="menu-dropdown">
                 <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo8" aria-expanded="false">
-                    <i class="text-success menu-icon fa fa-fw fa-picture-o"></i>
+                    <i class="text-primary menu-icon fa-solid fa-globe"></i>
                     <span class="mm-text">Country</span>
                     <span class="fa fa-angle-down pull-right"></span>
                 </a>
@@ -166,14 +166,14 @@
                     </li>
                     <li>
                         <a href='{{ route('admin.country.index')}}'>
-                            <i class="text-success fa fa-fw fa-file-image-o"></i> Country list
+                            <i class="text-success fa-solid fa-table-list"></i> Country list
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="menu-dropdown">
                 <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo9" aria-expanded="false">
-                    <i class="text-success menu-icon fa fa-fw fa-picture-o"></i>
+                    <i class="text-primary menu-icon fa fa-comments text-black"></i>
                     <span class="mm-text">Comment</span>
                     <span class="fa fa-angle-down pull-right"></span>
                 </a>
@@ -185,26 +185,20 @@
                     </li>
                     <li>
                         <a href='{{ route('admin.comment.index')}}'>
-                            <i class="text-success fa fa-fw fa-file-image-o"></i> Comment list
+                            <i class="text-success fa-solid fa-table-list"></i> Comment list
                         </a>
                     </li>
                 </ul>
             </li>
             <li>
                 <a href='{{route('admin.404')}}'>
-                    <i class="text-warning menu-icon fa fa-anchor"></i>
+                    <i class="text-primary menu-icon fa fa-anchor"></i>
                     <span class="mm-text">404</span>
                 </a>
             </li>
             <li>
-                <a href='/fitness/blank'>
-                    <i class="text-default menu-icon fa fa-file-o"></i>
-                    <span class="mm-text">Blank</span>
-                </a>
-            </li>
-            <li>
                 <a href='/fitness/FAQ'>
-                    <i class="text-default menu-icon fa fa-file-o"></i>
+                    <i class="text-primary menu-icon fa fa-file-o"></i>
                     <span class="mm-text">FAQ</span>
                 </a>
             </li>

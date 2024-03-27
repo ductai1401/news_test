@@ -42,6 +42,11 @@
       }).buttons().container().appendTo('#comments_wrapper .col-md-6:eq(0)');
     });
   </script>
+  <script>
+    function confirmDelete() {
+         return window.confirm('Are you sure you want to delete');
+     }
+   </script>
 @endpush
 
 

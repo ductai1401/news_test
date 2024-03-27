@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Http\Requests\Country\StoreRequest;
 use App\Http\Requests\Country\UpdateRequest;
+use App\Models\Athlete;
+use App\Models\Medal;
 
 class CountryController extends Controller
 {
@@ -15,7 +17,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $country = Country::orderBy('created_at', 'desc')->get();
+        $country = Country::where('status', '!=', 6)->orderBy('created_at', 'desc')->get();
         return view('admin.modules.country.index',[
             'countrys' => $country,
         ]);
@@ -42,6 +44,7 @@ class CountryController extends Controller
 
         $country->flag = $fileName;
         $country->name = $request -> name; 
+        $country->status = $request -> status; 
 
         $country->save();
 
@@ -103,12 +106,13 @@ class CountryController extends Controller
 
             $fileName = time(). '-'.  $file->getClientOriginalName(); 
 
-            $country->flag = $fileName;
+            $country ->flag = $fileName;
             $file -> move(public_path('uploads/countrys'), $fileName );
             
         }
 
-        $country -> name = $request ->name;
+        $country ->name = $request ->name;
+        $country ->status = $request ->status; 
        
         $country->save();
 
@@ -121,18 +125,28 @@ class CountryController extends Controller
     public function destroy(string $id)
     {
         $country = Country::find($id);
-
+        $athlete = Athlete::where('id_country',$id)->get();
+        
         if($country == null) {
             return redirect()->route('admin.404');
         } 
 
-        $old_image_path = public_path('uploads/countrys/'. $country->flag);
-            if(file_exists($old_image_path)){
-                unlink($old_image_path);
-            }
+        // $country->delete();
+        $country ->status = 6;
+        foreach($athlete as $a){
+            $id = $a ->id;
+            $medal = Medal::where('id_athlete',$id)->get();
+            foreach($medal as $m){
+                $m ->status = 6;
+                $m ->save();
+            };
+            
+            $a->status = 6;
+            $a->save();
+        }
 
-
-        $country->delete();
+        $country->save();
+        
 
         return redirect()->route('admin.country.index')->with('success', 'Delete country success');
     }

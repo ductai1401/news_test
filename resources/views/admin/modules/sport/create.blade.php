@@ -21,7 +21,7 @@
     <ol class="breadcrumb">
         <li>
             <a href='{{route('admin.dashboard')}}'>
-                <i class="fa fa-fw fa-home"></i> Dashboard
+                <i class="fa-solid fa-file-circle-plus"></i> Dashboard
             </a>
         </li>
         <li>
@@ -38,15 +38,11 @@
     <div class="row">
         <div class="col-lg-12">
             <!-- Basic charts strats here-->
-            <div class="panel panel-success">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <i class="fa fa-fw fa-file-text-o"></i> Edit Sport
+                        <i class="fa fa-fw fa-file-text-o"></i> Add Sport
                     </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -129,6 +125,19 @@
                                             
                                         </div>
                                         
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="status">
+                                            Status
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <select name="status" id="" class="form-control">
+                                                <option value="1" {{ old('status')==1 ? 'selected' : '' }}>Show</option>
+                                                <option value="0" {{ old('status')==0 ? 'selected' : '' }}>Hidden</option>
+                                            </select>
+                                        </div>
+                                         
                                     </div>
                                 </div>
 

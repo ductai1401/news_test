@@ -40,6 +40,11 @@
       }).buttons().container().appendTo('#medals_wrapper .col-md-6:eq(0)');
     });
   </script>
+  <script>
+    function confirmDelete() {
+         return window.confirm('Are you sure you want to delete');
+     }
+   </script>
 @endpush
 
 
@@ -72,10 +77,6 @@
                     <h4 class="panel-title">
                     <i class="fa fa-newspaper-o" aria-hidden="true"></i> Medals
                 </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
                 </div>
                 <div class="panel-body table-responsive">
                     
@@ -84,6 +85,7 @@
                             <tr>
                                 <th class="text-center">Id</th>
                                 <th class="text-center">Olympic</th>
+                                <th class="text-center">Country</th>
                                 <th class="text-center">Sport</th>
                                 <th class="text-center">Athlete</th>
                                 <th class="text-center">Posision</th>
@@ -95,18 +97,18 @@
                             @foreach($medals as $medal)
                             <tr>
                                 <td>{{ $loop ->iteration }}</td>
-                                <td>{{ $medal -> }}</td>
-                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                <td>Body Building</td>
-                                <td>Body Building</td>
-                                <td>24-09-2016</td>
+                                <td>{{ $medal ->olympic->name}}</td>
+                                <td>{{ $medal ->country->name}}</td>
+                                <td>{{ $medal ->sport->name}}</td>
+                                <td>{{ $medal ->athlete->name}}</td>
+                                <td>#{{ $medal ->posision}}</td>
                                 <td>
-                                   <a class="edit btn btn-primary" href="{{ route('admin.medal.edit', ['id' => 1]) }}">
+                                   <a class="edit btn btn-primary" href="{{ route('admin.medal.edit', ['id' => $medal ->id]) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="delete btn btn-danger" href="{{ route('admin.medal.destroy', ['id' => 1]) }}">
+                                    <a onclick="return confirmDelete()" class="delete btn btn-danger" href="{{ route('admin.medal.destroy', ['id' =>  $medal ->id]) }}">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
                                </td>

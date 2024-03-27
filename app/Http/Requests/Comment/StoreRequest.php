@@ -23,13 +23,19 @@ class StoreRequest extends FormRequest
     {
         return [
             'content' => 'required',
+            'id_user' => 'required',
+            'id_news' => 'required',
+
         ];
     }
 
     public function messages(): array
     {
         return [
-            'content.required' => 'please enter content !!!'
+            'content.required' => 'please enter content !!!',
+            'id_user.required' => 'please enter user !!!',
+            'id_news.required' => 'please enter news !!!',
+
         ];
     }
 }

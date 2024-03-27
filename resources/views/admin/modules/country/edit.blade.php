@@ -1,6 +1,6 @@
 @extends('admin/master')
 
-@section('action','Update Countrys')
+@section('action','Edit Countrys')
 @section('module', 'Country')
 
 @section('content')
@@ -33,10 +33,7 @@
                     <h4 class="panel-title">
                         <i class="fa fa-fw fa-file-text-o"></i> Edit Country
                     </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
+                    
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -113,13 +110,27 @@
                                         </div>
                                         
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="status">
+                                            Status
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <select name="status" id="" class="form-control">
+                                                <option value="1" {{ old('status', $country ->status)==1 ? 'selected' : '' }}>Show</option>
+                                                <option value="0" {{ old('status', $country ->status)==0 ? 'selected' : '' }}>Hidden</option>
+                                            </select>
+                                        </div>
+                                         
+                                    </div>
                                 </div>
 
                                 
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="mahesh btn btn-primary" >Update</button>
+                                            <button type="submit" class="mahesh btn btn-success" >Update</button>
                                         </div>
                                     </div>
                                 </div>

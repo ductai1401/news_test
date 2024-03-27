@@ -229,10 +229,24 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="status">
+                                        Status
+                                        <span class='require'></span>
+                                    </label>
+                                    <div class="col-md-7">
+                                        <select name="status" id="" class="form-control">
+                                            <option value="1" {{ old('status', $olympic ->status )==1 ? 'selected' : '' }}>Show</option>
+                                            <option value="0" {{ old('status', $olympic ->status )==0 ? 'selected' : '' }}>Hidden</option>
+                                        </select>
+                                    </div>
+                                     
+                                </div>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="mahesh btn btn-primary" >Add</button>
+                                            <button type="submit" class="mahesh btn btn-success" >Update</button>
                                         </div>
                                     </div>
                                 </div>

@@ -29,15 +29,12 @@
     <div class="row">
         <div class="col-lg-12">
             <!-- Basic charts strats here-->
-            <div class="panel panel-primary">
+            <div class="panel panel-success">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                    <i class="fa fa-fw fa-user"></i> Add User
+                    <i class="fa fa-fw fa-user"></i> Edit User
                 </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
+                    
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -240,7 +237,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9"> 
-                                            <button type="submit"  class="btn btn-primary" >Update</button>                                        
+                                            <button type="submit"  class="btn btn-success" >Update</button>                                        
                                         </div>
                                     </div>
                                 </div>

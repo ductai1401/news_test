@@ -1,6 +1,6 @@
 @extends('admin/master')
 
-@section('action','Update Athletes')
+@section('action','Edit Athletes')
 @section('module', 'Athlete')
 
 @section('content')
@@ -101,6 +101,15 @@
                                                 </span>
                                                 <input id="image" type="file" name="image" class="form-control fill_it" placeholder="Please enter the avatar athlete">
                                             </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('image')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -133,13 +142,22 @@
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                         
                                                         <select class="form-control fill_it" name="id_country">
-                                                            <option value="0" {{old('id_country',  $athlete->id_country) ==  0 ? 'selected' : ''}}>-------Country-------</option>
+                                                            <option value="" {{old('id_country',  $athlete->id_country) ==  0 ? 'selected' : ''}}>-------Country-------</option>
                                                             @foreach ($countrys as $country)
                                                                 <option value="{{  $country ->id }}" {{old('id_country', $country ->id) ==  $country ->id ? 'selected' : ''}}>{{$country ->name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_country')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -150,7 +168,7 @@
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
                                                         <select class="form-control fill_it" name="id_sport">
-                                                            <option value="0" {{old('id_sport',  $athlete->id_sport) ==  0 ? 'selected' : ''}}>-------Sport-------</option>
+                                                            <option value="" {{old('id_sport',  $athlete->id_sport) ==  0 ? 'selected' : ''}}>-------Sport-------</option>
                                                             @foreach ($sports as $sport)
                                                                 <option value="{{  $sport ->id }}" {{old('id_sport', $sport ->id) ==  $sport ->id ? 'selected' : ''}}>{{$sport ->name}}</option>
                                                             @endforeach
@@ -158,7 +176,29 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_sport')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="status">
+                                            Status
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <select name="status" id="" class="form-control">
+                                                <option value="1" {{ old('status', $athlete ->status)==1 ? 'selected' : '' }}>Show</option>
+                                                <option value="0" {{ old('status', $athlete ->status)==0 ? 'selected' : '' }}>Hidden</option>
+                                            </select>
+                                        </div>
+                                         
                                     </div>
                                 </div>
 
@@ -166,7 +206,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="mahesh btn btn-primary" >Edit</button>
+                                            <button type="submit" class="mahesh btn btn-success" >Update</button>
                                         </div>
                                     </div>
                                 </div>

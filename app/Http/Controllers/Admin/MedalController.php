@@ -8,7 +8,10 @@ use App\Http\Requests\Medal\UpdateRequest;
 use App\Models\Athlete;
 use App\Models\Country;
 use App\Models\Medal;
+use App\Models\Olympic;
 use App\Models\Olympic_sport;
+use App\Models\Sport;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class MedalController extends Controller
@@ -19,13 +22,14 @@ class MedalController extends Controller
     
     public function index()
     { 
+        $medal = Medal::with('athlete','country','olympic','sport')->where('status','!=',6)->get();
+        // $medalss = Sport::with('medal')->get();
 
-        
-
-        $medal = Medal::with('athlete')->get();
-        dd($medal);
        
-        return view('admin.modules.medal.index', ['medals' => $medal]);
+       
+        return view('admin.modules.medal.index', [
+            'medals' => $medal,
+        ]);
     }
 
     /**
@@ -36,13 +40,15 @@ class MedalController extends Controller
         $country = Country::get();
         $athlete = Athlete::get();
 
-        $sport_olympic = Olympic_sport::with('sport')->get();
+
+        $olympic_sport = Olympic_sport::with('sport','olympic')->orderBy('id_olympic', 'desc')->get();
         
         
         return view('admin.modules.medal.create',[
             'countrys' => $country,
             'athletes' => $athlete,
-            'sport_olympics' => $sport_olympic,
+            'olympic_sports' => $olympic_sport,
+            
         ]);
     }
 
@@ -53,11 +59,17 @@ class MedalController extends Controller
     {
         $medal = new Medal();
 
+
+
         
         $medal->id_olympic_sport = $request -> id_olympic_sport;
         $medal->id_country = $request -> id_country;
         $medal->id_athlete = $request -> id_athlete;
         $medal->brith_day = $request -> brith_day;
+        $medal->posision = $request -> posision;
+        $medal->status = $request -> status;
+        $medal->video = $request -> video;
+
 
 
         $medal->save();
@@ -78,11 +90,12 @@ class MedalController extends Controller
      */
     public function edit( $id)
     {
-
-        $athlete = Athlete::get();
         $country = Country::get();
+        $athlete = Athlete::get();
+        $olympic_sport = Olympic_sport::with('sport','olympic')->orderBy('id_olympic', 'desc')->get();
 
-        $medal = medal::find($id);
+        $medal = medal::with('athlete','country','olympic','sport')->find($id);
+       
         if($medal == null) {
             return redirect()->route('admin.404');
         } 
@@ -92,6 +105,8 @@ class MedalController extends Controller
             'medal' => $medal,
             'countrys' => $country,
             'athletes' => $athlete,
+            'olympic_sports' => $olympic_sport,
+            
         ]);
     }
 
@@ -154,13 +169,10 @@ class MedalController extends Controller
             return redirect()->route('admin.404');
         } 
 
-        $old_image_path = public_path('uploads/medals/'. $medal->image);
-            if(file_exists($old_image_path)){
-                unlink($old_image_path);
-            }
+        $medal ->status = 6;
+        $medal ->save();
 
-
-        $medal->delete();
+        // $medal->delete();
 
         return redirect()->route('admin.medal.index')->with('success', 'Delete medal success');
     }
