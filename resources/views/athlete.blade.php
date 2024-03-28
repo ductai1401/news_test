@@ -3,43 +3,47 @@
 @section('title', 'Athlete')
 
 @section('content')
-    <div class="container ">
+    {{-- <div class="container ">
         <div class="row m-5">
-            <div class="col-lg-8 ">
-                <div class="container-lg pt-5">
-                    <div class="row p-3 border-0">
-                        <div class="col-6">
-                            <img src="{{asset('images/vandongvien1.avif')}}" width="300px" height="300px" alt="athlate" style="border-radius: 5px;" >
+            <div class="col-lg-12 ">
+                <div style="height: 500px">
+                    <div class="row">
+                        <div class="col-5">
+                            <img src="{{asset('images/vandongvien1.avif')}}" width="350" height="350px" alt="athlate" style="border-radius: 50%;" >
                         </div>
-                        <div class="col-5 mt-4">
-                            <span class="h21" style="font-size: 70px">YUZURU HANYU</span>
-                            <div class="athlete-ensign mt-5 mb-3">
-                                <img src="{{asset('images/quoc-ky-nhat-ban.png')}}"  width="50px" height="30px" alt="flag" style="border:#dcdcdc solid 1px;" class="mt-2">
-                                <div class="ml-2">
-                                    <p class="m-0" style="color: #696969">Team</p>
-                                    <p class="m-0" style="font-size: 16px">Japan</p>
-                                </div>
-                            </div>
-                            <span style="color: #696969"> Sport &#160;<strong>Figure Skating</strong></span>
+                        <div class="col-7 mt-5">
+                            <span style="font-size: 60px" class="h21"><strong> YUZURU HANYU </strong></span>
+                            <h3 style="font-family: 'Arial, Helvetica, sans-serif';">"I try to find challenges after every competition and overcome them the next time."</h3>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
+        </div>
 
-            <div class="col-lg-4 ">
-                <div class="container-lg pt-5">
-                    <div class="athlete-table">
-                        <table class="table">
-                            <tr><td>Olympic Medals</td><td>2 &nbsp; G</td></tr>
-                            <tr><td>Games Participations</td><td>3</td></tr>
-                            <tr><td>First Olympic Games</td><td>Sochi 2014</td></tr>
-                            <tr><td>Year of Birth</td><td>1994</td></tr>
-                            <tr><td></td><td><a href=""><button class="btn" style="background-color: #dcdcdc">Olympic Results</button></a></td></tr>
-                        </table>
-                    </div>
+        <div class="athlete-ensign mt-5 mb-3">
+            <img src="{{asset('images/quoc-ky-nhat-ban.png')}}"  width="50px" height="30px" alt="flag" style="border:#dcdcdc solid 1px;" class="mt-2">
+            <div class="ml-2">
+                <p class="m-0" style="color: #696969">Team</p>
+                <p class="m-0" style="font-size: 16px">Japan</p>
+            </div>
+        </div>
+        <span style="color: #696969"> Sport &#160;<strong>Figure Skating</strong></span>
+
+
+        <div class="col-lg-4 ">
+            <div class="container-lg pt-5">
+                <div class="athlete-table">
+                    <table class="table">
+                        <tr><td>Olympic Medals</td><td>2 &nbsp; G</td></tr>
+                        <tr><td>Games Participations</td><td>3</td></tr>
+                        <tr><td>First Olympic Games</td><td>Sochi 2014</td></tr>
+                        <tr><td>Year of Birth</td><td>1994</td></tr>
+                        <tr><td></td><td><a href=""><button class="btn" style="background-color: #dcdcdc">Olympic Results</button></a></td></tr>
+                    </table>
                 </div>
             </div>
         </div>
+        
 
         <div class="athlete-bio ">
             <h1 class="h21" style="font-size: 70px; margin: 0 70px 0 50px;">BIOGRAPHY</h1>
@@ -55,5 +59,5 @@
         </div>
 
 
-    </div>
+    </div> --}}
 @endsection

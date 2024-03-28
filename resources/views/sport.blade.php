@@ -13,7 +13,7 @@
                         <div class="utf_post_thumb"> <img class="img-fluid" style="height: 400px" src="{{ asset('images/logo_sport.jpg') }}"
                                 alt="" /></div>
                         <div class="utf_post_content_n">
-                            <h2 class="utf_post_title font_s"> Sports</h2>
+                            <h2 class="utf_post_title font_s"> </h2>
                         </div>
                     </div>
                 </div>

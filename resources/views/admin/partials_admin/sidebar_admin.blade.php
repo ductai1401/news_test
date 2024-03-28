@@ -1,9 +1,9 @@
-<section class="sidebar">
+<section class="sidebar" style="height: 100%;">
     <div id="menu" role="navigation">
         <div class="nav_profile">
             <div class="media profile-left">
                 <a class="pull-left profile-thumb" href="#">
-                    <img src="https://img.meta.com.vn/Data/image/2021/09/21/anh-meo-ngau-12.jpg" class="img-circle" alt="User Image">
+                    <img src="https://img.meta.com.vn/Data/image/2021/09/21/anh-meo-ngau-12.jpg" class="img-circle" alt="User Image" height="55px">
                 </a>
                 <div class="content-profile">
                     <h4 class="media-heading">Jett</h4>
