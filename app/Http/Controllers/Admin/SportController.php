@@ -17,7 +17,7 @@ class SportController extends Controller
      */
     public function index()
     {
-        $sport = Sport::orderBy('created_at', 'desc')->get();
+        $sport = Sport::where('status','!=', 6)->orderBy('created_at', 'desc')->get();
         return view('admin.modules.sport.index', ['sports' => $sport]);
     }
 
@@ -129,17 +129,15 @@ class SportController extends Controller
     {
         $sport = Sport::find($id);
 
+
         if($sport == null) {
             return redirect()->route('admin.404');
         } 
 
-        $old_image_path = public_path('uploads/sports/'. $sport->image);
-            if(file_exists($old_image_path)){
-                unlink($old_image_path);
-            }
 
-
-        $sport->delete();
+        $sport ->status = 6;
+        $sport ->save();
+        // $sport->delete();
 
         return redirect()->route('admin.sport.index')->with('success', 'Delete sport success');
     }

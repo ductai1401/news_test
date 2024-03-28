@@ -30,7 +30,7 @@
             <a href='{{ route('admin.news.index') }}'>@yield('module')</a>
         </li>
         <li>
-            <a href='{{ route('admin.news.edit', ['id' => 1]) }}'>@yield('action')</a>
+            <a href='{{ route('admin.news.edit', ['id' => $id]) }}'>@yield('action')</a>
         </li>
     </ol>
 </section>
@@ -45,10 +45,7 @@
                     <h4 class="panel-title">
                         <i class="fa fa-fw fa-file-text-o"></i> Edit News
                     </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
+                   
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -114,11 +111,20 @@
                                         </label>
                                         <div class="col-md-7">
                                             <select class="form-control" name="id_category" id="category">
-                                                <option value="0" {{ old('id_category')==0 ? 'selected' : '' }}>Select Category</option>
+                                                <option value="" {{ old('id_category')==0 ? 'selected' : '' }}>Select Category</option>
                                                 @foreach( $categories as $category )
                                                     <option value="{{ $category->id }}"  {{ old('id_category', $news->id_category)==$category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_category')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
                                     </div>
                                     
@@ -130,7 +136,7 @@
                                         <div class="col-md-7">
                                             <select name="status" id="" class="form-control">
                                                 <option value="1" {{ old('status', $news->status)==1 ? 'selected' : '' }}>Show</option>
-                                                <option value="2" {{ old('status', $news->status)==2 ? 'selected' : '' }}>Hide</option>
+                                                <option value="0" {{ old('status', $news->status)==0 ? 'selected' : '' }}>Hidden</option>
                                             </select>
                                         </div>
                                     </div><br>

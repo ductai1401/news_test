@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Medal extends Model
 {
@@ -29,16 +29,22 @@ class Medal extends Model
 
     public function athlete(): BelongsTo
     {
-        return $this->belongsTo(Athlete::class,'id_athlete');
+        return $this->belongsTo(Athlete::class,'id_athlete','id');
+    }
+    public function olympic() : HasOneThrough
+    {
+        return $this->HasOneThrough(Olympic::class,Olympic_sport::class,'id','id','id_olympic_sport','id_olympic');
     }
 
-    public function olympic(): HasMany
+    public function sport() : HasOneThrough
     {
-        return $this->hasMany(Olympic_sport::class,'id_olympic',);
+        return $this->HasOneThrough(Sport::class,Olympic_sport::class,'id','id','id_olympic_sport','id_sport');
     }
 
-    public function sport(): BelongsTo
+
+
+    public function country(): BelongsTo
     {
-        return $this->belongsTo(Sport::class,'id_sport');
+        return $this->belongsTo(Country::class,'id_country','id');
     }
 }

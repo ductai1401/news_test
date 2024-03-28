@@ -40,15 +40,12 @@
     <!--main content-->
     <div class="row">
         <div class="col-lg-12">
-            <div class="panel panel-success">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <i class="fa fa-fw fa-file-text-o"></i> Add News
                     </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
+                   
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -114,7 +111,7 @@
                                         </label>
                                         <div class="col-md-7">
                                             <select class="form-control" name="id_category" id="category">
-                                                <option value="0" {{ old('id_category')==0 ? 'selected' : '' }}>Select Category</option>
+                                                <option value="" {{ old('id_category')==0 ? 'selected' : '' }}>Select Category</option>
                                                 @foreach( $categories as $category )
                                                     <option value="{{ $category->id }}"  {{ old('id_category')==$category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                 @endforeach
@@ -140,7 +137,7 @@
                                         <div class="col-md-7">
                                             <select name="status" id="" class="form-control">
                                                 <option value="1" {{ old('status')==1 ? 'selected' : '' }}>Show</option>
-                                                <option value="2" {{ old('status')==2 ? 'selected' : '' }}>Hide</option>
+                                                <option value="0" {{ old('status')==0 ? 'selected' : '' }}>Hidden</option>
                                             </select>
                                         </div>
                                          
@@ -224,7 +221,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                           <button type="submit" class="btn btn-success">Add</button>
+                                           <button type="submit" class="btn btn-primary">Add</button>
                         
                                         </div>
                                     </div>

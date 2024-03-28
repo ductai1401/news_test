@@ -27,11 +27,11 @@ class Olympic_sport extends Model
 
     public function sport(): BelongsTo
     {
-        return $this->belongsTo(Sport::class,'id_sport');
+        return $this->BelongsTo(Sport::class,'id_sport','id');
     }
 
     public function olympic(): BelongsTo
     {
-        return $this->belongsTo(Olympic::class);
+        return $this->BelongsTo(Olympic::class,'id_olympic','id');
     }
 }

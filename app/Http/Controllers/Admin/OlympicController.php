@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Olympic;
 use App\Http\Requests\Olympic\StoreRequest;
 use App\Http\Requests\Olympic\UpdateRequest;
+use App\Models\Olympic_sport;
 use Illuminate\Http\Request;
 
 class OlympicController extends Controller
@@ -15,7 +16,7 @@ class OlympicController extends Controller
      */
     public function index()
     {
-        $olympic = Olympic::orderBy('created_at', 'desc')->get();
+        $olympic = Olympic::where('status', '!=', 6)->orderBy('created_at', 'desc')->get();
         return view('admin.modules.olympic.index', ['olympics' => $olympic]);
     }
 
@@ -162,17 +163,15 @@ class OlympicController extends Controller
             return redirect()->route('admin.404');
         } 
 
-        $old_logo_image_path = public_path('uploads/olympics/logos/'. $olympic->logo);
-            if(file_exists($old_logo_image_path)){
-                unlink($old_logo_image_path);
-            }
+        $olympic_sports = Olympic_sport::where('id_olympic', $id)->get();
+        foreach($olympic_sports as $olympic_sport){
+            $olympic_sport ->status = 6;
+            $olympic_sport ->save();
+        }
 
-        $old_mascot_image_path = public_path('uploads/olympics/mascots/'. $olympic->mascot);
-        if(file_exists($old_mascot_image_path)){
-            unlink($old_mascot_image_path);
-        }    
-
-        $olympic->delete();
+        $olympic ->status = 6;
+        $olympic ->save();
+        // $olympic->delete();
 
         return redirect()->route('admin.olympic.index')->with('success', 'Delete olympic success');
     }

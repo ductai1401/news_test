@@ -8,6 +8,8 @@ use App\Http\Requests\News\StoreRequest;
 use App\Http\Requests\News\UpdateRequest;
 use App\Models\News;
 use App\Models\Category;
+use App\Models\Comment;
+
 class NewsController extends Controller
 {
     /**
@@ -18,7 +20,7 @@ class NewsController extends Controller
         $categories = Category::get();
         
 
-        $news = News::with('category')->orderBy('created_at','DESC')->get();
+        $news = News::with('category')->where('status', '!=', 6)->orderBy('created_at','DESC')->get();
      
         return view('admin.modules.news.index',[
             'news' => $news
@@ -79,7 +81,7 @@ class NewsController extends Controller
 
         $news= News::find($id);
         if ($news == null){
-            abort(404);
+            return redirect()->route('admin.404');
         }
 
         return view('admin.modules.news.edit', [
@@ -96,7 +98,7 @@ class NewsController extends Controller
     {
         $news = News::find($id);
         if ($news == null){
-            abort(404);
+            return redirect()->route('admin.404');
         }
 
         // dd($request);
@@ -145,20 +147,21 @@ class NewsController extends Controller
     public function destroy(int $id)
     {
         $news = news::find($id);
+        $comments = Comment::where('id_news', $id)->get();
 
         if ($news == null){
-            abort(404);
+            return redirect()->route('admin.404');
         }
 
-        $old_image_path = public_path('uploads/news/'. $news->image);
-        
-            if(file_exists($old_image_path)){
-                unlink($old_image_path);
-            }
+        foreach($comments as $comment){
+            $comment ->status = 6;
+            $comment ->save();
+        }
+        // $news -> delete();
+        $news -> status = 6;
+        $news->save();
 
-        $news -> delete();
-
-        return redirect()->route('admin.news.index')->with('success', ['Create news news successful']);
+        return redirect()->route('admin.news.index')->with('success', 'Create news news successful');
     }
 
     

@@ -20,6 +20,7 @@ class StoreRequest extends FormRequest
             'content'=>'required',
             'key_word'=>'required',
             'image'=>'required|mimes:jpg,bmp,png,jpeg',
+            'id_category' =>'required',
         ];
     }
 
@@ -27,6 +28,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title.required'=>'Please enter news title',
+            'id_category.required'=>'Please enter category',
             'intro.required'=>'Please enter news intro',
             'content.required'=>'Please enter news content',
             'key_word.required' => 'please enter the key word',

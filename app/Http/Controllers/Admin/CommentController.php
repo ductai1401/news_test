@@ -123,7 +123,10 @@ class CommentController extends Controller
         if($comment == null) {
             return redirect()->route('admin.404');
         }
-        $comment->delete();
+
+        $comment ->status = 6;
+        $comment ->save();
+        // $comment->delete();
 
         return redirect()->route('admin.comment.index')->with('success', 'Delete comment success');
     }

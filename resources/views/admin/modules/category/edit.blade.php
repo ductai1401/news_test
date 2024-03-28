@@ -32,10 +32,7 @@
                         <h4 class="panel-title">
                             <i class="fa fa-fw fa-file-text-o"></i> Edit Category
                         </h4>
-                        <span class="pull-right">
-                            <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                            <i class="glyphicon glyphicon-remove removepanel"></i>
-                        </span>
+                        
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -82,7 +79,7 @@
                                                     </span>
                                                     <select name="status" id="" class="form-control fill_it">
                                                         <option value="1" {{ old('status', $category ->status) == 1 ? 'selected' : ''}} >Show</option>
-                                                        <option value="2" {{ old('status', $category ->status) == 2 ? 'selected' : ''}} >Hide</option>
+                                                        <option value="0" {{ old('status', $category ->status) == 0 ? 'selected' : ''}} >Hide</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -91,7 +88,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="mahesh btn btn-primary">Update</button>
+                                            <button type="submit" class="mahesh btn btn-success">Update</button>
                                         </div>
                                     </div>
                                 </div>

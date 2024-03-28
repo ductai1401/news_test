@@ -30,6 +30,8 @@
             @yield('content')
         </aside>
     </div>
+
+    @yield('script')
     @include('admin/partials_admin/foot_admin')
 </body>
 

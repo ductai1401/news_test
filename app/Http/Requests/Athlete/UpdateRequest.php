@@ -24,6 +24,8 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required|unique:athletes,name,'.$this->id,
             'brith_day' => 'required',
+            'id_country' => 'required',
+            'id_sport' => 'required',
     
 
         ];
@@ -35,6 +37,8 @@ class UpdateRequest extends FormRequest
             'name.required' => 'The athlete name cannot be left blank !!!',
             'name.unique' => 'The athlete name already exists, please re-enter',
             'brith_day.required' =>'The brith day cannot be left blank !!!',
+            'id_sport.required' => 'The sport cannot be blank !!!',
+            'id_country.required' => 'The country cannot be blank !!!',
         ];
     } 
 }

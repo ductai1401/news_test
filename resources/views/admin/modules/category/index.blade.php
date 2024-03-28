@@ -41,6 +41,11 @@
       }).buttons().container().appendTo('#categories_wrapper .col-md-6:eq(0)');
     });
   </script>
+  <script>
+    function confirmDelete() {
+         return window.confirm('Are you sure you want to delete');
+     }
+   </script>
 @endpush
 
 
@@ -110,7 +115,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="delete btn btn-danger" href="{{ route('admin.category.destroy', ['id'=> $category->id]) }}">
+                                    <a onclick="return confirmDelete()" class="delete btn btn-danger" href="{{ route('admin.category.destroy', ['id'=> $category->id]) }}">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
                                 </td>

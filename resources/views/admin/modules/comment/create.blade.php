@@ -38,10 +38,10 @@
     <div class="row">
         <div class="col-lg-12">
             <!-- Basic charts strats here-->
-            <div class="panel panel-success">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <i class="fa fa-fw fa-file-text-o"></i> add Comment
+                        <i class="fa-solid fa-file-circle-plus"></i> add Comment
                     </h4>
                 </div>
                 <div class="panel-body">
@@ -57,13 +57,22 @@
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                         
                                                         <select class="form-control fill_it" name="id_user">
-                                                            <option value="0">-------User-------</option>
+                                                            <option value="">-------User-------</option>
                                                             @foreach($users as $user)
                                                                 <option value="{{$user ->id}}" {{ old('id_user') == $user ->id ? 'selected' : ''}} >{{$user ->fullname}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_user')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -74,13 +83,22 @@
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
                                                         <select class="form-control fill_it" name="id_news">
-                                                            <option value="0">-------News-------</option>
+                                                            <option value="">-------News-------</option>
                                                             @foreach($news as $n)
                                                                 <option value="{{$n ->id}}" {{ old('id_news') == $n ->id ? 'selected' : ''}} >{{$n ->title}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_news')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +136,7 @@
                                                 </span>
                                                 <select class="form-control fill-it" name="status" >
                                                     <option value="1" {{ old('status') == 1 ? 'selected' : ''}} >Show</option>
-                                                    <option value="1" {{ old('status') == 2 ? 'selected' : ''}}>Hidden</option>
+                                                    <option value="0" {{ old('status') == 0 ? 'selected' : ''}}>Hidden</option>
                                                 </select>
                                             </div>
                                         </div>

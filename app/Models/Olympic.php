@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Medal;
+use App\Models\Olympic_sport;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Olympic extends Model
 {
@@ -22,4 +25,9 @@ class Olympic extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function medal() : HasManyThrough
+    {
+        return $this->hasManyThrough(Medal::class,Olympic_sport::class,'id_olympic','id_olympic_sport','id','id');
+    }
 }

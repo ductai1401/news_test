@@ -7,6 +7,7 @@
 <script src="{{ asset('admin/js/custom_js/metisMenu.js') }}" type="text/javascript"></script>    
 <script src="{{ asset('admin/js/custom_js/backstretch.js') }}"></script>
 
+@stack('script')
 
 <!-- end of global level js -->
 <script src="{{ asset('admin/vendors/jquery-circliful/js/jquery.circliful.min.js') }}" type="text/javascript"></script>

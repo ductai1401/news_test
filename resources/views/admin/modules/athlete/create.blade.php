@@ -38,10 +38,10 @@
     <div class="row">
         <div class="col-lg-12">
             <!-- Basic charts strats here-->
-            <div class="panel panel-success">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <i class="fa fa-fw fa-file-text-o"></i> Add Athlete
+                        <i class="fa-solid fa-file-circle-plus"></i> Add Athlete
                     </h4>
                 </div>
                 <div class="panel-body">
@@ -85,6 +85,15 @@
                                                 </span>
                                                 <input id="image" type="file" name="image" class="form-control fill_it" placeholder="Please enter the avatar athlete">
                                             </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('image')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -112,19 +121,28 @@
                                         
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">Counntry</label>
+                                        <label class="col-md-3 control-label">Country</label>
                                         <div class="col-md-7">
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                         
                                                         <select class="form-control fill_it" name="id_country">
-                                                            <option value="0">-------Country-------</option>
+                                                            <option value="">-------Country-------</option>
                                                             @foreach($countrys as $country)
                                                                 <option value="{{ $country->id}}"  {{ old('id_country') == $country->id ? 'selected' : ' '}}>{{$country->name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_country')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +161,29 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_sport')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="status">
+                                            Status
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <select name="status" id="" class="form-control">
+                                                <option value="1" {{ old('status')==1 ? 'selected' : '' }}>Show</option>
+                                                <option value="0" {{ old('status')==0 ? 'selected' : '' }}>Hidden</option>
+                                            </select>
+                                        </div>
+                                         
                                     </div>
                                 </div>
 

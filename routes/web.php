@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\OlympicController;
 use App\Http\Controllers\Admin\SportController;
+use App\Http\Controllers\Admin\Olympic_sportController;
 
 
 use App\Http\Controllers\AuthController;
@@ -81,7 +82,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('admin.404');
     })->name('404');
 
+    Route::prefix('olympic_sport')->name('olympic_sport.')->controller(Olympic_sportController::class)->group(function () {
 
+        Route::get('sport/{id}', 'getSport')->name('sport');
+
+        Route::get('olympic_s/{idOlympic}/{idSport}', 'getOlympic_Sport')->name('o_s');
+
+       
+    });
 
     Route::prefix('category')->name('category.')->controller(CategoryController::class)->group(function () {
         Route::get('index', 'index')->name('index');

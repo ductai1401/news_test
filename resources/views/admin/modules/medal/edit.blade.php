@@ -1,6 +1,6 @@
 @extends('admin/master')
 
-@section('action','Update Medals')
+@section('action','Edit Medals')
 @section('module', 'Medal')
 
 
@@ -19,7 +19,7 @@
             <a href='{{ route('admin.medal.index') }}'>@yield('module')</a>
         </li>
         <li>
-            <a href='{{ route('admin.medal.edit', ['id' => 1]) }}'>@yield('action')</a>
+            <a href='{{ route('admin.medal.edit', ['id' => $id]) }}'>@yield('action')</a>
         </li>
     </ol>
 </section>
@@ -34,15 +34,12 @@
                     <h4 class="panel-title">
                         <i class="fa fa-fw fa-file-text-o"></i> Edit Medal
                     </h4>
-                    <span class="pull-right">
-                        <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
-                        <i class="glyphicon glyphicon-remove removepanel"></i>
-                    </span>
+                    
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form id="add_news_form" action="{{ route('admin.medal.update', ['id' => 1]) }}" method="post" class="form-horizontal" >
+                            <form id="add_news_form" action="{{ route('admin.medal.update', ['id' => $id]) }}" method="post" class="form-horizontal" >
                                 @csrf
                                 <div class="form-body">
                                     <div class="form-group">
@@ -51,14 +48,20 @@
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                         
-                                                        <select class="form-control fill_it" name="id_olympic_sport">
-                                                            <option value="0">-------Olympic-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                        <select class="form-control fill_it" name="id_olympic" id="olympic" disabled>
+                                                            <option value="{{ old('id_olympic', $medal->olympic->id)}}">{{ $medal ->olympic ->name}}</option>
                                                         </select>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_sport')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -67,15 +70,53 @@
                                         <div class="col-md-7 ">
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                    <div class="select_align">                                                   
-                                                        <select class="form-control fill_it" name="id_spost">
-                                                            <option value="0">-------Sport-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                    <div class="select_align">                         
+                                                        <select class="form-control fill_it" name="id_sport" id="sport" disabled>
+                                                            <option value="{{ old('id_sport', $medal->sport->id)}}">{{ $medal ->sport ->name}}</option>
                                                         </select>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_sport')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
+                                        </div>
+
+                                        {{-- option 2 --}}
+                                        {{-- <div id='olympic_sport'>
+
+                                        </div> --}}
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Country</label>
+                                        <div class="col-md-7 ">
+                                            <div class="input-group">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="select_align">                                                   
+                                                        <select class="form-control fill_it" name="id_country">
+                                                            <option value="">-------Country-------</option>
+                                                            @foreach($countrys as $country)
+                                                                <option value="{{ $country->id}}"  {{ old('id_country', $medal->id_country) == $country->id ? 'selected' : ' '}}>{{$country->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_country')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -86,13 +127,22 @@
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
                                                         <select class="form-control fill_it" name="id_athlete">
-                                                            <option value="0">-------Athlete-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                            <option value="">-------Athlete-------</option>
+                                                            @foreach($athletes as $athlete)
+                                                                <option value="{{ $athlete->id}}"  {{ old('id_athlete', $medal ->id_athlete) == $athlete->id ? 'selected' : ' '}}>{{$athlete->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_athlete')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -103,12 +153,21 @@
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
-                                                <select class="form-control fill_it" name="id_athlete">
-                                                    <option value="0">-------Posision-------</option>
+                                                <select class="form-control fill_it" name="posision">
+                                                    <option value="">-------Posision-------</option>
                                                     @for($i = 1 ; $i <= 10; $i++)
-                                                        <option value="{{$i}}">{{$i}}</option>
+                                                        <option value="{{$i}}" {{ old('posision', $medal ->posision) == $i ? 'selected' : ''}}>{{$i}}</option>
                                                     @endfor
                                                 </select>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('posision')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -120,9 +179,31 @@
                                         <div class="col-md-7">
                                             <div class="input-group">
 
-                                                <input id="brith_day" type="url" name="video" class="form-control fill_it" placeholder="Please enter the brith day">
+                                                <input id="brith_day" type="url" name="video" class="form-control fill_it" placeholder="Please enter the video">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('video')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="status">
+                                            Status
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <select name="status" id="" class="form-control">
+                                                <option value="1" {{ old('status', $medal ->status)==1 ? 'selected' : '' }}>Show</option>
+                                                <option value="0" {{ old('status', $medal ->status)==0 ? 'selected' : '' }}>Hidden</option>
+                                            </select>
+                                        </div>
+                                         
                                     </div>
                                 </div>
 
@@ -130,7 +211,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="mahesh btn btn-primary" >Update</button>
+                                            <button type="submit" class="mahesh btn btn-success" >Update</button>
                                         </div>
                                     </div>
                                 </div>

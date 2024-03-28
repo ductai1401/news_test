@@ -166,13 +166,10 @@ class UserController extends Controller
             return redirect()->route('admin.404');
         } 
 
-        $old_image_path = public_path('uploads/users/'. $user->image);
-            if(file_exists($old_image_path)){
-                unlink($old_image_path);
-            }
+        // $user->delete();
+        $user ->status = 6;
+        $user ->save();
 
-
-        $user->delete();
 
         return redirect()->route('admin.user.index')->with('success', 'Delete user success');
     }
