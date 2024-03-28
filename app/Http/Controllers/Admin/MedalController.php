@@ -8,10 +8,7 @@ use App\Http\Requests\Medal\UpdateRequest;
 use App\Models\Athlete;
 use App\Models\Country;
 use App\Models\Medal;
-use App\Models\Olympic;
 use App\Models\Olympic_sport;
-use App\Models\Sport;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class MedalController extends Controller
@@ -57,20 +54,40 @@ class MedalController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $medal = new Medal();
 
+        $medal = new Medal();
+        // option 2 for id_olympic_sports
+        // $id_olympic_sport =$request ->id_olympic_sport;
+
+        // if(!empty($id_olympic_sport)){
+        //     $medals = Medal::where('id_olympic_sport','=',$id_olympic_sport)->first();
+        //     if($medals->id){
+        //         $validated = $request->validate([
+        //         'posison' => 'unique:medals,posision',
+                
+        //     ],[
+        //         'posison.unique' => 'This rank is already in use, please re-enter another position',
+        //     ]);
+        //     }
+           
+        // };
 
 
         
-        $medal->id_olympic_sport = $request -> id_olympic_sport;
-        $medal->id_country = $request -> id_country;
-        $medal->id_athlete = $request -> id_athlete;
-        $medal->brith_day = $request -> brith_day;
+        $id_sport = $request -> id_sport;
+        $id_olympic = $request -> id_olympic;
+    
+        $olympic_sport = Olympic_sport::where('id_olympic', '=', $id_olympic)->where( 'id_sport', '=', $id_sport)->first();
+        
+        
+
         $medal->posision = $request -> posision;
+        $medal->id_athlete = $request -> id_athlete;
+        $medal->id_country = $request -> id_country;
+        $medal -> id_olympic_sport = $olympic_sport ->id;
         $medal->status = $request -> status;
         $medal->video = $request -> video;
-
-
+        
 
         $medal->save();
 
@@ -122,35 +139,12 @@ class MedalController extends Controller
             return redirect()->route('admin.404');
         } 
 
-        
-        $file = $request ->image;
-        if(!empty($file)){
-            
-            $validated = $request->validate([
-                'image' => 'mimes:jbg,jpeg,bmp,png',
-                
-            ],[
-                'image.mimes' => 'Image must jbg,jpeg,bmp,png', 
-            ]);
 
-            $old_image_path = public_path('uploads/medals/'. $medal->image);
-            if(file_exists($old_image_path)){
-                unlink($old_image_path);
-                
-            }
-
-            $fileName = time(). '-'.  $file->getClientOriginalName(); 
-
-            $medal->image = $fileName;
-            $file -> move(public_path('uploads/medals'), $fileName );
-            
-        }
-
-        $medal->name = $request -> name;
+        $medal->posision = $request -> posision;
+        $medal->id_athlete = $request -> id_athlete;
         $medal->id_country = $request -> id_country;
-        $medal->id_sport = $request -> id_sport;
-        $medal->brith_day = $request -> brith_day;
-        
+        $medal->status = $request -> status;
+        $medal->video = $request -> video;
 
         $medal->save();
 

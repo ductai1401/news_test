@@ -48,16 +48,51 @@
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                         
-                                                        <select class="form-control fill_it" name="id_olympic_sport">
-                                                            <option value="">-------Olympic-------</option>
-                                                            @for($i = 1 ; $i <= 3; $i++)
-                                                                <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
+                                                        <select class="form-control fill_it" name="id_olympic" id="olympic" disabled>
+                                                            <option value="{{ old('id_olympic', $medal->olympic->id)}}">{{ $medal ->olympic ->name}}</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_sport')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Sport</label>
+                                        <div class="col-md-7 ">
+                                            <div class="input-group">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="select_align">                         
+                                                        <select class="form-control fill_it" name="id_sport" id="sport" disabled>
+                                                            <option value="{{ old('id_sport', $medal->sport->id)}}">{{ $medal ->sport ->name}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_sport')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
+                                        </div>
+
+                                        {{-- option 2 --}}
+                                        {{-- <div id='olympic_sport'>
+
+                                        </div> --}}
+
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Country</label>
@@ -65,7 +100,7 @@
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
-                                                        <select class="form-control fill_it" name="id_spost">
+                                                        <select class="form-control fill_it" name="id_country">
                                                             <option value="">-------Country-------</option>
                                                             @foreach($countrys as $country)
                                                                 <option value="{{ $country->id}}"  {{ old('id_country', $medal->id_country) == $country->id ? 'selected' : ' '}}>{{$country->name}}</option>
@@ -73,6 +108,15 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_country')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -91,6 +135,15 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('id_athlete')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -100,12 +153,21 @@
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
-                                                <select class="form-control fill_it" name="id_athlete">
-                                                    <option value="0">-------Posision-------</option>
+                                                <select class="form-control fill_it" name="posision">
+                                                    <option value="">-------Posision-------</option>
                                                     @for($i = 1 ; $i <= 10; $i++)
                                                         <option value="{{$i}}" {{ old('posision', $medal ->posision) == $i ? 'selected' : ''}}>{{$i}}</option>
                                                     @endfor
                                                 </select>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('posision')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +179,16 @@
                                         <div class="col-md-7">
                                             <div class="input-group">
 
-                                                <input id="brith_day" type="url" name="video" class="form-control fill_it" placeholder="Please enter the brith day">
+                                                <input id="brith_day" type="url" name="video" class="form-control fill_it" placeholder="Please enter the video">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('video')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>

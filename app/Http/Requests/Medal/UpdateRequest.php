@@ -11,7 +11,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'posision' => 'required|numeric|unique:medals,position,'.$this->id, 
+            'posision' => 'required|numeric', 
+            'id_country' => 'required',
+            'id_athlete' => 'required',
+            'video' => 'required',
         ];
     }
 
@@ -30,6 +33,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'posision.required' => 'Rankings cannot be empty !!!',
+            'video.required' => 'Rankings cannot be empty !!!',
+            'id_athlete.required' => 'Rankings cannot be empty !!!',
+            'id_country.required' => 'Rankings cannot be empty !!!',
             'posision.numeric' => 'Rankings must be numeric !!!',
             'posision.unique' => 'This rank is already in use, please re-enter another position',
             

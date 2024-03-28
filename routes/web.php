@@ -84,7 +84,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::prefix('olympic_sport')->name('olympic_sport.')->controller(Olympic_sportController::class)->group(function () {
 
-        Route::get('sport/{idOlympic}', 'getSport')->name('sport');
+        Route::get('sport/{id}', 'getSport')->name('sport');
+
+        Route::get('olympic_s/{idOlympic}/{idSport}', 'getOlympic_Sport')->name('o_s');
 
        
     });
