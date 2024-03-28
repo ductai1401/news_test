@@ -14,12 +14,46 @@
                             href="#">
                             <span class="social-icon"><i class="fa fa-twitter"></i></span> </a> <a
                             title="Google+" href="#"> <span class="social-icon"><i
-                                    class="fa fa-google-plus"></i></span> </a> <a title="Linkdin"
-                            href="#"> <span class="social-icon"><i class="fa fa-linkedin"></i></span>
+                                    class="fa-brands fa-google-plus"></i></span> </a> <a title="Linkdin"
+                            href="#"> <span class="social-icon"><i class="fa-brands fa-linkedin"></i></span>
                         </a>
                         <a title="Rss" href="#"> <span class="social-icon"><i
-                                    class="fa fa-rss"></i></span> </a> <a title="Skype" href="#">
-                            <span class="social-icon"><i class="fa fa-skype"></i></span> </a>
+                                    class="fa-brands fa-rss"></i></span> </a> <a title="Skype" href="#">
+                            <span class="social-icon"><i class="fa-brands fa-skype"></i></span> </a>
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle padding-user" data-toggle="dropdown"><i class="fa-regular fa-user"></i></a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="{{ asset ('images/vandongvien1.avif')}}" class="img-circle" alt="User Image" width="75px" height="75px">
+                                        <div>
+                                            <p><strong>Jett</strong></p>
+                                            <p>Las Angeles</p>
+                                        </div>
+                                    </li><br>
+                                    <!-- Menu Body -->
+                                    <div class="menu-body">
+                                        <li class="pad-3">
+                                            <a href=""><i class="fa fa-fw fa-user">&nbsp;</i> </a>
+                                            <span>My Profile</span>
+                                        </li><br>
+                                        <li>  
+                                            <a href=""><i class="fa fa-fw fa-gear">&nbsp;</i></a> 
+                                            <span>Account Settings</span>
+                                        </li><br>
+                                        <li>
+                                            <a href=""><i class="fa-solid fa-clock-rotate-left">&nbsp;</i></a>                                            
+                                            <span>History</span>
+                                        </li><br>
+                                        <li>
+                                            <a href=""><i class="fa-solid fa-right-from-bracket">&nbsp;</i></a>
+                                            <span>Logout</span>
+                                        </li>
+                                    </div>
+
+                                </ul>
+                            </li>
+                        </a>
                     </li>
                 </ul>
             </div>

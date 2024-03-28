@@ -225,7 +225,7 @@
                 <!-- User Account: style can be found in dropdown-->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle padding-user" data-toggle="dropdown">
-                        <img src="https://img.meta.com.vn/Data/image/2021/09/21/anh-meo-ngau-12.jpg" width="35px" height="35" class="img-circle img-responsive pull-left"  alt="User Image">
+                        <img src="https://img.meta.com.vn/Data/image/2021/09/21/anh-meo-ngau-12.jpg" width="40px" height="40px" class="img-circle pull-left"  alt="User Image">
                         <div class="riot">
                             <div>
                                 Natali

@@ -59,6 +59,11 @@ Route::get('/olympic/athlete', function() {
     return view('athlete');
 })->name('athlete');
 
+Route::get('/olympic/profile', function() {
+    return view('profile');
+})->name('profile');
+
+
 Route::prefix('auth')->name('auth.')->controller(AuthController::class)->group(function () {
     Route::get('/login', 'viewLogin')->name('viewLogin');
 
