@@ -29,20 +29,17 @@
 
     <section>
         <div class="container">
-            <div class="row d-flex justify-content-around ">
+            <div class="row d-flex justify-content-around">
                 @for($i = 1; $i < 4; $i++ )
-                <div class="col-md-3 p-4 border-danger bg-white">
-                    <picture >
-                        <img src="{{ asset('images/logo_2022.jpg')}}" class="img-thumbnail p-0 border-0" alt="logo">
+                <div class="col-md-3 bg-white" style="border-radius: 5px; border: 3px solid #C0C0C0; padding: 0">
+                    <picture style="display: flex; justify-content: center; height:300px;">
+                        <img src="{{ asset('images/logo_2022.jpg')}}" class="img-thumbnail p-0" alt="logo" height="400" width="100%">
                     </picture>
                     
-                    <div class="text-center mt-4 p-1" >
-                        <a class="text-dark d-flex justify-content-between p-2" href="#">
-                            Beijing 2022
-                            <span>
-                                 <i class="fa fa-arrow-right " aria-hidden="true"></i>
-                            </span>
-                        </a>
+                    <div class="text-center p-4" style="background-color: #C0C0C0; height:150px">
+
+                        <h4 style="color: white">Beijing 2022</h4>
+                        <a href=""><button type="button" class="btn btn-outline-warning m-3" style="font-weight:600; width:250px; color:white; border-radius:30px; border:solid 3px">More Detail</button></a>
 
                     </div>
                 </div>

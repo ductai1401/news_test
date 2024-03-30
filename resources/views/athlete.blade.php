@@ -3,61 +3,77 @@
 @section('title', 'Athlete')
 
 @section('content')
-    {{-- <div class="container ">
-        <div class="row m-5">
-            <div class="col-lg-12 ">
-                <div style="height: 500px">
-                    <div class="row">
-                        <div class="col-5">
-                            <img src="{{asset('images/vandongvien1.avif')}}" width="350" height="350px" alt="athlate" style="border-radius: 50%;" >
-                        </div>
-                        <div class="col-7 mt-5">
-                            <span style="font-size: 60px" class="h21"><strong> YUZURU HANYU </strong></span>
-                            <h3 style="font-family: 'Arial, Helvetica, sans-serif';">"I try to find challenges after every competition and overcome them the next time."</h3>
+
+    <div class="container mt-3 ath">
+        <div class="row ml-1 mr-1 athall">
+            <div class="col-3 mb-3 athsection1">
+                <div class="detail1 mt-3">
+                    <div class="detail1a">
+                        <img src="{{asset('images/flag/Japan.png')}}"  width="40" height="30" alt="flag" style="border:#dcdcdc solid 1px;">
+                        <div class="ml-3">
+                            <p class="m-0" style="color: #696969">Team</p>
+                            <p class="m-0" style="font-size: 16px">Japan</p>
                         </div>
                     </div>
+                    <span style="color: #696969"> Sport &#160;<strong>Figure Skating</strong></span>
                 </div>
-            </div> 
-        </div>
 
-        <div class="athlete-ensign mt-5 mb-3">
-            <img src="{{asset('images/quoc-ky-nhat-ban.png')}}"  width="50px" height="30px" alt="flag" style="border:#dcdcdc solid 1px;" class="mt-2">
-            <div class="ml-2">
-                <p class="m-0" style="color: #696969">Team</p>
-                <p class="m-0" style="font-size: 16px">Japan</p>
+                <div class="divimg"><img src="{{asset('images/vandongvien1.avif')}}" alt="" width="200" height="200" class="mt-5 mainimg"></div>
+                <span style="font-size: 25px; display:flex; justify-content: center;" class="h21"><strong> YUZURU HANYU </strong></span>
+
+                <ul class="mt-5">
+                    <a href="#sc1"><li><h4>Olympic Results</h4></li></a>
+                    {{-- <a href="#sc2"><li><h4>Biography</h4></li></a> --}}
+                    <a href="#sc3"><li><h4>Latest News</h4></li></a>
+                    <a href="#sc4"><li><h4>Replays</h4></li></a>
+                </ul>
+            </div>
+    
+            <div class="col-9 p-0">
+                <div class="ml-3">
+                    <div class="athsection2 mb-3" id="sc1">
+                        <h3 class="p-3">Olympic Results</h3>
+                        <table class="table m-3 mt-5 athtable" style="width: 1400px" >
+                            <tr>
+                                <td>Olympic Medals</td>
+                                <td>
+                                    <td>2 Gold</td>
+                                    <td>2 Gold</td>
+                                    <td>2 Gold</td>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Games Participations</td>
+                                <td></td>
+                                <td></td>
+                                <td>3</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>First Olympic Games</td>
+                                <td></td>
+                                <td></td>
+                                <td>Sochi 2014</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    {{-- <div class="athsection2 mb-3" id="sc2">
+                        <h3 class="p-3 mb-3">Biography</h3>
+                    </div> --}}
+
+                    <div class="athsection2 mb-3" id="sc3" >
+                        <h3 class="p-3 mb-3">Latest News</h3>
+                    </div>
+
+                    <div class="athsection2 mb-3" id="sc4">
+                        <h3 class="p-3 mb-3">Replays</h3>
+                    </div>
+                </div>
             </div>
         </div>
-        <span style="color: #696969"> Sport &#160;<strong>Figure Skating</strong></span>
 
-
-        <div class="col-lg-4 ">
-            <div class="container-lg pt-5">
-                <div class="athlete-table">
-                    <table class="table">
-                        <tr><td>Olympic Medals</td><td>2 &nbsp; G</td></tr>
-                        <tr><td>Games Participations</td><td>3</td></tr>
-                        <tr><td>First Olympic Games</td><td>Sochi 2014</td></tr>
-                        <tr><td>Year of Birth</td><td>1994</td></tr>
-                        <tr><td></td><td><a href=""><button class="btn" style="background-color: #dcdcdc">Olympic Results</button></a></td></tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        
-
-        <div class="athlete-bio ">
-            <h1 class="h21" style="font-size: 70px; margin: 0 70px 0 50px;">BIOGRAPHY</h1>
-            <h5 style="width: 600px">It's hard to argue that anyone has had a bigger impact on modern-day figure skating than Hanyu Yuzuru, the two-time Olympic champion.<br>
-
-                Hanyu’s technique is outstanding, but he combines his ability with an astonishing creativity and artistry. He makes difficult moves like the Beillmann spin and the doughnut spin look simple.<br>
-                
-                Battling through multiple injuries, the Japanese star has changed the landscape of the sport since his first Olympic title at Sochi 2014. A huge presence in Japan, he is a star of TV and film as well as one of the country’s most famous athletes.<br>
-                
-                Aged just 19, Hanyu became the first Asian man to win an Olympic gold medal when he triumphed in Sochi, becoming the youngest men's champion since 1948. He followed up by defending his Olympic title in PyeongChang 2018, becoming the first man to go back-to-back for Olympic gold since 1952 (Richard Button).<br>
-                
-                During his career, Hanyu has also won two world titles and four Grand Prix Finals – cementing himself as perhaps one of Japan's finest ice athletes, and also his place as one of the greatest figure skaters in history. Hanyu was also the first skater to successfully land a quadruple loop jump in ISU competition, doing so in 2016.</h5>
-        </div>
-
-
-    </div> --}}
+    </div>
 @endsection

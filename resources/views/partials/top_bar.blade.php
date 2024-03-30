@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <ul class="unstyled top-nav">
                     <li><a href="{{ route('auth.viewLogin')}}">Login & Signup</a></li>
-                    <li><a href="{{ route('admin.dashboard')}}">admin</a></li>
+                    <li><a href="{{ route('admin.dashboard')}}">Admin</a></li>
                 </ul>
             </div>
             <div class="col-md-4 top-social text-lg-right text-md-center">
@@ -12,13 +12,13 @@
                     <li> <a title="Facebook" href="#"> <span class="social-icon"><i
                                     class="fa-brands fa-facebook-f"></i></span> </a> <a title="Twitter"
                             href="#">
-                            <span class="social-icon"><i class="fa fa-twitter"></i></span> </a> <a
+                            <span class="social-icon"><i class="fa-brands fa-twitter"></i></span> </a> <a
                             title="Google+" href="#"> <span class="social-icon"><i
                                     class="fa-brands fa-google-plus"></i></span> </a> <a title="Linkdin"
                             href="#"> <span class="social-icon"><i class="fa-brands fa-linkedin"></i></span>
                         </a>
                         <a title="Rss" href="#"> <span class="social-icon"><i
-                                    class="fa-brands fa-rss"></i></span> </a> <a title="Skype" href="#">
+                                    class="fa fa-rss"></i></span> </a> <a title="Skype" href="#">
                             <span class="social-icon"><i class="fa-brands fa-skype"></i></span> </a>
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle padding-user" data-toggle="dropdown"><i class="fa-regular fa-user"></i></a>

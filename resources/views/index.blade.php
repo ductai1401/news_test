@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title','home')
+@section('title','Home')
 
 @section('content')
     <!-- Featured Post Area Start -->

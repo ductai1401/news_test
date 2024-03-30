@@ -14,6 +14,7 @@
     <link type="text/css" href="{{ asset('admin/css/font-awesome.min.css') }}" rel="stylesheet" />
     <link type="text/css" href="{{ asset('admin/css/custom_css/metisMenu.css') }}" rel="stylesheet" />
     <link type="text/css" href="{{ asset('admin/css/user.css') }}" rel="stylesheet" />
+    
 
     <!-- Date picker -->
     <link href="{{ asset('vendors/air-datepicker-master/dist/css/datepicker.min.css') }}" rel="stylesheet" type="text/css">

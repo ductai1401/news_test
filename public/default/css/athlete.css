@@ -1,0 +1,68 @@
+ul{
+    list-style: none;
+    padding: 0px !important;
+}
+
+.mainimg{
+    border-radius: 50%;
+}
+
+.divimg{
+    display: flex;
+    justify-content: center;
+}
+
+.detail1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail1a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li h4{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    border-bottom: solid 1px #dcdcdc;
+    padding-top: 20px;
+}
+
+li h4:hover{
+    color: red;
+    border-bottom: red solid 1px;
+}
+
+.col-3, .athsection2{
+    background-color: #dcdcdc33;
+    border-radius: 5px;
+}
+
+.col-3{
+    width: 800px;
+}
+
+.athsection2{
+    width: 100%;
+    height: 500px;
+}
+
+.athsection1 {
+    height: 800px;
+}
+
+.athtable{
+    width: 915px !important;
+
+}
+
+.athtable td{
+    width: 300px;
+    text-align: center;
+    padding-top: 30px !important;
+}

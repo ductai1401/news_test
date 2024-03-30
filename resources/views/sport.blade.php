@@ -10,10 +10,10 @@
             <div class="row">
                 <div class="col-lg-12 pad-l">
                     <div class="utf_post_overaly_style contentTop">
-                        <div class="utf_post_thumb"> <img class="img-fluid" style="height: 400px" src="{{ asset('images/logo_sport.jpg') }}"
+                        <div class="utf_post_thumb"> <img class="img-fluid" src="{{ asset('images/sportolympic.jpg') }}"
                                 alt="" /></div>
                         <div class="utf_post_content_n">
-                            <h2 class="utf_post_title font_s"> </h2>
+                            <h2 class="utf_post_title font_s h21" style="color: white">OLYMPIC SPORTS</h2>
                         </div>
                     </div>
                 </div>

@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="{{ asset('default/css/colorbox.css')}}">
 <link rel="stylesheet" href="{{ asset('default/css/topbar.css')}}">
 <link type="text/css" href="{{ asset('admin/css/user.css') }}" rel="stylesheet" />
+<link type="text/css" href="{{ asset('default/css/athlete.css') }}" rel="stylesheet" />
+
 
 
 

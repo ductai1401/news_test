@@ -7,7 +7,7 @@
 
 <section class="content-header">
     <!--section starts-->
-    <h2>@yield('action')</h2>
+    {{-- <h2>@yield('action')</h2> --}}
     <ol class="breadcrumb">
         <li>
             <a href='{{route('admin.dashboard')}}'>
