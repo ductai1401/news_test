@@ -14,6 +14,12 @@ use App\Http\Controllers\Admin\Olympic_sportController;
 
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Client\AthleteController as ClientAthleteController;
+use App\Http\Controllers\Client\CountryController as ClientCountryController;
+use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\OlympicController as ClientOlympicController;
+use App\Http\Controllers\Client\ResultsController;
+use App\Http\Controllers\Client\SportController as ClientSportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +68,25 @@ Route::get('/olympic/athlete', function() {
 Route::get('/olympic/profile', function() {
     return view('profile');
 })->name('profile');
+
+Route::prefix('client')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+
+    Route::get('/olympic_games', [ClientOlympicController::class, 'olympic_games'])->name('olympic_games');
+    Route::get('/olympic_games/{name}/{id}', [ClientOlympicController::class, 'olympic_seasion'])->name('olympic_seasion');
+
+
+    Route::get('/sports/{name}/{id}', [ClientSportController::class, 'sport'])->name('sport');
+
+    Route::get('/countrys', [ClientCountryController::class, 'Country'])->name('Country');
+
+    Route::get('/athletes/{id}', [ClientAthleteController::class, 'athlete'])->name('athlete');
+
+    Route::get('/results', [ResultsController::class, 'results'])->name('results');
+
+
+    
+});
 
 
 Route::prefix('auth')->name('auth.')->controller(AuthController::class)->group(function () {
@@ -118,6 +143,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('update/{id}', 'update')->name('update');
 
         Route::get('destroy/{id}', 'destroy')->name('destroy');
+
+        Route::get('athlete_s/{idSport}/{idCountry}', 'getAthlete')->name('getAthlete_s');
+
+        
     });
 
     Route::prefix('user')->name('user.')->controller(UserController::class)->group(function () {

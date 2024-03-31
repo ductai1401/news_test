@@ -3,6 +3,10 @@
 @section('content')
 
 
+@section('heigh',' 1860px')
+    
+
+
 <div class="container-fluid">
     <div class="row bg-color">
         <div class="col-lg-4">

@@ -2,6 +2,7 @@
 
 @section('module','Olympics')
 @section('action', 'Add Olympics')
+@section('heigh',' 1268px')
 
 @push('hanldejs')
 

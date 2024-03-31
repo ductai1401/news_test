@@ -25,9 +25,10 @@ class StoreRequest extends FormRequest
             'name' => 'required|unique:athletes,name',
             'brith_day' => 'required',
             'id_country' => 'required',
+            
             'id_sport' => 'required',
 
-            'image' => 'required|mimes:jbg,jpeg,bmp,png',
+            // 'image' => 'required|mimes:jbg,jpeg,bmp,png',
             
 
         ];
@@ -39,10 +40,11 @@ class StoreRequest extends FormRequest
             'name.required' => 'The athlete name cannot be left blank !!!',
             'name.unique' => 'The athlete name already exists, please re-enter',
             'brith_day.required' =>'The brith day cannott be left blank !!!',
-            'image.required' => 'Image photos cannot be blank !!!',
+            // 'image.required' => 'Image photos cannot be blank !!!',
             'id_sport.required' => 'The sport cannot be blank !!!',
             'id_country.required' => 'The country cannot be blank !!!',
-            'image.mimes' => 'Documents must be jbg,jpeg,bmp,pngb',
+           
+            // 'image.mimes' => 'Documents must be jbg,jpeg,bmp,pngb',
         ];
     } 
 }

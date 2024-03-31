@@ -2,6 +2,7 @@
 
 @section('action','Add Comments')
 @section('module', 'Comment')
+@section('heigh',' 860px')
 
 @push('hanldejs')
 

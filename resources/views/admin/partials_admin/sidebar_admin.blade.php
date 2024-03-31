@@ -1,4 +1,4 @@
-<section class="sidebar" style="height: 100%;">
+<section class="sidebar"  style="min-height: @yield('heigh');">
     <div id="menu" role="navigation">
         <div class="nav_profile">
             <div class="media profile-left">

@@ -30,4 +30,9 @@ class Olympic extends Model
     {
         return $this->hasManyThrough(Medal::class,Olympic_sport::class,'id_olympic','id_olympic_sport','id','id');
     }
+
+    public function sport() : HasManyThrough
+    {
+        return $this->hasManyThrough(Sport::class,Olympic_sport::class,'id_olympic','id','id','id_sport');
+    }
 }

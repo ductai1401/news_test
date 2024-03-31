@@ -19,10 +19,12 @@
                                     
                                 </a>
                             </li>
-                            <li class="nav-item dropdown utf_mega_dropdown"> <a href="category-style1.html"
-                                    class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                    aria-haspopup="true" aria-expanded="false">Olympic Games <i
-                                        class="fa fa-angle-down"></i></a>
+                            @php
+                                $olympic_games = \App\Models\Olympic::where('status', '!=', 6)->get();     
+
+                            @endphp
+                            <li class="nav-item dropdown utf_mega_dropdown"> <a href="category-style1.html" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-haspopup="true" aria-expanded="false">Olympic_games <i class="fa fa-angle-down"></i></a>
                                 <div class="utf_dropdown_menu utf_mega_menu_content clearfix">
                                     <div class="menu-tab">
                                         <div class="row">
@@ -33,142 +35,38 @@
                                                             class="tab-head"> <span class="tab-text-title"><i
                                                                     class="fa fa-angle-double-right"></i>
                                                                 All</span> </span> </a> </li>
-                                                <li class="nav-item"> <a class="animated fadeIn"
-                                                        href="#tab-two" data-toggle="tab"> <span
-                                                            class="tab-head"> <span class="tab-text-title"><i
-                                                                    class="fa fa-angle-double-right"></i>
-                                                                Olympic Games</span> </span> </a> </li>
-                                                <li class="nav-item"> <a class="animated fadeIn"
-                                                        href="#tab-three" data-toggle="tab"> <span
-                                                            class="tab-head"> <span class="tab-text-title"><i
-                                                                    class="fa fa-angle-double-right"></i>
-                                                                Olympci Winter Games</span> </span> </a> </li>
-                                                <li class="nav-item"> <a class="animated fadeIn"
-                                                        href="#tab-three" data-toggle="tab"> <span
-                                                            class="tab-head"> <span class="tab-text-title"><i
-                                                                    class="fa fa-angle-double-right"></i>
-                                                                Summer Youth Olympic Games</span> </span> </a> </li>
-                                                <li class="nav-item"> <a class="animated fadeIn"
-                                                        href="#tab-three" data-toggle="tab"> <span
-                                                            class="tab-head"> <span class="tab-text-title"><i
-                                                                    class="fa fa-angle-double-right"></i>
-                                                                Winter Youth Olympic Games</span> </span> </a> </li>
                                             </ul>
                                             <div class="tab-content col-10">
                                                 <div class="tab-pane fade show active" id="tab-one">
                                                     <div class="row">
-                                                        <div class="col-md-3">
+                                                        @foreach ($olympic_games as $olympic_game)
+                                                        
+                                                        @php 
+                                                            $image_url = public_path("uploads/olympics/logos") . '/' . $olympic_game ->logo;
+                                                            if(!file_exists($image_url)) {
+                                                                $image_url = asset('images/error.jpg');
+                                                            } else {
+                                                                $image_url = asset("uploads/olympics/logos") .'/' . $olympic_game ->logo;
+                                                            }
+                                                        @endphp    
+                                                        
+                                                        <div class="col-md-3 text-center">
                                                             <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/health1.jpg"
+                                                                <div class="align-content-center"> <a
+                                                                        href="#"><img class="" style="width: 120px; height: 100px"
+                                                                            src="{{$image_url}}"
                                                                             alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Health</a>
                                                                 <div class="utf_post_content">
                                                                     <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">That wearable on
-                                                                            your wrist could soon track
-                                                                            your…</a> </h2>
+                                                                            href="{{ route('olympic_seasion',['name' => $olympic_game ->name, 'id' => $olympic_game ->id])}}">{{ $olympic_game->name}}</a> </h2>
                                                                 </div>
-                                                            </div>
+                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/health2.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Health</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">Can't shed those
-                                                                            Gym? The problem might be in
-                                                                            your…</a> </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/health3.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Health</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">Deleting fears from
-                                                                            the brain means you might neve…</a>
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/health4.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Health</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">Smart packs parking
-                                                                            sensor tech and beeps when col…</a>
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="tab-pane animated fadeIn" id="tab-two">
-                                                    <div class="row">
-                                                        @for($i = 1; $i <= 3; $i++)
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/travel1.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Travel</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">That wearable on
-                                                                            your wrist could soon track
-                                                                            your…</a> </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        @endfor
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane animated fadeIn" id="tab-three">
-                                                    <div class="row">
-                                                        @for($i = 1; $i <= 3; $i++)
-                                                        <div class="col-md-3">
-                                                            <div class="utf_post_block_style clearfix">
-                                                                <div class="utf_post_thumb"> <a
-                                                                        href="#"><img class="img-fluid"
-                                                                            src="images/news/lifestyle/food1.jpg"
-                                                                            alt="" /></a> </div>
-                                                                <a class="utf_post_cat"
-                                                                    href="#">Food</a>
-                                                                <div class="utf_post_content">
-                                                                    <h2 class="utf_post_title title-small"> <a
-                                                                            href="#">That wearable on
-                                                                            your wrist could soon track
-                                                                            your…</a> </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        @endfor
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>

@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Olympic/ 2022')
+@section('title', '{{$olympic->name}}')
 
 @section('content')
 <section class="pt-0">
@@ -13,15 +13,23 @@
                 <div class="utf_post_content_n">
                     <div class="season-section1">
                         <div>
+                            @php 
+                            $image_url = public_path("uploads/olympics/logos") . '/' . $olympic ->logo;
+                            if(!file_exists($image_url)) {
+                                $image_url = asset('images/error.jpg');
+                            } else {
+                                $image_url = asset("uploads/olympics/logos") .'/' . $olympic ->logo;
+                            }
+                        @endphp    
                             <div>
-                                <img class="img-thumbnail bg-white border-0" src="{{ asset('images/logo_2022.jpg')}}" alt="logo">
+                                <img class="img-thumbnail bg-white border-0" src="{{ $image_url }}" alt="logo">
                             </div>
                         </div>
                         <div class="col-lg-4 d-flex flex-md-column justify-content-end "  style="background-color: #b6a6a680; border-radius:5px; padding: 50px">
-                            <h1>Beijing 2022</h1>
+                            <h1>{{$olympic ->name}}</h1>
                             <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom">
                                 <span>Country</span>
-                                10
+                                {{$olympic ->country}}
                             </div>
                             <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom">
                                 <span>Athlete</span>
@@ -51,17 +59,13 @@
         <div class="container d-flex justify-content-around">
             <div class="row">
                 <div class="col-4 h21" >
-                    <span>About the games</span>
+                    <h1>About the games</h1>
                 </div>
             
                 <section class=" col-lg-8">
-                    <p>Having won the bid for the 2022 Olympic Winter Games on 31 July 2015, Beijing became the first city in the world to have hosted both the summer and winter editions of the Olympic Games.</p>
-                    <p>With a vision of “Joyful Rendezvous upon Pure Ice and Snow,” Beijing 2022 built on the legacies of the landmark Beijing 2008 Olympic Games and encouraged 300 million people across China to embrace winter sports.</p>
-                    <p>The 109 events in seven Olympic winter sports were held in the three competition zones of central Beijing, Yanqing and Zhangjiakou.</p>
-    
-                    <h2>Three competition zones</h2>
-                    <p>Beijing hosted four snow events (snowboard big air and freestyle skiing big air, men’s and women’s), plus all the ice events (curling, ice hockey and skating), making use of the legacy venues of Beijing 2008.</p>
-                    <p>Yanqing, a suburban district of Beijing (80km to the northwest) and home to the famous Badaling and Juyongguan stretches of the Great Wall, hosted the Alpine skiing and sliding (bobsleigh, skeleton and luge) events.</p>
+                    <div class="container">
+                        {!! $olympic ->details !!}
+                    </div>
                 </section>
             </div>
         </div>
@@ -71,8 +75,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-4 h21" >
-                    <span>Beijing 2022 - Sports </span>
+                    <span>{{ $olympic ->name }} - Sports </span>
                 </div>
+                {{-- <div class="col-6 d-flex align-items-end">
+                    <label class="col-md-3 control-label h21 m-0" >Sport</label>
+                    <div class="input-group">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="select_align">                         
+                                <select class="form-control fill_it" name="id_country">
+                                    @foreach ($sports->sport as $s)
+                                        <option value="{{ $s ->id }}">{{ $s ->name}}</option>
+                                    @endforeach
+                                    
+                                   
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
             </div><br>
 
             <table class="table table-bordered table-striped text-center">
@@ -85,18 +105,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for($i = 1 ; $i <= 3; $i++) 
+                    @foreach ($sports->sport as $s)
+                    @php 
+                            $image_url = public_path("uploads/sports") . '/' . $s ->image;
+                            if(!file_exists($image_url)) {
+                                $image_url = asset('images/error.jpg');
+                            } else {
+                                $image_url = asset("uploads/sports") .'/' . $s ->image;
+                            }
+                        @endphp
                     <tr>
-                        <td>{{ $i }}</td>
-                        <td>Sport</td>
-                        <td><img src="" alt="Sport_image" width="100px" height="100px"></td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $s ->name }}</td>
+                        <td><img src="{{ $image_url }}" alt="Sport_image" width="60px" height="60px"></td>
                         <td>
-                            <a href="http://">Detail</a>
+                            <a href="{{ route('sport',['name' => $s->name, 'id' =>$s ->id]) }}">Detail</a>
                         </td>
 
                     </tr>
                     
-                    @endfor
+                    @endforeach
                 </tbody>
             </table>
 

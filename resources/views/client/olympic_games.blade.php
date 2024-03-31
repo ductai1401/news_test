@@ -7,19 +7,26 @@
     <section class="utf_block_wrapper ">
         <div class="container">
             <div class="row d-flex justify-content-around" >
-                <div class="col-lg-5">
+                <div class="col-lg-3 text-center">
                     <h1>OLYMPIC GAMES</h1>
                 </div>
-                <div class="col-lg-5" >
-                    <h2>The Olympic Games are the world's only truly global, multi-sport, celebratory athletics competition. With more than 200 countries participating in over 400 events across the Summer and Winter Games, the Olympics are where the world comes to compete, feel inspired, and be together.</h2>
-                </div>
+                <div class="container col-lg-6 col-md-12" >
+                    <h2>
+                        <p class="h2 swal2-height-auto" >
+                        The Olympic Games are the world's only truly global, multi-sport, celebratory athletics competition. With more than 200 countries participating in over 400 events across the Summer and Winter Games, the Olympics are where the world comes to compete, feel inspired, and be together.
+                        </p>
+                    </h2>
+                    </div>
             </div>
         </div>
     </section>
 
-    <section class="utf_ad_content_area text-center utf_banner_area">
+    <section class="utf_ad_content_area text-center utf_banner_area m-2">
         <div class="container" >
-            <h2 class="text-left">Future Games</h2>
+            <div class="row align-content-center">
+                 <h2 class="text-left justify-content-start mt-3 pl-5" style="height: 70px">Future Games</h2>
+            </div>
+           
             <div class="row">
                 <div class="col-md-12 p-0"> <img class="img-fluid p-0" src="{{ asset('images/olympic_avatar.jpg')}}"
                     alt="olympic_paris" /> </div>
@@ -57,7 +64,7 @@
         <div class="row">
             <div class="col-lg-7 col-md-12 pad-r">
                 <div id="utf_featured_slider" class="owl-carousel owl-theme utf_featured_slider">
-                    <div class="item" style="background-image:url(images/results-olympic.jpg)">
+                    <div class="item" style="background-image:url(http://localhost:8000/images/results-olympic.jpg)">
                         <div class="utf_featured_post">
                             <h3 class="utf_post_title title-extra-large1 pl-4 pt-5 "> Results</h3>
                             <div class="utf_post_content1">
