@@ -2,6 +2,7 @@
 
 @section('action', 'Edit Sports')
 @section('module', 'Sport')
+@section('heigh',' 924px')
 
 @push('hanldejs')
     <script src="{{ asset('admin/vendors/summernote/summernote-bs4.min.js') }}"></script>

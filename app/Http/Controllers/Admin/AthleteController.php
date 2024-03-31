@@ -137,6 +137,7 @@ class AthleteController extends Controller
         $athlete->brith_day = $request -> brith_day;
         $athlete->status = $request -> status; 
         
+        
 
         $athlete->save();
 
@@ -168,6 +169,13 @@ class AthleteController extends Controller
 
         return redirect()->route('admin.athlete.index')->with('success', 'Delete athlete success');
     }
+    
 
+    public function getAthlete($idSport,$idCountry){
+        $athletes = Athlete::where('id_sport', '=', $idSport)->where('id_country', '=', $idCountry)->get();
+        foreach($athletes as $athlete){
+            echo "<option value=".$athlete->id . "{{ old('id_athlete') == $athlete->id ? 'selected' : ' '}}".">".$athlete->name."</option>";
+        }
+    }
 }
 

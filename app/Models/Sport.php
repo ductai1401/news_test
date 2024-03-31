@@ -9,6 +9,7 @@ use App\Models\Medal;
 use App\Models\Olympic_sport;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Sport extends Model
 {
@@ -32,4 +33,11 @@ class Sport extends Model
     {
         return $this->hasManyThrough(Medal::class,Olympic_sport::class,'id_sport','id_olympic_sport','id','id');
     }
+
+    public function sport() : HasOneThrough
+    {
+        return $this->HasOneThrough(Sport::class,Olympic_sport::class,'id','id','id_olympic_sport','id_sport');
+    }
+
+    
 }

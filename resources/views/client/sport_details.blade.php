@@ -23,21 +23,14 @@
 
     <section class="utf_featured_post_area pt-4 no-padding">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-baseline">
                 <div class="col-4 h21" >
-                    <span>Name Sport</span>
+                    <span>{{ $sport ->name}}</span>
                 </div>
 
                 <div class="col-8 " >
-                    <div class="container-full">
-                        <span>History
-                            Acrobatic gymnastics has existed in various forms and throughout different cultures for thousands of years. Depictions of acrobatics have been discovered in Bronze Age art, along with being mentioned in Homer’s epics and included in Ancient Greek symposiums and China’s Han Dynasty harvest festivals. It also served as entertainment for European courts during the Middle Ages.
-                            
-                            Becoming a Discipline
-                            Acrobatic gymnastics began to develop as a discipline through use of apparatus and through tumbling. Both aspects showcased the human body’s capabilities. The first competition rules for acrobatics were formed in the Soviet Union, where stadiums filled with spectators hoping to witness athletic feats, like forming giant human pyramids. The inaugural Soviet national championships were held in 1939.
-                            
-                            Global Evolution
-                            The first international tournament for what was then named “Sport Acrobatics” was held in Warsaw in 1957, with four participating teams. The International Federation of Sports Acrobatics (IFSA) was established in 1973, with the first world championships held the following year in Moscow, featuring teams from Bulgaria, Federal Republic of Germany, Great Britain, Hungary, Poland, the Soviet Union and the United States. In 1998, the discipline was adopted by the International Gymnastics Federation once IFSA dissolved. The discipline has been known as Acrobatic Gymnastics since 2007.</span>
+                    <div>
+                        {!! $sport ->details !!}
                     </div>
                     
                 </div>
@@ -80,19 +73,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @for($i = 1 ; $i <= 3; $i++) 
+                                    @foreach($sport_medals as $sport_medal)
+                                    @php 
+                                        $image_url = public_path("uploads/countrys") . '/' . $sport_medal ->country ->flag;
+                                        if(!file_exists($image_url)) {
+                                            $image_url = asset('images/error.jpg');
+                                        } else {
+                                            $image_url = asset("uploads/countrys") .'/' . $sport_medal ->country ->flag;
+                                        }
+                                    @endphp 
                                     <tr>
-                                        <td>{{ $i }}</td>
-                                        <td>Sport</td>
-                                        <td><img src="" alt="Sport_image" width="100px" height="100px"></td>
-                                        <td>{{ $i }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $sport_medal ->sport ->name}}</td>
+
                                         <td>
-                                            <a href="{{ route('athlete')}}">Detail</a>
+                                            <img src="{{ $image_url }}" alt="Sport_image" width="40px" height="40px">{{$sport_medal ->country ->name}}
+                                        </td>
+                                        <td>{{ $sport_medal ->posision }}</td>
+                                        <td>
+                                            <a href="{{ route('athlete',['id' =>  $sport_medal ->sport ->id])}}">Detail</a>
                                         </td>
         
                                     </tr>
                                     
-                                    @endfor
+                                    @endforeach
                                 </tbody>
                             </table>
                     </div>

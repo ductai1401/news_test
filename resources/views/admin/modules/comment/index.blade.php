@@ -2,6 +2,7 @@
 
 @section('action','Comment List')
 @section('module', 'Comment')
+@section('heigh',' 924px')
 
 
 @push('css')

@@ -2,6 +2,7 @@
 
 @section('action','Add User')
 @section('module','User')
+@section('heigh',' 924px')
 
 @section('content')
 

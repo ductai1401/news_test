@@ -2,6 +2,7 @@
 
 @section('action','Athlete List')
 @section('module', 'Athlete')
+@section('heigh',' 924px')
 
 @push('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">

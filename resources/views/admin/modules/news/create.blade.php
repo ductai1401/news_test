@@ -3,6 +3,7 @@
 @section('action','Add News')
 
 @section('module','News')
+@section('heigh',' 924px')
 
 @push('hanldejs')
 

@@ -2,6 +2,7 @@
 
 @section('action','Edit Athletes')
 @section('module', 'Athlete')
+@section('heigh',' 924px')
 
 @section('content')
 
@@ -114,7 +115,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="brith_day">
-                                            brith Day
+                                            Year of birth
                                             <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
@@ -122,8 +123,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="brith_day" type="text" name="brith_day" class="form-control fill_it" placeholder="Please enter the brith day" value="{{ old('brith_day', $athlete->brith_day)}}">
-                                            </div>
+                                                <textarea name="information" id="information" cols="30" rows="10">{{ old('information', $athlete->information)}}</textarea>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >
                                                     @error('brith_day')

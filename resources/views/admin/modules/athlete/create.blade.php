@@ -2,6 +2,7 @@
 
 @section('action','Add Athletes')
 @section('module', 'Athlete')
+@section('heigh',' 924px')
 
 @push('hanldejs')
 
@@ -9,7 +10,8 @@
 <script src="{{ asset('admin/vendors/summernote/summernote-bs4.min.js')}}"></script>
 
     <script>
-        $('#content').summernote();
+        $('#information').summernote();
+        
     </script>
 @endpush
 
@@ -98,7 +100,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="brith_day">
-                                            brith Day
+                                            Year of birth
                                             <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
@@ -106,7 +108,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <input id="brith_day" type="date" name="brith_day" class="form-control fill_it" placeholder="Please enter the brith day" value="{{ old('brith_day')}}">
+                                                <input id="brith_day" type="text" name="brith_day" class="form-control fill_it" placeholder="Please enter the brith day" value="{{ old('brith_day')}}">
                                             </div>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >
@@ -120,6 +122,7 @@
                                         </div>
                                         
                                     </div>
+                                
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Country</label>
                                         <div class="col-md-7">

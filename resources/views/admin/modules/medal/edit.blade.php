@@ -2,6 +2,7 @@
 
 @section('action','Edit Medals')
 @section('module', 'Medal')
+@section('heigh',' 924px')
 
 
 @section('content')

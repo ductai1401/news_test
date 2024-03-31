@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|unique:olympics,name',
             'country' => 'required',
-            'logo' => 'required|mimes:jbg,jpeg,bmp,png',
+            'logo' => 'required|mimes:jbg,jpeg,bmp,png,avif',
             'details' => 'required',
             'year' => 'required|digits:4|integer|min:1900',
             'mascot' => 'required|mimes:jbg,jpeg,bmp,png',

@@ -2,6 +2,7 @@
 
 @section('action','Add List')
 @section('module', 'Medal')
+@section('heigh',' 924px')
 
 
 @push('script')
@@ -12,15 +13,17 @@
                 $.get("http://localhost:8000/admin/olympic_sport/sport/"+idOlympic, function(data) {
                     $('#sport').html(data);
                 });
-                // $('#sport').change(function(){
-                // var idSport = $(this).val();
-                // $.get("http://localhost:8000/admin/olympic_sport/olympic_s/"+idOlympic +'/'+idSport , function(data) {
-                    
-                //     $('#olympic_sport').html(data);
-                // });
-            // })
+                $('#sport').change(function(){
+                var idSport = $(this).val();
+                    // $('#country').change(function(){
+                    //     var idCountry = $(this).val();
+                    //     $.get("http://localhost:8000/admin/athlete/athlete_s/"+idSport+'/'+idCountry, function(data) {
+                    //         $('#athlete').html(data);
+                    //     });
+                
+                    // });
+                });
             });
-            
         });
 </script>
 @endpush
@@ -138,7 +141,7 @@
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
-                                                        <select class="form-control fill_it" name="id_country">
+                                                        <select class="form-control fill_it" name="id_country" id="country">
                                                             <option value="">-------country-------</option>
                                                             @foreach($countrys as $country)
                                                                 <option value="{{ $country->id}}"  {{ old('id_country') == $country->id ? 'selected' : ' '}}>{{$country->name}}</option>
@@ -164,7 +167,7 @@
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
-                                                        <select class="form-control fill_it" name="id_athlete">
+                                                        <select class="form-control fill_it" name="id_athlete" id="athlete">
                                                             <option value="">-------Athlete-------</option>
                                                             @foreach($athletes as $athlete)
                                                                 <option value="{{ $athlete->id}}"  {{ old('id_athlete') == $athlete->id ? 'selected' : ' '}}>{{$athlete->name}}</option>
