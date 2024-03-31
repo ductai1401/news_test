@@ -57,8 +57,8 @@
     <h2>@yield('action')</h2>
     <ol class="breadcrumb">
         <li>
-            <a href='{{route('admin.dashboard')}}'>
-                <i class="fa fa-fw fa-home"></i> Dashboard
+            <a href='#'>
+                <i class="fa fa-fw fa-home"></i> 
             </a>
         </li>
         <li>

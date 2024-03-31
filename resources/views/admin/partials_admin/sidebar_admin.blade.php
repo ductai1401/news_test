@@ -12,13 +12,6 @@
             </div>
         </div>
         <ul class="navigation">
-            <li class="active" id="active">
-                <a href='{{ route('admin.dashboard')}}'>
-                    <i class="text-primary menu-icon fa fa-fw fa-dashboard"></i>
-                    <span class="mm-text ">Dashboard</span>
-                    <span class="arrow"></span>
-                </a>
-            </li>
             <li class="menu-dropdown">
                 <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo" aria-expanded="false" >
                     <i class="text-info menu-icon fa fa-fw fa-newspaper-o"></i>
@@ -178,11 +171,11 @@
                     <span class="fa fa-angle-down pull-right"></span>
                 </a>
                 <ul id="demo9" class="sub-menu collapse">
-                    <li>
+                    {{-- <li>
                         <a href='{{ route('admin.comment.create')}}'>
                             <i class="text-primary fa fa-fw fa-cloud-upload"></i> Add Comment
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href='{{ route('admin.comment.index')}}'>
                             <i class="text-success fa-solid fa-table-list"></i> Comment list

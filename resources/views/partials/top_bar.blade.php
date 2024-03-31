@@ -4,50 +4,30 @@
             <div class="col-md-8">
                 <ul class="unstyled top-nav">
                     <li><a href="{{ route('auth.viewLogin') }}">Login & Signup</a></li>
-                    <li><a href="{{ route('admin.dashboard') }}">admin</a></li>
+                    <li><a href="{{ route('admin.olympic.index') }}">admin</a></li>
                 </ul>
             </div>
             <div class="col-md-4 top-social text-lg-right text-md-center">
                 <ul class="unstyled">
-                    <li>
-                        <a title="Facebook" href="#"> <span class="social-icon"><i
-                                    class="fa-brands fa-facebook-f"></i></span>
+                    <li> <a title="Facebook" href="#"> <span class="social-icon"><i
+                                    class="fa-brands fa-facebook-f"></i></span> </a> <a title="Twitter"
+                            href="#">
+                            <span class="social-icon"><i class="fa-brands fa-twitter"></i></span> </a> <a
+                            title="Google+" href="#"> <span class="social-icon"><i
+                                    class="fa-brands fa-google-plus"></i></span> </a> <a title="Linkdin"
+                            href="#"> <span class="social-icon"><i class="fa-brands fa-linkedin"></i></span>
                         </a>
                     </li>
-
-                    <li>
-                        <a title="Twitter" href="#">
-                            <span class="social-icon"><i class="fa fa-twitter"></i></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a title="Google+" href="#"> <span class="social-icon"><i
-                                    class="fa-brands fa-google-plus"></i></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a title="Linkdin" href="#"> <span class="social-icon"><i
-                                    class="fa-brands fa-linkedin"></i></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a title="Rss" href="#"> <span class="social-icon"><i
-                                    class="fa-brands fa-rss"></i></span>
-                        </a>
-                    </li>
-
                     {{-- <li>
-                        <a  class="dropdown-toggle" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> <i
-                                class="fa-brands fa-rss"></i>
-                        </a>
-
-                        <ul class="collapse " id="collapseExample">
-                            <li>
-                            <!-- User image -->
-
-                                    <div class="user-header">
-                                        <img src="{{ asset('images/vandongvien1.avif') }}" class="img-circle" alt="User Image"
-                                            width="75px" height="75px">
+                        <a title="Rss" href="#"> <span class="social-icon"><i
+                                    class="fa-brands fa-rss"></i></span> </a> <a title="Skype" href="#">
+                            <span class="social-icon"><i class="fa-brands fa-skype"></i></span> </a>
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle padding-user" data-toggle="dropdown"><i class="fa-regular fa-user"></i></a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="{{ asset ('images/vandongvien1.avif')}}" class="img-circle" alt="User Image" width="75px" height="75px">
                                         <div>
                                             <p><strong>Jett</strong></p>
                                             <p>Las Angeles</p>
@@ -74,10 +54,10 @@
                                         </li>
                                     </div>
 
-                            </li>
+                            </li> --}}
                         
                         </ul>
-                    </li> --}}
+                    </li> 
                     
                 </ul>
             </div>

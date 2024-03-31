@@ -20,6 +20,7 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\OlympicController as ClientOlympicController;
 use App\Http\Controllers\Client\ResultsController;
 use App\Http\Controllers\Client\SportController as ClientSportController;
+use App\Models\Olympic;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,33 +38,8 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/olympic', function() {
-    return view('olympic');
-})->name('olympic');
 
-Route::get('/olympic/2022', function() {
-    return view('olympic_seasion');
-})->name('olympic_seasion');
 
-Route::get('/olympic/sport_details', function() {
-    return view('sport_details');
-})->name('sport_details');
-
-Route::get('/olympic/single_news', function() {
-    return view('single_news');
-})->name('single_news');
-
-Route::get('/olympic/results', function() {
-    return view('ranking_results');
-})->name('results');
-
-Route::get('/olympic/sport', function() {
-    return view('sport');
-})->name('sport');
-
-Route::get('/olympic/athlete', function() {
-    return view('athlete');
-})->name('athlete');
 
 Route::get('/olympic/profile', function() {
     return view('profile');
@@ -104,9 +80,6 @@ Route::prefix('auth')->name('auth.')->controller(AuthController::class)->group(f
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.index');
-    })->name('dashboard');
 
     Route::get('/404', function () {
         return view('admin.404');

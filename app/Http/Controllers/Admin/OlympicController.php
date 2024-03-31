@@ -16,7 +16,11 @@ class OlympicController extends Controller
      */
     public function index()
     {
+        
+
+
         $olympic = Olympic::where('status', '!=', 6)->orderBy('created_at', 'desc')->get();
+        
         return view('admin.modules.olympic.index', ['olympics' => $olympic]);
     }
 

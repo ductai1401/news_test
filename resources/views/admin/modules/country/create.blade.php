@@ -7,11 +7,11 @@
 
 <section class="content-header">
     <!--section starts-->
-    <h2>@yield('action')</h2>
+    {{-- <h2>@yield('action')</h2> --}}
     <ol class="breadcrumb">
         <li>
-            <a href='{{route('admin.dashboard')}}'>
-                <i class="fa fa-fw fa-home"></i> Dashboard
+            <a href='#'>
+                <i class="fa fa-fw fa-home"></i> 
             </a>
         </li>
         <li>
@@ -97,7 +97,7 @@
                                         <div class="col-md-7">
                                             <select name="status" id="" class="form-control">
                                                 <option value="1" {{ old('status')==1 ? 'selected' : '' }}>Show</option>
-                                                <option value="0" {{ old('status')==0 ? 'selected' : '' }}>Hidden</option>
+                                                <option value="0" {{ old('status')==2 ? 'selected' : '' }}>Hidden</option>
                                             </select>
                                         </div>
                                          

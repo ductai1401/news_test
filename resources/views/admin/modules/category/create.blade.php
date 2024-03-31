@@ -10,8 +10,8 @@
     <h2>@yield('action')</h2>
     <ol class="breadcrumb">
         <li>
-            <a href='{{route('admin.dashboard')}}'>
-                <i class="fa fa-fw fa-home"></i> Dashboard
+            <a href='#'>
+                <i class="fa fa-fw fa-home"></i> 
             </a>
         </li>
         <li>
@@ -63,6 +63,31 @@
                                             </div>
                                         </div>
                                         
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="parent_id">
+                                            Parent Id
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <div class="input-group">
+                                                <select class="form-control fill_it" name="parent_id">
+                                                    <option value="">-------Root-------</option>
+                                                    @for($i = 1 ; $i <= 10; $i++)
+                                                        <option value="{{$i}}" {{ old('parent_id') == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('parent_id')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="status">

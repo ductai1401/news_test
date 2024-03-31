@@ -1,4 +1,4 @@
-@extends('master')
+{{-- @extends('master')
 
 @section('title', 'Profile')
 
@@ -40,10 +40,7 @@
                             <td class="text-primary"><p>Address</p></td>
                             <td><p>Sydney, Australia</p></td>
                         </tr>
-                        <tr>
-                            <td><p></p></td>
-                            <td><p></p></td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -51,4 +48,4 @@
     </div>
 </div>    
 
-@endsection
+@endsection --}}
