@@ -89,6 +89,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('sport/{id}', 'getSport')->name('sport');
 
+        Route::get('country', 'getCountry')->name('country');
+
+        Route::get('athlete/{id}', 'getAthlete_sport')->name('athlete');
+
+        Route::get('athlete/{id}', 'getAthlete_country')->name('athlete');
+
+
+
+
         Route::get('olympic_s/{idOlympic}/{idSport}', 'getOlympic_Sport')->name('o_s');
 
        

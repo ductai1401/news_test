@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreign('id_country')->references('id')->on('countrys');
             $table->unsignedBigInteger('id_sport');
             $table->foreign('id_sport')->references('id')->on('sports');
+            $table->text('description');
             $table->tinyInteger('status')->default('1')->comment('1: show - 0: hidden');
             $table->timestamps();
         });

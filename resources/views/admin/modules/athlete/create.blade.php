@@ -10,7 +10,7 @@
 <script src="{{ asset('admin/vendors/summernote/summernote-bs4.min.js')}}"></script>
 
     <script>
-        $('#information').summernote();
+        $('#description').summernote();
         
     </script>
 @endpush
@@ -176,6 +176,29 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="description" class="col-md-3 control-label">
+                                            Description
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-fw fa-file-text-o"></i>
+                                                </span>
+                                                <textarea class="form-control fill_it" name="description" id="description" cols="30" rows="10">{{ old('description')}}</textarea>
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('description')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-md-3 control-label" for="status">
                                             Status
                                             <span class='require'></span>
@@ -183,7 +206,7 @@
                                         <div class="col-md-7">
                                             <select name="status" id="" class="form-control">
                                                 <option value="1" {{ old('status')==1 ? 'selected' : '' }}>Show</option>
-                                                <option value="0" {{ old('status')==0 ? 'selected' : '' }}>Hidden</option>
+                                                <option value="0" {{ old('status')==2 ? 'selected' : '' }}>Hidden</option>
                                             </select>
                                         </div>
                                          

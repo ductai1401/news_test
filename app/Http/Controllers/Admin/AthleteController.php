@@ -31,7 +31,7 @@ class AthleteController extends Controller
      */
     public function create()
     {
-        $country = Country::get();
+        $country = Country::orderBy('name', 'asc')->get();
         $sport = Sport::get();
 
         return view('admin.modules.athlete.create',[
@@ -57,6 +57,7 @@ class AthleteController extends Controller
         $athlete->id_sport = $request -> id_sport;
         $athlete->brith_day = $request -> brith_day;
         $athlete->status = $request -> status; 
+        $athlete->description = $request ->description;
 
 
         $athlete->save();
@@ -136,6 +137,7 @@ class AthleteController extends Controller
         $athlete->id_sport = $request -> id_sport;
         $athlete->brith_day = $request -> brith_day;
         $athlete->status = $request -> status; 
+        $athlete->description = $request ->description;
         
         
 

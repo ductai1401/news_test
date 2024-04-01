@@ -10,20 +10,28 @@
         $(document).ready(function() {
             $('#olympic').change(function() {
                 var idOlympic = $(this).val();
-                $.get("http://localhost:8000/admin/olympic_sport/sport/"+idOlympic, function(data) {
-                    $('#sport').html(data);
+                $.get("http://localhost:8000/admin/olympic_sport/sport/"+idOlympic, function(data1) {
+                    $('#sport').html(data1);
                 });
                 $('#sport').change(function(){
                 var idSport = $(this).val();
-                    // $('#country').change(function(){
-                    //     var idCountry = $(this).val();
-                    //     $.get("http://localhost:8000/admin/athlete/athlete_s/"+idSport+'/'+idCountry, function(data) {
-                    //         $('#athlete').html(data);
-                    //     });
-                
-                    // });
+                    $.get("http://localhost:8000/admin/olympic_sport/country", function(data2) {
+                        $('#country').html(data2);
+                    });        
+                    $.get("http://localhost:8000/admin/olympic_sport/athlete/"+idSport, function(data3) {
+                        $('#athlete').html(data3);
+                    }); 
+                    
                 });
             });
+
+            $('#country').change(function(){
+                        var idCountry = $(this).val();
+                        $.get("http://localhost:8000/admin/olympic_sport/athlete/"+idCountry, function(data) {
+                            $('#athlete').html(data);
+                        });
+                
+                    });
         });
 </script>
 @endpush
@@ -74,20 +82,9 @@
                                                     <div class="select_align">                         
                                                         <select class="form-control fill_it" name="id_olympic" id="olympic">
                                                             <option value="">-------Olympic-------</option>
-                                                            @php
-                                                                $i = 0;
-                                                            @endphp
-                                                            @foreach($olympic_sports as $olympic_sport)
-                                                       
-                                                                @if($i != $olympic_sport->olympic->id){
-                                                                     <option value="{{ $olympic_sport->olympic->id}}"  {{ old('id_olympic') == $olympic_sport->olympic->id ? 'selected' : ' '}}>{{$olympic_sport->olympic->name}}</option>                                                                    
-                                                                }
-                                                                @endif
-
-                                                                @php
-                                                                    $i = $olympic_sport->olympic->id;
-                                                                @endphp
-                                                                
+                                                            
+                                                            @foreach($olympics as $olympic)
+                                                                <option value="{{ $olympic->id}}"  {{ old('id_olympic') == $olympic->id ? 'selected' : ' '}}>{{$olympic->name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -113,6 +110,9 @@
                                                         <select class="form-control fill_it" name="id_sport" id="sport">
                                                             <option value="">-------Sport-------</option>
                                                             
+                                                            @foreach($sports as $sport)
+                                                                <option value="{{ $sport->id}}"  {{ old('id_sport') == $sport->id ? 'selected' : ' '}}>{{$sport->name}}</option>
+                                                            @endforeach
                             
                                                         </select>
                                                     </div>
@@ -197,7 +197,7 @@
                                                 <select class="form-control fill_it" name="posision">
                                                     <option value="">-------Posision-------</option>
                                                     @for($i = 1 ; $i <= 10; $i++)
-                                                        <option value="{{$i}}" {{ old('position') == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                        <option value="{{$i}}" {{ old('posision') == $i ? 'selected' : ''}}>{{$i}}</option>
                                                     @endfor
                                                 </select>
                                             </div>

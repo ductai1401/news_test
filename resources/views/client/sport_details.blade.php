@@ -86,8 +86,15 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $sport_medal ->sport ->name}}</td>
 
-                                        <td>
-                                            <img src="{{ $image_url }}" alt="Sport_image" width="40px" height="40px">{{$sport_medal ->country ->name}}
+                                        <td class="d-flex justify-content-center">
+                                            <div class="grid-cols-1 d-flex align-items-center">
+                                                <div class="" ><img src="{{ $image_url }}" alt="Sport_image" width="60px" height="40px"></div>
+                                                <div style="width: 60px" class="text-center">
+                                                    {{$sport_medal ->country ->name}}
+                                                    
+                                                </div>
+                                            </div>
+                                            
                                         </td>
                                         <td>{{ $sport_medal ->posision }}</td>
                                         <td>

@@ -8,7 +8,9 @@ use App\Http\Requests\Medal\UpdateRequest;
 use App\Models\Athlete;
 use App\Models\Country;
 use App\Models\Medal;
+use App\Models\Olympic;
 use App\Models\Olympic_sport;
+use App\Models\Sport;
 use Illuminate\Http\Request;
 
 class MedalController extends Controller
@@ -34,8 +36,10 @@ class MedalController extends Controller
      */
     public function create()
     {
-        $country = Country::get();
-        $athlete = Athlete::get();
+        $country = Country::orderBy('name', 'asc')->get();
+        $athlete = Athlete::orderBy('name', 'asc')->get();
+        $olympic = Olympic::get();
+        $sport = Sport::get();
 
 
         $olympic_sport = Olympic_sport::with('sport','olympic')->orderBy('id_olympic', 'desc')->get();
@@ -44,7 +48,9 @@ class MedalController extends Controller
         return view('admin.modules.medal.create',[
             'countrys' => $country,
             'athletes' => $athlete,
+            'olympics' => $olympic,
             'olympic_sports' => $olympic_sport,
+            'sports' => $sport,
             
         ]);
     }
@@ -107,8 +113,8 @@ class MedalController extends Controller
      */
     public function edit( $id)
     {
-        $country = Country::get();
-        $athlete = Athlete::get();
+        $country = Country::orderBy('name', 'asc')->get();
+        $athlete = Athlete::orderBy('name', 'asc')->get();
         $olympic_sport = Olympic_sport::with('sport','olympic')->orderBy('id_olympic', 'desc')->get();
 
         $medal = medal::with('athlete','country','olympic','sport')->find($id);

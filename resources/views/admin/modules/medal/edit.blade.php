@@ -5,6 +5,22 @@
 @section('heigh',' 924px')
 
 
+
+@push('script')
+<script type="text/javascript">
+        $(document).ready(function() {
+            $('#country').change(function(){
+                        var idCountry = $(this).val();
+                        $.get("http://localhost:8000/admin/olympic_sport/athlete/"+idCountry, function(data) {
+                            $('#athlete').html(data);
+                        });
+                
+                    });
+
+        });
+</script>
+@endpush
+
 @section('content')
 
 <section class="content-header">
@@ -57,7 +73,7 @@
                                             </div>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >
-                                                    @error('id_sport')
+                                                    @error('id_olympic')
                                                         <span class="alert-1 alert-danger">
                                                             {{ $message }}</span>
                                                     @enderror
@@ -101,7 +117,7 @@
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
-                                                        <select class="form-control fill_it" name="id_country">
+                                                        <select class="form-control fill_it" name="id_country" id="country">
                                                             <option value="">-------Country-------</option>
                                                             @foreach($countrys as $country)
                                                                 <option value="{{ $country->id}}"  {{ old('id_country', $medal->id_country) == $country->id ? 'selected' : ' '}}>{{$country->name}}</option>
@@ -180,7 +196,7 @@
                                         <div class="col-md-7">
                                             <div class="input-group">
 
-                                                <input id="brith_day" type="url" name="video" class="form-control fill_it" placeholder="Please enter the video">
+                                                <input id="brith_day" type="url" name="video" class="form-control fill_it" placeholder="Please enter the video" value="{{ old('title', $medal->video)}}">
                                             </div>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >

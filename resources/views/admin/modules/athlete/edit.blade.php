@@ -4,6 +4,16 @@
 @section('module', 'Athlete')
 @section('heigh',' 924px')
 
+
+@push('hanldejs')
+
+
+<script src="{{ asset('admin/vendors/summernote/summernote-bs4.min.js')}}"></script>
+
+    <script>
+        $('#description').summernote();
+    </script>
+@endpush
 @section('content')
 
 <section class="content-header">
@@ -179,6 +189,30 @@
                                             <div class="margin-top-3">
                                                 <div class="input-group" >
                                                     @error('id_sport')
+                                                        <span class="alert-1 alert-danger">
+                                                            {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name" class="col-md-3 control-label">
+                                            Description
+                                            <span class='require'></span>
+                                        </label>
+                                        <div class="col-md-7">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-fw fa-file-text-o"></i>
+                                                </span>
+                                                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                                                <input id="description" type="text" name="description" class="form-control fill_it" placeholder="Enter Name" value="{{ old('description', $athlete->description)}}">
+                                            </div>
+                                            <div class="margin-top-3">
+                                                <div class="input-group" >
+                                                    @error('description')
                                                         <span class="alert-1 alert-danger">
                                                             {{ $message }}</span>
                                                     @enderror
