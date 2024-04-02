@@ -91,6 +91,7 @@
                             <tr>
                                 <th scope="col">Id</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Parent</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Created At</th>
                                 <th scope="col">Edit</th>
@@ -102,6 +103,15 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $category->name }}</td>
+                                <td>
+                                    @php
+                                        $parent_category = DB::table('categories')->select('name','parent_id')->where('id', $category->parent_id)->first();
+                                        if (!$category ->parent_id == 0) {
+                                            echo $parent_category->name;
+                                        }
+                                        
+                                    @endphp
+                                </td>
                                 <td>{{ $category ->status == 1 ? 'Show' : 'Hidden'}}</td>
                                 <td>{{ date('d/m/Y - H:i:s', strtotime( $category->created_at)) }}</td>
                                 <td>

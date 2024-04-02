@@ -2,7 +2,7 @@
 
 @section('action','Update News')
 @section('module','News')
-@section('heigh',' 924px')
+@section('heigh',' 1600px')
 
 
 @push('hanldejs')
@@ -90,7 +90,8 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-fw fa-file-text-o"></i>
                                                 </span>
-                                                <textarea id="intro" name="intro" class="form-control fill_it" placeholder="Enter intro" >{{ old('intro',  $news->intro)}}</textarea>
+                                                <textarea id="intro" name="intro" class="form-control fill_it" placeholder="Enter intro" cols="50" rows="10">{{ old('intro',  $news->intro)}}</textarea>
+
                                             </div>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >
@@ -112,10 +113,10 @@
                                         </label>
                                         <div class="col-md-7">
                                             <select class="form-control" name="id_category" id="category">
-                                                <option value="" {{ old('id_category')==0 ? 'selected' : '' }}>Select Category</option>
-                                                @foreach( $categories as $category )
-                                                    <option value="{{ $category->id }}"  {{ old('id_category', $news->id_category)==$category->id ? 'selected' : '' }}>{{ $category->name }}</option>
-                                                @endforeach
+                                                <option value="" {{ old('id_category', $news ->id_category) == 0 ? 'selected' : '' }}>Select Category</option>
+                                                @php  
+                                                    recursiveCategory($categories, old('id_category', $news ->id_category) );
+                                                @endphp
                                             </select>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >
@@ -217,14 +218,14 @@
                                        
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group " >
                                         <label class="col-md-3 control-label">
                                             Content
                                             <span class='require'></span>
                                         </label>
                                         <div class="col-md-7">
-                                            <div class="input-group">
-                                                <textarea id="content" class="summernote edi-css form-control fill_it" name="content">{{ old('content',  $news->content)}}</textarea>
+                                            <div class="input-group " style="height: 400px" >
+                                                <textarea style="max-height: 400px" id="content" class="summernote edi-css form-control fill_it" name="content">{{ old('content',  $news->content)}}</textarea>
                                             </div>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >

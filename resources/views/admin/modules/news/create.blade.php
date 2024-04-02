@@ -112,10 +112,10 @@
                                         </label>
                                         <div class="col-md-7">
                                             <select class="form-control" name="id_category" id="category">
-                                                <option value="" {{ old('id_category')==0 ? 'selected' : '' }}>Select Category</option>
-                                                @foreach( $categories as $category )
-                                                    <option value="{{ $category->id }}"  {{ old('id_category')==$category->id ? 'selected' : '' }}>{{ $category->name }}</option>
-                                                @endforeach
+                                                <option value="" {{ old('id_category') == 0 ? 'selected' : '' }}>Select Category</option>
+                                                @php  
+                                                    recursiveCategory($categories, old('id_category', 0) );
+                                                @endphp
                                             </select>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >

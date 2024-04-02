@@ -12,11 +12,18 @@ class Olympic_sportController extends Controller
 {
     public function getSport($id) {
 
-        $olympic_sport = Olympic_sport::with('sport')->where('id_olympic', $id)->orderBy('name', 'asc')->get();
+        $olympic_sport = Olympic_sport::with('sport')->where('id_olympic', $id)->get();
         echo "<option value=''>-------Sport-------</option>";
         foreach($olympic_sport as $o_s){
             echo "<option value='". $o_s->sport->id."'>" .$o_s->sport->name."</option> "; 
         };
+    }
+
+    public function getPosision(){
+        echo "<option value=''>-------Posision-------</option>";
+        for($i = 1 ; $i <= 10; $i++){
+            echo '<option value=""'. $i .'>' . $i . '</option>';
+        }
     }
 
     public function getCountry() {

@@ -68,6 +68,32 @@
                                             
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-md-3 control-label" for="parent_id">
+                                                Parent Id
+                                                <span class='require'></span>
+                                            </label>
+                                            <div class="col-md-7">
+                                                <div class="input-group">
+                                                    <select class="form-control fill_it" name="parent_id">
+                                                        <option value="">-------Root-------</option>
+                                                        @php  
+                                                            recursiveCategory($categories, old('parent_id', $category ->parent_id) );
+                                                        @endphp
+                                                        
+                                                    </select>
+                                                </div>
+                                                <div class="margin-top-3">
+                                                    <div class="input-group" >
+                                                        @error('parent_id')
+                                                            <span class="alert-1 alert-danger">
+                                                                {{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-md-3 control-label" for="status">
                                                 Status
                                                 <span class='require'></span>

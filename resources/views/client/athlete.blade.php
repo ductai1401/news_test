@@ -25,10 +25,13 @@
                         <img src="{{ $image_url  }}"  width="40" height="30" alt="flag" style="border:#dcdcdc solid 1px;">
                         <div class="ml-3">
                             <p class="m-0" style="color: #696969">Team</p>
-                            <p class="m-0" style="font-size: 16px">{{ $athlete ->country ->name}}</p>
+                            <p class="m-0" style="font-size: 16px"> <strong>{{ $athlete ->country ->name}}</strong></p>
                         </div>
                     </div>
-                    <span style="color: #696969"> Sport &#160;<strong>{{ $athlete ->sports ->name}}</strong></span>
+                    <div style="color: #696969">
+                        <p class="mb-0 mt-3">Sport</p>
+                        <p><strong>{{ $athlete ->sports ->name}}</strong></p>
+                    </div>
                 </div>
                 @php 
                                 $image_url = public_path("uploads/athletes") . '/' . $athlete ->image;
@@ -43,43 +46,40 @@
 
                 <ul class="mt-5">
                     <a href="#sc1"><li><h4>Olympic Results</h4></li></a>
-                    
                     <a href="#sc3"><li><h4>Latest News</h4></li></a>
                     <a href="#sc4"><li><h4>Replays</h4></li></a>
+                    <a href="#sc4"><li><h4>Result</h4></li></a>
+
                 </ul>
             </div>
-    
+
             <div class="col-9 p-0">
                 <div class="ml-3">
                     <div class="athsection2 mb-3" id="sc1">
-                        <h3 class="p-3">Olympic Results</h3>
+                        <h3 class="utf_block_title"><span>Olympic Results</span></h3>
                         <table class="table m-3 mt-5 athtable" style="width: 1400px" >
                             <tr>
                                 <td>Olympic Medals</td>
                                 <td>
-                                    
-                                    
-                                        
-                                        @php
-                                        if($gold){                                          
-                                            echo '<td>' .  $gold . ' Gold</td>';
-                                        }else{
-                                            echo "<td> 0 Gold </td>";
-                                        }
-                                        if($silver){
-                                            echo '<td>' .  $silver . ' Silver</td>';
-                                        }
-                                        else{
-                                            echo "<td> 0 Silver </td>";
-                                        }
-                                        if($bronze){
-                                            echo '<td>' .  $bronze . 'Bronze</td>';
-                                        }
-                                        else{
-                                            echo "<td> 0 Bronze </td>";
-                                        }
-                                        @endphp
-            
+@php
+                                    if($gold){                                          
+                                        echo '<td>' .  $gold . ' Gold</td>';
+                                    }else{
+                                        echo "<td> 0 Gold </td>";
+                                    }
+                                    if($silver){
+                                        echo '<td>' .  $silver . ' Silver</td>';
+                                    }
+                                    else{
+                                        echo "<td> 0 Silver </td>";
+                                    }
+                                    if($bronze){
+                                        echo '<td>' .  $bronze . 'Bronze</td>';
+                                    }
+                                    else{
+                                        echo "<td> 0 Bronze </td>";
+                                    }
+                                    @endphp
                                 </td>
                                 
                             </tr>
@@ -113,7 +113,7 @@
                                         <div class="item">
                                             <ul class="utf_list_post">
                                                 <li class="clearfix">
-                                                    <div class="utf_post_block_style clearfix">
+<div class="utf_post_block_style clearfix">
                                                         <div class="utf_post_thumb"> <a href="#"><img class="img-fluid"
                                                                     src="https://th.bing.com/th/id/OIP.Yh8OW6zO_rwiLkurqJ43QQHaEo?rs=1&pid=ImgDetMain" alt="" /></a>
                                                         </div>
@@ -154,14 +154,13 @@
                                             <source
                                             src="{{  $medal ->video }}.mp4"
                                             type="video/mp4" />
-                                            </video>
+</video>
 
                                         </div>
                                     @endforeach 
                                     </div>
                                 </div>
                             </div>
-
                     </div>
                 </div>
             </div>

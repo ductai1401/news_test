@@ -17,6 +17,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Client\AthleteController as ClientAthleteController;
 use App\Http\Controllers\Client\CountryController as ClientCountryController;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\NewsController as ClientNewsController;
 use App\Http\Controllers\Client\OlympicController as ClientOlympicController;
 use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\Client\ResultsController;
@@ -66,6 +67,9 @@ Route::prefix('client')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'viewProfile'])->name('profile');
 
+    Route::get('/news/{id}', [ClientNewsController::class, 'singleNews'])->name('singleNews');
+
+
 
 
     
@@ -102,7 +106,9 @@ Route::prefix('admin')->name('admin.')->middleware('checkLogin')->group(function
 
         Route::get('athlete/{id}', 'getAthlete_country')->name('athlete');
 
+        Route::get('posision', 'getPosision')->name('posision');
 
+        
 
 
         Route::get('olympic_s/{idOlympic}/{idSport}', 'getOlympic_Sport')->name('o_s');

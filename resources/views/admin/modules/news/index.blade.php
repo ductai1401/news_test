@@ -114,13 +114,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $n->title }}</td>
                                 <td><img src="{{ $image_url }}" alt="" width="100px" height="100px"></td>
-                                <td>
-                                    @if($n->status==1)
-                                        <span class="badge badge-success">Show</span>
-                                    @else
-                                        <span class="badge badge-danger">Hide</span>
-                                    @endif                    
-                                </td>
+                                <td>{{ $n ->status == 1 ? 'Show' : 'Hidden'}}</td>
                                 <td>{{ $n ->category ->name}}</td>
                                 {{-- <td>{{ $n->categories->name }}</td> --}}
                                 <td>{{ date('d/m/Y - H:i:s', strtotime( $n->created_at)) }}</td>

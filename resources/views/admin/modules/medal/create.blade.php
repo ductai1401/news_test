@@ -13,7 +13,22 @@
                 $.get("http://localhost:8000/admin/olympic_sport/sport/"+idOlympic, function(data1) {
                     $('#sport').html(data1);
                 });
-                $('#sport').change(function(){
+
+                
+                $.get("http://localhost:8000/admin/olympic_sport/country", function(data2) {
+                    $('#country').html(data2);
+                });        
+                $.get("http://localhost:8000/admin/olympic_sport/athlete/"+1, function(data3) {
+                    $('#athlete').html(data3);
+                }); 
+
+                $.get("http://localhost:8000/admin/olympic_sport/posision", function(data4) {
+                    $('#posision').html(data4);
+                }); 
+                    
+                
+            });
+            $('#sport').change(function(){
                 var idSport = $(this).val();
                     $.get("http://localhost:8000/admin/olympic_sport/country", function(data2) {
                         $('#country').html(data2);
@@ -23,8 +38,6 @@
                     }); 
                     
                 });
-            });
-
             $('#country').change(function(){
                         var idCountry = $(this).val();
                         $.get("http://localhost:8000/admin/olympic_sport/athlete/"+idCountry, function(data) {
@@ -82,7 +95,7 @@
                                                     <div class="select_align">                         
                                                         <select class="form-control fill_it" name="id_olympic" id="olympic">
                                                             <option value="">-------Olympic-------</option>
-                                                            
+                                
                                                             @foreach($olympics as $olympic)
                                                                 <option value="{{ $olympic->id}}"  {{ old('id_olympic') == $olympic->id ? 'selected' : ' '}}>{{$olympic->name}}</option>
                                                             @endforeach
@@ -194,7 +207,7 @@
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
-                                                <select class="form-control fill_it" name="posision">
+                                                <select class="form-control fill_it" name="posision" id="posision">
                                                     <option value="">-------Posision-------</option>
                                                     @for($i = 1 ; $i <= 10; $i++)
                                                         <option value="{{$i}}" {{ old('posision') == $i ? 'selected' : ''}}>{{$i}}</option>

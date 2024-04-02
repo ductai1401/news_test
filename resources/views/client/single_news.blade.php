@@ -48,13 +48,20 @@
             <div class="row">
                 <div class="col-lg-8 col-md-12">
                     <div class="single-post">
-                        <div class="post-media post-featured-image"> <img src="images/news/lifestyle/food1.jpg"
+                        @php 
+                                    $image_url = public_path("uploads/news") . '/' . $news ->image;
+                                    if(!file_exists($image_url)) {
+                                        $image_url = asset('images/error.jpg');
+                                    } else {
+                                        $image_url = asset("uploads/news") .'/' .  $news ->image;
+                                    }
+                                @endphp
+                        <div class="post-media post-featured-image"> <img src="{{   $image_url }}"
                                 class="img-fluid" alt=""> </div>
-                        <div class="utf_post_title-area"> <a class="utf_post_cat" href="#">Food</a>
-                            <h2 class="utf_post_title">Lorem Ipsum is simply dummy text of the printing and type setting
-                                industry simply dummy text type.</h2>
-                            <div class="utf_post_meta"> <span class="utf_post_author"> By <a href="#">John Wick</a>
-                                </span> <span class="utf_post_date"><i class="fa fa-clock-o"></i> 15 Jan, 2022</span> <span
+                        <div class="utf_post_title-area"> <a class="utf_post_cat" href="#">{{ $news ->key_word}}</a>
+                            <h2 class="utf_post_title">{{ $news ->title}}</h2>
+                            <div class="utf_post_meta"> 
+                                <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime( $news->created_at)) }}</span> <span
                                     class="post-hits"><i class="fa fa-eye"></i> 21</span> <span class="post-comment"><i
                                         class="fa fa-comments-o"></i> <a href="#"
                                         class="comments-link"><span>01</span></a></span> </div>
@@ -62,7 +69,7 @@
 
                         <div class="utf_post_content-area">
                             <div class="entry-content">
-                                <p> <span class="dropcap">L</span> orem Ipsum is simply dummy text of the printing and type
+                                {{-- <p> <span class="dropcap">L</span> orem Ipsum is simply dummy text of the printing and type
                                     setting industry. Lorem Ipsum has been the industry's standard Lorem Ipsum is simply
                                     dummy text of the printing and type setting industry. Lorem Ipsum has been the
                                     industry's standard.</p>
@@ -89,12 +96,15 @@
                                     galley of type and scrambled it to make a type specimen book. It has survived not only
                                     five centuries, but also the leap into electronic typesetting, remaining essentially
                                     unchanged.</p>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since when an unknown printer took a
+                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum 
+                                   has been the industry's standard dummy text ever since when an unknown printer took a
                                     galley of type and scrambled it to make a type specimen book. It has survived not only
                                     five centuries, but also the leap into electronic typesetting, remaining essentially
-                                    unchanged.</p>
-                            </div>
+                                    unchanged.</p> --}}
+
+                                
+                                {!! $news ->content !!}
+                                </div>
 
                             <div class="tags-area clearfix">
                                 <div class="post-tags">
