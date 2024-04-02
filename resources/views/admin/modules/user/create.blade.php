@@ -187,7 +187,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label  col-md-3" for="level">Status</label>
+                                        <label class="control-label  col-md-3" for="level">Level</label>
                                         <div class="col-md-7">
                                             <select id="level" class="form-control js-states select2" name="level">
                                                 <option value="1" {{ old('level') == 1 ? 'selected' : '

@@ -85,7 +85,7 @@
                     </span>
                 </div>
                 <div class="panel-body table-responsive">
-                    <table class="table table-bordered" id="users">
+                    <table class="table table-bordered text-center" id="users">
                         <thead>
                             
                             <tr>

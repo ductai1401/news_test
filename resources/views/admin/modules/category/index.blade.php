@@ -102,13 +102,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $category->name }}</td>
-                                <td>
-                                    @if($category->status==1)
-                                        <span class="right badge badge-success">Show</span>
-                                    @else
-                                        <span class="right badge badge-danger">Hiden</span>
-                                    @endif                    
-                                </td>
+                                <td>{{ $category ->status == 1 ? 'Show' : 'Hidden'}}</td>
                                 <td>{{ date('d/m/Y - H:i:s', strtotime( $category->created_at)) }}</td>
                                 <td>
                                     <a class="edit btn btn-primary" href="{{ route('admin.category.edit', ['id'=> $category->id]) }}">

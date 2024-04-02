@@ -1,12 +1,20 @@
 <section class="sidebar"  style="min-height: @yield('heigh');">
     <div id="menu" role="navigation">
+        @php 
+            $image_url = public_path("uploads/users") . '/' . Auth::user() ->image;
+            if(!file_exists($image_url)) {
+                $image_url = asset('images/error.jpg');
+            } else {
+                $image_url = asset("uploads/users") .'/' . Auth::user() ->image;
+            }
+       @endphp
         <div class="nav_profile">
             <div class="media profile-left">
                 <a class="pull-left profile-thumb" href="#">
-                    <img src="https://img.meta.com.vn/Data/image/2021/09/21/anh-meo-ngau-12.jpg" class="img-circle" alt="User Image" height="55px">
+                    <img src="{{ $image_url }}" class="img-circle" alt="User Image" height="55px">
                 </a>
                 <div class="content-profile">
-                    <h4 class="media-heading">Jett</h4>
+                    <h4 class="media-heading">{{ Auth::user() ->fullname }}</h4>
                     <span class="text-default">Admin</span>
                 </div>
             </div>

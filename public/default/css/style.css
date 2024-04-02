@@ -68,10 +68,19 @@ h5 {
 .alert .icon {
 	margin-right: 15px;
 }
-.h21 {
+.h22 {
+	
 	padding-top: 50px;
-	font-size: 36px;
-	line-height: 36px;
+	font-size: 56px;
+	line-height: 50px;
+	font-weight: 900;
+}
+
+.h21 {
+	
+	padding-top: 50px;
+	font-size: 32px;
+	line-height: 30px;
 	font-weight: 900;
 }
 /* Global styles

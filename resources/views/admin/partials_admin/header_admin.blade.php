@@ -13,7 +13,7 @@
         </div>
         <div class="navbar-right">
             <ul class="nav navbar-nav">
-                <li class="dropdown messages-menu">
+                {{-- <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-envelope-o black"></i>
                         <span class="label label-success">5</span>
                     </a>
@@ -221,14 +221,23 @@
                         </li>
                         <li class="dropdown-footer">View All Notifications</li>
                     </ul>
-                </li>
+                </li> --}}
+
                 <!-- User Account: style can be found in dropdown-->
+                @php 
+                                                    $image_url = public_path("uploads/users") . '/' . Auth::user() ->image;
+                                                    if(!file_exists($image_url)) {
+                                                        $image_url = asset('images/error.jpg');
+                                                    } else {
+                                                        $image_url = asset("uploads/users") .'/' . Auth::user() ->image;
+                                                    }
+                                                @endphp
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle padding-user" data-toggle="dropdown">
-                        <img src="https://img.meta.com.vn/Data/image/2021/09/21/anh-meo-ngau-12.jpg" width="40px" height="40px" class="img-circle pull-left"  alt="User Image">
+                        <img src="{{ $image_url }}" width="40px" height="40px" class="img-circle pull-left"  alt="User Image">
                         <div class="riot">
                             <div>
-                                Natali
+                                {{ Auth::user()->fullname }}
                                 <span>
                                     <i class="caret"></i>
                                 </span>
@@ -238,31 +247,26 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="https://img.meta.com.vn/Data/image/2021/09/21/anh-meo-ngau-12.jpg" class="img-circle" alt="User Image">
-                            <p>Jett</p>
+                            <img src="{{ $image_url }}" class="img-circle" alt="User Image">
+                            <p>{{ Auth::user()->fullname }}</p>
                         </li>
                         <!-- Menu Body -->
                         <li class="pad-3">
-                            <a href="#">
+                            <a href="{{ route('admin.user.show', ['id' => Auth::user()-> id])}}">
                                 <i class="fa fa-fw fa-user"></i> My Profile
                             </a>
                         </li>
                         <li role="presentation"></li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-fw fa-gear"></i> Account Settings
-                            </a>
-                        </li>
                         <li role="presentation" class="divider"></li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#">
-                                    <i class="fa fa-fw fa-lock"></i> Lock
+                                <a href="{{ route('index') }}">
+                                    <i class="fa fa-home" aria-hidden="true"></i> Home
                                 </a>
                             </div>
                             <div class="pull-right">
-                                <a href='/fitness/login'>
+                                <a href='{{ route('auth.logout') }}'>
                                     <i class="fa fa-fw fa-sign-out"></i> Logout
                                 </a>
                             </div>

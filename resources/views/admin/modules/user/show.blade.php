@@ -23,12 +23,20 @@
     </ol>
 </section>
 
-<div class="container-fluid">
+{{-- <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 section1">
-            <div class="section1-img"><img src="{{ asset ('images/vandongvien1.avif')}}" alt="" class="userimg"></div>
+            @php 
+                                $image_url = public_path("uploads/countrys") . '/' . $user ->image;
+                                if(!file_exists($image_url)) {
+                                    $image_url = asset('images/error.jpg');
+                                } else {
+                                    $image_url = asset("uploads/countrys") .'/' . $user ->image;
+                                }
+                            @endphp
+            <div class="section1-img"><img src="{{ $image_url }}" alt="" class="userimg"></div>
             
-            <h1>Nataliapery</h1>
+            <h1>{{ $user ->fullname}}</h1>
 
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
             
@@ -54,83 +62,108 @@
                 <tbody>
                     <tr>
                         <td class="text-primary"><p>FullName</p></td>
-                        <td><p>Nataliapery</p></td>
+                        <td><p>{{ $user ->fullname}}</p></td>
                     </tr>
                     <tr>
                         <td class="text-primary"><p>Email</p></td>
-                        <td><p>Johnpery@example.com</p></td>
+                        <td><p>{{ $user ->email}}</p></td>
                     </tr>
                     <tr>
                         <td class="text-primary"><p>Contact Number</p></td>
-                        <td><p>(999) 999-9999</p></td>
+                        <td><p>{{ $user ->phone}}</p></td>
                     </tr>
                     <tr>
                         <td class="text-primary"><p>Address</p></td>
-                        <td><p>Sydney, Australia</p></td>
+                        <td><p>{{ $user ->address}}</p></td>
                     </tr>
                     <tr>
-                        <td><p></p></td>
-                        <td><p></p></td>
+                        <td class="text-primary"><p>Level</p></td>
+                        <td><p>{{ $user ->Level == 1 ? 'Admin' : 'Member'}}</p></td>
+                    </tr>
+                    <tr>
+                        <td class="text-primary"><p>Sta</p></td>
+                        <td><p>{{ $user ->Level == 1 ? 'Admin' : 'Member'}}</p></td>
                     </tr>
                 </tbody>
             </table>
+        </div>
         <div class="col-md-12">
             <div class="panel panel-primary">
+                
+            </div>
+        </div>
+    </div>
+</div>     --}}
+
+
+<div class="container-fluid">
+    <!--main content-->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Basic charts strats here-->
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h5 class="panel-title">User Profile</h5>
+                    <h4 class="panel-title">
+                        <i class="fa fa-fw fa-file-text-o"></i> User information
+                    </h4>
                 </div>
                 <div class="panel-body">
-                    <div class="col-sm-4">
-                        @php 
-                            $image_url = public_path("uploads/users") . '/' . $user ->image;
-                                if(!file_exists($image_url)) {
-                                    $image_url = asset('images/error.jpg');
-                                } else {
-                                    $image_url = asset("uploads/users") .'/' . $user ->image;
-                                }
-                        @endphp
-                        <div class="form-group">
-                            <div class="text-center">
-                                <img src="{{ $image_url }}" alt="img" width="200" height="200" class="img-bor" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-4 section1 text-center">
+                                @php 
+                                                    $image_url = public_path("uploads/users") . '/' . $user ->image;
+                                                    if(!file_exists($image_url)) {
+                                                        $image_url = asset('images/error.jpg');
+                                                    } else {
+                                                        $image_url = asset("uploads/users") .'/' . $user ->image;
+                                                    }
+                                                @endphp
+                                <div class="section1-img"><img src="{{ $image_url }}" width="250px" height="250px" alt="image" class="userimg"></div>                    
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <br>
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>User</th>
-                                        <th>Details</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <tr>
-                                        <td class="text-primary">FullName</td>
-                                        <td>{{ $user ->fullname }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-primary">Email</td>
-                                        <td> {{ $user ->email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-primary">Contact Number</td>
-                                        <td>{{ $user ->phone }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-primary">Address</td>
-                                        <td>{{ $user ->address }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    
+                            <div class="col-md-7 section2">
+                                <table class="table table-bordered">
+                                    <thead>
+                                            <h2>User Details</h2>
+                                    </thead>
+                                    <br>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-primary"><p>FullName</p></td>
+                                            <td><p>{{ $user ->fullname}}</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-primary"><p>Email</p></td>
+                                            <td><p>{{ $user ->email}}</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-primary"><p>Contact Number</p></td>
+                                            <td><p>{{ $user ->phone}}</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-primary"><p>Address</p></td>
+                                            <td><p>{{ $user ->address}}</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-primary"><p>Level</p></td>
+                                            <td><p>{{ $user ->Level == 1 ? 'Admin' : 'Member'}}</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-primary"><p>Status</p></td>
+                                            <td><p>{{ $user ->Level == 1 ? 'Admin' : 'Member'}}</p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>    
-
+    <!-- col-md-6 -->
+    <!--row -->
+    <!--row ends-->
+</div
 @endsection

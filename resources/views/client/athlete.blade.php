@@ -14,21 +14,36 @@
             <div class="col-3 mb-3 athsection1">
                 <div class="detail1 mt-3">
                     <div class="detail1a">
-                        <img src="{{asset('images/flag/Japan.png')}}"  width="40" height="30" alt="flag" style="border:#dcdcdc solid 1px;">
+                        @php 
+                                $image_url = public_path("uploads/countrys") . '/' . $athlete ->country ->flag;
+                                if(!file_exists($image_url)) {
+                                    $image_url = asset('images/error.jpg');
+                                } else {
+                                    $image_url = asset("uploads/countrys") .'/' . $athlete ->country ->flag;
+                                }
+                            @endphp
+                        <img src="{{ $image_url  }}"  width="40" height="30" alt="flag" style="border:#dcdcdc solid 1px;">
                         <div class="ml-3">
                             <p class="m-0" style="color: #696969">Team</p>
-                            <p class="m-0" style="font-size: 16px">Japan</p>
+                            <p class="m-0" style="font-size: 16px">{{ $athlete ->country ->name}}</p>
                         </div>
                     </div>
-                    <span style="color: #696969"> Sport &#160;<strong>Figure Skating</strong></span>
+                    <span style="color: #696969"> Sport &#160;<strong>{{ $athlete ->sports ->name}}</strong></span>
                 </div>
-
-                <div class="divimg"><img src="{{asset('images/vandongvien1.avif')}}" alt="" width="200" height="200" class="mt-5 mainimg"></div>
-                <span style="font-size: 25px; display:flex; justify-content: center;" class="h21"><strong> YUZURU HANYU </strong></span>
+                @php 
+                                $image_url = public_path("uploads/athletes") . '/' . $athlete ->image;
+                                if(!file_exists($image_url)) {
+                                    $image_url = asset('images/error.jpg');
+                                } else {
+                                    $image_url = asset("uploads/athletes") .'/' . $athlete ->image;
+                                }
+                            @endphp
+                <div class="divimg"><img src="{{ $image_url }}" alt="" width="200" height="200" class="mt-5 mainimg"></div>
+                <span style="font-size: 25px; display:flex; justify-content: center;" class="h21"><strong> {{ $athlete ->name }} </strong></span>
 
                 <ul class="mt-5">
                     <a href="#sc1"><li><h4>Olympic Results</h4></li></a>
-                    {{-- <a href="#sc2"><li><h4>Biography</h4></li></a> --}}
+                    
                     <a href="#sc3"><li><h4>Latest News</h4></li></a>
                     <a href="#sc4"><li><h4>Replays</h4></li></a>
                 </ul>
@@ -42,9 +57,29 @@
                             <tr>
                                 <td>Olympic Medals</td>
                                 <td>
-                                    <td>2 Gold</td>
-                                    <td>2 Gold</td>
-                                    <td>2 Gold</td>
+                                    
+                                    
+                                        
+                                        @php
+                                        if($gold){                                          
+                                            echo '<td>' .  $gold . ' Gold</td>';
+                                        }else{
+                                            echo "<td> 0 Gold </td>";
+                                        }
+                                        if($silver){
+                                            echo '<td>' .  $silver . ' Silver</td>';
+                                        }
+                                        else{
+                                            echo "<td> 0 Silver </td>";
+                                        }
+                                        if($bronze){
+                                            echo '<td>' .  $bronze . 'Bronze</td>';
+                                        }
+                                        else{
+                                            echo "<td> 0 Bronze </td>";
+                                        }
+                                        @endphp
+            
                                 </td>
                                 
                             </tr>
@@ -52,14 +87,14 @@
                                 <td>Games Participations</td>
                                 <td></td>
                                 <td></td>
-                                <td>3</td>
+                                <td>{{ $Games_Participations }}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>First Olympic Games</td>
                                 <td></td>
                                 <td></td>
-                                <td>Sochi 2014</td>
+                                <td>{{ $first_olympic_Games}}</td>
                                 <td></td>
                             </tr>
                         </table>
@@ -70,11 +105,63 @@
                     </div> --}}
 
                     <div class="athsection2 mb-3" id="sc3" >
-<h3 class="p-3 mb-3">Latest News</h3>
+                        <h3 class="utf_block_title"><span>Latest News</span></h3>
+                            <div class="container">
+                                <div class="utf_latest_news block color-red">                                   
+                                    <div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
+                                        @for($i = 1; $i <= 4; $i++)
+                                        <div class="item">
+                                            <ul class="utf_list_post">
+                                                <li class="clearfix">
+                                                    <div class="utf_post_block_style clearfix">
+                                                        <div class="utf_post_thumb"> <a href="#"><img class="img-fluid"
+                                                                    src="https://th.bing.com/th/id/OIP.Yh8OW6zO_rwiLkurqJ43QQHaEo?rs=1&pid=ImgDetMain" alt="" /></a>
+                                                        </div>
+                                                        <a class="utf_post_cat" href="#">Travel</a>
+                                                        <div class="utf_post_content">
+                                                            <h2 class="utf_post_title title-medium"> <a href="#">Zhang social
+                                                                    media pop also known when smart innocent...</a> </h2>
+                                                            <div class="utf_post_meta"> <span class="utf_post_author"><i
+                                                                        class="fa fa-user"></i> <a href="#">John Wick</a></span>
+                                                                <span class="utf_post_date"><i class="fa fa-clock-o"></i> 25 Jan,
+                                                                    2022</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    @endfor 
+                                    </div>
+                                </div>
+                            </div>
                     </div>
 
                     <div class="athsection2 mb-3" id="sc4">
-                        <h3 class="p-3 mb-3">Replays</h3>
+                        <h3 class="utf_block_title"><span>Replays</span></h3>
+                            <div class="container">
+                                <div class="utf_latest_news block color-red">                                   
+                                    <div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
+                                        @foreach($medals as $medal)
+                                        <div class="item">
+                                            {{-- <video  width="760" height="240" controls 
+                                                src="{{ $medal ->video}}" type="video/webm" translate="yes">
+                                            </video> --}}
+
+                                            <video
+                                            controls
+                                            width="620">
+                                            <source
+                                            src="{{  $medal ->video }}.mp4"
+                                            type="video/mp4" />
+                                            </video>
+
+                                        </div>
+                                    @endforeach 
+                                    </div>
+                                </div>
+                            </div>
+
                     </div>
                 </div>
             </div>

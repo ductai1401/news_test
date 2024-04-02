@@ -37,7 +37,8 @@ class CategoryController extends Controller
 
         
         $category->name = $request -> name;
-        $category->status = $request -> status;     
+        $category->status = $request -> status;
+        $category ->parent_id = 0;     
 
         $category->save();
 

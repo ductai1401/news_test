@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ProfileController extends Controller
 {
-    public function index() {
-        
+    public function viewProfile(){
 
-        return view('index');
+        return view('auth.profile');
     }
 }

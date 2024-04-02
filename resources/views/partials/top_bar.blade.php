@@ -2,9 +2,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                @php
+                    
+                @endphp
                 <ul class="unstyled top-nav">
-                    <li><a href="{{ route('auth.viewLogin') }}">Login & Signup</a></li>
-                    <li><a href="{{ route('admin.olympic.index') }}">admin</a></li>
+                    @if(!Auth::check())
+                        <li><a href="{{ route('auth.viewLogin') }}">Login & Signup</a></li>
+                    @else
+                        <li><a href="{{ route('profile') }}"><i class="fa fa-fw fa-user">&nbsp;</i>{{ Auth::user()->fullname}}</a></li>
+                        @if(Auth::user()->level == 1)
+                            <li><a href="{{ route('admin.olympic.index') }}">Admin</a></li>
+                            
+                        @endif
+                        <li><a href="{{ route('auth.logout') }}">Logout</a></li>
+                    @endif
+                    
+                    
                 </ul>
             </div>
             <div class="col-md-4 top-social text-lg-right text-md-center">
@@ -19,6 +32,11 @@
                         </a>
                     </li>
                     {{-- <li>
+                        <div class="utf_nav_search"> <span id="search"><i class="fa fa-search"></i></span> </div>
+                        <div class="utf_search_block" style="display: none;">
+                            <input type="text" class="form-control" placeholder="Enter your keywords...">
+                            <span class="utf_search_close">&times;</span> 
+                        </div> 
                         <a title="Rss" href="#"> <span class="social-icon"><i
                                     class="fa-brands fa-rss"></i></span> </a> <a title="Skype" href="#">
                             <span class="social-icon"><i class="fa-brands fa-skype"></i></span> </a>

@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     public function viewLogin() {
+        if(Auth::check()){
+            return redirect()->back();
+        }
 
         return view('auth.login');
     }
@@ -20,6 +23,7 @@ class AuthController extends Controller
         $credentials = [
             'email' => $request -> email,
             'password' => $request -> password,
+            'status' => 1,
 
         ];
 
@@ -34,6 +38,9 @@ class AuthController extends Controller
     
 
     public function viewRegister() {
+        if(Auth::check()){
+            return redirect()->back();
+        }
 
         return view('auth.register');
     }

@@ -73,9 +73,7 @@
                                             <div class="input-group">
                                                 <select class="form-control fill_it" name="parent_id">
                                                     <option value="">-------Root-------</option>
-                                                    @for($i = 1 ; $i <= 10; $i++)
-                                                        <option value="{{$i}}" {{ old('parent_id') == $i ? 'selected' : ''}}>{{$i}}</option>
-                                                    @endfor
+                                                    
                                                 </select>
                                             </div>
                                             <div class="margin-top-3">

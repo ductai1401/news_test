@@ -24,25 +24,25 @@
     <section class="utf_featured_post_area pt-4 no-padding">
         <div class="container">
             <div class="row align-items-baseline">
-                <div class="col-4 h21" >
+                <div class="col-lg-3 h22" >
                     <span>{{ $sport ->name}}</span>
                 </div>
 
-                <div class="col-8 " >
+                <div class="col-lg-9 h5" >
                     <div>
                         {!! $sport ->details !!}
                     </div>
                     
                 </div>
             </div>
-        </div>
+        </div><br>
 
 
         <div class="container">
         <div>
             <div class="row">
                 
-                <div class="container">
+                {{-- <div class="container">
                     <form action="" class="sport-select">
                         
                         <select class="form-select">
@@ -58,7 +58,7 @@
                         </select>
                     
                     </form>
-                </div>
+                </div> --}}
 
                 <div class="container">
                     <div class="tab-content">

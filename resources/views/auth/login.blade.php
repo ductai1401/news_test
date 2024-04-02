@@ -23,7 +23,7 @@
       </div>
       <div class="col-md-12">
         <div class="form-group">
-          <input id="password" placeholder="Password*" type="text"  name="password" class="form-control @error('password') is-invalid @enderror">
+          <input id="password" placeholder="Password*" type="password"  name="password" class="form-control @error('password') is-invalid @enderror">
           @error('password')
               <span class="alert alert-danger">
                 <strong>{{ $message }}</strong></span>

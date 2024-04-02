@@ -18,6 +18,7 @@ use App\Http\Controllers\Client\AthleteController as ClientAthleteController;
 use App\Http\Controllers\Client\CountryController as ClientCountryController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\OlympicController as ClientOlympicController;
+use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\Client\ResultsController;
 use App\Http\Controllers\Client\SportController as ClientSportController;
 use App\Models\Olympic;
@@ -34,19 +35,22 @@ use App\Models\Olympic;
 */
 
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+// Route::get('/', function () {
+//     return view('index');
+// })->name('index');
 
 
 
 
-Route::get('/olympic/profile', function() {
-    return view('profile');
-})->name('profile');
+
+Route::get('/', [HomeController::class, 'index'])->name('index');
+
+// Route::get('/profile', function() {
+//     return view('profile');
+// })->name('profile');
 
 Route::prefix('client')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('index');
+    
 
     Route::get('/olympic_games', [ClientOlympicController::class, 'olympic_games'])->name('olympic_games');
     Route::get('/olympic_games/{name}/{id}', [ClientOlympicController::class, 'olympic_seasion'])->name('olympic_seasion');
@@ -59,6 +63,9 @@ Route::prefix('client')->group(function () {
     Route::get('/athletes/{id}', [ClientAthleteController::class, 'athlete'])->name('athlete');
 
     Route::get('/results', [ResultsController::class, 'results'])->name('results');
+
+    Route::get('/profile', [ProfileController::class, 'viewProfile'])->name('profile');
+
 
 
     
@@ -79,7 +86,7 @@ Route::prefix('auth')->name('auth.')->controller(AuthController::class)->group(f
     Route::post('/profile/{id}', 'show')->name('profile');
 });
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('checkLogin')->group(function () {
 
     Route::get('/404', function () {
         return view('admin.404');

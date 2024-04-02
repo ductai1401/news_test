@@ -58,11 +58,11 @@
     <section class="utf_block_wrapper p-bottom-0">
         <div class="container d-flex justify-content-around">
             <div class="row">
-                <div class="col-4 h21" >
-                    <h1>About the games</h1>
+                <div class="col-lg-3" >
+                    <h1 class="h22">About the games</h1>
                 </div>
             
-                <section class=" col-lg-8">
+                <section class=" col-lg-9">
                     <div class="container">
                         {!! $olympic ->details !!}
                     </div>

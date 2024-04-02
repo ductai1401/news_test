@@ -10,9 +10,8 @@
                     <div id="navbarSupportedContent"
                         class="collapse navbar-collapse navbar-responsive-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item dropdown active">
-                                <a href="#" class="nav-link"
-                                    data-toggle="dropdown">  
+                            <li class="nav-item ">
+                                <a href="{{ route('index')}}" class="nav-link">  
                                 
                                     <img style="width: 50px ; height: 50px; " src="{{ asset('images/Olympic-logo.jpg')}}" alt=""> </a>
                                         
@@ -154,7 +153,7 @@
                             </li>
                             <li> <a href="">Sports</a> </li>
                             <li class="dropdown"> <a href="#" class="dropdown-toggle"
-                                    data-toggle="dropdown">Features <i class="fa fa-angle-down"></i></a>
+                                    data-toggle="dropdown">  <i class="fa fa-angle-down"></i></a>
                                 <ul class="utf_dropdown_menu" role="menu">
                                     <li class="utf_dropdown_submenu"> <a href="#."><i
                                                 class="fa fa-angle-double-right"></i> Category Layouts</a>
@@ -212,11 +211,11 @@
                     </div>
                 </div>
             </nav>
-            {{-- <div class="utf_nav_search"> <span id="search"><i class="fa fa-search"></i></span> </div> --}}
+            <div class="utf_nav_search"> <span id="search"><i class="fa fa-search"></i></span> </div>
             <div class="utf_search_block" style="display: none;">
                 <input type="text" class="form-control" placeholder="Enter your keywords...">
-                <span class="utf_search_close">&times;</span>
-            </div>
+                <span class="utf_search_close">&times;</span> 
+              </div>       
         </div>
     </div>
 </div>
