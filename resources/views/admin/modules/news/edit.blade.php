@@ -225,7 +225,7 @@
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group " style="height: 400px" >
-                                                <textarea style="max-height: 400px" id="content" class="summernote edi-css form-control fill_it" name="content">{{ old('content',  $news->content)}}</textarea>
+                                                <textarea cols="30" rows="10" id="content" class="summernote edi-css form-control fill_it" name="content">{{ old('content',  $news->content)}}</textarea>
                                             </div>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >

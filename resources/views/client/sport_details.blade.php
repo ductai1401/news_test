@@ -98,7 +98,7 @@
                                         </td>
                                         <td>{{ $sport_medal ->posision }}</td>
                                         <td>
-                                            <a href="{{ route('athlete',['id' =>  $sport_medal ->sport ->id])}}">Detail</a>
+                                            <a href="{{ route('athlete',['id' =>  $sport_medal ->athlete ->id])}}">Detail</a>
                                         </td>
         
                                     </tr>

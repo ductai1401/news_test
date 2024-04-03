@@ -4,6 +4,15 @@
 @section('module', 'Medal')
 @section('heigh',' 924px')
 
+@push('hanldejs')
+
+
+<script src="{{ asset('admin/vendors/summernote/summernote-bs4.min.js')}}"></script>
+
+    <script>
+        $('#video').summernote();
+    </script>
+@endpush
 
 @push('script')
 <script type="text/javascript">
@@ -232,8 +241,8 @@
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
-
-                                                <input id="video" type="url" name="video" class="form-control fill_it" placeholder="Please enter the video !!!">
+                                                <textarea name="video" id="" cols="30" rows="10" placeholder="Please enter video" class="form-control fill_it"></textarea>
+                                               
                                             </div>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >

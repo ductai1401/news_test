@@ -92,8 +92,9 @@ class MedalController extends Controller
         $medal->id_country = $request -> id_country;
         $medal -> id_olympic_sport = $olympic_sport ->id;
         $medal->status = $request -> status;
-        $medal->video = $request -> video;
-        
+        if(empty($request -> video)){
+            $medal->video = $request -> video;
+        }
 
         $medal->save();
 
@@ -150,7 +151,10 @@ class MedalController extends Controller
         $medal->id_athlete = $request -> id_athlete;
         $medal->id_country = $request -> id_country;
         $medal->status = $request -> status;
-        $medal->video = $request -> video;
+        if(empty($request -> video)){
+            $medal->video = $request -> video;
+        }
+        
 
         $medal->save();
 

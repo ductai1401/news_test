@@ -21,7 +21,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default('1')->comment('1: show - 0: hidden');
             $table->foreign('id_athlete')->references('id')->on('athletes');
             $table->string('posision');
-            $table->string('video');
+            $table->text('video')->nullable();
             $table->timestamps();
         });
     }

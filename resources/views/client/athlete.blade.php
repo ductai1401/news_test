@@ -113,7 +113,7 @@
                                         <div class="item">
                                             <ul class="utf_list_post">
                                                 <li class="clearfix">
-<div class="utf_post_block_style clearfix">
+                                                    <div class="utf_post_block_style clearfix">
                                                         <div class="utf_post_thumb"> <a href="#"><img class="img-fluid"
                                                                     src="https://th.bing.com/th/id/OIP.Yh8OW6zO_rwiLkurqJ43QQHaEo?rs=1&pid=ImgDetMain" alt="" /></a>
                                                         </div>
@@ -147,14 +147,9 @@
                                             {{-- <video  width="760" height="240" controls 
                                                 src="{{ $medal ->video}}" type="video/webm" translate="yes">
                                             </video> --}}
-
-                                            <video
-                                            controls
-                                            width="620">
-                                            <source
-                                            src="{{  $medal ->video }}.mp4"
-                                            type="video/mp4" />
-</video>
+                                            
+                                                {!!  $medal ->video !!}
+                                            
 
                                         </div>
                                     @endforeach 

@@ -22,7 +22,7 @@ class Olympic_sportController extends Controller
     public function getPosision(){
         echo "<option value=''>-------Posision-------</option>";
         for($i = 1 ; $i <= 10; $i++){
-            echo '<option value=""'. $i .'>' . $i . '</option>';
+            echo "<option value='". $i ."'>" . $i . "</option>";
         }
     }
 

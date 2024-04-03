@@ -200,7 +200,7 @@
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
-                                                <textarea id="content" class="summernote edi-css form-control fill_it" name="content">{{ old('content')}}</textarea>
+                                                <textarea id="content" class="summernote edi-css form-control fill_it" name="content" cols="30" rows="10">{{ old('content')}}</textarea>
                                             </div>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >

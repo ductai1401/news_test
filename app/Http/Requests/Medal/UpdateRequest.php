@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
             'posision' => 'required|numeric', 
             'id_country' => 'required',
             'id_athlete' => 'required',
-            'video' => 'required',
+            
         ];
     }
 
@@ -33,7 +33,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'posision.required' => 'Rankings cannot be empty !!!',
-            'video.required' => 'Rankings cannot be empty !!!',
+           
             'id_athlete.required' => 'Rankings cannot be empty !!!',
             'id_country.required' => 'Rankings cannot be empty !!!',
             'posision.numeric' => 'Rankings must be numeric !!!',
