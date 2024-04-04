@@ -206,7 +206,7 @@
                                         <div class="col-md-7">
                                             <select name="status" id="" class="form-control">
                                                 <option value="1" {{ old('status')==1 ? 'selected' : '' }}>Show</option>
-                                                <option value="0" {{ old('status')==2 ? 'selected' : '' }}>Hidden</option>
+                                                <option value="0" {{ old('status')==0 ? 'selected' : '' }}>Hidden</option>
                                             </select>
                                         </div>
                                          

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('athletes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('brith_day');
             $table->unsignedBigInteger('id_country');
             $table->foreign('id_country')->references('id')->on('countrys');

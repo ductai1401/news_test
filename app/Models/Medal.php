@@ -41,6 +41,8 @@ class Medal extends Model
         return $this->HasOneThrough(Sport::class,Olympic_sport::class,'id','id','id_olympic_sport','id_sport');
     }
 
+    
+
 
 
     public function country(): BelongsTo

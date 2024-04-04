@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-12">
                 <div class="utf_featured_tab color-blue">
-                    <h3 class="utf_block_title"><span>Technology News</span></h3>
+                    <h3 class="utf_block_title"><span>Athlete News</span></h3>
                     <ul class="nav nav-tabs">
                         <li class="nav-item"> <a class="nav-link animated fadeIn active" href="#tab_a"
                                 data-toggle="tab"> <span class="tab-head"> <span
@@ -398,7 +398,7 @@
                 
 
                     <div class="widget color-default">
-                        <h3 class="utf_block_title"><span>Popular News</span></h3>
+                        <h3 class="utf_block_title"><span>Sport News</span></h3>
                         <div class="utf_post_overaly_style clearfix">
                             <div class="utf_post_thumb"> <a href="#"> <img class="img-fluid"
                                         src="images/news/lifestyle/health4.jpg" alt="" /> </a>
@@ -486,7 +486,7 @@
 <!-- 1rd Block Wrapper End -->
 
 <!-- 2rd Block Wrapper Start -->
-<section class="utf_block_wrapper p-bottom-0">
+{{-- <section class="utf_block_wrapper p-bottom-0">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
@@ -700,7 +700,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- 2rd Block Wrapper End -->
 
 <!-- 3rd Block Wrapper Start -->

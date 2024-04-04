@@ -33,13 +33,20 @@
                         <p><strong>{{ $athlete ->sports ->name}}</strong></p>
                     </div>
                 </div>
-                @php 
+                @php    
+
+                            if(empty($athlete ->image)){
+
+                                 $image_url = asset('images/image_athlete_defaults.png');
+                            } else {
                                 $image_url = public_path("uploads/athletes") . '/' . $athlete ->image;
                                 if(!file_exists($image_url)) {
-                                    $image_url = asset('images/error.jpg');
+                                    $image_url = asset('images/image_athlete_defaults.png');
                                 } else {
                                     $image_url = asset("uploads/athletes") .'/' . $athlete ->image;
                                 }
+                            }
+                                
                             @endphp
                 <div class="divimg"><img src="{{ $image_url }}" alt="" width="200" height="200" class="mt-5 mainimg"></div>
                 <span style="font-size: 25px; display:flex; justify-content: center;" class="h21"><strong> {{ $athlete ->name }} </strong></span>
@@ -157,6 +164,66 @@
                                 </div>
                             </div>
                     </div>
+
+                    <div class="athsection2 mb-3" id="sc4">
+                        <h3 class="utf_block_title"><span>Results</span></h3>
+                        <div class="container"  style="padding:  0px;" >
+                            <table class="table m-3 mt-5 athtable">
+                                <thead>
+                                    
+                                        <td></td>
+                                        <td>Rank</td>
+                                        <td>Sport</td>
+        
+                                </thead>
+                               @foreach( $olympic_medals as $olympic_medal)
+                                <tr>
+                                    
+                                    <td>
+                                        {{-- Image seasion olympic --}}
+                                        
+                                        @php
+                                            $image_logo_url = public_path("uploads/olympics/logos") . '/' . $olympic_medal ->olympic ->logo;
+                                            if(!file_exists($image_logo_url)) {
+                                                $image_logo_url = asset('images/image_country_olympic_defaults.jpg');
+                                            } else {
+                                                $image_logo_url = asset("uploads/olympics/logos") .'/' . $olympic_medal ->olympic ->logo;
+                                            }
+
+                                            $image_country_url = public_path("uploads/countrys") . '/' . $olympic_medal ->country ->flag;
+                                            if(!file_exists($image_country_url)) {
+                                                $image_country_url = asset('images/image_country_olympic_defaults.jpg');
+                                            } else {
+                                                $image_country_url = asset("uploads/countrys") .'/' . $olympic_medal ->country ->flag;
+                                            }
+                                        @endphp
+                                        <div><img src="{{ $image_logo_url }}" alt="" width="70" height="70" style="border-radius: 5px"><span><strong>{{ $olympic_medal ->olympic ->name}}</strong></span></div>
+                                        <br>
+                                        
+                                        {{-- Image country flag  --}}
+                                        <div>
+                                            <span class="ml-3"> Team &nbsp; </span>
+                                            <img src="{{ $image_country_url }}" alt="" width="40" height="40" style="border-radius: 50%">
+                                            <span> {{ $olympic_medal ->country ->name}}</span>
+                                        </div>
+                                        
+                                    </td>
+                                    <td>
+                                        <p class="mt-3">{{ $olympic_medal ->posision }}</p>
+                                       
+                                    </td>
+                                    <td>
+                                        <p class="mt-3">{{ $olympic_medal ->sport ->name}}</p>
+                                        
+                                    </td>           	                        
+                                                                      
+                                </tr>
+                                @endforeach 
+                               
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

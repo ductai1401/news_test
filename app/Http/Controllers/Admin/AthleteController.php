@@ -47,22 +47,38 @@ class AthleteController extends Controller
     {
         $athlete = new Athlete();
 
-        $file = $request -> image;
-        $fileName = time(). '-'.  $file->getClientOriginalName();
+
+       
+
+        
 
 
-        $athlete->image = $fileName;
         $athlete->name = $request -> name;
         $athlete->id_country = $request -> id_country;
         $athlete->id_sport = $request -> id_sport;
         $athlete->brith_day = $request -> brith_day;
         $athlete->status = $request -> status; 
         $athlete->description = $request ->description;
+        $file = $request ->image;
 
+        if(!empty($file)){
+            
+            $validated = $request->validate([
+                'image' => 'mimes:jbg,jpeg,bmp,png',
+                
+            ],[
+                'image.mimes' => 'Image must jbg,jpeg,bmp,png', 
+            ]);
+            
+
+            $fileName = time(). '-'.  $file->getClientOriginalName(); 
+
+            $athlete->image = $fileName;
+            $file -> move(public_path('uploads/athletes'), $fileName );
+            
+        }
 
         $athlete->save();
-
-        $file -> move(public_path('uploads/athletes'), $fileName);
         return redirect()->route('admin.athlete.create')->with('success', 'Create athlete successfully');
     }
 

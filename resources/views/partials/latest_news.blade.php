@@ -5,12 +5,12 @@
             <div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
 
                 @php
-                    $news = \App\Models\News::where('status', '!=', 6)->get();
+                    $news = \App\Models\News::where('status', 1)->get();
                 @endphp
-                
+                @foreach($news as $n )
                 <div class="item">
+                    
                     <ul class="utf_list_post">
-                        @foreach($news as $n )
                         <li class="clearfix">
                             <div class="utf_post_block_style clearfix">
                                 @php 
@@ -51,10 +51,11 @@
                                 </div>
                             </div>
                         </li> --}}
-                        @endforeach
+                        
                     </ul>
+                   
                 </div>
-            
+                @endforeach
             </div>
         </div>
     </div>

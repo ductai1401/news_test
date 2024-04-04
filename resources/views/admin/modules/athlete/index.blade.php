@@ -103,12 +103,18 @@
                         <tbody>
                             @foreach($athletes as $athlete) 
                             @php 
-                                $image_url = public_path("uploads/athletes") . '/' . $athlete ->image;
+                            if(empty($athlete ->image)){
+                                $image_url = asset('images/image_athlete_defaults.png');
+                            } else {
+                                 $image_url = public_path("uploads/athletes") . '/' . $athlete ->image;
                                 if(!file_exists($image_url)) {
-                                    $image_url = asset('images/error.jpg');
+                                    $image_url = asset('images/image_athlete_defaults.png');
                                 } else {
                                     $image_url = asset("uploads/athletes") .'/' . $athlete ->image;
                                 }
+                            }
+                            
+                               
                             @endphp
                             <tr>
                                 <td>{{ $loop ->iteration }}</td>

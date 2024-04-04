@@ -113,11 +113,19 @@
                             <div class="col-md-4 section1 text-center">
                                 @php 
                                                     $image_url = public_path("uploads/users") . '/' . $user ->image;
-                                                    if(!file_exists($image_url)) {
-                                                        $image_url = asset('images/error.jpg');
+                                                    if(empty($user ->image))
+                                                    {
+                                                        $image_url = asset('images/user_defaults.png');
+                                                        
                                                     } else {
-                                                        $image_url = asset("uploads/users") .'/' . $user ->image;
+                                                        if(!file_exists($image_url)) {
+                                                            
+                                                            $image_url = asset('images/user_defaults.png');
+                                                        } else {
+                                                            $image_url = asset("uploads/users") .'/' . $user ->image;
+                                                        }
                                                     }
+                                                    
                                                 @endphp
                                 <div class="section1-img"><img src="{{ $image_url }}" width="250px" height="250px" alt="image" class="userimg"></div>                    
                             </div>
@@ -151,7 +159,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-primary"><p>Status</p></td>
-                                            <td><p>{{ $user ->Level == 1 ? 'Admin' : 'Member'}}</p></td>
+                                            <td><p>{{ $user ->status == 1 ? 'Show' : 'Hidden'}}</p></td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -30,7 +30,7 @@ class StoreRequest extends FormRequest
             
             'id_sport' => 'required',
 
-            'image' => 'required|mimes:jbg,jpeg,bmp,png',
+            'image' => 'mimes:jbg,jpeg,bmp,png',
             
 
         ];
@@ -42,7 +42,7 @@ class StoreRequest extends FormRequest
             'name.required' => 'The athlete name cannot be left blank !!!',
             'name.unique' => 'The athlete name already exists, please re-enter',
             'brith_day.required' =>'The brith day cannott be left blank !!!',
-            'image.required' => 'Image photos cannot be blank !!!',
+
             'description.required' => 'The description cannot be blank !!!',
             'id_sport.required' => 'The sport cannot be blank !!!',
             'id_country.required' => 'The country cannot be blank !!!',

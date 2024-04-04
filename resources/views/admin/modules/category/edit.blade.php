@@ -75,7 +75,7 @@
                                             <div class="col-md-7">
                                                 <div class="input-group">
                                                     <select class="form-control fill_it" name="parent_id">
-                                                        <option value="">-------Root-------</option>
+                                                        <option value="0">-------Root-------</option>
                                                         @php  
                                                             recursiveCategory($categories, old('parent_id', $category ->parent_id) );
                                                         @endphp
