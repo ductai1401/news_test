@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\News\StoreRequest;
 use App\Http\Requests\News\UpdateRequest;
+use App\Mail\DemoMail;
 use App\Models\News;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class NewsController extends Controller
 {
@@ -58,6 +61,17 @@ class NewsController extends Controller
         $news ->key_word = $request ->key_word;
 
         $news->save();
+        $users = User::where('level', '!=', 1)->get();
+        $news = News::orderby('created_at', 'desc')->first();
+        foreach($users as $user){
+
+            $mailData = [
+                'title' => 'News Hot just posted the latest news', 
+            ];
+            $email_user = $user -> email;
+            $fullname = $user-> fullname;
+        }
+        Mail::to($email_user, $fullname)->send(new DemoMail($mailData,$news));
 
         $file->move(public_path('uploads/news'), $fileName);
 
@@ -164,5 +178,12 @@ class NewsController extends Controller
         return redirect()->route('admin.news.index')->with('success', 'Create news news successful');
     }
 
+
+    public function mail_hot() {
+        $name = 'test name for email';
+        Mail::send('emails.test', compact('name'), function($email){
+            $email ->to('luuductai12@gmail.com', 'luuductai');
+        });
+    }
     
 }

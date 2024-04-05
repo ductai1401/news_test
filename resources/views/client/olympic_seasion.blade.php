@@ -106,6 +106,8 @@
                 </thead>
                 <tbody>
                     @foreach ($sports->sport as $s)
+
+                    
                     @if($s ->parent_id == 0)
                     @php 
 

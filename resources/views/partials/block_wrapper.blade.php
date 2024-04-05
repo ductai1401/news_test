@@ -39,28 +39,34 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="utf_list_post_block">
                                         <ul class="utf_list_post">
-                                            @for($i =1; $i < 3; $i++)
+                                            @php
+                                            $news = \App\Models\News::where('status', 1)->take(2)->get();
+                                            @endphp
+                                            @foreach($news as $n)
+                                            @php 
+                                                $image_url = public_path("uploads/news") . '/' . $n ->image;
+                                                if(!file_exists($image_url)) {
+                                                    $image_url = asset('images/error.jpg');
+                                                } else {
+                                                    $image_url = asset("uploads/news") .'/' .  $n ->image;
+                                                }
+                                            @endphp
                                             <li class="clearfix">
                                                 <div class="utf_post_block_style post-float clearfix">
                                                     <div class="utf_post_thumb"> <a href="#"> <img
                                                                 class="img-fluid"
-                                                                src="images/news/tech/gadget2.jpg"
+                                                                src="{{ $image_url }}"
                                                                 alt="" /> </a> </div>
                                                     <div class="utf_post_content">
                                                         <h2 class="utf_post_title title-small"> <a
-                                                                href="#">Zhang social media pop also
-                                                                known when smart innocent...</a> </h2>
-                                                        <div class="utf_post_meta"> <span
-                                                                class="utf_post_author"><i
-                                                                    class="fa fa-user"></i> <a
-                                                                    href="#">John Wick</a></span> <span
+                                                                href="#">{{ $n ->title}}</a> </h2>
+                                                        <div class="utf_post_meta">  <span
                                                                 class="utf_post_date"><i
-                                                                    class="fa fa-clock-o"></i> 25 Jan,
-                                                                2022</span> </div>
+                                                                    class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime( $n->created_at)) }}</span> </div>
                                                     </div>
                                                 </div>
                                             </li>
-                                            @endfor
+                                            @endforeach
                                            
                                         </ul>
                                     </div>
@@ -417,7 +423,18 @@
 
                         <div class="utf_list_post_block">
                             <ul class="utf_list_post">
-                                @for($i =1 ; $i < 4; $i++)
+                                @php
+                                        $news = \App\Models\News::where('status', 1)->take(2)->get();
+                                    @endphp
+                                @foreach($news as $n)
+                                @php 
+                                        $image_url = public_path("uploads/news") . '/' . $n ->image;
+                                        if(!file_exists($image_url)) {
+                                            $image_url = asset('images/error.jpg');
+                                        } else {
+                                            $image_url = asset("uploads/news") .'/' .  $n ->image;
+                                        }
+                                    @endphp
                                 <li class="clearfix">
                                     <div class="utf_post_block_style post-float clearfix">
                                         <div class="utf_post_thumb"> <a href="#"> <img
@@ -425,16 +442,17 @@
                                                     alt="" /> </a> <a class="utf_post_cat"
                                                 href="#">Lifestyle</a> </div>
                                         <div class="utf_post_content">
-                                            <h2 class="utf_post_title title-small"> <a href="#">Zhang
-                                                    social media pop also known when smart innocent...</a> </h2>
-                                            <div class="utf_post_meta"> <span class="utf_post_author"><i
-                                                        class="fa fa-user"></i> <a href="#">John
-                                                        Wick</a></span> <span class="utf_post_date"><i
-                                                        class="fa fa-clock-o"></i> 25 Jan, 2022</span> </div>
+                                            <h2 class="utf_post_title title-small"> <a href="#">{{ $n ->title}}</a> </h2>
+                                            <div class="utf_post_meta"> 
+                                                 <span class="utf_post_date">
+                                                    <i class="fa fa-clock-o"></i> 
+                                                    {{ date('d/m/Y', strtotime( $n->created_at)) }}
+                                                </span> 
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
-                                @endfor
+                                @endforeach
                                 
                             </ul>
                         </div>

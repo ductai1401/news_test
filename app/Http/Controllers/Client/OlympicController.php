@@ -18,6 +18,7 @@ class OlympicController extends Controller
         $olympic = Olympic::where('id', $id)->first();
         $sport = Olympic::with('sport')->where('id', $id)->first();
         
+        
 
         return view('client.olympic_seasion', [
             'olympic' => $olympic,

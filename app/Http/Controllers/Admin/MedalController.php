@@ -84,9 +84,10 @@ class MedalController extends Controller
         
         $id_sport = $request -> id_sport;
         $id_olympic = $request -> id_olympic;
+        
     
         $olympic_sport = Olympic_sport::where('id_olympic', '=', $id_olympic)->where( 'id_sport', '=', $id_sport)->first();
-        
+  
         
 
         $medal->posision = $request -> posision;

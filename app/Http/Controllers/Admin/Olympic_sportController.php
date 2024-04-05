@@ -14,6 +14,7 @@ class Olympic_sportController extends Controller
     public function getSport($id) {
         $sports = Sport::get();
         $olympic_sport = Olympic_sport::with('sport')->where('id_olympic', $id)->get();
+        
         echo "<option value='0'>-------Sport-------</option>";
         echo recursiveSport_olympic($olympic_sport, old('id_sport', 0) );   
     }

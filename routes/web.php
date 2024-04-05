@@ -22,6 +22,7 @@ use App\Http\Controllers\Client\OlympicController as ClientOlympicController;
 use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\Client\ResultsController;
 use App\Http\Controllers\Client\SportController as ClientSportController;
+use App\Http\Controllers\MailController;
 use App\Models\Olympic;
 
 /*
@@ -45,6 +46,7 @@ use App\Models\Olympic;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/sendmail', [MailController::class, 'index']);
 
 // Route::get('/profile', function() {
 //     return view('profile');
@@ -68,6 +70,8 @@ Route::prefix('client')->group(function () {
     Route::get('/profile', [ProfileController::class, 'viewProfile'])->name('profile');
 
     Route::get('/news/{id}', [ClientNewsController::class, 'singleNews'])->name('singleNews');
+
+    Route::get('/send_mail', [ClientNewsController::class, 'mail_hot']);
 
 
 
@@ -192,6 +196,8 @@ Route::prefix('admin')->name('admin.')->middleware('checkLogin')->group(function
         Route::post('update/{id}', 'update')->name('update');
 
         Route::get('destroy/{id}', 'destroy')->name('destroy');
+
+       
     });
 
     Route::prefix('olympic')->name('olympic.')->controller(OlympicController::class)->group(function () {

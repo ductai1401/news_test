@@ -3316,18 +3316,21 @@ to {
 	height: 100%;
 }
 
-.utf_latest_new_area{
+.utf_latest_new_area1{
 	height: 370px;
 }
 
-.img-fluid{
+.img-fluid1{
 	height: 150px;
 }
 
-.img-single-news{
+.img-single-news1{
 	height: 450px;
 }
 
-.utf_post_title{
+.utf_post_title1{
 	height: 75px;
+	line-height: 24px;
+	font-size: 16px;
+	
 }

@@ -34,15 +34,16 @@
     }
 
     function recursiveSport_olympic($sports, $selected ,$parent = 0, $str ='') {
-        foreach($sports as $sport => $value) {
+        foreach($sports as $key => $value) {
             if($value ->sport ->parent_id == $parent) {
+                
                 if($selected == $value ->sport ->id) {
+                    
                     echo '<option value="'. $value ->sport ->id .'" selected >'. $str. $value ->sport ->name .'</option>';
                 } else {
                      echo '<option value="'. $value ->sport ->id .'">'. $str. $value ->sport ->name .'</option>';
                 }
-              
-                unset($sports[$sport]);
+                unset($sports[$key]);
 
                 recursiveSport_olympic($sports, $selected, $value ->sport ->id, $str."--|" );
                 
