@@ -88,6 +88,7 @@
                                 <th class="text-center">Olympic</th>
                                 <th class="text-center">Country</th>
                                 <th class="text-center">Sport</th>
+                                <th class="text-center">Event</th>
                                 <th class="text-center">Athlete</th>
                                 <th class="text-center">Posision</th>
                                 <th class="text-center">Edit</th>
@@ -100,6 +101,15 @@
                                 <td>{{ $loop ->iteration }}</td>
                                 <td>{{ $medal ->olympic->name}}</td>
                                 <td>{{ $medal ->country->name}}</td>
+                                <td>
+                                @php
+                                    $sport_parent = DB::table('sports')->select('name', 'parent_id')->where('id', $medal ->sport ->parent_id)->where('status', '!=', 6)->first();
+                                    if (!$medal ->sport ->parent_id == 0) {
+                                            echo $sport_parent->name;
+                                        }
+                                    
+                                @endphp
+                                </td>
                                 <td>{{ $medal ->sport->name}}</td>
                                 <td>{{ $medal ->athlete->name}}</td>
                                 <td>#{{ $medal ->posision}}</td>

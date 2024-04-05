@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Medal\StoreRequest;
 use App\Http\Requests\Medal\UpdateRequest;
 use App\Models\Athlete;
+use App\Models\Category;
 use App\Models\Country;
 use App\Models\Medal;
 use App\Models\Olympic;
@@ -38,8 +39,10 @@ class MedalController extends Controller
     {
         $country = Country::orderBy('name', 'asc')->get();
         $athlete = Athlete::orderBy('name', 'asc')->get();
+        $categories = Category::get();
         $olympic = Olympic::get();
         $sport = Sport::get();
+        
 
 
         $olympic_sport = Olympic_sport::with('sport','olympic')->orderBy('id_olympic', 'desc')->get();
@@ -51,7 +54,6 @@ class MedalController extends Controller
             'olympics' => $olympic,
             'olympic_sports' => $olympic_sport,
             'sports' => $sport,
-            
         ]);
     }
 
@@ -95,7 +97,7 @@ class MedalController extends Controller
         if(empty($request -> video)){
             $medal->video = $request -> video;
         }
-
+       
         $medal->save();
 
         return redirect()->route('admin.medal.create')->with('success', 'Create medal successfully');
@@ -117,6 +119,7 @@ class MedalController extends Controller
         $country = Country::orderBy('name', 'asc')->get();
         $athlete = Athlete::orderBy('name', 'asc')->get();
         $olympic_sport = Olympic_sport::with('sport','olympic')->orderBy('id_olympic', 'desc')->get();
+        $sport = Sport::get();
 
         $medal = medal::with('athlete','country','olympic','sport')->find($id);
        
@@ -130,7 +133,7 @@ class MedalController extends Controller
             'countrys' => $country,
             'athletes' => $athlete,
             'olympic_sports' => $olympic_sport,
-            
+            'sports' => $sport,
         ]);
     }
 
@@ -145,12 +148,14 @@ class MedalController extends Controller
         if($medal == null) {
             return redirect()->route('admin.404');
         } 
-
-
+       
+       
         $medal->posision = $request -> posision;
         $medal->id_athlete = $request -> id_athlete;
         $medal->id_country = $request -> id_country;
         $medal->status = $request -> status;
+       
+
         if(empty($request -> video)){
             $medal->video = $request -> video;
         }

@@ -120,7 +120,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-home  text-primary"></i>
                                                 </span>
-                                                <input type="text" class="form-control" id="password_confirmatoin" placeholder="Enter the address" name="address" value="{{ old('address', $user->address)}}">
+                                                <input type="text" class="form-control" id="address" placeholder="Enter the address" name="address" value="{{ old('address', $user->address)}}">
                                             </div>
                                         </div>
                                     </div>
@@ -134,7 +134,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-lock  text-primary"></i>
                                                 </span>
-                                                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+                                                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" value="">
                                             </div>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >

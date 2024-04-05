@@ -21,7 +21,7 @@
                                 } else {
                                     $image_url = asset("uploads/countrys") .'/' . $athlete ->country ->flag;
                                 }
-                            @endphp
+                        @endphp
                         <img src="{{ $image_url  }}"  width="40" height="30" alt="flag" style="border:#dcdcdc solid 1px;">
                         <div class="ml-3">
                             <p class="m-0" style="color: #696969">Team</p>
@@ -30,7 +30,10 @@
                     </div>
                     <div style="color: #696969">
                         <p class="mb-0 mt-3">Sport</p>
-                        <p><strong>{{ $athlete ->sports ->name}}</strong></p>
+                        @php
+                            $sport_parent = \App\Models\Sport::where('id', $athlete ->sports ->parent_id)->first();
+                        @endphp
+                        <p><strong>{{ $sport_parent ->name}}</strong></p>
                     </div>
                 </div>
                 @php    
@@ -174,6 +177,8 @@
                                         <td></td>
                                         <td>Rank</td>
                                         <td>Sport</td>
+                                        <td>Event</td>
+
         
                                 </thead>
                                @foreach( $olympic_medals as $olympic_medal)
@@ -213,9 +218,13 @@
                                        
                                     </td>
                                     <td>
+                                        <p class="mt-3">{{  $sport_parent ->name}}</p>
+                                        
+                                    </td>
+                                    <td>
                                         <p class="mt-3">{{ $olympic_medal ->sport ->name}}</p>
                                         
-                                    </td>           	                        
+                                    </td>            	                        
                                                                       
                                 </tr>
                                 @endforeach 

@@ -46,7 +46,7 @@
               </div>   
             </div>
             <div class="row">
-                <div class="col-lg-8 col-md-12">
+                <div class="col-lg-12 col-md-12">
                     <div class="single-post">
                         @php 
                                     $image_url = public_path("uploads/news") . '/' . $news ->image;
@@ -57,9 +57,9 @@
                                     }
                                 @endphp
                         <div class="post-media post-featured-image"> <img src="{{   $image_url }}"
-                                class="img-fluid" alt=""> </div>
+                                class="img-single-news" alt=""> </div>
                         <div class="utf_post_title-area"> <a class="utf_post_cat" href="#">{{ $news ->key_word}}</a>
-                            <h2 class="utf_post_title">{{ $news ->title}}</h2>
+                            <h2 class="utf_post_title mb-5">{{ $news ->title}}</h2>
                             <div class="utf_post_meta"> 
                                 <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime( $news->created_at)) }}</span> <span
                                     class="post-hits"><i class="fa fa-eye"></i> 21</span> <span class="post-comment"><i
@@ -69,42 +69,8 @@
 
                         <div class="utf_post_content-area">
                             <div class="entry-content">
-                                {{-- <p> <span class="dropcap">L</span> orem Ipsum is simply dummy text of the printing and type
-                                    setting industry. Lorem Ipsum has been the industry's standard Lorem Ipsum is simply
-                                    dummy text of the printing and type setting industry. Lorem Ipsum has been the
-                                    industry's standard.</p>
-                                <blockquote>Lorem Ipsum is simply dummy text of the printing and type setting industry Lorem
-                                    Ipsum is simply dummy text of the printing type setting industry. Lorem Ipsum has been
-                                    Lorem Ipsum has been the industry's standard.</blockquote>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since when an unknown printer took a
-                                    galley of type and scrambled it to make a type specimen book. It has survived not only
-                                    five centuries, but also the leap into electronic typesetting, remaining essentially
-                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                                    containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                                    Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                <p><img class="pull-left" src="images/news/news-details1.jpg" alt=""></p>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since when an unknown printer took a
-                                    galley of type and scrambled it to make a type specimen book. It has survived not only
-                                    five centuries, but also the leap into electronic typesetting, remaining essentially
-                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                                    containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                                    Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since when an unknown printer took a
-                                    galley of type and scrambled it to make a type specimen book. It has survived not only
-                                    five centuries, but also the leap into electronic typesetting, remaining essentially
-                                    unchanged.</p>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum 
-                                   has been the industry's standard dummy text ever since when an unknown printer took a
-                                    galley of type and scrambled it to make a type specimen book. It has survived not only
-                                    five centuries, but also the leap into electronic typesetting, remaining essentially
-                                    unchanged.</p> --}}
-
-                                
                                 {!! $news ->content !!}
-                                </div>
+</div>
 
                             <div class="tags-area clearfix">
                                 <div class="post-tags">
@@ -118,13 +84,13 @@
 
                             <div class="share-items clearfix">
                                 <ul class="post-social-icons unstyled">
-                                    <li class="facebook"> <a href="#"> <i class="fa fa-facebook"></i> <span
+                                    <li class="facebook"> <a href="#"> <i class="fa-brands fa-facebook"></i> <span
                                                 class="ts-social-title">Facebook</span></a> </li>
-                                    <li class="twitter"> <a href="#"> <i class="fa fa-twitter"></i> <span
+                                    <li class="twitter"> <a href="#"> <i class="fa-brands fa-twitter"></i> <span
                                                 class="ts-social-title">Twitter</span></a> </li>
-                                    <li class="gplus"> <a href="#"> <i class="fa fa-google-plus"></i> <span
+                                    <li class="gplus"> <a href="#"> <i class="fa-brands fa-google-plus"></i> <span
                                                 class="ts-social-title">Google +</span></a> </li>
-                                    <li class="pinterest"> <a href="#"> <i class="fa fa-pinterest"></i> <span
+                                    <li class="pinterest"> <a href="#"> <i class="fa-brands fa-pinterest"></i> <span
                                                 class="ts-social-title">Pinterest</span></a> </li>
                                 </ul>
                             </div>
@@ -153,7 +119,7 @@
                                 <div class="utf_post_block_style clearfix">
                                     <div class="utf_post_thumb"> <a href="#"><img class="img-fluid"
                                                 src="images/news/lifestyle/travel5.jpg" alt="" /></a> </div>
-                                    <a class="utf_post_cat" href="#">Health</a>
+<a class="utf_post_cat" href="#">Health</a>
                                     <div class="utf_post_content">
                                         <h2 class="utf_post_title title-medium"> <a href="#">Zhang social media pop
                                                 also innocent...</a> </h2>
@@ -195,7 +161,7 @@
                                                 <div class="meta-data"> <span class="comment-author">Miss Lisa Doe</span>
                                                     <span class="comment-date pull-right">15 Jan, 2022</span> </div>
                                                 <div class="comment-content">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting
                                                         industry. Lorem Ipsum has been the industry's standard dummy text
                                                         ever since It has survived not only five centuries, but also the
                                                         leap into electronic type setting, remaining essentially unchanged.
@@ -237,7 +203,7 @@
                                         <input class="form-control" name="name" id="name" placeholder="Name"
                                             type="text" required>
                                     </div>
-                                </div>
+</div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input class="form-control" name="email" id="email" placeholder="Email"
@@ -268,7 +234,7 @@
                     <!-- Comments form end -->
                 </div>
 
-                <div class="col-lg-4 col-md-12">
+                {{-- <div class="col-lg-4 col-md-12">
                     <div class="sidebar utf_sidebar_right">
                         <div class="widget">
                             <h3 class="utf_block_title"><span>Follow Us</span></h3>
@@ -286,7 +252,7 @@
                             <h3 class="utf_block_title"><span>Popular News</span></h3>
                             <div class="utf_list_post_block">
                                 <ul class="utf_list_post">
-                                  @for($i = 1; $i <= 3; $i++)
+@for($i = 1; $i <= 3; $i++)
                                     <li class="clearfix">
                                         <div class="utf_post_block_style post-float clearfix">
                                             <div class="utf_post_thumb"> <a href="#"> <img class="img-fluid"
@@ -319,7 +285,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

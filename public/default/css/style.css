@@ -3315,3 +3315,19 @@ to {
 	width: 100%;
 	height: 100%;
 }
+
+.utf_latest_new_area{
+	height: 370px;
+}
+
+.img-fluid{
+	height: 150px;
+}
+
+.img-single-news{
+	height: 450px;
+}
+
+.utf_post_title{
+	height: 75px;
+}

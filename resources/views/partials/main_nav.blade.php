@@ -19,7 +19,7 @@
                                 </a>
                             </li>
                             @php
-                                $olympic_games = \App\Models\Olympic::where('status', '!=', 6)->get();     
+                                $olympic_games = \App\Models\Olympic::where('status', '=', 1)->get();     
 
                             @endphp
                             <li class="nav-item dropdown utf_mega_dropdown"> <a href="category-style1.html" class="nav-link dropdown-toggle" data-toggle="dropdown"

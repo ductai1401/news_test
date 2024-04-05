@@ -106,7 +106,10 @@
                 </thead>
                 <tbody>
                     @foreach ($sports->sport as $s)
+                    @if($s ->parent_id == 0)
                     @php 
+
+                        
                             $image_url = public_path("uploads/sports") . '/' . $s ->image;
                             if(!file_exists($image_url)) {
                                 $image_url = asset('images/error.jpg');
@@ -116,6 +119,7 @@
                         @endphp
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        
                         <td>{{ $s ->name }}</td>
                         <td><img src="{{ $image_url }}" alt="Sport_image" width="60px" height="60px"></td>
                         <td>
@@ -123,6 +127,8 @@
                         </td>
 
                     </tr>
+
+                    @endif
                     
                     @endforeach
                 </tbody>

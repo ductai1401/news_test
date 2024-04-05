@@ -123,7 +123,6 @@ class AthleteController extends Controller
         if($athlete == null) {
             return redirect()->route('admin.404');
         } 
-
         
         $file = $request ->image;
         if(!empty($file)){
@@ -135,11 +134,15 @@ class AthleteController extends Controller
                 'image.mimes' => 'Image must jbg,jpeg,bmp,png', 
             ]);
 
-            $old_image_path = public_path('uploads/athletes/'. $athlete->image);
-            if(file_exists($old_image_path)){
+           
+            if($athlete->image){
+                $old_image_path = public_path('uploads/athletes/'. $athlete->image);
+                if(file_exists($old_image_path)){
                 unlink($old_image_path);
                 
+                }
             }
+            
 
             $fileName = time(). '-'.  $file->getClientOriginalName(); 
 

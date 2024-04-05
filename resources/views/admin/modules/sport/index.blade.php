@@ -88,7 +88,7 @@
                                 <th class="text-center">Id</th>
                                 <th class="text-center">Name</th>
                                 <th class="text-center">Image</th>
-                                <th class="text-center">Details</th>
+                                <th class="text-center">Parent</th>
                                 <th class="text-center">Edit/Save</th>
                                 <th class="text-center">Delete/Cancel</th>
                             </tr>
@@ -108,7 +108,15 @@
                                 <td>{{  $sport ->name}}</td>
                                 
                                 <td><img style="height: 60px; width: 70px;" src="{{ $image_url }}" alt="Sport_image"></td>
-                                <td>{{ date("d/m/Y - H:i:s" , strtotime($sport ->created_at) ) }}</td>
+                                <td>
+                                    @php
+                                        $parent_sports = DB::table('sports')->select('name','parent_id')->where('id', $sport->parent_id)->first();
+                                        if (!$sport ->parent_id == 0) {
+                                            echo $parent_sports->name;
+                                        }
+                                        
+                                    @endphp
+                                </td>
                                 <td>
                                    <a class="edit btn btn-primary" href="{{ route('admin.sport.edit', ['id' => $sport ->id]) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit

@@ -29,7 +29,7 @@ class UpdateRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'posision.required' => 'Rankings cannot be empty !!!',

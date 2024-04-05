@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-4 text-center page_alignment">
             <h1>404 ERROR</h1>
-            <a class='btn btn-primary btn-lg button-alignments' href='{{route('admin.dashboard')}}'>Home</a>
+            <a class='btn btn-primary btn-lg button-alignments' href='{{route('admin.olympic.index')}}'>Home</a>
         </div>
     </div>
     <!-- global js -->

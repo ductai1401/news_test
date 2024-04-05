@@ -26,13 +26,13 @@ class UpdateRequest extends FormRequest
             'brith_day' => 'required',
             'id_country' => 'required',
             'id_sport' => 'required',
-            'discription' => 'required',
+            'description' => 'required'
     
 
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'name.required' => 'The athlete name cannot be left blank !!!',
@@ -40,7 +40,7 @@ class UpdateRequest extends FormRequest
             'brith_day.required' =>'The brith day cannot be left blank !!!',
             'id_sport.required' => 'The sport cannot be blank !!!',
             'description.required' => 'The description cannot be blank !!!',
-            'id_country.required' => 'The country cannot be blank !!!',
+            'id_country.required' => 'The country cannot be blank !!!'
         ];
     } 
 }

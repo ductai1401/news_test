@@ -157,9 +157,9 @@
                                                     <div  class="select_align">                                                   
                                                         <select  name="id_sport" class="form-control fill_it">
                                                             <option value="">-------Sport-------</option>
-                                                            @foreach($sports as $sport)
-                                                                <option value="{{ $sport->id}}"  {{ old('id_sport') == $sport->id ? 'selected' : ' '}}>{{$sport->name}}</option>
-                                                            @endforeach
+                                                            @php  
+                                                                recursiveCategory($sports, old('id_sport', 0) );
+                                                            @endphp
                                                         </select>
                                                     </div>
                                                 </div>

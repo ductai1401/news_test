@@ -9,11 +9,29 @@
 @push('script')
 <script type="text/javascript">
         $(document).ready(function() {
+            $('#sport').change(function(){
+                var idSport = $(this).val();
+                    $.get("http://localhost:8000/admin/olympic_sport/country", function(data2) {
+                        $('#country').html(data2);
+                    });        
+                    $.get("http://localhost:8000/admin/olympic_sport/athlete/"+idSport, function(data3) {
+                        $('#athlete').html(data3);
+                    }); 
+
+                    $.get("http://localhost:8000/admin/olympic_sport/posision", function(data4) {
+                    $('#posision').html(data4);
+                    }); 
+                    
+                });
             $('#country').change(function(){
                         var idCountry = $(this).val();
                         $.get("http://localhost:8000/admin/olympic_sport/athlete/"+idCountry, function(data) {
                             $('#athlete').html(data);
                         });
+
+                        $.get("http://localhost:8000/admin/olympic_sport/posision", function(data4) {
+                            $('#posision').html(data4);
+                        }); 
                 
                     });
 
@@ -89,7 +107,10 @@
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                         
                                                         <select class="form-control fill_it" name="id_sport" id="sport" disabled>
-                                                            <option value="{{ old('id_sport', $medal->sport->id)}}">{{ $medal ->sport ->name}}</option>
+                                                            @php
+                                                                 recursiveSport($sports, old('id_sport', $medal ->sport ->id) );
+                                                            @endphp
+                                                           
                                                         </select>
                                                     </div>
                                                 </div>
@@ -143,7 +164,7 @@
                                             <div class="input-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="select_align">                                                   
-                                                        <select class="form-control fill_it" name="id_athlete">
+                                                        <select class="form-control fill_it" name="id_athlete" id="athlete">
                                                             <option value="">-------Athlete-------</option>
                                                             @foreach($athletes as $athlete)
                                                                 <option value="{{ $athlete->id}}"  {{ old('id_athlete', $medal ->id_athlete) == $athlete->id ? 'selected' : ' '}}>{{$athlete->name}}</option>

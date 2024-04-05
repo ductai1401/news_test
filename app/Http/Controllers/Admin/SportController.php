@@ -26,7 +26,10 @@ class SportController extends Controller
      */
     public function create()
     {
-        return view('admin.modules.sport.create');
+        $sport = Sport::select('id','parent_id','name')->get();
+        return view('admin.modules.sport.create', [
+            'sports' => $sport,
+        ]);
     }
 
     /**
@@ -43,6 +46,7 @@ class SportController extends Controller
         $sport->image = $fileName;
         $sport->name = $request -> name;
         $sport->details = $request -> details;     
+        $sport -> parent_id = $request -> parent_id;
 
         $sport->save();
 
@@ -63,6 +67,8 @@ class SportController extends Controller
      */
     public function edit( $id)
     {
+
+        $sports = Sport::select('id','parent_id','name')->get();
         $sport = Sport::find($id);
         if($sport == null) {
             return redirect()->route('admin.404');
@@ -71,6 +77,7 @@ class SportController extends Controller
         return view('admin.modules.sport.edit', [
             'id' => $id,
             'sport' => $sport,
+            'sports' => $sports,
         ]);
     }
 
@@ -112,6 +119,7 @@ class SportController extends Controller
 
         $sport -> name = $request ->name;
         $sport -> details = $request ->details;
+        $sport -> parent_id = $request -> parent_id;
 
         $sport->save();
 

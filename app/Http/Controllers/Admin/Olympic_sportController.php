@@ -6,17 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Athlete;
 use App\Models\Country;
 use App\Models\Olympic_sport;
+use App\Models\Sport;
 use Illuminate\Http\Request;
 
 class Olympic_sportController extends Controller
 {
     public function getSport($id) {
-
+        $sports = Sport::get();
         $olympic_sport = Olympic_sport::with('sport')->where('id_olympic', $id)->get();
-        echo "<option value=''>-------Sport-------</option>";
-        foreach($olympic_sport as $o_s){
-            echo "<option value='". $o_s->sport->id."'>" .$o_s->sport->name."</option> "; 
-        };
+        echo "<option value='0'>-------Sport-------</option>";
+        echo recursiveSport_olympic($olympic_sport, old('id_sport', 0) );   
     }
 
     public function getPosision(){

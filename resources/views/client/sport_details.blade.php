@@ -67,42 +67,59 @@
                                     <tr>
                                         <th class="text-center">ID</th>
                                         <th class="text-center">Sport</th>
+                                        <th class="text-center">Event</th>
                                         <th class="text-center">Country</th>
                                         <th class="text-center">Rank</th>
                                         <th class="text-center">Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($sport_medals as $sport_medal)
-                                    @php 
-                                        $image_url = public_path("uploads/countrys") . '/' . $sport_medal ->country ->flag;
-                                        if(!file_exists($image_url)) {
-                                            $image_url = asset('images/error.jpg');
-                                        } else {
-                                            $image_url = asset("uploads/countrys") .'/' . $sport_medal ->country ->flag;
-                                        }
-                                    @endphp 
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $sport_medal ->sport ->name}}</td>
 
-                                        <td class="d-flex justify-content-center">
-                                            <div class="grid-cols-1 d-flex align-items-center">
-                                                <div class="" ><img src="{{ $image_url }}" alt="Sport_image" width="60px" height="40px"></div>
-                                                <div style="width: 60px" class="text-center">
-                                                    {{$sport_medal ->country ->name}}
-                                                    
-                                                </div>
-                                            </div>
+                                    @foreach($sport_childs as $sport_child)
+                                        @php
+                                            $olympic_sport = \App\Models\Olympic_sport::where('id_sport', $sport_child ->id)->first();
                                             
-                                        </td>
-                                        <td>{{ $sport_medal ->posision }}</td>
-                                        <td>
-                                            <a href="{{ route('athlete',['id' =>  $sport_medal ->athlete ->id])}}">Detail</a>
-                                        </td>
-        
-                                    </tr>
-                                    
+                                            $sport_parent = \App\Models\Sport::where('id', $sport_child ->parent_id)->first();
+
+                                            $sport_medals = \App\Models\Medal::with('sport','country','athlete')->where('id_olympic_sport', $olympic_sport ->id)->orderBY('posision', 'asc')->get();
+            
+                                            
+                                        @endphp
+                                        @foreach ($sport_medals as $sport_medal)
+                                            
+                                            @php 
+                                                $image_url = public_path("uploads/countrys") . '/' . $sport_medal ->country ->flag;
+                                                if(!file_exists($image_url)) {
+                                                    $image_url = asset('images/error.jpg');
+                                                } else {
+                                                    $image_url = asset("uploads/countrys") .'/' . $sport_medal ->country ->flag;
+                                                }
+                                                $sport_parent = \App\Models\Sport::where('id', $sport_medal ->sport ->parent_id)->first();
+                                                
+                                            @endphp 
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $sport_parent ->name }}</td>
+                                                <td>{{ $sport_medal ->sport ->name}}</td>
+
+                                                <td class="d-flex justify-content-center">
+                                                    <div class="grid-cols-1 d-flex align-items-center">
+                                                        <div class="" ><img src="{{ $image_url }}" alt="Sport_image" width="60px" height="40px"></div>
+                                                        <div style="width: 60px" class="text-center">
+                                                            {{$sport_medal ->country ->name}}
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </td>
+                                                <td>{{ $sport_medal ->posision }}</td>
+                                                <td>
+                                                    <a href="{{ route('athlete',['id' =>  $sport_medal ->athlete ->id])}}">Detail</a>
+                                                </td>
+                                                
+                                            </tr>
+                                        @endforeach
+                                   
                                     @endforeach
                                 </tbody>
                             </table>

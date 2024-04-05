@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image');
             $table->text('details');
+            $table->integer('parent_id');
             $table->tinyInteger('status')->default('1')->comment('1: show - 0: hidden');
             $table->timestamps();
         });

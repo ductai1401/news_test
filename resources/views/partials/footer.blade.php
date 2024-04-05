@@ -12,12 +12,12 @@
                         <li><i class="fa fa-envelope-o"></i> <a href="#">mail@example.com</a></li>
                     </ul>
                     <ul class="unstyled utf_footer_social">
-                        <li><a title="Facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a title="Twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a title="Google+" href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a title="Linkdin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a title="Skype" href="#"><i class="fa fa-skype"></i></a></li>
-                        <li><a title="Skype" href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a title="Facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a title="Twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a title="Google+" href="#"><i class="fa-brands fa-google-plus"></i></a></li>
+                        <li><a title="Linkdin" href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                        <li><a title="Skype" href="#"><i class="fa-brands fa-skype"></i></a></li>
+                        <li><a title="Skype" href="#"><i class="fa-brands fa-instagram"></i></a></li>
                     </ul>
                 </div>
 

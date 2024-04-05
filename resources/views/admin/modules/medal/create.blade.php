@@ -20,9 +20,9 @@
             $('#olympic').change(function() {
                 var idOlympic = $(this).val();
                 $.get("http://localhost:8000/admin/olympic_sport/sport/"+idOlympic, function(data1) {
-                    $('#sport').html(data1);
+                   $('#sport').html(data1);
                 });
-
+                
                 
                 $.get("http://localhost:8000/admin/olympic_sport/country", function(data2) {
                     $('#country').html(data2);
@@ -132,9 +132,9 @@
                                                         <select class="form-control fill_it" name="id_sport" id="sport">
                                                             <option value="">-------Sport-------</option>
                                                             
-                                                            @foreach($sports as $sport)
-                                                                <option value="{{ $sport->id}}"  {{ old('id_sport') == $sport->id ? 'selected' : ' '}}>{{$sport->name}}</option>
-                                                            @endforeach
+                                                            @php
+                                                                recursiveSport($sports, old('id_sport', 0) );
+                                                            @endphp
                             
                                                         </select>
                                                     </div>

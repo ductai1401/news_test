@@ -3,6 +3,7 @@
 namespace App\Http\Requests\auth;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Arr;
 
 class LoginRequest extends FormRequest
 {
@@ -27,7 +28,8 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function messages() {
+    public function messages(): array
+    {
         return [
             'email.required' => 'Enter email',
             'password.required' => 'Enter password'

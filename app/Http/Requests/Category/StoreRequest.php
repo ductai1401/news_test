@@ -26,7 +26,7 @@ class StoreRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'name.required' => 'The category name cannot be left blank !!!',
