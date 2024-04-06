@@ -71,7 +71,7 @@ Route::prefix('client')->group(function () {
 
     Route::get('/news/{id}', [ClientNewsController::class, 'singleNews'])->name('singleNews');
 
-    Route::get('/news', [ClientNewsController::class, 'postNews'])->name('postNews');
+    Route::post('/search_news', [ClientNewsController::class, 'searchNews'])->name('searchNews');
 
     Route::get('/send_mail', [ClientNewsController::class, 'mail_hot']);
 

@@ -1,3 +1,14 @@
+@push('script')
+<script type="text/javascript">
+        $(document).ready(function() {
+            $('#search').click(function(){
+                var $data = $(this).val();
+                alert($data);
+            })
+        })
+</script>
+@endpush
+
 <div class="utf_main_nav_area clearfix utf_sticky">
     <div class="container">
         <div class="row">
@@ -214,10 +225,13 @@
                     </div>
                 </div>
             </nav>
-            <div class="utf_nav_search"> <span id="search"><i class="fa fa-search"></i></span> </div>
+            <div class="utf_nav_search"> <span id="searchs"><i class="fa fa-search"></i></span> </div>
             <div class="utf_search_block" style="display: none;">
-                <input type="text" class="form-control" placeholder="Enter your keywords...">
-                <span class="utf_search_close">&times;</span> 
+                <form action="{{ route('searchNews') }}" method="post">
+                    @csrf
+                <input type="text" class="form-control" name="search" placeholder="Enter your keywords...">
+                <button class="form-control" type="submit" id="search"><span id="searchs"><i class="fa fa-search"></i></span></button> 
+                </form>
               </div>       
         </div>
     </div>
