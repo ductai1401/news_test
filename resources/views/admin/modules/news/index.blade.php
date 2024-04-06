@@ -2,7 +2,7 @@
 
 @section('action','News List')
 @section('module','News')
-@section('heigh',' 924px')
+@section('heigh',' 1670px')
 
 
 @push('css')

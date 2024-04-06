@@ -77,6 +77,9 @@
                                 <div class="utf_dropdown_menu utf_mega_menu_content clearfix">
                                     <div class="utf_mega_menu_content_inner">
                                         <div class="row">
+                                            @php
+                                                // $news_hot = /App/Models/News::where('status', 1)->
+                                            @endphp
                                             <div class="col-md-3">
                                                 <div class="utf_post_block_style clearfix">
                                                     <div class="utf_post_thumb"> <img class="img-fluid"
@@ -152,7 +155,7 @@
                                 </div>
                             </li>
                             <li> <a href="">Sports</a> </li>
-                            <li class="dropdown"> <a href="#" class="dropdown-toggle"
+                            {{-- <li class="dropdown"> <a href="#" class="dropdown-toggle"
                                     data-toggle="dropdown">  <i class="fa fa-angle-down"></i></a>
                                 <ul class="utf_dropdown_menu" role="menu">
                                     <li class="utf_dropdown_submenu"> <a href="#."><i
@@ -206,7 +209,7 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

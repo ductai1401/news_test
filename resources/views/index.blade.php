@@ -12,10 +12,10 @@
     <!-- Latest News Area End -->
 
     <!-- Ad Content Area Start -->
-    <div class="utf_ad_content_area text-center utf_banner_area no-padding">
+    <div class="utf_ad_content_area text-center utf_banner_area no-padding m-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-12"> <img class="img-fluid" src="images/banner-ads/ad-content-one.jpg"
+                <div class="col-md-12"> <img class="img-fluid" src="{{ asset('images/image_home.jpg')}}"
                         alt="" /> </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
     <div class="utf_ad_content_area text-center utf_banner_area">
         <div class="container">
             <div class="row">
-                <div class="col-md-12"> <img class="img-fluid" src="images/banner-ads/ad-content-two.png"
+                <div class="col-md-12"> <img class="img-fluid" src="#"
                         alt="" /> </div>
             </div>
         </div>

@@ -5,7 +5,7 @@
             <div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
 
                 @php
-                    $news = \App\Models\News::where('status', 1)->get();
+                    $news = \App\Models\News::where('status', 1)->take(10)->get();
                 @endphp
                 @foreach($news as $n )
                 <div class="item">

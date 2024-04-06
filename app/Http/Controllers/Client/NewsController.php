@@ -15,4 +15,6 @@ class NewsController extends Controller
             'news' => $news,
         ]);
     }
+
+   
 }

@@ -97,7 +97,7 @@
                         </div>
                     </div>
 
-                    <nav class="post-navigation clearfix">
+                    {{-- <nav class="post-navigation clearfix">
                         <div class="post-previous">
                             <a href="#"> <span><i class="fa fa-angle-left"></i>Previous Post</span>
                                 <h3>Zhang social media pop also known when smart innocent...</h3>
@@ -108,27 +108,39 @@
                                 <h3>Zhang social media pop also known when smart innocent...</h3>
                             </a>
                         </div>
-                    </nav>
+                    </nav> --}}
 
                     
                     <div class="related-posts block">
                         <h3 class="utf_block_title"><span>Related Posts</span></h3>
+                        @php
+                            $category = \App\Models\Category::where('status', 1)->where('id', $news ->id_category)->first();
+                            // $parent_category = \App\Models\Category::where('status', 1)->where('id', $category ->parent_id)->first();
+                            $related_posts =  \App\Models\News::where('status', 1)->where('id_category', $news ->id_category)->take(5)->get()
+                        @endphp
                         <div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
-                            @for($i = 1; $i <= 3; $i++)
+                            @foreach( $related_posts as  $related_post )
+                            @php 
+                                    $image_url_1 = public_path("uploads/news") . '/' . $related_post ->image;
+                                    if(!file_exists($image_url_1)) {
+                                        $image_url_1 = asset('images/error.jpg');
+                                    } else {
+                                        $image_url_1 = asset("uploads/news") .'/' .  $related_post ->image;
+                                    }
+                                @endphp
                             <div class="item">
                                 <div class="utf_post_block_style clearfix">
                                     <div class="utf_post_thumb"> <a href="#"><img class="img-fluid"
-                                                src="images/news/lifestyle/travel5.jpg" alt="" /></a> </div>
-<a class="utf_post_cat" href="#">Health</a>
+                                                src="{{ $image_url_1 }}" alt="" /></a> </div>
+                                    <a class="utf_post_cat" href="#">{{ $category ->name}}</a>
                                     <div class="utf_post_content">
-                                        <h2 class="utf_post_title title-medium"> <a href="#">Zhang social media pop
-                                                also innocent...</a> </h2>
+                                        <h2 class="utf_post_title title-medium"> <a href="{{ route('singleNews',['id' => $related_post ->id])}}">{{ $related_post ->title}}</a> </h2>
                                         <div class="utf_post_meta"> <span class="utf_post_date"><i
-                                                    class="fa fa-clock-o"></i> 25 Jan, 2022</span> </div>
+                                                    class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime( $related_post->created_at)) }}</span> </div>
                                     </div>
                                 </div>
                             </div>
-                            @endfor
+                            @endforeach
                          </div>
                     </div>
 

@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', '{{$olympic->name}}')
+@section('title', $olympic->name)
 
 @section('content')
 <section class="pt-0">
