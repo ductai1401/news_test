@@ -20,7 +20,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_athlete');
             $table->tinyInteger('status')->default('1')->comment('1: show - 0: hidden');
             $table->foreign('id_athlete')->references('id')->on('athletes');
-            $table->unsignedBigInteger('id_category');
             $table->text('video')->nullable();
             $table->timestamps();
         });
