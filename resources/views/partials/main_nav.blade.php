@@ -1,13 +1,4 @@
-@push('script')
-<script type="text/javascript">
-        $(document).ready(function() {
-            $('#search').click(function(){
-                var $data = $(this).val();
-                alert($data);
-            })
-        })
-</script>
-@endpush
+
 
 <div class="utf_main_nav_area clearfix utf_sticky">
     <div class="container">

@@ -55,7 +55,7 @@ Route::get('/sendmail', [MailController::class, 'index']);
 Route::prefix('client')->group(function () {
     
 
-    Route::get('/olympic_games', [ClientOlympicController::class, 'olympic_games'])->name('olympic_games');
+    Route::get('/olympic', [ClientOlympicController::class, 'olympic_games'])->name('olympic_games');
     Route::get('/olympic_games/{name}/{id}', [ClientOlympicController::class, 'olympic_seasion'])->name('olympic_seasion');
 
 

@@ -77,13 +77,13 @@ class NewsController extends Controller
 
         $comment -> id_news = $id_news ->id;
         $comment -> id_user = Auth::user()->id;
-        $comment -> content = $request -> textarea('content');
+        $comment -> content = $request -> content;
       
         $comment ->save();
 
 
 
-        return redirect()->route('singleNews')->with('msg','Bình luận đã được lưu thành công!');
+        return redirect()->back()->with('msg','Bình luận đã được lưu thành công!');
     }
 
     public function checkLogin(){

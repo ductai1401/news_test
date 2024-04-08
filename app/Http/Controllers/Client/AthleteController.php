@@ -20,7 +20,7 @@ class AthleteController extends Controller
         $medal_bronze = Medal::with('athlete')->where('id_athlete', $id)->where('posision', 3)->where('status', 1)->count();
         $Games_Participations = Medal::where('id_athlete', $id)->where('status', 1)->count();
         $olympics = Medal::with('olympic')->where('id_athlete', $id)->where('status', 1)->first();
-        $medal = Medal::where('id_athlete', $id)->get();
+        $medal = Medal::where('id_athlete', $id)->first();
         $olympic_medal = Medal::with('olympic','country','sport')->where('id_athlete', $id)->where('status', 1)->get();
             $dum = 2024;
             if( $dum > $olympics ->olympic ->year){

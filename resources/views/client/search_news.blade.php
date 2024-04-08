@@ -3,7 +3,7 @@
  @section('content')
 
    <!-- Page Title Start -->
-   <div class="page-title">
+   <div class="page-title mb-5">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">

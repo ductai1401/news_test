@@ -146,27 +146,30 @@
                                 </div>
                             </div>
                     </div>
-
+                    @if($medals ->video)
                     <div class="athsection2 mb-3" id="sc4">
                         <h3 class="utf_block_title"><span>Replays</span></h3>
                             <div class="container">
                                 <div class="utf_latest_news block color-red">                                   
                                     <div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
-                                        @foreach($medals as $medal)
+                                        
+                                        
                                         <div class="item">
                                             {{-- <video  width="760" height="240" controls 
                                                 src="{{ $medal ->video}}" type="video/webm" translate="yes">
                                             </video> --}}
                                             
-                                                {!!  $medal ->video !!}
+                                                {!!  $medals ->video !!}
                                             
+                                                
 
                                         </div>
-                                    @endforeach 
+                                    
                                     </div>
                                 </div>
                             </div>
                     </div>
+                    @endif
 
                     <div class="athsection2 mb-3" id="sc4">
                         <h3 class="utf_block_title"><span>Results</span></h3>

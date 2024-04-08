@@ -3,7 +3,7 @@
 @section('title', $olympic->name)
 
 @section('content')
-<section class="pt-0">
+    <section class="pt-0 pb-5">
 
         <div class="container">
             <div class="utf_post_overaly_style contentTop">
@@ -63,7 +63,7 @@
                 </div>
             
                 <section class=" col-lg-9">
-                    <div class="container">
+                    <div class="container mt-5">
                         {!! $olympic ->details !!}
                     </div>
                 </section>

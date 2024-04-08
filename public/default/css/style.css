@@ -135,7 +135,7 @@ color: #222;
 transition: all 0.4s ease-in-out;
 }
 section, .section-padding {
-padding: 50px 0;
+/* padding: 50px 0; */
 position: relative;
 }
 .about-block-area{
@@ -2540,7 +2540,7 @@ margin: 0;
 font-size: 15px;
 line-height: 26px;
 font-weight: 500;
-color: #6c6c6c;
+/* color: #6c6c6c; */
 }
 .utf_post_content-area {
 margin: 20px 0;
