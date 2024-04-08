@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AjaxController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\MedalController;
@@ -106,9 +107,12 @@ Route::prefix('admin')->name('admin.')->middleware('checkLogin')->group(function
         return view('admin.404');
     })->name('404');
 
-    Route::prefix('olympic_sport')->name('olympic_sport.')->controller(Olympic_sportController::class)->group(function () {
+    Route::prefix('ajax')->name('ajax.')->controller(AjaxController::class)->group(function () {
 
         Route::get('sport/{id}', 'getSport')->name('sport');
+
+        Route::get('olympic_sport', 'getOlympic_sport')->name('olympic_sport');
+
 
         Route::get('country', 'getCountry')->name('country');
 
@@ -118,10 +122,20 @@ Route::prefix('admin')->name('admin.')->middleware('checkLogin')->group(function
 
         Route::get('posision', 'getPosision')->name('posision');
 
-        
-
-
         Route::get('olympic_s/{idOlympic}/{idSport}', 'getOlympic_Sport')->name('o_s');
+    });
+
+    Route::prefix('olympic_sport')->name('olympic_sport.')->controller(Olympic_sportController::class)->group(function () {
+
+        Route::get('index', 'index')->name('index');
+
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+
+        Route::get('destroy/{id}', 'destroy')->name('destroy');
 
        
     });

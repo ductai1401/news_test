@@ -166,11 +166,14 @@ class NewsController extends Controller
         if ($news == null){
             return redirect()->route('admin.404');
         }
-
-        foreach($comments as $comment){
+        if($comments)
+        {
+            foreach($comments as $comment){
             $comment ->status = 6;
             $comment ->save();
         }
+        }
+        
         // $news -> delete();
         $news -> status = 6;
         $news->save();

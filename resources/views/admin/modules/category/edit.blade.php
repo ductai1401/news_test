@@ -105,7 +105,7 @@
                                                     </span>
                                                     <select name="status" id="" class="form-control fill_it">
                                                         <option value="1" {{ old('status', $category ->status) == 1 ? 'selected' : ''}} >Show</option>
-                                                        <option value="0" {{ old('status', $category ->status) == 0 ? 'selected' : ''}} >Hide</option>
+                                                        <option value="0" {{ old('status', $category ->status) == 0 ? 'selected' : ''}} >Hiden</option>
                                                     </select>
                                                 </div>
                                             </div>

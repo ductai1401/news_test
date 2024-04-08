@@ -62,25 +62,8 @@ class MedalController extends Controller
      */
     public function store(StoreRequest $request)
     {
-
+   
         $medal = new Medal();
-        // option 2 for id_olympic_sports
-        // $id_olympic_sport =$request ->id_olympic_sport;
-
-        // if(!empty($id_olympic_sport)){
-        //     $medals = Medal::where('id_olympic_sport','=',$id_olympic_sport)->first();
-        //     if($medals->id){
-        //         $validated = $request->validate([
-        //         'posison' => 'unique:medals,posision',
-                
-        //     ],[
-        //         'posison.unique' => 'This rank is already in use, please re-enter another position',
-        //     ]);
-        //     }
-           
-        // };
-
-
         
         $id_sport = $request -> id_sport;
         $id_olympic = $request -> id_olympic;
@@ -88,14 +71,16 @@ class MedalController extends Controller
     
         $olympic_sport = Olympic_sport::where('id_olympic', '=', $id_olympic)->where( 'id_sport', '=', $id_sport)->first();
   
-        
+       
 
         $medal->posision = $request -> posision;
         $medal->id_athlete = $request -> id_athlete;
         $medal->id_country = $request -> id_country;
         $medal -> id_olympic_sport = $olympic_sport ->id;
         $medal->status = $request -> status;
-        if(empty($request -> video)){
+        if($request -> video){
+
+            
             $medal->video = $request -> video;
         }
        
@@ -157,7 +142,7 @@ class MedalController extends Controller
         $medal->status = $request -> status;
        
 
-        if(empty($request -> video)){
+        if($request -> video){
             $medal->video = $request -> video;
         }
         

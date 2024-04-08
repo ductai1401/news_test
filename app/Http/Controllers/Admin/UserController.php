@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Requests\User\UpdateRequest;
 use App\Http\Requests\User\UpdateRequests;
-
+use App\Models\Comment;
 
 class UserController extends Controller
 {
@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::orderBy('created_at', 'desc')->get();
+        $user = User::where('status', '!=', 6)->orderBy('created_at', 'desc')->get();
         return view('admin.modules.user.index',[
             'users' => $user,
         ]);
@@ -162,10 +162,17 @@ class UserController extends Controller
     public function destroy( $id)
     {
         $user = User::find($id);
-
+        $comments = Comment::where('id_user', $id)->get();
         if($user == null) {
             return redirect()->route('admin.404');
         } 
+
+        if($comments){
+            foreach($comments as $comment){
+            $comment ->status = 6;
+            $comment ->save();
+        }
+        }
 
         // $user->delete();
         $user ->status = 6;

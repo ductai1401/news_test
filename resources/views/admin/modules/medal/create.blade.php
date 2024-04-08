@@ -19,19 +19,19 @@
         $(document).ready(function() {
             $('#olympic').change(function() {
                 var idOlympic = $(this).val();
-                $.get("http://localhost:8000/admin/olympic_sport/sport/"+idOlympic, function(data1) {
+                $.get("http://localhost:8000/admin/ajax/sport/"+idOlympic, function(data1) {
                    $('#sport').html(data1);
                 });
                 
                 
-                $.get("http://localhost:8000/admin/olympic_sport/country", function(data2) {
+                $.get("http://localhost:8000/admin/ajax/country", function(data2) {
                     $('#country').html(data2);
                 });        
-                $.get("http://localhost:8000/admin/olympic_sport/athlete/"+1, function(data3) {
+                $.get("http://localhost:8000/admin/ajax/athlete/"+1, function(data3) {
                     $('#athlete').html(data3);
                 }); 
 
-                $.get("http://localhost:8000/admin/olympic_sport/posision", function(data4) {
+                $.get("http://localhost:8000/admin/ajax/posision", function(data4) {
                     $('#posision').html(data4);
                 }); 
                     
@@ -39,17 +39,17 @@
             });
             $('#sport').change(function(){
                 var idSport = $(this).val();
-                    $.get("http://localhost:8000/admin/olympic_sport/country", function(data2) {
+                    $.get("http://localhost:8000/admin/ajax/country", function(data2) {
                         $('#country').html(data2);
                     });        
-                    $.get("http://localhost:8000/admin/olympic_sport/athlete/"+idSport, function(data3) {
+                    $.get("http://localhost:8000/admin/ajax/athlete/"+idSport, function(data3) {
                         $('#athlete').html(data3);
                     }); 
                     
                 });
             $('#country').change(function(){
                         var idCountry = $(this).val();
-                        $.get("http://localhost:8000/admin/olympic_sport/athlete/"+idCountry, function(data) {
+                        $.get("http://localhost:8000/admin/ajax/athlete/"+idCountry, function(data) {
                             $('#athlete').html(data);
                         });
                 

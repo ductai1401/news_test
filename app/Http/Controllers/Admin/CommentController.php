@@ -18,7 +18,7 @@ class CommentController extends Controller
     public function index()
     {
 
-        $comment = Comment::with('user','news')->orderBy('created_at', 'desc')->get(); 
+        $comment = Comment::with('user','news')->where('status', '!=', 6)->orderBy('created_at', 'desc')->get(); 
 
         return view('admin.modules.comment.index', ['comments' => $comment]);
     }

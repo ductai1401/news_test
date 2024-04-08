@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Olympic;
 use App\Http\Requests\Olympic\StoreRequest;
 use App\Http\Requests\Olympic\UpdateRequest;
+use App\Models\Medal;
 use App\Models\Olympic_sport;
 use Illuminate\Http\Request;
 
@@ -169,6 +170,11 @@ class OlympicController extends Controller
 
         $olympic_sports = Olympic_sport::where('id_olympic', $id)->get();
         foreach($olympic_sports as $olympic_sport){
+            $medals = Medal::where('id_olympic_sport', $olympic_sport ->id)->get();
+            foreach($medals as $medal){
+                $medal ->status = 6;
+                $medal ->save();
+            }
             $olympic_sport ->status = 6;
             $olympic_sport ->save();
         }

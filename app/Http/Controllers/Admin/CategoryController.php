@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
+use App\Models\Comment;
 use App\Models\News;
 use Illuminate\Http\Request;
 
@@ -100,19 +101,52 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         
-        $news = News::find($id);
+       
 
         if($category == null) {
             return redirect()->route('admin.404');
         } 
 
-        // $category->delete();
+       
+        if($category -> parent_id == 0){
+            $category_childs = Category::select('id')->where('parent_id', $category -> id)->get(); 
+            
+            foreach($category_childs as $category_child){
+               $news = News::where('id_category', $category_child ->id)->get();
+               foreach($news as $item){
+                    $item -> status = 6;
+                    $item -> save();
+
+                    $comments = Comment::where('id_news', $item ->id)->get();
+                    foreach( $comments as $comment){
+                        $comment -> status = 6;
+                        $comment ->save();
+                    }
+               }
+
+               $category_child ->status = 6;
+               $category_child ->save();
+            }
+        } else{
+
+             $news = News::find($id);
+             $comment = Comment::where('id_news', $news ->id)->get();
+             if($comment){
+                foreach($comment as $item){
+                    $item -> status = 6;
+                    $item ->save();
+                }
+             }
+             $news -> status = 6;
+             $news->save();
+
+        }
 
         $category -> status = 6;
-        $news -> status = 6;
+        
         $category->save();
-        $news->save();
-
+        
+ // $category->delete();
         return redirect()->route('admin.category.index')->with('success', 'Delete category success');
     }
 }

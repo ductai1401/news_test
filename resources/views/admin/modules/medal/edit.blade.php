@@ -11,25 +11,25 @@
         $(document).ready(function() {
             $('#sport').change(function(){
                 var idSport = $(this).val();
-                    $.get("http://localhost:8000/admin/olympic_sport/country", function(data2) {
+                    $.get("http://localhost:8000/admin/ajax/country", function(data2) {
                         $('#country').html(data2);
                     });        
-                    $.get("http://localhost:8000/admin/olympic_sport/athlete/"+idSport, function(data3) {
+                    $.get("http://localhost:8000/admin/ajax/athlete/"+idSport, function(data3) {
                         $('#athlete').html(data3);
                     }); 
 
-                    $.get("http://localhost:8000/admin/olympic_sport/posision", function(data4) {
+                    $.get("http://localhost:8000/admin/ajax/posision", function(data4) {
                     $('#posision').html(data4);
                     }); 
                     
                 });
             $('#country').change(function(){
                         var idCountry = $(this).val();
-                        $.get("http://localhost:8000/admin/olympic_sport/athlete/"+idCountry, function(data) {
+                        $.get("http://localhost:8000/admin/ajax/athlete/"+idCountry, function(data) {
                             $('#athlete').html(data);
                         });
 
-                        $.get("http://localhost:8000/admin/olympic_sport/posision", function(data4) {
+                        $.get("http://localhost:8000/admin/ajax/posision", function(data4) {
                             $('#posision').html(data4);
                         }); 
                 
@@ -216,8 +216,8 @@
                                         </label>
                                         <div class="col-md-7">
                                             <div class="input-group">
-
-                                                <input id="brith_day" type="url" name="video" class="form-control fill_it" placeholder="Please enter the video" value="{{ old('title', $medal->video)}}">
+                                                <textarea name="video" id="" cols="30" rows="10" class="form-control fill_it" placeholder="Please enter the video">{{ old('title', $medal->video)}}</textarea>
+                                                
                                             </div>
                                             <div class="margin-top-3">
                                                 <div class="input-group" >

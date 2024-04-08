@@ -117,7 +117,7 @@
             </li>
             <li class="menu-dropdown">
                 <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo6" aria-expanded="false">
-                    <i class="text-primary menu-icon fa fa-fw fa-picture-o"></i>
+                    <i class="text-primary menu-icon fa-solid fa-person-skating"></i>
                     <span class="mm-text">Olympic</span>
                     <span class="fa fa-angle-down pull-right"></span>
                 </a>
@@ -130,6 +130,25 @@
                     <li>
                         <a href='{{ route('admin.olympic.index')}}'>
                             <i class="text-success fa-solid fa-table-list"></i> Olympic List
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-dropdown">
+                <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#demo10" aria-expanded="false">
+                    <i class="text-primary menu-icon fa-regular fa-futbol"></i>
+                    <span class="mm-text">Olympic Sports</span>
+                    <span class="fa fa-angle-down pull-right"></span>
+                </a>
+                <ul id="demo10" class="sub-menu collapse">
+                    <li>
+                        <a href='{{ route('admin.olympic_sport.create')}}'>
+                            <i class="text-primary fa fa-fw fa-cloud-upload"></i> Add Olympic Sports
+                        </a>
+                    </li>
+                    <li>
+                        <a href='{{ route('admin.olympic_sport.index')}}'>
+                            <i class="text-success fa-solid fa-table-list"></i> Olympic Sports List 
                         </a>
                     </li>
                 </ul>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Sport\StoreRequest;
 use App\Http\Requests\Sport\UpdateRequest;
+use App\Models\Medal;
+use App\Models\Olympic_sport;
 use App\Models\Sport;
 
 
@@ -141,8 +143,42 @@ class SportController extends Controller
         if($sport == null) {
             return redirect()->route('admin.404');
         } 
+        
+       
+        if($sport -> parent_id == 0){
+            $sport_childs = Sport::select('id')->where('parent_id', $sport -> id)->get(); 
+            
+            
+            $olympic_sport_parent = Olympic_sport::find($id);
+            foreach($sport_childs as $sport_child){
+               $olympic_sport = Olympic_sport::where('id_sport' ,$sport_child ->id)->first();
+               if($olympic_sport){
+                $olympic_sport_child = olympic_sport::where('id_sport', $sport_child ->id)->where('id_olympic', $olympic_sport ->id_olympic)->first();
+                $medals = Medal::where('id_olympic_sport', $olympic_sport_child ->id)->first();
 
+                $medals ->status = 6;
+                $medals ->save(); 
 
+                $olympic_sport_child ->status = 6;
+                
+                $olympic_sport_child ->save();
+                               
+               }
+                $sport_child ->status = 6;
+                $sport_child ->save();
+               $olympic_sport_parent ->status = 6;
+                $olympic_sport_parent ->save();
+            }
+        }else {
+             $olympic_sports = Olympic_sport::where('id_sport', $id)->first();
+            $medals = Medal::where('id_olympic_sport', $olympic_sports ->id)->first(); 
+            $medals ->status = 6;
+            $medals ->save();
+            $olympic_sports ->status = 6;
+        
+            $olympic_sports ->save();
+            
+        }
         $sport ->status = 6;
         $sport ->save();
         // $sport->delete();
