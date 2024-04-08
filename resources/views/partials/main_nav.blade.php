@@ -33,8 +33,8 @@
                                 $olympic_games = \App\Models\Olympic::where('status', '=', 1)->get();     
 
                             @endphp
-                            <li class="nav-item dropdown utf_mega_dropdown"> <a href="category-style1.html" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                role="button" aria-haspopup="true" aria-expanded="false">Olympic_games <i class="fa fa-angle-down"></i></a>
+                            <li class="nav-item dropdown utf_mega_dropdown"> <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-haspopup="true" aria-expanded="false">Olympic Games <i class="fa fa-angle-down"></i></a>
                                 <div class="utf_dropdown_menu utf_mega_menu_content clearfix">
                                     <div class="menu-tab">
                                         <div class="row">
@@ -89,83 +89,51 @@
                                     <div class="utf_mega_menu_content_inner">
                                         <div class="row">
                                             @php
-                                                // $news_hot = /App/Models/News::where('status', 1)->
+                                            
+                                               
+                                                $news_hots = \App\Models\News::where('status', 1)
+                                                ->orderby('created_at', 'desc')->take(8)->get();
                                             @endphp
-                                            <div class="col-md-3">
-                                                <div class="utf_post_block_style clearfix">
-                                                    <div class="utf_post_thumb"> <img class="img-fluid"
-                                                            src="images/news/video/video4.jpg"
-                                                            alt="" /> <a class="popup"
-                                                            href="https://www.youtube.com/embed/jssO8-5qmag">
-                                                            <div class="video-icon"> <i
-                                                                class="fa fa-play"></i> </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="utf_post_content">
-                                                        <h2 class="utf_post_title title-small"> <a
-                                                                href="#">Zhang social media pop also
-                                                                known when smart innocent...</a> </h2>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @foreach ($news_hots as $news_hot)
 
-                                            <div class="col-md-3">
-                                                <div class="utf_post_block_style clearfix">
-                                                    <div class="utf_post_thumb"> <img class="img-fluid"
-                                                            src="images/news/video/video3.jpg"
-                                                            alt="" /> <a class="popup"
-                                                            href="https://www.youtube.com/embed/jssO8-5qmag">
-                                                            <div class="video-icon"> <i
-                                                                    class="fa fa-play"></i> </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="utf_post_content">
-                                                        <h2 class="utf_post_title title-small"> <a
-                                                                href="#">Zhang social media pop also
-                                                                known when smart innocent...</a> </h2>
+                                            @php 
+                                                $image_url_1 = public_path("uploads/news") . '/' . $news_hot ->image;
+                                                if(!file_exists($image_url_1)) {
+                                                    $image_url_1 = asset('images/error.jpg');
+                                                } else {
+                                                    $image_url_1 = asset("uploads/news") .'/' . $news_hot ->image;
+                                                }
+                                            @endphp 
+                                                <div class="col-md-3">
+                                                    <div class="utf_post_block_style clearfix">
+                                                        <div class="utf_post_thumb"> <img class="img-fluid"
+                                                                src="{{ $image_url_1 }}"
+                                                                alt="" /> <a class="popup"
+                                                                href="{{ route('singleNews',['id' => $news_hot ->id])}}">
+                                                                
+                                                            </a>
+                                                        </div>
+                                                        <div class="utf_post_content">
+                                                            <h2 class="utf_post_title title-small"> <a
+                                                                href="{{ route('singleNews',['id' => $news_hot ->id])}}">
+                                                                {!! $news_hot ->title!!}
+                                                            </a> 
+                                                        </h2>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
+                                            
 
-                                            <div class="col-md-3">
-                                                <div class="utf_post_block_style clearfix">
-                                                    <div class="utf_post_thumb"> <img class="img-fluid"
-                                                            src="images/news/video/video2.jpg"
-                                                            alt="" /> <a class="popup"
-                                                            href="https://www.youtube.com/embed/jssO8-5qmag">
-                                                            <div class="video-icon"> <i
-                                                                    class="fa fa-play"></i> </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="utf_post_content">
-                                                        <h2 class="utf_post_title title-small"> <a
-                                                                href="#">TG G6 will have dual
-                                                                13-megapixel cameras...</a> </h2>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="utf_post_block_style clearfix">
-                                                    <div class="utf_post_thumb"> <img class="img-fluid"
-                                                            src="images/news/video/video1.jpg"
-                                                            alt="" /> <a class="popup"
-                                                            href="https://www.youtube.com/embed/jssO8-5qmag">
-                                                            <div class="video-icon"> <i
-                                                                    class="fa fa-play"></i> </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="utf_post_content">
-                                                        <h2 class="utf_post_title title-small"> <a
-                                                                href="#">Zhang social media pop also
-                                                                known when smart innocent...</a> </h2>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           
+
+                                            
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li> <a href="">Sports</a> </li>
+                           
                             {{-- <li class="dropdown"> <a href="#" class="dropdown-toggle"
                                     data-toggle="dropdown">  <i class="fa fa-angle-down"></i></a>
                                 <ul class="utf_dropdown_menu" role="menu">

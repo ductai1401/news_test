@@ -33,7 +33,7 @@ class DemoMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Demo Mail',
+            subject: 'Olympics',
         );
     }
 
@@ -43,7 +43,7 @@ class DemoMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.test',
+            view: 'emails.contact_mail',
         );
     }
 

@@ -3,20 +3,46 @@
 @section('title', 'Single news ')
 
 @push('css')
-  <link rel="stylesheet" href="{{ asset('default/css/animate.css')}}">
+    <link rel="stylesheet" href="{{ asset('default/css/animate.css') }}">
 @endpush
 
 @push('hanldejs')
     <script>
-      /* Loading Js*/
-    $(window).on('load', function() {
-      setTimeout(function () {
-        $(".preloader").delay(700).fadeOut(700).addClass('loaded');
-      }, 800);
-    });
+        /* Loading Js*/
+        $(window).on('load', function() {
+            setTimeout(function() {
+                $(".preloader").delay(700).fadeOut(700).addClass('loaded');
+            }, 800);
+        });
     </script>
 @endpush
 
+@push('script')
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    $('#inputField').click(function(){
+        $.get("{{ route('checkLogin') }}", function(data){
+            if (!data.isLoggedIn) {
+                var confirmLogin = confirm("Bạn cần phải đăng nhập để tiếp tục. Bạn có muốn đăng nhập?");
+                if (confirmLogin) {
+                    // Redirect to login page or perform login action
+                    // For demonstration, I'm just logging a message
+                    // console.log("Redirecting to login page...");
+                    window.location.href = "{{ route('auth.login') }}"; // Uncomment this line to redirect to login page
+                }
+            }
+        });
+    });
+   
+});
+
+    </script>
+
+   
+@endpush
 
 @section('content')
 
@@ -31,6 +57,9 @@
                     </ul>
                 </div>
             </div>
+            {{-- @error('content')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror --}}
         </div>
     </div>
     <!-- Page title end -->
@@ -39,38 +68,41 @@
     <section class="utf_block_wrapper">
         <div class="container">
             <div class="row">
-              <div class="post-media post-video">
-                <div class="embed-responsive"> 
-                  <iframe src="https://www.youtube.com/watch?v=ZpNXsJlVewY" width="500" height="281" allowfullscreen=""></iframe>
+                <div class="post-media post-video">
+                    <div class="embed-responsive">
+                        <iframe src="https://www.youtube.com/watch?v=ZpNXsJlVewY" width="500" height="281"
+                            allowfullscreen=""></iframe>
+                    </div>
                 </div>
-              </div>   
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="single-post">
-                        @php 
-                                    $image_url = public_path("uploads/news") . '/' . $news ->image;
-                                    if(!file_exists($image_url)) {
-                                        $image_url = asset('images/error.jpg');
-                                    } else {
-                                        $image_url = asset("uploads/news") .'/' .  $news ->image;
-                                    }
-                                @endphp
-                        <div class="post-media post-featured-image"> <img src="{{   $image_url }}"
-                                class="img-single-news" alt=""> </div>
-                        <div class="utf_post_title-area"> <a class="utf_post_cat" href="#">{{ $news ->key_word}}</a>
-                            <h2 class="utf_post_title mb-5">{{ $news ->title}}</h2>
-                            <div class="utf_post_meta"> 
-                                <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime( $news->created_at)) }}</span> <span
-                                    class="post-hits"><i class="fa fa-eye"></i> 21</span> <span class="post-comment"><i
+                        @php
+                            $image_url = public_path('uploads/news') . '/' . $news->image;
+                            if (!file_exists($image_url)) {
+                                $image_url = asset('images/error.jpg');
+                            } else {
+                                $image_url = asset('uploads/news') . '/' . $news->image;
+                            }
+                        @endphp
+                        <div class="post-media post-featured-image"> <img src="{{ $image_url }}" class="img-single-news"
+                                alt=""> </div>
+                        <div class="utf_post_title-area"> <a class="utf_post_cat" href="#">{{ $news->key_word }}</a>
+                            <h2 class="utf_post_title mb-5">{{ $news->title }}</h2>
+                            <div class="utf_post_meta">
+                                <span class="utf_post_date"><i class="fa fa-clock-o"></i>
+                                    {{ date('d/m/Y', strtotime($news->created_at)) }}</span> <span class="post-hits"><i
+                                        class="fa fa-eye"></i> 21</span> <span class="post-comment"><i
                                         class="fa fa-comments-o"></i> <a href="#"
-                                        class="comments-link"><span>01</span></a></span> </div>
+                                        class="comments-link"><span>01</span></a></span>
+                            </div>
                         </div>
 
                         <div class="utf_post_content-area">
                             <div class="entry-content">
-                                {!! $news ->content !!}
-</div>
+                                {!! $news->content !!}
+                            </div>
 
                             <div class="tags-area clearfix">
                                 <div class="post-tags">
@@ -110,70 +142,104 @@
                         </div>
                     </nav> --}}
 
-                    
+
                     <div class="related-posts block">
                         <h3 class="utf_block_title"><span>Related Posts</span></h3>
                         @php
-                            $category = \App\Models\Category::where('status', 1)->where('id', $news ->id_category)->first();
+                            $category = \App\Models\Category::where('status', 1)
+                                ->where('id', $news->id_category)
+                                ->first();
                             // $parent_category = \App\Models\Category::where('status', 1)->where('id', $category ->parent_id)->first();
-                            $related_posts =  \App\Models\News::where('status', 1)->where('id_category', $news ->id_category)->take(5)->get()
+                            $related_posts = \App\Models\News::where('status', 1)
+                                ->where('id_category', $news->id_category)
+                                ->take(5)
+                                ->get();
                         @endphp
                         <div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
-                            @foreach( $related_posts as  $related_post )
-                            @php 
-                                    $image_url_1 = public_path("uploads/news") . '/' . $related_post ->image;
-                                    if(!file_exists($image_url_1)) {
+                            @foreach ($related_posts as $related_post)
+                                @php
+                                    $image_url_1 = public_path('uploads/news') . '/' . $related_post->image;
+                                    if (!file_exists($image_url_1)) {
                                         $image_url_1 = asset('images/error.jpg');
                                     } else {
-                                        $image_url_1 = asset("uploads/news") .'/' .  $related_post ->image;
+                                        $image_url_1 = asset('uploads/news') . '/' . $related_post->image;
                                     }
                                 @endphp
-                            <div class="item">
-                                <div class="utf_post_block_style clearfix">
-                                    <div class="utf_post_thumb"> <a href="#"><img class="img-fluid"
-                                                src="{{ $image_url_1 }}" alt="" /></a> </div>
-                                    <a class="utf_post_cat" href="#">{{ $category ->name}}</a>
-                                    <div class="utf_post_content">
-                                        <h2 class="utf_post_title title-medium"> <a href="{{ route('singleNews',['id' => $related_post ->id])}}">{{ $related_post ->title}}</a> </h2>
-                                        <div class="utf_post_meta"> <span class="utf_post_date"><i
-                                                    class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime( $related_post->created_at)) }}</span> </div>
+                                <div class="item">
+                                    <div class="utf_post_block_style clearfix">
+                                        <div class="utf_post_thumb"> <a href="#"><img class="img-fluid"
+                                                    src="{{ $image_url_1 }}" alt="" /></a> </div>
+                                        <a class="utf_post_cat" href="#">{{ $category->name }}</a>
+                                        <div class="utf_post_content">
+                                            <h2 class="utf_post_title title-medium"> <a
+                                                    href="{{ route('singleNews', ['id' => $related_post->id]) }}">{{ $related_post->title }}</a>
+                                            </h2>
+                                            <div class="utf_post_meta"> <span class="utf_post_date"><i
+                                                        class="fa fa-clock-o"></i>
+                                                    {{ date('d/m/Y', strtotime($related_post->created_at)) }}</span> </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
-                         </div>
+                        </div>
                     </div>
 
                     <!-- Post comment start -->
                     <div id="comments" class="comments-area block">
-                        <h3 class="utf_block_title"><span>03 Comments</span></h3>
+                        <h3 class="utf_block_title"><span>{{ $quantity }} Comments</span></h3>
                         <ul class="comments-list">
                             <li>
-                                <div class="comment"> <img class="comment-avatar pull-left" alt=""
-                                        src="images/news/user1.png">
+                                @foreach ($comments as $comment)
+                                    @php
+                                        if(empty($comment ->user ->image)){
+                                            $image_url_2 = asset('images/user_defaults.png');
+                                        }else{
+                                            $image_url_2 = public_path("uploads/users") . '/' . $comment ->user ->image;
+                                            if(!file_exists($image_url_2)) {
+                                                $image_url_2 = asset('images/user_defaults.png');
+                                            } else {
+                                                $image_url_2 = asset("uploads/users") .'/' . $comment ->user ->image;
+                                            }
+                                        }
+                                        
+                                    @endphp
+                                    {{-- <div class="comment"> <img class="comment-avatar pull-left" alt="user"
+                                        src="{{ $image_url_2 }}">
                                     <div class="comment-body">
-                                        <div class="meta-data"> <span class="comment-author">Miss Lisa Doe</span> <span
-                                                class="comment-date pull-right">15 Jan, 2022</span> </div>
+                                        <div class="meta-data"> <span class="comment-author">{{ $comment ->user ->fullname}}</span> <span
+                                                class="comment-date pull-right"></span> {{ date('d/m/Y', strtotime($comment->created_at)) }} </div>
                                         <div class="comment-content">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                                Lorem Ipsum has been the industry's standard dummy text ever since It has
-                                                survived not only five centuries, but also the leap into electronic type
-                                                setting, remaining essentially unchanged.</p>
+                                            <p>{!! $comment ->content!!}</p>
                                         </div>
                                         <div class="text-left"> <a class="comment-reply" href="#"><i
                                                     class="fa fa-share"></i> Reply</a> </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <ul class="comments-reply">
+                                <div class="comment last mt-1"> <img class="comment-avatar pull-left" alt="user"
+                                    src="{{ $image_url_2 }}">
+                                <div class="comment-body">
+                                    <div class="meta-data"> <span class="comment-author">{{ $comment ->user ->fullname}}</span> <span
+                                            class="comment-date pull-right"> {{ date('d/m/Y', strtotime($comment->created_at)) }} </span> </div>
+                                    <div class="comment-content">
+                                        <p>{!! $comment ->content!!}</p>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                                @endforeach
+                                
+
+                                {{-- <ul class="comments-reply">
                                     <li>
                                         <div class="comment"> <img class="comment-avatar pull-left" alt=""
                                                 src="images/news/user2.png">
                                             <div class="comment-body">
                                                 <div class="meta-data"> <span class="comment-author">Miss Lisa Doe</span>
-                                                    <span class="comment-date pull-right">15 Jan, 2022</span> </div>
+                                                    <span class="comment-date pull-right">15 Jan, 2022</span>
+                                                </div>
                                                 <div class="comment-content">
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
                                                         industry. Lorem Ipsum has been the industry's standard dummy text
                                                         ever since It has survived not only five centuries, but also the
                                                         leap into electronic type setting, remaining essentially unchanged.
@@ -184,22 +250,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                </ul>
-                                <div class="comment last"> <img class="comment-avatar pull-left" alt=""
-                                        src="images/news/user1.png">
-                                    <div class="comment-body">
-                                        <div class="meta-data"> <span class="comment-author">Miss Lisa Doe</span> <span
-                                                class="comment-date pull-right">15 Jan, 2022</span> </div>
-                                        <div class="comment-content">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                                Lorem Ipsum has been the industry's standard dummy text ever since It has
-                                                survived not only five centuries, but also the leap into electronic type
-                                                setting, remaining essentially unchanged.</p>
-                                        </div>
-                                        <div class="text-left"> <a class="comment-reply" href="#"><i
-                                                    class="fa fa-share"></i> Reply</a> </div>
-                                    </div>
-                                </div>
+                                </ul> --}}
                             </li>
                         </ul>
                     </div>
@@ -208,40 +259,72 @@
                     <!-- Comments Form Start -->
                     <div class="comments-form">
                         <h3 class="title-normal">Leave a comment</h3>
-                        <form>
-                            <div class="row">
-                                <div class="col-md-6">
+                        <form id="commentForm"  action="{{ route('storeComment', ['id' =>$news->id]) }}" method="post">
+                            @csrf
+                             <div class="row">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" name="name" id="name" placeholder="Name"
-                                            type="text" required>
+                                        <input class="form-control" name="fullname" id="fullname" placeholder="FullName"
+                                            type="text" >
+                                        <div class="margin-top-3">
+                                            <div class="input-group" >
+                                                @error('fullname')
+                                                    <span class="alert-1 alert-danger">
+                                                        {{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                                
+                                        </div>
                                     </div>
-</div>
+                                    
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input class="form-control" name="email" id="email" placeholder="Email"
-                                            type="email" required>
+                                            type="email" >
+                                        <div class="margin-top-3">
+                                        <div class="input-group" >
+                                            @error('email')
+                                                <span class="alert-1 alert-danger">
+                                                    {{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            
+                                    </div>    
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Phone" type="text" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Subject" type="text" required>
-                                    </div>
-                                </div>
+                                    
+                                </div> --}}
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea class="form-control required-field" id="message" placeholder="Comment" rows="10" required></textarea>
+                                        
+                                        <textarea  class="form-control required-field" id="inputField" name="content" placeholder="Comment" rows="10" ></textarea>
+                                        <div class="margin-top-3">
+                                            <div class="input-group" >
+                                                @error('content')
+                                                    <span class="alert-1 alert-danger fill-it p-3">
+                                                        {{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                                
+                                        </div>
                                     </div>
+                                    
                                 </div>
                             </div>
-                            <div class="clearfix">
-                                <button class="comments-btn btn btn-primary" type="submit">Post Comment</button>
+                            <div class="clearfix" >
+                                <button  class="comments-btn btn btn-primary" type="submit">Post Comment</button>
                             </div>
                         </form>
+                   
+                        <div>
+                            @if (Session::has('msg'))
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h5><i class="fa fa-exclamation-circle"></i> Warning!</h5>
+                                {{ Session::get('msg') }}
+                            </div>
+                            @endif
+                        </div>
                     </div>
                     <!-- Comments form end -->
                 </div>
@@ -264,7 +347,7 @@
                             <h3 class="utf_block_title"><span>Popular News</span></h3>
                             <div class="utf_list_post_block">
                                 <ul class="utf_list_post">
-@for($i = 1; $i <= 3; $i++)
+@for ($i = 1; $i <= 3; $i++)
                                     <li class="clearfix">
                                         <div class="utf_post_block_style post-float clearfix">
                                             <div class="utf_post_thumb"> <a href="#"> <img class="img-fluid"
@@ -291,7 +374,7 @@
                         <div class="widget widget-tags">
                             <h3 class="utf_block_title"><span>Popular Tags</span></h3>
                             <ul class="unstyled clearfix">
-                              @for($i = 1; $i <= 3; $i++)
+                              @for ($i = 1; $i <= 3; $i++)
                                 <li><a href="#">Business</a></li>
                               @endfor  
                             </ul>

@@ -5,11 +5,10 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12 footer-widget contact-widget">
                     <h3 class="widget-title">About Us</h3>
                     <ul>
-                        <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                            Ipsum has been the industry's standard dummy text since has five...</li>
-                        <li><i class="fa fa-home"></i> 15 Cliff St, New York NY 10038, USA</li>
-                        <li><i class="fa fa-phone"></i> <a href="#">+91 234 567 8765</a></li>
-                        <li><i class="fa fa-envelope-o"></i> <a href="#">mail@example.com</a></li>
+                        <li>We are warriors who always burn hard for great dreams</li>
+                        <li><i class="fa fa-home"></i>95/24 Lê Thị Riêng, Phường Bến Thành, Quận 1, Thành Phố Hồ Chí Minh</li>
+                        <li><i class="fa fa-phone"></i> <a href="#">+84 0392535026</a></li>
+                        <li><i class="fa fa-envelope-o"></i> <a href="#">luuductai12@gmail.com</a></li>
                     </ul>
                     <ul class="unstyled utf_footer_social">
                         <li><a title="Facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
@@ -24,27 +23,30 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12 footer-widget widget-categories">
                     <h3 class="widget-title">Popular Categories</h3>
                     <ul>
-                        <li><i class="fa fa-angle-double-right"></i><a href="#"><span
-                                    class="catTitle">Make-Up</span><span class="catCounter"> (05)</span></a>
-                        </li>
-                        <li><i class="fa fa-angle-double-right"></i><a href="#"><span
-                                    class="catTitle">Health</span><span class="catCounter"> (06)</span></a>
-                        </li>
-                        <li><i class="fa fa-angle-double-right"></i><a href="#"><span
-                                    class="catTitle">Audio</span><span class="catCounter"> (15)</span></a>
-                        </li>
-                        <li><i class="fa fa-angle-double-right"></i><a href="#"><span
-                                    class="catTitle">Travel</span><span class="catCounter"> (25)</span></a>
-                        </li>
-                        <li><i class="fa fa-angle-double-right"></i><a href="#"><span
-                                    class="catTitle">Health</span><span class="catCounter"> (05)</span></a>
-                        </li>
-                        <li><i class="fa fa-angle-double-right"></i><a href="#"><span
-                                    class="catTitle">Gadgets</span><span class="catCounter"> (12)</span></a>
-                        </li>
-                        <li><i class="fa fa-angle-double-right"></i><a href="#"><span
-                                    class="catTitle">Food</span><span class="catCounter"> (14)</span></a>
-                        </li>
+                        @php
+                            $categorys = \App\Models\Category::where('status',1)->get()
+
+                        @endphp
+                        @foreach ($categorys as $category)
+                            @if($category ->parent_id == 0 )
+                                <li>
+                                    <i class="fa fa-angle-double-right"></i><a href="#"><span
+                                        class="catTitle">{{ $category ->name}}</span>
+                                        @php
+                                            $news_category_child = DB::table('news')->join('categories','news.id_category', '=', 'categories.id')->where('news.status', 1)->where('categories.parent_id', $category ->id)->count('news.id');
+                                            $news_parent = DB::table('news')->where('status', 1)->where('id_category', $category ->id)->count();
+                                        @endphp
+                                        @if($news_category_child == 0)
+                                            <span class="catCounter"> ({{$news_parent}})</span></a>
+                                        
+                                        @else
+                                        <span class="catCounter"> ({{$news_category_child}})</span></a>
+                                        @endif
+                                </li>
+                            @endif
+                            
+                        @endforeach
+                
                     </ul>
                 </div>
 
@@ -52,47 +54,34 @@
                     <h3 class="widget-title">Popular Post</h3>
                     <div class="utf_list_post_block">
                         <ul class="utf_list_post">
-                            <li class="clearfix">
-                                <div class="utf_post_block_style post-float clearfix">
-                                    <div class="utf_post_thumb"> <a href="#"> <img class="img-fluid"
-                                                src="images/news/lifestyle/health2.jpg" alt="" />
-                                        </a> </div>
-                                    <div class="utf_post_content">
-                                        <h2 class="utf_post_title title-small"> <a href="#">Santino
-                                                loganne legan an year old resident...</a> </h2>
-                                        <div class="utf_post_meta"> <span class="utf_post_date"><i
-                                                    class="fa fa-clock-o"></i> 25 Jan, 2022</span> </div>
+                            @php
+                            $categorys = \App\Models\Category::where('status',1)->where('name', 'like', "%2022%")->first();
+                            $news_populars = \App\Models\News::where('status', 1)->where('id_category', $categorys ->id)
+                                                ->orderby('created_at', 'desc')->take(3)->get();
+                            @endphp
+                            @foreach ($news_populars as $item)
+                                @php
+                                    $image_url_0 = public_path("uploads/news") . '/' . $item ->image;
+                                    if(!file_exists($image_url_0)) {
+                                        $image_url_0 = asset('images/error.jpg');
+                                    } else {
+                                        $image_url_0 = asset("uploads/news") .'/' .  $item ->image;
+                                    }
+                                @endphp
+                                <li class="clearfix">
+                                    <div class="utf_post_block_style post-float clearfix">
+                                        <div class="utf_post_thumb"> <a href="#"> <img class="img-fluid"
+                                                    src="{{ $image_url_0 }}" alt="" />
+                                            </a> </div>
+                                        <div class="utf_post_content">
+                                            <h2 class="utf_post_title title-small"> <a href="{{ route('singleNews', ['id' => $item ->id])}}">{{ $item->title}}</a> </h2>
+                                            <div class="utf_post_meta"> <span class="utf_post_date"><i
+                                                        class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime( $item->created_at)) }}</span> </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-
-                            <li class="clearfix">
-                                <div class="utf_post_block_style post-float clearfix">
-                                    <div class="utf_post_thumb"> <a href="#"> <img class="img-fluid"
-                                                src="images/news/lifestyle/health3.jpg" alt="" />
-                                        </a> </div>
-                                    <div class="utf_post_content">
-                                        <h2 class="utf_post_title title-small"> <a href="#">Santino
-                                                loganne legan an year old resident...</a> </h2>
-                                        <div class="utf_post_meta"> <span class="utf_post_date"><i
-                                                    class="fa fa-clock-o"></i> 25 Jan, 2022</span> </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="clearfix">
-                                <div class="utf_post_block_style post-float clearfix">
-                                    <div class="utf_post_thumb"> <a href="#"> <img class="img-fluid"
-                                                src="images/news/lifestyle/health4.jpg" alt="" />
-                                        </a> </div>
-                                    <div class="utf_post_content">
-                                        <h2 class="utf_post_title title-small"> <a href="#">Santino
-                                                loganne legan an year old resident...</a> </h2>
-                                        <div class="utf_post_meta"> <span class="utf_post_date"><i
-                                                    class="fa fa-clock-o"></i> 25 Jan, 2022</span> </div>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
+                            
                         </ul>
                     </div>
                 </div>

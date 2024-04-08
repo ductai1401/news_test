@@ -73,6 +73,10 @@ Route::prefix('client')->group(function () {
 
     Route::post('/search_news', [ClientNewsController::class, 'searchNews'])->name('searchNews');
 
+    Route::get('/checkLogin', [ClientNewsController::class, 'checkLogin'])->name('checkLogin');
+
+    Route::post('/comment/{id}', [ClientNewsController::class, 'storeComment'])->name('storeComment');
+
     Route::get('/send_mail', [ClientNewsController::class, 'mail_hot']);
 
 

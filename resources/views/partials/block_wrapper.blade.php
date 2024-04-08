@@ -27,7 +27,7 @@
                                     } else {
                                         $image_url_0 = asset("uploads/news") .'/' .  $news_athlete_1 ->image;
                                     }
-                                    $truncated = Str::of($news_athlete_1->intro)->limit(170);
+                                    $truncated = Str::of($news_athlete_1->intro)->limit(160, );
                                 @endphp
                                 <div class="col-lg-6 col-md-6">
                                     <div class="utf_post_block_style clearfix">
@@ -40,7 +40,10 @@
                                             <div class="utf_post_meta"> 
                                                  <span class="utf_post_date"><i
                                                         class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime( $news_athlete_1->created_at)) }}</span> </div>
-                                            <p>{!! $truncated !!}</p>
+                                                    <div style="font-size: 14px">
+                                                        <p>{!! Str::of($news_athlete_1->intro)->limit(160, ) !!}</p>
+                                                    </div>
+                                                        
                                         </div>
                                     </div>
                                 </div>

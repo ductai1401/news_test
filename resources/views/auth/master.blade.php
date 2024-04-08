@@ -54,7 +54,7 @@
   <!-- Main Nav Start -->  
         @include('partials.main_nav')
   <!-- Menu wrapper end -->
-  
+            
   <!-- Page Title Start -->
   <div class="page-title">
     <div class="container">
@@ -66,7 +66,18 @@
           </ul>
         </div>
       </div>
+            @if (Session::has('msg'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="fa fa-exclamation-circle"></i> Warning!</h5>
+                {{ Session::get('msg') }}
+            </div>
+            @endif
+            
     </div>
+    
+          
+        
   </div>
   <!-- Page title end -->
   

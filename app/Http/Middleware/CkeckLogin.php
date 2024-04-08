@@ -18,7 +18,12 @@ class CkeckLogin
     {
 
         if(Auth::check()){
-            return $next($request);
+            if(Auth::User()->level == 2){
+                return redirect()->back();
+            }else{
+                return $next($request);
+            }
+            
         }
 
         return redirect('/');
