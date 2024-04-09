@@ -8,7 +8,7 @@
 <title>@yield('title')</title>
 
 <!--Favicon-->
-<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="icon" href="{{ asset('images/Olympic-logo.jpg')}}" type="image/x-icon">
 
 <!-- CSS -->
 <link rel="stylesheet" href="{{ asset('default/css/bootstrap.min.css')}}">

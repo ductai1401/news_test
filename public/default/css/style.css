@@ -3372,3 +3372,7 @@ width: 1170px;
 .dropdown-event:hover .dropdown-content-event {
 display: block;
 }
+
+.tablerank tr{
+    height: 100px;
+}

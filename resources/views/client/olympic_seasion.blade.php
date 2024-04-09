@@ -94,9 +94,9 @@
                     </div>
                 </div> --}}
             </div><br>
-
-            <table class="table table-bordered table-striped text-center">
-                <thead class="thead-dark">
+            <div class="panel-body table-responsive">
+            <table class="table table-striped text-center">
+                <thead class="thead-dark tablerank">
                     <tr>
                         <th class="text-center">ID</th>
                         <th class="text-center">Sport</th>
@@ -135,7 +135,7 @@
                     @endforeach
                 </tbody>
             </table>
-
+            </div>
 
         </div>
 

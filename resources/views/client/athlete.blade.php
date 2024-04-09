@@ -57,7 +57,9 @@
                 <ul class="mt-5">
                     <a href="#sc1"><li><h4>Olympic Results</h4></li></a>
                     <a href="#sc3"><li><h4>Latest News</h4></li></a>
+                    @if($medals ->video)
                     <a href="#sc4"><li><h4>Replays</h4></li></a>
+                    @endif
                     <a href="#sc4"><li><h4>Result</h4></li></a>
 
                 </ul>
@@ -117,12 +119,43 @@
                     <div class="athsection2 mb-3" id="sc3" >
                         <h3 class="utf_block_title"><span>Latest News</span></h3>
                             <div class="container">
-                                <div class="utf_latest_news block color-red">                                   
+                                <div class="utf_latest_news block color-red">     
+                                    @php
+                                        $news = \App\Models\News::where('status',1)->orderby('created_at', 'desc')->take(8)->get();
+                                    @endphp                              
                                     <div id="utf_latest_news_slide" class="owl-carousel owl-theme utf_latest_news_slide">
-                                        @for($i = 1; $i <= 4; $i++)
+                                        @foreach($news as $n)
+                                        @php
+                                            $title =Str::of($n ->title)->limit(40);
+                                             $category = \App\Models\Category::where('status',1)->where('id', $n->id_category)->first();
+                                        @endphp
                                         <div class="item">
+                                            
                                             <ul class="utf_list_post">
                                                 <li class="clearfix">
+                                                    <div class="utf_post_block_style clearfix">
+                                                        @php 
+                                                            $image_url = public_path("uploads/news") . '/' . $n ->image;
+                                                            if(!file_exists($image_url)) {
+                                                                $image_url = asset('images/error.jpg');
+                                                            } else {
+                                                                $image_url = asset("uploads/news") .'/' .  $n ->image;
+                                                            }
+                                                        @endphp
+                                                        <div class="utf_post_thumb"> <a href="#"><img class="img-fluid1"
+                                                                    src="{{ $image_url }}" alt="image" /></a>
+                                                        </div>
+                                                        <a class="utf_post_cat" href="#">{{ $category ->name}}</a>
+                                                        <div class="utf_post_content">
+                                                            <h2 class="utf_post_title1 title-medium"> <a href="{{ route('singleNews',['id' => $n ->id]) }}">{{$title}}</a> </h2>
+                                                            <div class="utf_post_meta">
+                                                                <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime( $n->created_at)) }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                {{-- <li class="clearfix">
                                                     <div class="utf_post_block_style clearfix">
                                                         <div class="utf_post_thumb"> <a href="#"><img class="img-fluid"
                                                                     src="https://th.bing.com/th/id/OIP.Yh8OW6zO_rwiLkurqJ43QQHaEo?rs=1&pid=ImgDetMain" alt="" /></a>
@@ -138,10 +171,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
+                                                </li> --}}
+                                                
                                             </ul>
+                                        
                                         </div>
-                                    @endfor 
+                                    @endforeach 
                                     </div>
                                 </div>
                             </div>
@@ -170,11 +205,13 @@
                             </div>
                     </div>
                     @endif
+                    <section class="mb-3">
 
+                   
                     <div class="athsection2 mb-3" id="sc4">
                         <h3 class="utf_block_title"><span>Results</span></h3>
                         <div class="container"  style="padding:  0px;" >
-                            <table class="table m-3 mt-5 athtable">
+                            <table class="table table-responsive m-3 mt-5 athtable">
                                 <thead>
                                     
                                         <td></td>
@@ -235,7 +272,7 @@
                             </table>
                         </div>
                     </div>
-
+                     </section>
                 </div>
             </div>
         </div>
