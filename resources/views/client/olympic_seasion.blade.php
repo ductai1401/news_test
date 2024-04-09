@@ -33,16 +33,16 @@
                             </div>
                             <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom">
                                 <span>Athlete</span>
-                                500
+                                {{ $athlete }}                                 
                                 
                             </div>
                             <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom" >
                                 <span>Teams</span>
-                                40
+                                {{ $country }}
                             </div>
                             <div class="pb-bottom-10 d-flex justify-content-between ml-1 mr-1 border-bottom">
                                 <span>Events</span>
-                                20
+                                {{ $sport_count }}
                             </div>   
                         </div>
                     </div>

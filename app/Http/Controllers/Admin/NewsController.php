@@ -60,7 +60,9 @@ class NewsController extends Controller
         $news->id_category = $request->id_category;
         $news ->key_word = $request ->key_word;
 
-        $news->save();
+        $news->save(); 
+        
+        $file->move(public_path('uploads/news'), $fileName);
         $users = User::where('level', '!=', 1)->get();
         $news = News::orderby('created_at', 'desc')->first();
         foreach($users as $user){
@@ -70,12 +72,13 @@ class NewsController extends Controller
             ];
             $email_user = $user -> email;
             $fullname = $user-> fullname;
+            Mail::to($email_user, $fullname)->send(new DemoMail($mailData,$news,$fullname));
         }
-        Mail::to($email_user, $fullname)->send(new DemoMail($mailData,$news));
+        
 
-        $file->move(public_path('uploads/news'), $fileName);
+       
 
-        return redirect()->route('admin.news.create')->with('success','Create news successful');
+        return redirect()->route('admin.news.create')->with('success','Create news successful')->with('successMail','Email has been sent to all members');
     }
 
     /**
@@ -182,11 +185,11 @@ class NewsController extends Controller
     }
 
 
-    public function mail_hot() {
-        $name = 'test name for email';
-        Mail::send('emails.test', compact('name'), function($email){
-            $email ->to('luuductai12@gmail.com', 'luuductai');
-        });
-    }
+    // public function mail_hot() {
+    //     $name = 'test name for email';
+    //     Mail::send('emails.test', compact('name'), function($email){
+    //         $email ->to('luuductai12@gmail.com', 'luuductai');
+    //     });
+    // }
     
 }

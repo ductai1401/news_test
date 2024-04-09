@@ -1,4 +1,4 @@
-<section class="utf_latest_new_area1 pb-bottom-20">
+<section class="utf_latest_new_area1 pb-bottom-20 mt-5">
     <div class="container">
         <div class="utf_latest_news1 block color-red">
             <h3 class="utf_block_title"><span>Latest News</span></h3>
@@ -6,8 +6,12 @@
 
                 @php
                     $news = \App\Models\News::where('status', 1)->take(10)->get();
+
                 @endphp
                 @foreach($news as $n )
+                @php
+                    $category = \App\Models\Category::where('status',1)->where('id', $n->id_category)->first();
+                @endphp
                 <div class="item">
                     
                     <ul class="utf_list_post">
@@ -24,7 +28,7 @@
                                 <div class="utf_post_thumb"> <a href="#"><img class="img-fluid1"
                                             src="{{ $image_url }}" alt="image" /></a>
                                 </div>
-                                <a class="utf_post_cat" href="#">{{ $n ->key_word }}</a>
+                                <a class="utf_post_cat" href="#">{{ $category ->name}}</a>
                                 <div class="utf_post_content">
                                     <h2 class="utf_post_title1 title-medium"> <a href="{{ route('singleNews',['id' => $n ->id]) }}">{{ $n ->title}}</a> </h2>
                                     <div class="utf_post_meta">

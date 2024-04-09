@@ -1,71 +1,469 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $mailData['title'] }}</title>
-    <link rel="stylesheet" href="{{ asset('email/css/style.css')}}">
-</head>
-
-<body>
-    {{-- <div class="item" style="width: 600px; margin: 0 auto; ">
-        <div class="utf_post_block_style clearfix">
-            <div class="utf_post_thumb"> <a href="#"><img class="img-fluid1" src="#"
-                        alt="image" /></a>
-            </div>
-            <a class="utf_post_cat" href="#">{{ $data->key_word }}</a>
-            <div class="utf_post_content">
-                <h2 class="utf_post_title1 title-medium"> <a
-                        href="{{ route('singleNews', ['id' => $data->id]) }}">{{ $data->title }}</a> </h2>
-                <div class="utf_post_meta">
-                    <span class="utf_post_date"><i class="fa fa-clock-o"></i>
-                        {{ date('d/m/Y', strtotime($data->created_at)) }}</span>
+<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
+    <title> Welcome to [Olympic] </title>
+    <!--[if !mso]><!-- -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--<![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+      #outlook a {
+        padding: 0;
+      }
+  
+      body {
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+  
+      table,
+      td {
+        border-collapse: collapse;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+  
+      img {
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+        -ms-interpolation-mode: bicubic;
+      }
+  
+      p {
+        display: block;
+        margin: 13px 0;
+      }
+    </style>
+    <!--[if mso]>
+          <xml>
+          <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+          </xml>
+          <![endif]-->
+    <!--[if lte mso 11]>
+          <style type="text/css">
+            .mj-outlook-group-fix { width:100% !important; }
+          </style>
+          <![endif]-->
+    <!--[if !mso]><!-->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:100,400,700" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Nunito:100,400,700);
+    </style>
+    <!--<![endif]-->
+    <style type="text/css">
+      @media only screen and (min-width:480px) {
+        .mj-column-per-100 {
+          width: 100% !important;
+          max-width: 100%;
+        }
+      }
+    </style>
+    <style type="text/css">
+      @media only screen and (max-width:480px) {
+        table.mj-full-width-mobile {
+          width: 100% !important;
+        }
+  
+        td.mj-full-width-mobile {
+          width: auto !important;
+        }
+      }
+    </style>
+    <style type="text/css">
+      a,
+      span,
+      td,
+      th {
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+      }
+    </style>
+  </head>
+  
+  <body style="background-color:#eaeaea;">
+    <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;"> Welcome to Olympic news </div>
+    <div style="background-color:#eaeaea;">
+      <!--[if mso | IE]>
+        <table
+           align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+        >
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+      <div style="margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                <!--[if mso | IE]>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  
+          <tr>
+        
+              <td
+                 class="" style="vertical-align:top;width:600px;"
+              >
+            <![endif]-->
+                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tbody><tr>
+                      <td style="font-size:0px;word-break:break-word;">
+                        <!--[if mso | IE]>
+      
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td height="20" style="vertical-align:top;height:20px;">
+        
+      <![endif]-->
+                        <div style="height:20px;">   </div>
+                        <!--[if mso | IE]>
+      
+          </td></tr></table>
+        
+      <![endif]-->
+                      </td>
+                    </tr>
+                  </tbody></table>
                 </div>
-            </div>
-        </div>
-    </div> --}}
-    <td class="esd-structure es-p40t es-p40b es-p10r es-p10l es-struct-amp" align="left">
-        <table cellpadding="0" cellspacing="0" width="100%">
-            <tbody>
-                <tr>
-                    <td width="580" align="center" class="esd-container-frame">
-                        <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="border-left:1px solid #e1effc;border-right:1px solid #e1effc;border-top:1px solid #e1effc;border-bottom:1px solid #e1effc;background-color: #ffffff; border-radius: 12px; border-collapse: separate;box-shadow: 0 20px 20px #cccccc;">
-                            <tbody>
-                                <tr>
-                                    <td align="left" class="esd-block-text es-m-txt-l es-p30t es-p30r es-p30l">
-                                        <h2>Hot news just posted a new news</h2>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left" class="esd-block-text es-p15t es-p30r es-p30l">
-                                        <p><br>{{ $data->title }}<br></p>
-                                        <p>{{ date('d/m/Y', strtotime($data->created_at)) }}</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left" class="esd-block-button es-p25t es-p30b es-p30r es-p30l">
-                                        <!--[if mso]><a href="https://viewstripo.email/" target="_blank">
-        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="https://viewstripo.email/" 
-                    style="height:48px;v-text-anchor:middle;width:236px;" arcsize="25%" strokecolor="#2f80ed" strokeweight="2px" fillcolor="#e1effc">
-            <w:anchorlock></w:anchorlock>
-            <center style='color:#2f80ed;font-family:roboto, "helvetica neue", helvetica, arial, sans-serif;font-size:16px;font-weight:400;'>Back To Training!</center>
-        </v:roundrect></a>
-    <![endif]-->
-                                        <!--[if !mso]><!-- --><span class="msohide es-button-border"><a href="{{ route('singleNews', ['id' => $data ->id])}}" class="es-button" target="_blank">Back To Training!</a></span>
-                                        <!--<![endif]-->
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-            </tbody>
+                <!--[if mso | IE]>
+              </td>
+            
+          </tr>
+        
+                    </table>
+                  <![endif]-->
+              </td>
+            </tr>
+          </tbody>
         </table>
-    </td>
-</body>
-
-</html>
-
-
+      </div>
+      <!--[if mso | IE]>
+            </td>
+          </tr>
+        </table>
+        
+        <table
+           align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+        >
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        
+          <v:rect  style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
+          <v:fill  origin="0.5, 0" position="0.5, 0" src="https://images.unsplash.com/photo-1596146828437-d845f3b3235b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" type="tile" />
+          <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
+        <![endif]-->
+      <div style="background:url(https://images.unsplash.com/photo-1596146828437-d845f3b3235b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80) top center / cover no-repeat;margin:0px auto;border-radius:20px 20px 0 0;max-width:600px;">
+        <div style="line-height:0;font-size:0;">
+          <table align="center" background="https://images.unsplash.com/photo-1596146828437-d845f3b3235b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url(https://images.unsplash.com/photo-1596146828437-d845f3b3235b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80) top center / cover no-repeat;width:100%;border-radius:20px 20px 0 0;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                  <!--[if mso | IE]>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  
+          <tr>
+        
+              <td
+                 class="" style="vertical-align:top;width:600px;"
+              >
+            <![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody><tr>
+                        <td align="center" style="font-size:0px;padding:8px 0;word-break:break-word;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                            <tbody>
+                              <tr>
+                                <td style="width:150px;">
+                                  <img height="auto" src="https://pngimg.com/uploads/olympic_rings/olympic_rings_PNG14.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:16px;" width="150" />
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word;">
+                          <!--[if mso | IE]>
+      
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td height="250" style="vertical-align:top;height:250px;">
+        
+      <![endif]-->
+                          <div style="height:250px;">   </div>
+                          <!--[if mso | IE]>
+      
+          </td></tr></table>
+        
+      <![endif]-->
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </div>
+                  <!--[if mso | IE]>
+              </td>
+            
+          </tr>
+        
+                    </table>
+                  <![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!--[if mso | IE]>
+          </v:textbox>
+        </v:rect>
+      
+            </td>
+          </tr>
+        </table>
+        
+        <table
+           align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+        >
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+      <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;border-radius:0 0 20px 20px;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;border-radius:0 0 20px 20px;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                <!--[if mso | IE]>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  
+          <tr>
+        
+              <td
+                 class="" style="vertical-align:top;width:600px;"
+              >
+            <![endif]-->
+                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tbody><tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:30px;text-align:left;color:#54595f;">
+                          <h2 style="margin: 0; line-height: normal; font-weight: bold; font-size: 20px;"> Hey {{ $fullname}},</h2>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:22px;text-align:left;color:#54595f;">
+                          <h1 style="margin: 0; font-size: 24px; line-height: normal; font-weight: bold;">You have the latest news.</h1>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:16px;font-style:italic;font-weight:400;line-height:22px;text-align:left;color:#54595f;">
+                            <p style="margin: 0;"><strong> Title </strong> : {{ $data ->title}} </p>
+                          
+                            <p style="margin: 0;"><strong> Intro </strong> : {!! Str::of($data->intro)->limit(160,'...')!!} </p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" vertical-align="middle" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
+                          <tbody><tr>
+                            <td align="center" bgcolor="#54595f" role="presentation" style="border:none;border-radius:30px;cursor:auto;mso-padding-alt:10px 25px;background:#54595f;" valign="middle">
+                              <a href="{{ route('singleNews',['id' => $data->id])}}" style="display: inline-block; background: #54595f; color: white; font-family: Nunito, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 30px; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 30px;" target="_blank"> Read the full news </a>
+                            </td>
+                          </tr>
+                        </tbody></table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:22px;text-align:left;color:#54595f;">If you have any questions simply reply to this email and we would be more than happy to reply. :)</div>
+                      </td>
+                    </tr>
+                  </tbody></table>
+                </div>
+                <!--[if mso | IE]>
+              </td>
+            
+          </tr>
+        
+                    </table>
+                  <![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]>
+            </td>
+          </tr>
+        </table>
+        
+        <table
+           align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+        >
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+      <div style="margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;text-align:center;">
+                <!--[if mso | IE]>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  
+          <tr>
+        
+              <td
+                 class="" style="vertical-align:top;width:600px;"
+              >
+            <![endif]-->
+                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tbody><tr>
+                      <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:22px;text-align:center;color:#54595f;"><a href="#" style="color: #54595f; display: inline-block; text-decoration: none;">
+                            <img src="https://codedmails.com/images/google-play.png" alt="play-store-logo" width="150px" />
+                          </a>
+                          <a href="#" style="color: #54595f; display: inline-block; text-decoration: none;">
+                            <img src="https://codedmails.com/images/app-store.png" alt="app-store-logo" width="150px" />
+                          </a></div>
+                      </td>
+                    </tr>
+                  </tbody></table>
+                </div>
+                <!--[if mso | IE]>
+              </td>
+            
+          </tr>
+        
+                    </table>
+                  <![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]>
+            </td>
+          </tr>
+        </table>
+        
+        <table
+           align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+        >
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+      <div style="margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-top:0px;text-align:center;">
+                <!--[if mso | IE]>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  
+          <tr>
+        
+              <td
+                 class="" style="vertical-align:top;width:600px;"
+              >
+            <![endif]-->
+                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tbody><tr>
+                      <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:18px;text-align:center;color:#54595f;">123 Medalling Jr., Suite 100, Parrot Park, CA 12345<br /> © 2020 [Coded Mails] Inc.</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:18px;text-align:center;color:#54595f;">Update your <a href="https://google.com" style="color: #54595f; text-decoration: underline;">email preferences</a> to choose the types of emails you receive, or you can <a href="https://google.com" style="color: #54595f; text-decoration: underline;"> unsubscribe </a>from all future emails.</div>
+                      </td>
+                    </tr>
+                  </tbody></table>
+                </div>
+                <!--[if mso | IE]>
+              </td>
+            
+          </tr>
+        
+                    </table>
+                  <![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]>
+            </td>
+          </tr>
+        </table>
+        
+        <table
+           align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+        >
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+      <div style="margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                <!--[if mso | IE]>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  
+          <tr>
+        
+              <td
+                 class="" style="vertical-align:top;width:600px;"
+              >
+            <![endif]-->
+                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tbody><tr>
+                      <td style="font-size:0px;word-break:break-word;">
+                        <!--[if mso | IE]>
+      
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td height="1" style="vertical-align:top;height:1px;">
+        
+      <![endif]-->
+                        <div style="height:1px;">   </div>
+                        <!--[if mso | IE]>
+      
+          </td></tr></table>
+        
+      <![endif]-->
+                      </td>
+                    </tr>
+                  </tbody></table>
+                </div>
+                <!--[if mso | IE]>
+              </td>
+            
+          </tr>
+        
+                    </table>
+                  <![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]>
+            </td>
+          </tr>
+        </table>
+        <![endif]-->
+    </div>
+  
+  
+  </body></html>

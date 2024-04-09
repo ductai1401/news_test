@@ -19,11 +19,13 @@ class DemoMail extends Mailable
 
     public $mailData;
     public $data;
+    public $fullname;
 
-    public function __construct($mailData, $data)
+    public function __construct($mailData, $data, $fullname)
     {
         $this ->mailData = $mailData;
         $this ->data = $data;
+        $this ->fullname = $fullname;
 
     }
 

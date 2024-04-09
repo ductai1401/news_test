@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li> <a href="#">Athlates</a> </li>
+                            {{-- <li> <a href="#">Athlates</a> </li> --}}
                             <li class="dropdown nav-item utf_mega_dropdown"> <a href="#"
                                     class="nav-link dropdown-toggler" data-toggle="dropdown">News <i
                                         class="fa fa-angle-down"></i></a>

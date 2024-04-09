@@ -316,16 +316,17 @@
                             </div>
                         </form>
                    
-                        <div class="mb-5">
+                        
+                    </div>
+                    <div class="mb-5">
                             @if (Session::has('msg'))
                             <div class="alert alert-success alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                <h5><i class="fa fa-exclamation-circle"></i> Warning!</h5>
+                                <h5><i class="icon fas fa-check"></i> Alert!</h5>
                                 {{ Session::get('msg') }}
                             </div>
                             @endif
                         </div>
-                    </div>
                     <!-- Comments form end -->
                 </div>
 
