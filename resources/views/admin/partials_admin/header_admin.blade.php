@@ -1,6 +1,6 @@
 <header class="header">
     <nav class="navbar navbar-static-top">
-        <a class='logo' href='/fitness/'>
+        <a class='logo' href='{{ route('index')}}'>
             <!-- Add the class icon to your logo image or logo icon to add the margining -->
             <img src="{{ asset('images/olympic-symbol-clipart-9.jpg') }}" width="91px" height="43px" alt="image not found">
         </a>

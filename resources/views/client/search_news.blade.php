@@ -1,5 +1,6 @@
 @extends('master')
 @section('title', 'Sports')
+
  @section('content')
 
    <!-- Page Title Start -->
@@ -32,45 +33,49 @@
                 @endforeach
             </ul>
             <div class="row">
-                @foreach($news as $n)
-
+                @foreach($news as $data)
+                @foreach($data as $items)
                 @php 
-                    $image_url = public_path("uploads/news") . '/' . $n ->image;
+                    
+                    $image_url = public_path("uploads/news") . '/' . $items ->image;
                     if(!file_exists($image_url)) {
                         $image_url = asset('images/error.jpg');
                     } else {
-                        $image_url = asset("uploads/news") .'/' . $n ->image;
+                        $image_url = asset("uploads/news") .'/' . $items ->image;
                     }
-                    $category_1 = \App\Models\Category::where('status', 1)->where('id', $n ->id_category)->first();
-                    $intro = Str::of($n->intro)->limit(150);
+                    $category_1 = \App\Models\Category::where('status', 1)->where('id', $items ->id_category)->first();
+                    $intro = Str::of($items->intro)->limit(150);
+                    $comment = \App\Models\Comment::where('status', 1) ->where('id_news', $items ->id)->get();
                  @endphp    
               <div class="col-md-6">
                 <div class="utf_post_block_style post-grid clearfix">
                   <div class="utf_post_thumb"> <a href="#"> <img class="img-fluid" src="{{ $image_url }}" alt="image_news" /> </a> </div>
                   <a class="utf_post_cat" href="#">{{ $category_1 ->name}}</a>
                   <div class="utf_post_content">
-                    <h2 class="utf_post_title title-large"> <a href="{{ route('singleNews',['id' => $n ->id]) }}">{{ $n ->title}}</a> </h2>
+                    <h2 class="utf_post_title title-large"> <a href="{{ route('singleNews',['id' => $items ->id]) }}">{{ $items ->title}}</a> </h2>
                     <div class="utf_post_meta"> 
                          <span class="utf_post_date"><i class="fa fa-clock-o"></i> 
-                            {{ date('d/m/Y', strtotime( $n->created_at)) }}
+                            {{ date('d/m/Y', strtotime( $items->created_at)) }}
                         </span>
-                        <span class="post-comment pull-right"><i class="fa fa-comments-o"></i> <a href="#" class="comments-link"><span>03</span></a></span> </div>					
+                        <span class="post-comment pull-right"><i class="fa fa-comments-o"></i> <a href="#" class="comments-link"><span>{{count($comment)}}</span></a></span> </div>					
                     {{-- <p style="font-size: 24px">{!! $intro !!}</p> --}}
                   </div>
                 </div>
               </div>
               @endforeach
+              @endforeach
             </div>
           </div>
           
-          <div class="paging">
-            <ul class="pagination">
-              <li class="active"><a href="#">1</a></li>
+          <div class="paging mb-5">
+            @if(isset($data) && count($data) > 0)  
+              {{ $data ->links('pagination::bootstrap-4') }}
+              {{-- <li class="active"><a href="#">1</a></li>
               <li><a href="#">2</a></li>
               <li><a href="#">3</a></li>
               <li><a href="#">4</a></li>
-              <li><a href="#">»</a></li>
-            </ul>
+              <li><a href="#">»</a></li> --}}
+           @endif
           </div>          
         </div>
         

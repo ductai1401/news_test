@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                             </li>
-                            {{-- <li> <a href="#">Athlates</a> </li> --}}
+                            <li> <a href="{{ route('listAthlete')}}">Athlates</a> </li>
                             <li class="dropdown nav-item utf_mega_dropdown"> <a href="#"
                                     class="nav-link dropdown-toggler" data-toggle="dropdown">News <i
                                         class="fa fa-angle-down"></i></a>
@@ -184,12 +184,20 @@
                     </div>
                 </div>
             </nav>
-            <div class="utf_nav_search"> <span id="searchs"><i class="fa fa-search"></i></span> </div>
-            <div class="utf_search_block" style="display: none;">
-                <form action="{{ route('searchNews') }}" method="post">
+            <div class="utf_nav_search"> 
+                <a href="#" class="dropdown-toggle"  data-toggle="collapse" data-target="#search" aria-expanded="false" style="color: white">
+                <span id="searchs">
+                    
+                        <i class="fa fa-search text-default">
+                    </i> 
+                    
+                </a></span>
+            </div>
+            <div id="search"  class="utf_search_block1 sub-menu collapse">
+                <form action="{{ route('searchNews') }}" method="get" >
                     @csrf
-                <input type="text" class="form-control" name="search" placeholder="Enter your keywords...">
-                <button class="form-control" type="submit" id="search"><span id="searchs"><i class="fa fa-search"></i></span></button> 
+                <input type="text" class="form-control1" id="search_news" name="search" placeholder="Enter your keywords..." value="{{ Session::get('data','') }}">
+                <button class="form-control1"  type="submit" ><span id="searchs"><i class="fa fa-search"></i></span></button> 
                 </form>
               </div>       
         </div>

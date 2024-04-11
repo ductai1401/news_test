@@ -1,6 +1,6 @@
 @extends('admin/master')
 
-@section('action','Add List')
+@section('action','Add Medals')
 @section('module', 'Medal')
 @section('heigh',' 924px')
 

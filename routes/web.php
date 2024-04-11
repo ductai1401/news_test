@@ -64,7 +64,16 @@ Route::prefix('client')->group(function () {
 
     Route::get('/countrys', [ClientCountryController::class, 'Country'])->name('Country');
 
-    Route::get('/athletes/{id}', [ClientAthleteController::class, 'athlete'])->name('athlete');
+    Route::get('/athlete/{id}', [ClientAthleteController::class, 'athlete'])->name('athlete');
+
+    Route::get('/athletes', [ClientAthleteController::class, 'listAthlete'])->name('listAthlete');
+
+    Route::get('/getAthlete/{search}', [ClientAthleteController::class, 'getAthlete'])->name('getAthlete');
+
+    // Route::get('/searchAthlete/{search}', [ClientAthleteController::class, 'searchAthlete'])->name('searchAthlete');
+
+
+
 
     Route::get('/results', [ResultsController::class, 'results'])->name('results');
 
@@ -72,7 +81,9 @@ Route::prefix('client')->group(function () {
 
     Route::get('/news/{id}', [ClientNewsController::class, 'singleNews'])->name('singleNews');
 
-    Route::post('/search_news', [ClientNewsController::class, 'searchNews'])->name('searchNews');
+    Route::get('/search_news', [ClientNewsController::class, 'searchNews'])->name('searchNews');
+    
+    
 
     Route::get('/checkLogin', [ClientNewsController::class, 'checkLogin'])->name('checkLogin');
 
@@ -246,13 +257,6 @@ Route::prefix('admin')->name('admin.')->middleware('checkLogin')->group(function
 
     Route::prefix('comment')->name('comment.')->controller(CommentController::class)->group(function () {
         Route::get('index', 'index')->name('index');
-
-        Route::get('create/', 'create')->name('create');
-        Route::post('store/', 'store')->name('store');
-
-        Route::get('edit/{id}', 'edit')->name('edit');
-        Route::post('update/{id}', 'update')->name('update');
-
         Route::get('destroy/{id}', 'destroy')->name('destroy');
     });
 });

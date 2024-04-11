@@ -7,9 +7,12 @@ use App\Http\Requests\Client\Comment\StoreRequest;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\News;
-use Validator;;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator as FacadesValidator;
 
 class NewsController extends Controller
 {
@@ -35,23 +38,26 @@ class NewsController extends Controller
     }
 
     public function searchNews(Request $request){
-        $data = $request ->search;
+        
+        $data = $request ->input('search', session::get('data', ''));
+        Session::put('data', $data);
+        
+        
         $hot_news = News::where('status', 1)->orderBy('created_at', 'desc')->take(4)->get();
         $news = News::where('status', 1)
         ->where('title', 'like', "%$data%")
-        ->orWhere('key_word', 'like', "%$data%")
         ->orWhere('intro', 'like', "%$data%")
-        ->take(8)->get();
+        ->paginate('10');
+        $news_page = News::paginate('10');
 
         $news_category = News::select('id_category')
         ->where('status', 1)
         ->where('title', 'like', "%$data%")
-        ->orWhere('key_word', 'like', "%$data%")
         ->orWhere('intro', 'like', "%$data%")
         ->groupBy('id_category')->get();
-
+       
         return view('client.search_news', [
-            'news' => $news,
+            'news' => compact('news'),
             'search' => $data,
             'news_categories' => $news_category,
             'hot_news' => $hot_news,
@@ -91,4 +97,7 @@ class NewsController extends Controller
 
         return response()->json(['isLoggedIn' => $isLoggedIn]);
     }
+
+
+    
 }

@@ -38,6 +38,7 @@
                     <div class="col-md-12">
                         <div class="utf_post_overaly_style contentTop hot-post-top clearfix">
                             @php
+                                
                                 $image_url_1 = public_path("uploads/news") . '/' . $news_single_1 ->image;
                                 if(!file_exists($image_url_1)) {
                                     $image_url_1 = asset('images/error.jpg');
@@ -53,29 +54,51 @@
                                 <span class="utf_post_date"><i class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime( $news_single_1->created_at)) }}</span>
                             </div>
                         </div>
-                    </div>
-                    @foreach($news_single_2 as $news_1)
+                    
                     @php
-                        $image_url_2 = public_path("uploads/news") . '/' . $news_1 ->image;
+                        $news1 = \App\Models\News::where('status', 1)->where('id_category', 12)->orderBy('created_at', 'desc')->first(); 
+                        $news2 = \App\Models\News::where('status', 1)->where('id_category', 12)->orderBy('created_at', 'asc')->first(); 
+                        $image_url_2 = public_path("uploads/news") . '/' . $news1 ->image;
                        if(!file_exists($image_url_2)) {
                             $image_url_2 = asset('images/error.jpg');
                         } else {
-                            $image_url_2 = asset("uploads/news") .'/' .  $news_1 ->image;
+                            $image_url_2 = asset("uploads/news") .'/' .  $news1 ->image;
                         }
-                        $category_2 = \App\Models\Category::where('id', $news_1 ->id_category)->first();
+                        $category_2 = \App\Models\Category::where('id', $news1 ->id_category)->first();
+
+                        $image_url_3 = public_path("uploads/news") . '/' . $news2 ->image;
+                        if(!file_exists($image_url_3)) {
+                            $image_url_3 = asset('images/error.jpg');
+                        } else {
+                            $image_url_3 = asset("uploads/news") .'/' .  $news2 ->image;
+                        }
+                        $category_3 = \App\Models\Category::where('id', $news2 ->id_category)->first();
                     @endphp
-                    <div class="col-md-6 pad-r-small">
-                        <div class="utf_post_overaly_style contentTop utf_hot_post_bottom clearfix">
-                            
-                            <div class="utf_post_thumb"> <a href="#"><img class="img-fluid"
-                                        src="{{ $image_url_2 }}" alt="image_news" /></a> </div>
-                            <div class="utf_post_content"> <a class="utf_post_cat" href="#">{{ $category_2 ->name}}</a>
-                                <h2 class="utf_post_title title-medium"> <a href="#">{{ $news_1 ->title}}</a> </h2>
+
+                    <div class="row pad-l-small">
+                        <div class="col-md-6 pad-r-small">
+                            <div class="utf_post_overaly_style contentTop utf_hot_post_bottom clearfix">
+                              <div class="utf_post_thumb"> <a href="#"><img class="img-fluid" src="{{ $image_url_2 }}" alt="image_news" /></a> </div>
+                              <div class="utf_post_content"> <a class="utf_post_cat" href="#">{{ $category_2 ->name}}</a>
+                                <h2 class="utf_post_title title-medium"> <a href="{{ route('singleNews', ['id' => $news1 ->id])}}">{{ $news1 ->title}}</a> </h2>
                                 
+                              </div>
                             </div>
                         </div>
+
+                       
+                        <div class="col-md-6 pad-l-small">
+                            <div class="utf_post_overaly_style contentTop utf_hot_post_bottom clearfix">
+                              <div class="utf_post_thumb"> <a href="#"><img class="img-fluid" src="{{ $image_url_3 }}" alt="" /></a> </div>
+                              <div class="utf_post_content"> <a class="utf_post_cat" href="#">{{ $category_3 ->name}}</a>
+                                <h2 class="utf_post_title title-medium"> <a href="{{ route('singleNews', ['id' => $news2 ->id])}}">{{ $news2 ->title}}</a> </h2>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
-                    @endforeach
+                    
+                   
                     
                 </div>
             </div>

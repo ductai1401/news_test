@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class News extends Model
 {
+
+
     use HasFactory;
 
     /**
@@ -17,6 +19,7 @@ class News extends Model
      * @var string
      */
     protected $table = 'news';
+    protected $primarykey = 'id';
 
     /**
      * The attributes that aren't mass assignable.

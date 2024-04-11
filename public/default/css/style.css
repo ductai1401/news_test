@@ -1520,6 +1520,38 @@ border:5px solid rgba(0, 0, 0, 0.05);
 border-radius:10px;
 margin-top: 0;
 }
+
+.utf_search_block1 {
+    background-color: #f7f7f7;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* display: none; */
+    padding: 8px;
+    position: absolute;
+    right: 15px;
+    top: 100%;
+    width: 300px;
+    z-index: 10;
+    border:5px solid rgba(0, 0, 0, 0.05);
+    border-radius:10px;
+    margin-top: 0;
+    }
+
+.utf_search_block1 a {
+    color: #ffffff !important;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}    
+    .utf_search_block1 .form-control1 {
+        background-color: #ffffff;
+        border: none;
+        color: #000;
+        width: 100%;
+        height: 40px;
+        padding: 0 12px;
+        }
 .utf_search_block .form-control {
 background-color: #ffffff;
 border: none;
@@ -2515,6 +2547,21 @@ text-align: center;
 line-height: 25px;
 font-weight: 600;
 }
+
+.pagination a {
+    border-radius: 30px;
+    margin-right: 8px;
+    color:#7c7c7c;
+    border: 1px solid #ddd;
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 25px;
+    font-weight: 600;
+    }
 .pagination>.active>a, .pagination>.active>a:hover, .pagination>li>a:hover {
 color: #fff;
 background: #ec0000;

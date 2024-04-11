@@ -85,7 +85,7 @@
                                                     <select class="form-control fill_it" name="parent_id">
                                                         <option value="0">-------Root-------</option>
                                                         @php  
-                                                            recursiveSport($sports, old('parent_id', $sports ->parent_id) );
+                                                            recursiveSport($sports, old('parent_id', $sport ->parent_id) );
                                                         @endphp
                                                         
                                                     </select>

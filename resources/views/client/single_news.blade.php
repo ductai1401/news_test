@@ -26,7 +26,7 @@
     $('#inputField').click(function(){
         $.get("{{ route('checkLogin') }}", function(data){
             if (!data.isLoggedIn) {
-                var confirmLogin = confirm("Bạn cần phải đăng nhập để tiếp tục. Bạn có muốn đăng nhập?");
+                var confirmLogin = confirm("You need to log in to continue. Do you want to login ?");
                 if (confirmLogin) {
                     // Redirect to login page or perform login action
                     // For demonstration, I'm just logging a message
@@ -38,8 +38,7 @@
     });
    
 });
-
-    </script>
+</script>
 
    
 @endpush
@@ -256,20 +255,22 @@
                     </div>
                     <!-- Post comment end -->
 
-                    <!-- Comments Form Start -->
-                    <div class="comments-form">
+                   
+                    @if(!Auth::check())
+                         <!-- Comments Form Start -->
+                        <div class="comments-form">
                         <h3 class="title-normal">Leave a comment</h3>
                         <form id="commentForm"  action="{{ route('storeComment', ['id' =>$news->id]) }}" method="post">
                             @csrf
                              <div class="row">
-                                {{-- <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <input class="form-control" name="fullname" id="fullname" placeholder="FullName"
-                                            type="text" >
+                                        
+                                        <textarea  class="form-control required-field" id="inputField" name="content" placeholder="Comment" rows="10" disabled></textarea>
                                         <div class="margin-top-3">
                                             <div class="input-group" >
-                                                @error('fullname')
-                                                    <span class="alert-1 alert-danger">
+                                                @error('content')
+                                                    <span class="alert-1 alert-danger fill-it p-3">
                                                         {{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -278,22 +279,29 @@
                                     </div>
                                     
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input class="form-control" name="email" id="email" placeholder="Email"
-                                            type="email" >
-                                        <div class="margin-top-3">
-                                        <div class="input-group" >
-                                            @error('email')
-                                                <span class="alert-1 alert-danger">
-                                                    {{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                            
-                                    </div>    
-                                    </div>
-                                    
-                                </div> --}}
+                            </div>
+                            <div class="clearfix" >
+                                <a href="{{ route('auth.login')}}" class="comments-btn btn btn-primary" >Sign In or Sign Up to Comment</a>
+                            </div>
+                        </form>
+                   
+                        
+                        </div>
+                        <div class="mb-5">
+                            @if (Session::has('msg'))
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                                {{ Session::get('msg') }}
+                            </div>
+                            @endif
+                        </div>
+                    @else
+                    <div class="comments-form">
+                        <h3 class="title-normal">Leave a comment</h3>
+                        <form id="commentForm"  action="{{ route('storeComment', ['id' =>$news->id]) }}" method="post">
+                            @csrf
+                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         
@@ -317,8 +325,8 @@
                         </form>
                    
                         
-                    </div>
-                    <div class="mb-5">
+                        </div>
+                        <div class="mb-5">
                             @if (Session::has('msg'))
                             <div class="alert alert-success alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -328,6 +336,8 @@
                             @endif
                         </div>
                     <!-- Comments form end -->
+                    @endif
+                    
                 </div>
 
                 {{-- <div class="col-lg-4 col-md-12">

@@ -37,4 +37,64 @@ class AthleteController extends Controller
             'olympic_medals' => $olympic_medal
         ]);
     }
+
+    public function listAthlete(){
+        $athletes = Athlete::where('status', 1)->take(18)->get();
+
+        return view('client.list_athlete',[
+            'athletes' => $athletes,
+        ]);
+    }
+
+    public function getAthlete(Request $request){
+        $key = $request ->search;
+        $athletes = Athlete::where('status', 1)->where('name', 'like', "$key%")->get();
+        
+        foreach($athletes as $athlete){
+                
+                if(empty($athlete ->image)){
+                $image_url = asset('images/image_athlete_defaults.png');
+                } else {
+                $image_url = public_path("uploads/athletes") . '/' . $athlete ->image;
+                if(!file_exists($image_url)) {
+                $image_url = asset('images/image_athlete_defaults.png');
+                } else {
+                $image_url = asset("uploads/athletes") .'/' . $athlete ->image;
+                }
+                }
+                
+                echo '<a href="'. route('athlete', ['id' => $athlete ->id]).'"><div style="text-align: center">';
+                echo    '<img src="'.  $image_url .'" alt="image_athlete">';
+                echo    '<h4>' .$athlete ->name .'</h4>';
+                echo '</div></a>';
+        }
+                
+                
+
+    }
+
+    public function searchAthlete($search){
+       
+        $athletes = Athlete::where('status', 1)->where('name', 'like', "%$search%")->get();
+        
+        foreach($athletes as $athlete){
+                
+            if(empty($athlete ->image)){
+            $image_url = asset('images/image_athlete_defaults.png');
+            } else {
+            $image_url = public_path("uploads/athletes") . '/' . $athlete ->image;
+            if(!file_exists($image_url)) {
+            $image_url = asset('images/image_athlete_defaults.png');
+            } else {
+            $image_url = asset("uploads/athletes") .'/' . $athlete ->image;
+            }
+            }
+            
+            echo '<a href="'. route('athlete', ['id' => $athlete ->id]).'"><div style="text-align: center">';
+            echo    '<img src="'.  $image_url .'" alt="image_athlete">';
+            echo    '<h4>' .$athlete ->name .'</h4>';
+            echo '</div></a>';
+    }
+        
+    }
 }

@@ -15,19 +15,29 @@
       <div class="col-md-12">
         <div class="form-group">
         <input id="email" placeholder="Email*" type="email" name="email" class="form-control @error('email') is-invalid @enderror">       
-          @error('email')
-              <span class="alert alert-danger">
-                <strong>{{ $message }}</strong></span>
-          @enderror
+        <div class="margin-top-3" >
+          <div class="input-group" >
+              @error('email')
+                  <span class="alert-1 alert-danger" style="width: 150px">
+                      {{ $message }}</span>
+              @enderror
+          </div>
+              
+      </div>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <input id="password" placeholder="Password*" type="password"  name="password" class="form-control @error('password') is-invalid @enderror">
-          @error('password')
-              <span class="alert alert-danger">
-                <strong>{{ $message }}</strong></span>
-          @enderror
+          <div class="margin-top-3">
+            <div class="input-group" >
+                @error('password')
+                    <span class="alert-1 alert-danger" style="width: 150px">
+                        {{ $message }}</span>
+                @enderror
+            </div>
+                
+        </div>
         </div>
       </div>                
       </div>
